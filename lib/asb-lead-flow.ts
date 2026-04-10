@@ -10,6 +10,7 @@ export type LeadFormPayload = {
   phone: string;
   city: string;
   course: string;
+  courseLabel: string;
   query: string;
   source: string;
   pageUrl: string;
@@ -29,6 +30,31 @@ type LeadCaptureResult = {
   leadDocId: string;
   leadId: string;
   otp: string;
+};
+
+type LeadSquaredSyncResult = {
+  leadId: string;
+  rawResponse: string;
+  statusLabel: string;
+};
+
+type LeadSquaredAttribute = {
+  Attribute: string;
+  Value: string;
+};
+
+const COURSE_LABEL_BY_VALUE: Record<string, string> = {
+  BBA: "BBA",
+  IBBA: "BBA International",
+  BCA: "BCA",
+  IBCA: "BCA International",
+  BCOM: "B.Com",
+  IBCOM: "B.Com International",
+  "BSc CS": "B.Sc. Computer Science",
+  "IBSc CS": "B.Sc. Computer Science International",
+  "B.Com (Hons)": "B.Com (Hons)",
+  "B.Sc (Hons)": "B.Sc (Hons)",
+  "IPM (BBA+PGDM)": "IPM (BBA+PGDM)",
 };
 
 function requireEnv(name: string): string {
@@ -60,12 +86,15 @@ function getClientIp(forwardedFor: string | null) {
 
 export function normalizeLeadPayload(formData: FormData): LeadFormPayload {
   const f = (key: string) => (formData.get(key) as string | null)?.trim() ?? "";
+  const course = f("course");
+  const courseLabel = f("course_label") || COURSE_LABEL_BY_VALUE[course] || course;
   return {
     name: f("name"),
     email: f("email"),
     phone: f("phone").replace(/\D/g, ""),
     city: f("city"),
-    course: f("course"),
+    course,
+    courseLabel,
     query: f("query") || "ASB UG Admissions 2026 Landing",
     source: f("source"),
     pageUrl: f("page_url"),
@@ -111,6 +140,7 @@ async function insertLeadRecord(
     email: payload.email,
     city: payload.city,
     course: payload.course,
+    courseLabel: payload.courseLabel,
     query: payload.query,
     source: getLeadSource(payload.source, payload.pageUrl),
     sourceRaw: payload.source,
@@ -133,6 +163,19 @@ async function insertLeadRecord(
   return result.insertedId.toString();
 }
 
+async function updateLeadRecord(leadDocId: string, fields: Record<string, unknown>) {
+  const db = await getMongoDb();
+  await db.collection(LEADS_COLLECTION).updateOne(
+    { _id: new ObjectId(leadDocId) },
+    {
+      $set: {
+        ...fields,
+        updatedAt: new Date(),
+      },
+    }
+  );
+}
+
 export async function sendOtpSms(phone: string, otp: string) {
   const env = getLeadFlowEnv();
   const params = new URLSearchParams({
@@ -151,32 +194,75 @@ export async function sendOtpSms(phone: string, otp: string) {
   }
 }
 
-export async function captureLeadInLeadSquared(payload: LeadFormPayload) {
-  const env = getLeadFlowEnv();
-  const leadAttributes = [
+function buildLeadSquaredAttributes(
+  payload: LeadFormPayload,
+  otpStatus: "Not Verified" | "Verified"
+): LeadSquaredAttribute[] {
+  return [
     { Attribute: "FirstName", Value: payload.name },
     { Attribute: "EmailAddress", Value: payload.email },
     { Attribute: "Phone", Value: payload.phone },
     { Attribute: "mx_City", Value: payload.city },
-    { Attribute: "mx_Course_Interested_In", Value: payload.course },
+    { Attribute: "mx_Course_Interested_In", Value: payload.courseLabel || payload.course },
     { Attribute: "Source", Value: payload.source },
-    { Attribute: "SourceCampaign", Value: payload.utm.campaign },
-    { Attribute: "SourceMedium", Value: payload.utm.medium },
-    { Attribute: "SourceContent", Value: payload.utm.content },
-    { Attribute: "mx_campaignid", Value: payload.utm.campaignid },
-    { Attribute: "mx_adgroupid", Value: payload.utm.adgroupid },
-    { Attribute: "mx_creativeid", Value: payload.utm.creativeid },
-    { Attribute: "mx_keyword", Value: payload.utm.keyword },
-    { Attribute: "mx_matchtype", Value: payload.utm.matchtype },
-    { Attribute: "mx_network", Value: payload.utm.network },
-    { Attribute: "mx_GCLID", Value: payload.utm.gclid },
-    { Attribute: "mx_OTP_Status", Value: "Not Verified" },
+    { Attribute: "SourceCampaign", Value: payload.utm.campaign ?? "" },
+    { Attribute: "SourceMedium", Value: payload.utm.medium ?? "" },
+    { Attribute: "SourceContent", Value: payload.utm.content ?? "" },
+    { Attribute: "mx_campaignid", Value: payload.utm.campaignid ?? "" },
+    { Attribute: "mx_adgroupid", Value: payload.utm.adgroupid ?? "" },
+    { Attribute: "mx_creativeid", Value: payload.utm.creativeid ?? "" },
+    { Attribute: "mx_keyword", Value: payload.utm.keyword ?? "" },
+    { Attribute: "mx_matchtype", Value: payload.utm.matchtype ?? "" },
+    { Attribute: "mx_network", Value: payload.utm.network ?? "" },
+    { Attribute: "mx_GCLID", Value: payload.utm.gclid ?? "" },
+    { Attribute: "mx_OTP_Status", Value: otpStatus },
   ];
-  const data = JSON.stringify([
-    ...leadAttributes,
-    { Attribute: "SearchBy", Value: "Phone" },
-  ]);
+}
 
+function toLeadPayloadFromRecord(
+  lead: Partial<{
+    name: string;
+    email: string;
+    phone: string;
+    city: string;
+    course: string;
+    courseLabel: string;
+    query: string;
+    sourceRaw: string;
+    pageUrl: string;
+    utm: Record<string, string | undefined>;
+  }>
+): LeadFormPayload {
+  return {
+    name: String(lead.name ?? ""),
+    email: String(lead.email ?? ""),
+    phone: String(lead.phone ?? ""),
+    city: String(lead.city ?? ""),
+    course: String(lead.course ?? ""),
+    courseLabel: String(lead.courseLabel ?? lead.course ?? ""),
+    query: String(lead.query ?? "ASB UG Admissions 2026 Landing"),
+    source: String(lead.sourceRaw ?? ""),
+    pageUrl: String(lead.pageUrl ?? ""),
+    utm: {
+      medium: String(lead.utm?.medium ?? ""),
+      campaign: String(lead.utm?.campaign ?? ""),
+      content: String(lead.utm?.content ?? ""),
+      campaignid: String(lead.utm?.campaignid ?? ""),
+      adgroupid: String(lead.utm?.adgroupid ?? ""),
+      creativeid: String(lead.utm?.creativeid ?? ""),
+      keyword: String(lead.utm?.keyword ?? ""),
+      matchtype: String(lead.utm?.matchtype ?? ""),
+      network: String(lead.utm?.network ?? ""),
+      gclid: String(lead.utm?.gclid ?? ""),
+    },
+  };
+}
+
+async function createLeadInLeadSquared(
+  leadAttributes: LeadSquaredAttribute[],
+  searchBy: "Phone" | "EmailAddress"
+) {
+  const env = getLeadFlowEnv();
   const res = await fetch(
     `https://api-in21.leadsquared.com/v2/LeadManagement.svc/Lead.Capture?accessKey=${encodeURIComponent(
       env.lsqAccessKey
@@ -184,68 +270,26 @@ export async function captureLeadInLeadSquared(payload: LeadFormPayload) {
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: data,
+      body: JSON.stringify([
+        ...leadAttributes,
+        { Attribute: "SearchBy", Value: searchBy },
+      ]),
     }
   );
 
-  const rawResponse = await res.text();
-  if (!res.ok) {
-    if (rawResponse.includes("MXDuplicateEntryException")) {
-      const updatedLead = await updateExistingLeadInLeadSquared(
-        payload,
-        leadAttributes
-      );
-      return {
-        leadId: updatedLead.leadId,
-        rawResponse: updatedLead.rawResponse,
-        statusLabel: "Updated Existing Lead",
-      };
-    }
-
-    throw new Error(
-      `LeadSquared capture failed with ${res.status}: ${rawResponse.slice(0, 300)}`
-    );
-  }
-
-  const json = JSON.parse(rawResponse) as { Message?: { Id?: string } };
   return {
-    leadId: json.Message?.Id ?? "",
-    rawResponse,
-    statusLabel: "Captured",
+    ok: res.ok,
+    status: res.status,
+    rawResponse: await res.text(),
   };
 }
 
-async function updateExistingLeadInLeadSquared(
-  payload: LeadFormPayload,
-  leadAttributes: Array<{ Attribute: string; Value: string }>
+async function updateLeadInLeadSquared(
+  leadId: string,
+  leadAttributes: LeadSquaredAttribute[]
 ) {
   const env = getLeadFlowEnv();
-  const searchRes = await fetch(
-    `https://api-in21.leadsquared.com/v2/LeadManagement.svc/Leads.GetByPhoneNumber?accessKey=${encodeURIComponent(
-      env.lsqAccessKey
-    )}&secretKey=${encodeURIComponent(env.lsqSecretKey)}&phone=${encodeURIComponent(
-      payload.phone
-    )}`
-  );
-
-  const searchRawResponse = await searchRes.text();
-  if (!searchRes.ok) {
-    throw new Error(
-      `LeadSquared phone search failed with ${searchRes.status}: ${searchRawResponse.slice(
-        0,
-        300
-      )}`
-    );
-  }
-
-  const searchJson = JSON.parse(searchRawResponse) as Array<{ ProspectID?: string }>;
-  const leadId = searchJson[0]?.ProspectID ?? "";
-
-  if (!leadId) {
-    throw new Error("LeadSquared duplicate detected but no existing phone lead was found");
-  }
-
-  const updateRes = await fetch(
+  const res = await fetch(
     `https://api-in21.leadsquared.com/v2/LeadManagement.svc/Lead.Update?accessKey=${encodeURIComponent(
       env.lsqAccessKey
     )}&secretKey=${encodeURIComponent(env.lsqSecretKey)}&leadId=${encodeURIComponent(leadId)}`,
@@ -256,10 +300,10 @@ async function updateExistingLeadInLeadSquared(
     }
   );
 
-  const rawResponse = await updateRes.text();
-  if (!updateRes.ok) {
+  const rawResponse = await res.text();
+  if (!res.ok) {
     throw new Error(
-      `LeadSquared update failed with ${updateRes.status}: ${rawResponse.slice(0, 300)}`
+      `LeadSquared update failed with ${res.status}: ${rawResponse.slice(0, 300)}`
     );
   }
 
@@ -274,68 +318,177 @@ async function updateExistingLeadInLeadSquared(
   };
 }
 
+function parseLeadSquaredLeadId(rawResponse: string) {
+  const json = JSON.parse(rawResponse) as { Message?: { Id?: string } };
+  return json.Message?.Id ?? "";
+}
+
+async function findLeadSquaredLeadId(phone: string, email?: string) {
+  return (
+    (phone ? await findLeadSquaredLeadIdByPhone(phone) : "") ||
+    (email ? await findLeadSquaredLeadIdByEmail(email) : "")
+  );
+}
+
+async function findLeadSquaredLeadIdByPhone(phone: string) {
+  const env = getLeadFlowEnv();
+  const searchRes = await fetch(
+    `https://api-in21.leadsquared.com/v2/LeadManagement.svc/Leads.GetByPhoneNumber?accessKey=${encodeURIComponent(
+      env.lsqAccessKey
+    )}&secretKey=${encodeURIComponent(env.lsqSecretKey)}&phone=${encodeURIComponent(phone)}`
+  );
+
+  const rawResponse = await searchRes.text();
+  if (searchRes.status === 404) {
+    return "";
+  }
+
+  if (!searchRes.ok) {
+    throw new Error(
+      `LeadSquared phone search failed with ${searchRes.status}: ${rawResponse.slice(0, 300)}`
+    );
+  }
+
+  const json = JSON.parse(rawResponse) as Array<{ ProspectID?: string }>;
+  return json[0]?.ProspectID ?? "";
+}
+
+async function findLeadSquaredLeadIdByEmail(email: string) {
+  const env = getLeadFlowEnv();
+  const searchRes = await fetch(
+    `https://api-in21.leadsquared.com/v2/LeadManagement.svc/Leads.GetByEmailaddress?accessKey=${encodeURIComponent(
+      env.lsqAccessKey
+    )}&secretKey=${encodeURIComponent(env.lsqSecretKey)}&emailaddress=${encodeURIComponent(
+      email
+    )}`
+  );
+
+  const rawResponse = await searchRes.text();
+  if (searchRes.status === 404) {
+    return "";
+  }
+
+  if (!searchRes.ok) {
+    throw new Error(
+      `LeadSquared email search failed with ${searchRes.status}: ${rawResponse.slice(0, 300)}`
+    );
+  }
+
+  const json = JSON.parse(rawResponse) as Array<{ ProspectID?: string }>;
+  return json[0]?.ProspectID ?? "";
+}
+
+async function recoverAndUpdateLead(
+  payload: LeadFormPayload,
+  leadAttributes: LeadSquaredAttribute[],
+  otpStatus: "Not Verified" | "Verified"
+) {
+  const recoveredLeadId = await findLeadSquaredLeadId(payload.phone, payload.email);
+  if (!recoveredLeadId) {
+    return null;
+  }
+
+  const updated = await updateLeadInLeadSquared(recoveredLeadId, leadAttributes);
+  return {
+    leadId: updated.leadId,
+    rawResponse: updated.rawResponse,
+    statusLabel:
+      otpStatus === "Verified"
+        ? "Recovered and Updated as Verified"
+        : "Recovered and Updated Existing Lead",
+  } satisfies LeadSquaredSyncResult;
+}
+
+async function upsertLeadInLeadSquared(
+  payload: LeadFormPayload,
+  otpStatus: "Not Verified" | "Verified"
+): Promise<LeadSquaredSyncResult> {
+  const leadAttributes = buildLeadSquaredAttributes(payload, otpStatus);
+  const existingLeadId = await findLeadSquaredLeadId(payload.phone, payload.email);
+
+  if (existingLeadId) {
+    const updated = await updateLeadInLeadSquared(existingLeadId, leadAttributes);
+    return {
+      leadId: updated.leadId,
+      rawResponse: updated.rawResponse,
+      statusLabel:
+        otpStatus === "Verified" ? "Updated Existing Lead as Verified" : "Updated Existing Lead",
+    };
+  }
+
+  const captureAttempts: Array<"Phone" | "EmailAddress"> = [];
+  if (payload.phone) captureAttempts.push("Phone");
+  if (payload.email) captureAttempts.push("EmailAddress");
+
+  let lastFailure = "LeadSquared capture could not be completed";
+
+  for (const searchBy of captureAttempts) {
+    const captureRes = await createLeadInLeadSquared(leadAttributes, searchBy);
+
+    if (captureRes.ok) {
+      return {
+        leadId: parseLeadSquaredLeadId(captureRes.rawResponse),
+        rawResponse: captureRes.rawResponse,
+        statusLabel:
+          otpStatus === "Verified"
+            ? "Captured as Verified"
+            : searchBy === "EmailAddress"
+              ? "Captured via Email Match"
+              : "Captured",
+      };
+    }
+
+    if (captureRes.rawResponse.includes("MXDuplicateEntryException")) {
+      const duplicateLeadId = await findLeadSquaredLeadId(payload.phone, payload.email);
+      if (duplicateLeadId) {
+        const updated = await updateLeadInLeadSquared(duplicateLeadId, leadAttributes);
+        return {
+          leadId: updated.leadId,
+          rawResponse: updated.rawResponse,
+          statusLabel:
+            otpStatus === "Verified"
+              ? "Updated Existing Lead as Verified"
+              : "Updated Existing Lead",
+        };
+      }
+    }
+
+    const recoveredLead = await recoverAndUpdateLead(payload, leadAttributes, otpStatus);
+    if (recoveredLead) {
+      return recoveredLead;
+    }
+
+    lastFailure = `LeadSquared capture failed with ${captureRes.status}: ${captureRes.rawResponse.slice(0, 300)}`;
+  }
+
+  throw new Error(lastFailure);
+}
+
+export async function captureLeadInLeadSquared(payload: LeadFormPayload) {
+  return upsertLeadInLeadSquared(payload, "Not Verified");
+}
+
+async function verifyLeadInLeadSquared(payload: LeadFormPayload) {
+  return upsertLeadInLeadSquared(payload, "Verified");
+}
+
 export async function startLeadCapture(
   payload: LeadFormPayload,
   forwardedFor: string | null
 ): Promise<LeadCaptureResult> {
   const otp = String(Math.floor(1000 + Math.random() * 9000));
   const leadDocId = await insertLeadRecord(payload, forwardedFor, otp);
-  const db = await getMongoDb();
 
   try {
     await sendOtpSms(payload.phone, otp);
-    await db.collection(LEADS_COLLECTION).updateOne(
-      { _id: new ObjectId(leadDocId) },
-      {
-        $set: {
-          smsStatus: "Sent",
-          updatedAt: new Date(),
-        },
-      }
-    );
+    await updateLeadRecord(leadDocId, {
+      smsStatus: "Sent",
+    });
   } catch (error) {
-    await db.collection(LEADS_COLLECTION).updateOne(
-      { _id: new ObjectId(leadDocId) },
-      {
-        $set: {
-          smsStatus: "Failed",
-          updatedAt: new Date(),
-        },
-      }
-    );
+    await updateLeadRecord(leadDocId, {
+      smsStatus: "Failed",
+    });
     throw error;
-  }
-
-  let leadId = "";
-
-  try {
-    const captureResult = await captureLeadInLeadSquared(payload);
-    leadId = captureResult.leadId;
-    await db.collection(LEADS_COLLECTION).updateOne(
-      { _id: new ObjectId(leadDocId) },
-      {
-        $set: {
-          leadSquaredLeadId: leadId,
-          leadSquaredCaptureStatus:
-            captureResult.statusLabel ??
-            (leadId ? "Captured" : "No Lead Id Returned"),
-          leadSquaredCaptureError: "",
-          updatedAt: new Date(),
-        },
-      }
-    );
-  } catch (error) {
-    await db.collection(LEADS_COLLECTION).updateOne(
-      { _id: new ObjectId(leadDocId) },
-      {
-        $set: {
-          leadSquaredCaptureStatus: "Failed",
-          leadSquaredCaptureError:
-            error instanceof Error ? error.message : "LeadSquared capture failed",
-          updatedAt: new Date(),
-        },
-      }
-    );
   }
 
   const cookieStore = await cookies();
@@ -357,11 +510,15 @@ export async function startLeadCapture(
     path: "/",
     sameSite: "lax",
   });
-  if (leadId) {
-    cookieStore.set("asb_lsq_lead_id", leadId, { httpOnly: true, path: "/", sameSite: "lax" });
-  }
+  cookieStore.set("asb_lead_course_label", encodeURIComponent(payload.courseLabel), {
+    httpOnly: true,
+    path: "/",
+    sameSite: "lax",
+  });
 
-  return { leadDocId, leadId, otp };
+  void syncLeadSquaredCapture(leadDocId, payload);
+
+  return { leadDocId, leadId: "", otp };
 }
 
 export async function resendLeadOtp() {
@@ -381,9 +538,6 @@ export async function verifyLeadOtp(otp: string) {
   const savedOtp = cookieStore.get("asb_lead_otp")?.value ?? "";
   const leadDocId = cookieStore.get("asb_lead_doc_id")?.value ?? "";
   const phone = cookieStore.get("asb_lead_phone")?.value ?? "";
-  const email = cookieStore.get("asb_lead_email")?.value ?? "";
-  const leadId = cookieStore.get("asb_lsq_lead_id")?.value ?? "";
-
   if (!otp || otp !== savedOtp || !leadDocId || !phone) {
     return false;
   }
@@ -395,131 +549,85 @@ export async function verifyLeadOtp(otp: string) {
     return false;
   }
 
-  await db.collection(LEADS_COLLECTION).updateOne(
-    { _id: objectId },
-    {
-      $set: {
-        otpStatus: "Verified",
-        otpVerifiedAt: new Date(),
-        updatedAt: new Date(),
-      },
-    }
-  );
-
-  let leadUpdated = false;
-
-  try {
-    if (leadId) {
-      leadUpdated = await updateLeadSquaredOtpStatusByLeadId(leadId);
-    }
-
-    if (!leadUpdated) {
-      leadUpdated = await updateLeadSquaredOtpStatusByPhone(phone);
-    }
-
-    if (!leadUpdated) {
-      await captureLeadSquaredVerifiedFallback(phone, email);
-    }
-
-    await updateLeadSquaredVerifyState(
-      leadDocId,
-      leadUpdated ? "Verified Synced" : "Fallback Capture Attempted"
-    );
-  } catch (error) {
-    await updateLeadSquaredVerifyState(
-      leadDocId,
-      "Failed",
-      error instanceof Error ? error.message : "LeadSquared verify sync failed"
-    );
-  }
+  await updateLeadRecord(leadDocId, {
+    otpStatus: "Verified",
+    otpVerifiedAt: new Date(),
+  });
 
   cookieStore.delete("asb_lead_otp");
+  cookieStore.delete("asb_lsq_lead_id");
+
+  void syncLeadSquaredVerify(leadDocId);
 
   return true;
 }
 
-async function updateLeadSquaredOtpStatusByLeadId(leadId: string) {
-  const env = getLeadFlowEnv();
-  const res = await fetch(
-    `https://api-in21.leadsquared.com/v2/LeadManagement.svc/Lead.Update?accessKey=${encodeURIComponent(
-      env.lsqAccessKey
-    )}&secretKey=${encodeURIComponent(env.lsqSecretKey)}&leadId=${encodeURIComponent(leadId)}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify([{ Attribute: "mx_OTP_Status", Value: "Verified" }]),
-    }
-  );
+async function syncLeadSquaredCapture(leadDocId: string, payload: LeadFormPayload) {
+  try {
+    const captureResult = await captureLeadInLeadSquared(payload);
+    await updateLeadRecord(leadDocId, {
+      leadSquaredLeadId: captureResult.leadId,
+      leadSquaredCaptureStatus:
+        captureResult.statusLabel || (captureResult.leadId ? "Captured" : "No Lead Id Returned"),
+      leadSquaredCaptureError: "",
+    });
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : "LeadSquared capture failed";
 
-  if (!res.ok) {
-    return false;
+    await updateLeadRecord(leadDocId, {
+      leadSquaredCaptureStatus: "Failed",
+      leadSquaredCaptureError: message,
+    });
   }
-
-  const json = (await res.json()) as { Status?: string };
-  return json.Status === "Success";
 }
 
-async function updateLeadSquaredOtpStatusByPhone(phone: string) {
-  const env = getLeadFlowEnv();
-  const searchRes = await fetch(
-    `https://api-in21.leadsquared.com/v2/LeadManagement.svc/Leads.GetByPhoneNumber?accessKey=${encodeURIComponent(
-      env.lsqAccessKey
-    )}&secretKey=${encodeURIComponent(env.lsqSecretKey)}&phone=${encodeURIComponent(phone)}`
-  );
-
-  if (!searchRes.ok) {
-    return false;
-  }
-
-  const searchJson = (await searchRes.json()) as Array<{ ProspectID?: string }>;
-  const foundLeadId = searchJson[0]?.ProspectID;
-  if (!foundLeadId) {
-    return false;
-  }
-
-  return updateLeadSquaredOtpStatusByLeadId(foundLeadId);
-}
-
-async function captureLeadSquaredVerifiedFallback(phone: string, email: string) {
-  const env = getLeadFlowEnv();
-  await fetch(
-    `https://api-in21.leadsquared.com/v2/LeadManagement.svc/Lead.Capture?accessKey=${encodeURIComponent(
-      env.lsqAccessKey
-    )}&secretKey=${encodeURIComponent(env.lsqSecretKey)}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify([
-        { Attribute: "mx_OTP_Status", Value: "Verified" },
-        { Attribute: "EmailAddress", Value: email },
-        { Attribute: "Phone", Value: phone },
-        { Attribute: "SearchBy", Value: "Phone" },
-      ]),
-    }
-  );
-}
-
-async function updateLeadSquaredVerifyState(
-  leadDocId: string,
-  status: string,
-  error = ""
-) {
+async function syncLeadSquaredVerify(leadDocId: string) {
   const db = await getMongoDb();
-  await db.collection(LEADS_COLLECTION).updateOne(
-    { _id: new ObjectId(leadDocId) },
-    {
-      $set: {
-        leadSquaredVerifyStatus: status,
-        leadSquaredVerifyError: error,
-        updatedAt: new Date(),
-      },
-    }
-  );
+  const objectId = new ObjectId(leadDocId);
+  const lead = await db.collection(LEADS_COLLECTION).findOne({ _id: objectId });
+
+  if (!lead) {
+    return;
+  }
+
+  try {
+    const payload = toLeadPayloadFromRecord(
+      lead as Parameters<typeof toLeadPayloadFromRecord>[0]
+    );
+    const verifyResult = await verifyLeadInLeadSquared(payload);
+    const priorCaptureStatus = String(lead.leadSquaredCaptureStatus ?? "");
+    const shouldRecoverCaptureStatus =
+      !priorCaptureStatus ||
+      priorCaptureStatus === "Pending" ||
+      priorCaptureStatus === "Failed";
+
+    await updateLeadRecord(leadDocId, {
+      leadSquaredLeadId: verifyResult.leadId,
+      leadSquaredVerifyStatus: verifyResult.statusLabel,
+      leadSquaredVerifyError: "",
+      ...(shouldRecoverCaptureStatus
+        ? {
+            leadSquaredCaptureStatus: "Recovered via Verify Sync",
+            leadSquaredCaptureError: "",
+          }
+        : {}),
+    });
+  } catch (error) {
+    await updateLeadRecord(leadDocId, {
+      leadSquaredVerifyStatus: "Failed",
+      leadSquaredVerifyError:
+        error instanceof Error ? error.message : "LeadSquared verify sync failed",
+    });
+  }
 }
 
 export async function getThankYouLeadCookieData() {
   const cookieStore = await cookies();
   const applicantName = decodeURIComponent(cookieStore.get("asb_lead_name")?.value ?? "").trim();
   const course = decodeURIComponent(cookieStore.get("asb_lead_course")?.value ?? "").trim();
-  return { applicantName, course };
+  const courseLabel = decodeURIComponent(
+    cookieStore.get("asb_lead_course_label")?.value ?? ""
+  ).trim();
+  return { applicantName, course, courseLabel };
 }

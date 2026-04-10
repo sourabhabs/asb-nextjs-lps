@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 interface ThankYouPageProps {
   applicantName?: string;
   courseLabel: string;
@@ -14,10 +12,11 @@ export default function ThankYouPage({
   return (
     <main
       style={{
-        minHeight: "100vh",
-        background: "#f3f3f3",
+        minHeight: "100dvh",
+        background: "#f4f6f8",
         display: "flex",
         flexDirection: "column",
+        overflow: "hidden",
       }}
     >
       <header>
@@ -76,7 +75,7 @@ export default function ThankYouPage({
       <section
         style={{
           flex: "1 0 auto",
-          padding: "62px 0 72px",
+          padding: "62px 0 40px",
         }}
       >
         <div
@@ -125,45 +124,35 @@ export default function ThankYouPage({
             <p style={{ margin: "0 0 26px", fontSize: "1rem", lineHeight: 1.75 }}>
               Asian School of Business (ASB)
             </p>
-            <Link
-              href="/"
-              style={{
-                display: "inline-block",
-                marginTop: "10px",
-                color: "#006972",
-                fontWeight: 700,
-                textDecoration: "none",
-              }}
-            >
-              Back to home
-            </Link>
           </div>
         </div>
       </section>
 
       <footer
         style={{
+          marginTop: "auto",
           background: "#006972",
-          color: "#fff",
+          color: "#ffffff",
           textAlign: "center",
-          padding: "34px 18px 22px",
+          padding: "36px 18px calc(24px + env(safe-area-inset-bottom))",
+          borderTop: "4px solid #18a2ac",
         }}
       >
-        <p style={{ margin: "0 0 10px", lineHeight: 1.6, fontSize: "0.98rem", fontWeight: 700 }}>
+        <p style={{ margin: "0 0 10px", lineHeight: 1.6, fontSize: "0.98rem", fontWeight: 700, color: "#ffffff" }}>
           ASIAN SCHOOL OF BUSINESS
         </p>
-        <p style={{ margin: "0 0 10px", lineHeight: 1.6, fontSize: "0.98rem" }}>
+        <p style={{ margin: "0 0 10px", lineHeight: 1.6, fontSize: "0.98rem", color: "#f3f7ff" }}>
           Plot A2, Sector 125, Noida - 201303, Delhi NCR, India
         </p>
-        <p style={{ margin: "0 0 10px", lineHeight: 1.6, fontSize: "0.98rem" }}>
+        <p style={{ margin: "0 0 10px", lineHeight: 1.6, fontSize: "0.98rem", color: "#f3f7ff" }}>
           Copyright @ ASB. All Rights reserved.
         </p>
-        <p style={{ margin: 0, lineHeight: 1.6, fontSize: "0.98rem" }}>
+        <p style={{ margin: 0, lineHeight: 1.6, fontSize: "0.98rem", color: "#ffffff" }}>
           <a
             href="https://asb.edu.in/privacy-policy/"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: "#fff200", textDecoration: "none" }}
+            style={{ color: "#ffe066", textDecoration: "none", fontWeight: 700 }}
           >
             Privacy Policy
           </a>

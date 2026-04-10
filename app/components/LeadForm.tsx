@@ -11,6 +11,8 @@ interface LeadFormProps {
   className?: string;
   variant?: "alc" | "bba" | "bca" | "bcom" | "bsc";
   submitLabel?: string;
+  trackMetaLead?: boolean;
+  trackMetaCompleteRegistration?: boolean;
 }
 
 const DEFAULT_COURSES_ALC = [
@@ -43,6 +45,8 @@ export default function LeadForm({
   className = "",
   variant = "alc",
   submitLabel = "APPLY NOW",
+  trackMetaLead = false,
+  trackMetaCompleteRegistration = false,
 }: LeadFormProps) {
   const resolvedCourses =
     courses ?? (variant === "alc" ? DEFAULT_COURSES_ALC : DEFAULT_COURSES_ASB);
@@ -59,6 +63,7 @@ export default function LeadForm({
   const [otpHint, setOtpHint] = useState("");
   const [otpOpen, setOtpOpen] = useState(false);
   const otpInputRef = useRef<HTMLInputElement>(null);
+  const selectedCourse = resolvedCourses.find((item) => item.value === course);
 
   function showStatus(msg: string, type: "success" | "error") {
     setStatusMsg(msg);
@@ -74,6 +79,10 @@ export default function LeadForm({
 
     setStatus("sending");
     showStatus("", "success");
+    setOtp("");
+    setOtpHint(`Sending OTP to +91 ${phone}...`);
+    setOtpOpen(true);
+    setTimeout(() => otpInputRef.current?.focus(), 150);
 
     const body = new URLSearchParams({
       name,
@@ -81,6 +90,7 @@ export default function LeadForm({
       phone,
       city,
       course,
+      course_label: selectedCourse?.label ?? course,
       query: queryLabel,
       source: getUTMParam("utm_source"),
       page_url: typeof window !== "undefined" ? window.location.href : "",
@@ -105,16 +115,20 @@ export default function LeadForm({
       const data = await res.json();
 
       if (data.success) {
-        setOtp("");
+        if (trackMetaLead && typeof window !== "undefined") {
+          const fbq = (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq;
+          fbq?.("track", "Lead");
+        }
         setOtpHint(`Enter the 4-digit code sent to +91 ${phone}`);
-        setOtpOpen(true);
         setStatus("otp");
         setTimeout(() => otpInputRef.current?.focus(), 150);
       } else {
+        setOtpOpen(false);
         showStatus(data.message || "Failed to send OTP. Please try again.", "error");
         setStatus("idle");
       }
     } catch {
+      setOtpOpen(false);
       showStatus("Network error. Please try again.", "error");
       setStatus("idle");
     }
@@ -134,12 +148,16 @@ export default function LeadForm({
       const res = await fetch(`/api/verify-otp?q=${encodeURIComponent(otp)}`);
       const text = await res.text();
       if (text.trim() === "1") {
+        if (trackMetaCompleteRegistration && typeof window !== "undefined") {
+          const fbq = (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq;
+          fbq?.("track", "CompleteRegistration");
+        }
         setStatus("done");
         setOtpOpen(false);
         showStatus("Verified! Redirecting...", "success");
         setTimeout(() => {
           window.location.href = thankYouPath;
-        }, 600);
+        }, 150);
       } else {
         showStatus("Invalid OTP. Please try again.", "error");
         setStatus("otp");
@@ -405,11 +423,16 @@ export default function LeadForm({
                 placeholder="0000"
                 autoComplete="one-time-code"
                 value={otp}
+                disabled={status === "sending" || status === "verifying"}
                 onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 4))}
                 required
               />
-              <button id="otpSubmit" type="submit" disabled={status === "verifying"}>
-                {status === "verifying" ? "Verifying..." : "Verify and Submit"}
+              <button id="otpSubmit" type="submit" disabled={status === "sending" || status === "verifying"}>
+                {status === "sending"
+                  ? "Sending OTP..."
+                  : status === "verifying"
+                    ? "Verifying..."
+                    : "Verify and Submit"}
               </button>
               {statusMsg ? (
                 <div className={`status ${statusType}`} id="otpStatus" style={{ display: "block" }}>
@@ -425,8 +448,10 @@ export default function LeadForm({
               <a
                 href="#"
                 style={{ color: "#02858f", fontWeight: 700, textDecoration: "none" }}
+                aria-disabled={status === "sending" || status === "verifying"}
                 onClick={(e) => {
                   e.preventDefault();
+                  if (status === "sending" || status === "verifying") return;
                   handleResend();
                 }}
               >

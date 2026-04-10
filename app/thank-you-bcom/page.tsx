@@ -9,16 +9,16 @@ export const metadata: Metadata = {
 };
 
 export default async function BcomThankYouPage() {
-  const { applicantName } = await getThankYouLeadCookieData();
+  const { applicantName, courseLabel } = await getThankYouLeadCookieData();
 
   return (
     <>
       <ThankYouTracking
         googleTagId="AW-18057855257"
-        conversionSendTo="AW-18057855257/xEwwClHA9ZQcEJmC1KJD"
+        conversionSendTo="AW-18057855257/xEwwCIHA9ZQcEJmC1KJD"
       />
       <ThankYouTracking conversionSendTo="AW-862684608/nckdCLfh1ZAcEMCLrpsD" />
-      <ThankYouPage applicantName={applicantName} courseLabel="B.Com" />
+      <ThankYouPage applicantName={applicantName} courseLabel={courseLabel || "B.Com"} />
     </>
   );
 }

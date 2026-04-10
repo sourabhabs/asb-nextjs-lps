@@ -256,7 +256,7 @@ export default async function AdminLeadsPage({
                   <td style={cellStyle}>{lead.email || "-"}</td>
                   <td style={cellStyle}>{lead.phone || "-"}</td>
                   <td style={cellStyle}>{lead.city || "-"}</td>
-                  <td style={cellStyle}>{lead.course || "-"}</td>
+                  <td style={cellStyle}>{lead.courseLabel || lead.course || "-"}</td>
                   <td style={cellStyle}>{lead.otpStatus || "-"}</td>
                   <td style={cellStyle}>{lead.smsStatus || "-"}</td>
                   <td style={cellStyle}>

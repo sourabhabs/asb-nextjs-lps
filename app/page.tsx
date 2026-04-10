@@ -135,6 +135,7 @@ export default function Page() {
         .recruiter-card:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(0,0,0,.05);border-color:#e2e8f0}
         .recruiter-card img{max-width:100%;max-height:50px;object-fit:contain;filter:none;transition:all .3s ease}
         .desktop-cta{display:none}
+        .mobile-cta{display:none}
         @media (min-width:992px){
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
           .bnrbg{background-image:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),url("/ASB-BG-D.webp")!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
@@ -187,6 +188,11 @@ export default function Page() {
           #heroLeadForm .single_form{width:100%;margin-top:10px}
           #heroLeadForm .single_form input,#heroLeadForm .single_form select{height:52px;border-radius:12px;border:1px solid #d6dae2;background:#f0f2f5;padding:0 14px;font-size:16px;color:#475569}
           #heroSubmitBtn{height:48px;line-height:48px;border-radius:12px;background:#ff1b23!important;font-weight:800;letter-spacing:.02em;box-shadow:0 10px 18px rgba(255,27,35,.28)}
+          .mobile-cta{display:flex;position:fixed;left:14px;right:14px;bottom:12px;z-index:9999;opacity:0;pointer-events:none;transform:translateY(18px);transition:opacity .3s ease,transform .3s ease}
+          .mobile-cta.is-visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+          .mobile-cta-strip{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;background:#ffffff;border-radius:18px;box-shadow:0 12px 32px rgba(15,31,69,.18)}
+          .mobile-btn-enq{flex:1;height:48px;border:none;border-radius:999px;background:#0f1f45;color:#fff;font-weight:800;font-size:15px;text-transform:uppercase}
+          .mobile-btn-call{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;background:radial-gradient(circle at 30% 30%,#e3fff0,#7ff0ab);color:#0f1f45;box-shadow:0 8px 18px rgba(50,205,125,.24)}
         }
         @media (max-width:767px){.recruiters-grid{grid-template-columns:repeat(2,1fr);gap:12px}.top-recruiters{padding:40px 0}}
       `}</style>
@@ -252,6 +258,8 @@ export default function Page() {
               queryLabel="ASB UG Admissions 2026 Landing"
               thankYouPath="/thank-you"
               submitLabel="ENQUIRE NOW"
+              trackMetaLead
+              trackMetaCompleteRegistration
             />
           </div>
         </section>
@@ -410,6 +418,7 @@ export default function Page() {
       <footer className="footer"><div className="container footer-inner"><div className="footer-grid"><div><h4 style={{ color: "#fff" }}>Asian School of Business</h4><p>Admissions open for 2026 intake. Build your future in business, commerce and technology with a globally aware academic ecosystem.</p></div><div><div className="f-title">Quick Links</div><ul className="f-links"><li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToId("home", true); }}>Home</a></li><li><a href="#courses" onClick={(e) => { e.preventDefault(); scrollToId("courses"); }}>Programs Offered</a></li><li><a href="#international" onClick={(e) => { e.preventDefault(); scrollToId("international"); }}>International Exposure</a></li><li><a href="#enquire" onClick={(e) => { e.preventDefault(); scrollToId("enquire", true); }}>Enquire Now</a></li></ul></div><div><div className="f-title">Admissions Office</div><p>Asian School of Business, Noida, Uttar Pradesh</p></div></div><div className="f-bottom"><span>(c) 2026 Asian School of Business. All rights reserved.</span><span>International association with Oxford Business College</span></div></div></footer>
 
       <div className="desktop-cta" style={{ opacity: showSticky ? "1" : "0", pointerEvents: showSticky ? "auto" : "none", transform: showSticky ? "translateY(0)" : "translateY(20px)" }} aria-label="Desktop actions"><div className="desktop-cta-strip"><button type="button" className="btn btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button><a href="tel:8448334130" className="btn btn-call" title="Call Us"><svg width="24" height="24" viewBox="0 0 16 16" fill="currentColor"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z" /></svg></a></div></div>
+      <div className={`mobile-cta${showSticky ? " is-visible" : ""}`} aria-label="Mobile actions"><div className="mobile-cta-strip"><button type="button" className="mobile-btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button><a href="tel:8448334130" className="mobile-btn-call" title="Call Us" aria-label="Call Us"><svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z" /></svg></a></div></div>
     </>
   );
 }

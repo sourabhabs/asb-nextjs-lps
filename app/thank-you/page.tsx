@@ -9,12 +9,15 @@ export const metadata: Metadata = {
 };
 
 export default async function MainThankYouPage() {
-  const { applicantName } = await getThankYouLeadCookieData();
+  const { applicantName, courseLabel } = await getThankYouLeadCookieData();
 
   return (
     <>
       <ThankYouTracking conversionSendTo="AW-862684608/nckdCLfh1ZAcEMCLrpsD" />
-      <ThankYouPage applicantName={applicantName} courseLabel="Undergraduate" />
+      <ThankYouPage
+        applicantName={applicantName}
+        courseLabel={courseLabel || "Undergraduate"}
+      />
     </>
   );
 }

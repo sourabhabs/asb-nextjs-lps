@@ -9,6 +9,7 @@ export type LeadAdminDoc = {
   phone?: string;
   city?: string;
   course?: string;
+  courseLabel?: string;
   otpStatus?: string;
   smsStatus?: string;
   leadSquaredCaptureStatus?: string;
@@ -55,6 +56,7 @@ function buildLeadQuery(filters: LeadAdminFilters) {
       { phone: regex },
       { city: regex },
       { course: regex },
+      { courseLabel: regex },
       { "utm.campaign": regex },
       { "utm.medium": regex },
       { "utm.source": regex },
@@ -147,7 +149,7 @@ export function toLeadCsvRows(leads: LeadAdminDoc[]) {
       lead.email,
       lead.phone,
       lead.city,
-      lead.course,
+      lead.courseLabel || lead.course,
       lead.otpStatus,
       lead.smsStatus,
       lead.leadSquaredCaptureStatus,
