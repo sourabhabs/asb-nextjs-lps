@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import LeadForm from "./components/LeadForm";
 
@@ -205,16 +206,16 @@ export default function Page() {
                 <nav className="navbar navbar-expand-lg" style={{ display: "flex", justifyContent: "space-between", width: "100%", minHeight: "78px" }}>
                   <div className="d-none d-lg-flex align-items-center">
                     <div className="alc-desktop-logo-strip">
-                      <img src="/img/logo.jpg" alt="Asian School of Business" className="logo-alc" />
-                      <img src="/img/OBC-Logo.png" alt="Oxford Business College" className="logo-obc" />
+                      <Image src="/img/logo.jpg" alt="Asian School of Business" className="logo-alc" width={200} height={68} priority />
+                      <Image src="/img/OBC-Logo.png" alt="Oxford Business College" className="logo-obc" width={160} height={54} priority />
                     </div>
                   </div>
                   <div className="d-flex d-lg-none w-100 align-items-center justify-content-between alc-mobile-header">
-                    <img className="alc-mobile-badge" src="/assets/images/aicte.jpg" alt="AICTE" />
+                    <Image className="alc-mobile-badge" src="/assets/images/aicte.jpg" alt="AICTE" width={34} height={34} priority />
                     <a href="#home" className="navbar-brand mx-auto" style={{ display: "flex", alignItems: "center" }}>
-                      <img src="/img/logo.jpg" alt="Asian School of Business" width="160" height="68" />
+                      <Image src="/img/logo.jpg" alt="Asian School of Business" width={160} height={68} priority />
                     </a>
-                    <img className="alc-mobile-badge" src="/img/naac.webp" alt="NAAC" />
+                    <Image className="alc-mobile-badge" src="/img/naac.webp" alt="NAAC" width={34} height={34} priority />
                   </div>
                 </nav>
               </div>
@@ -226,18 +227,38 @@ export default function Page() {
           id="home"
           ref={homeRef}
           className="header-hero bg_cover d-flex align-items-center bnrbg"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)), url("/ASB-BG-D.webp")',
-            backgroundSize: "cover",
-            backgroundPosition: "center center",
-            backgroundRepeat: "no-repeat",
-          }}
+          style={{ position: "relative", overflow: "hidden", backgroundColor: "#f4f4f5" }}
         >
+          <div
+            className="mobH"
+            aria-hidden="true"
+            style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}
+          >
+            <Image
+              src="/ASB-BG-D.webp"
+              alt=""
+              fill
+              priority
+              fetchPriority="high"
+              sizes="100vw"
+              style={{ objectFit: "cover" }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28))",
+              }}
+            />
+          </div>
           <div className="container-l banner-content" style={{ width: "auto" }}>
             <div className="row" style={{ width: "100%", marginRight: 0, marginLeft: 0 }}>
               <div className="col-lg-12">
-                <div className="header-hero-content" style={{ paddingLeft: "35px", paddingRight: "30px" }}>
+                <div
+                  className="header-hero-content"
+                  style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
+                >
                   <div className="mobH wow fadeInUp asb-desktop-hero-copy" data-wow-duration="1.3s" style={{ maxWidth: "760px" }}>
                     <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
                     <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">BBA/BCA/B.Com/B.Sc.(CS)</span> Degree Program.</p>
@@ -246,7 +267,16 @@ export default function Page() {
                     </ul>
                   </div>
                   <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
-                    <img src="/Mobile Banners ASB 2026.jpg" alt="ASB Admissions 2026" width="390" height="520" style={{ width: "100%", height: "auto", display: "block" }} />
+                    <Image
+                      src="/Mobile Banners ASB 2026.jpg"
+                      alt="ASB Admissions 2026"
+                      width={390}
+                      height={520}
+                      priority
+                      fetchPriority="high"
+                      sizes="(max-width: 420px) 390px, 100vw"
+                      style={{ width: "100%", height: "auto", display: "block" }}
+                    />
                   </div>
                 </div>
               </div>

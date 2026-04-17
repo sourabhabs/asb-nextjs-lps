@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import LeadForm from "./LeadForm";
 import type { AsbCourseRouteConfig } from "@/lib/asb-routes";
@@ -347,16 +348,16 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
                 <nav className="navbar navbar-expand-lg" style={{ display: "flex", justifyContent: "space-between", width: "100%", minHeight: "78px" }}>
                   <div className="d-none d-lg-flex align-items-center">
                     <div className="alc-desktop-logo-strip">
-                      <img src="/img/logo.jpg" alt="Asian School of Business" className="logo-alc" />
-                      <img src="/img/OBC-Logo.png" alt="Oxford Business College" className="logo-obc" />
+                      <Image src="/img/logo.jpg" alt="Asian School of Business" className="logo-alc" width={200} height={68} priority />
+                      <Image src="/img/OBC-Logo.png" alt="Oxford Business College" className="logo-obc" width={160} height={54} priority />
                     </div>
                   </div>
                   <div className="d-flex d-lg-none w-100 align-items-center justify-content-between alc-mobile-header">
-                    <img className="alc-mobile-badge" src="/assets/images/aicte.jpg" alt="AICTE" />
+                    <Image className="alc-mobile-badge" src="/assets/images/aicte.jpg" alt="AICTE" width={34} height={34} priority />
                     <a href="#home" className="navbar-brand mx-auto" style={{ display: "flex", alignItems: "center" }}>
-                      <img src="/img/logo.jpg" alt="Asian School of Business" width="160" height="68" />
+                      <Image src="/img/logo.jpg" alt="Asian School of Business" width={160} height={68} priority />
                     </a>
-                    <img className="alc-mobile-badge" src="/img/naac.webp" alt="NAAC" />
+                    <Image className="alc-mobile-badge" src="/img/naac.webp" alt="NAAC" width={34} height={34} priority />
                   </div>
                 </nav>
               </div>
@@ -364,11 +365,41 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
           </div>
         </div>
 
-        <section ref={homeRef} className="header-hero bg_cover d-flex align-items-center bnrbg" style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)), url("/ASB-BG-D.webp")', backgroundSize: "cover", backgroundPosition: "center center", backgroundRepeat: "no-repeat" }}>
+        <section
+          ref={homeRef}
+          className="header-hero bg_cover d-flex align-items-center bnrbg"
+          style={{ position: "relative", overflow: "hidden", backgroundColor: "#f4f4f5" }}
+        >
+          <div
+            className="mobH"
+            aria-hidden="true"
+            style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}
+          >
+            <Image
+              src="/ASB-BG-D.webp"
+              alt=""
+              fill
+              priority
+              fetchPriority="high"
+              sizes="100vw"
+              style={{ objectFit: "cover" }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28))",
+              }}
+            />
+          </div>
           <div className="container-l banner-content" style={{ width: "auto" }}>
             <div className="row" style={{ width: "100%", marginRight: 0, marginLeft: 0 }}>
               <div className="col-lg-12">
-                <div className="header-hero-content" style={{ paddingLeft: "35px", paddingRight: "30px" }}>
+                <div
+                  className="header-hero-content"
+                  style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
+                >
                   <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
                     <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
                     <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">{content.highlight}</span> Degree Program.</p>
@@ -377,7 +408,16 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
                     </ul>
                   </div>
                   <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
-                    <img src={course.heroImage} alt="ASB Admissions 2026" style={{ width: "100%", height: "auto", display: "block" }} />
+                    <Image
+                      src={course.heroImage}
+                      alt="ASB Admissions 2026"
+                      width={390}
+                      height={520}
+                      priority
+                      fetchPriority="high"
+                      sizes="(max-width: 420px) 390px, 100vw"
+                      style={{ width: "100%", height: "auto", display: "block" }}
+                    />
                   </div>
                 </div>
               </div>
@@ -416,7 +456,20 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
 
         <section className="top-recruiters" id="recruiters"><div className="container"><div className="recruiters-head text-center pb-20"><h2 className="title">Top Recruiters at ASB</h2><p className="subtitle">Renowned brands hiring ASB talent for dynamic roles across diverse fields</p><div className="line mx-auto"></div></div><div className="recruiters-grid">{RECRUITERS.map(([alt, src]) => <div key={alt} className="recruiter-card"><img src={src} alt={alt} /></div>)}</div></div></section>
 
-        <section id="courses" className="courses_area pt-105">
+        <section style={{ textAlign: "center", padding: "36px 20px 14px", background: "#fff" }}>
+          <div style={{ width: "48px", height: "3px", background: "#006972", margin: "0 auto 18px", borderRadius: "2px" }}></div>
+          <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(32px, 6vw, 48px)", fontWeight: 800, color: "#0f1f45", margin: "0 0 10px", lineHeight: 1.15 }}>
+            Asian School of Business
+          </h2>
+          <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700, fontSize: "clamp(18px, 3vw, 24px)", color: "#0f1f45", margin: "0 0 14px" }}>
+            {content.highlight} Program
+          </p>
+          <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700, fontSize: "clamp(16px, 2.5vw, 20px)", color: "#0f1f45", maxWidth: "520px", margin: "0 auto", lineHeight: 1.5 }}>
+            Asian School of Business is one of the top {content.highlight} Colleges in Delhi-NCR.
+          </p>
+        </section>
+
+        <section id="courses" className="courses_area" style={{ paddingTop: "20px" }}>
           <div className="container">
             <div className="row">
               <div className="col-md-6 h-100 mb-4">
