@@ -256,7 +256,7 @@ export default function Page() {
               title="Admissions Open 2026"
               courses={HERO_COURSES}
               queryLabel="ASB UG Admissions 2026 Landing"
-              thankYouPath="/thank-you"
+              thankYouPath="/thank-you.php"
               submitLabel="ENQUIRE NOW"
               trackMetaLead
               trackMetaCompleteRegistration

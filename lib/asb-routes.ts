@@ -25,7 +25,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     heroImage: "/BBA.jpg",
     courseValue: "BBA",
     queryLabel: "ASB BBA Admissions 2026 Landing",
-    thankYouPath: "/thank-you-bba",
+    thankYouPath: "/thank-you-bba.php",
   },
   bca: {
     key: "bca",
@@ -37,7 +37,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     heroImage: "/BCA.jpg",
     courseValue: "BCA",
     queryLabel: "ASB BCA Admissions 2026 Landing",
-    thankYouPath: "/thank-you-bca",
+    thankYouPath: "/thank-you-bca.php",
   },
   bcom: {
     key: "bcom",
@@ -49,7 +49,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     heroImage: "/BCOM.jpg",
     courseValue: "BCOM",
     queryLabel: "ASB BCOM Admissions 2026 Landing",
-    thankYouPath: "/thank-you-bcom",
+    thankYouPath: "/thank-you-bcom.php",
   },
   bsc: {
     key: "bsc",
@@ -61,6 +61,6 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     heroImage: "/BSC.jpg",
     courseValue: "BSc CS",
     queryLabel: "ASB BSC Admissions 2026 Landing",
-    thankYouPath: "/thank-you-bsc",
+    thankYouPath: "/thank-you-bsc.php",
   },
 };
