@@ -3,22 +3,11 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import LeadForm from "./LeadForm";
-
-type PreviewCourseKey =
-  | "bba"
-  | "bca"
-  | "bcom"
-  | "bsc"
-  | "ba-psychology"
-  | "ba-psychology-international";
-
-type PreviewCourseConfig = {
-  key: PreviewCourseKey;
-  heroImage: string;
-  mobileHeroImage?: string;
-  queryLabel: string;
-  thankYouPath: string;
-};
+import {
+  PREVIEW_COURSES,
+  type PreviewCourseConfig,
+  type PreviewCourseKey,
+} from "@/lib/asb-preview-routes";
 
 interface Bba2PreviewShellProps {
   course?: PreviewCourseConfig;
@@ -87,7 +76,7 @@ const COURSE_DETAILS: Record<PreviewCourseKey, CourseDetails> = {
     contactLabel: "BCA",
     footerDescription:
       "Admissions open for 2026 intake. Build your future in technology, software and innovation with a globally aware academic ecosystem.",
-    heroFee: "Rs. 4.95 Lakh",
+    heroFee: "Rs. 4.95Lakh",
     options: [
       { value: "BCA", label: "BCA" },
       { value: "IBCA", label: "BCA International" },
@@ -304,47 +293,6 @@ function videoEmbed(url: string, autoplay = false) {
   if (!id) return url;
   return `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1&controls=0&loop=1&playlist=${id}&autoplay=${autoplay ? 1 : 0}`;
 }
-
-export const PREVIEW_COURSES: Record<PreviewCourseKey, PreviewCourseConfig> = {
-  bba: {
-    key: "bba",
-    heroImage: "/BBA.jpg",
-    queryLabel: "ASB BBA2 Preview Landing",
-    thankYouPath: "/thank-you-bba.php",
-  },
-  bca: {
-    key: "bca",
-    heroImage: "/BCA.jpg",
-    queryLabel: "ASB BCA2 Preview Landing",
-    thankYouPath: "/thank-you-bca.php",
-  },
-  bcom: {
-    key: "bcom",
-    heroImage: "/BCOM.jpg",
-    queryLabel: "ASB BCOM2 Preview Landing",
-    thankYouPath: "/thank-you-bcom.php",
-  },
-  bsc: {
-    key: "bsc",
-    heroImage: "/BSC.jpg",
-    queryLabel: "ASB BSC2 Preview Landing",
-    thankYouPath: "/thank-you-bsc.php",
-  },
-  "ba-psychology": {
-    key: "ba-psychology",
-    heroImage: "/BA-PSY.jpg",
-    mobileHeroImage: "/Mobile ba-psyjpg.jpg",
-    queryLabel: "ASB BA Psychology Preview Landing",
-    thankYouPath: "/thank-you-ba-psychology.php",
-  },
-  "ba-psychology-international": {
-    key: "ba-psychology-international",
-    heroImage: "/BA-PSY.jpg",
-    mobileHeroImage: "/Mobile ba-psyjpg.jpg",
-    queryLabel: "ASB BA Psychology International Preview Landing",
-    thankYouPath: "/thank-you-ba-psychology.php",
-  },
-};
 
 const DEFAULT_COURSE = PREVIEW_COURSES.bba;
 

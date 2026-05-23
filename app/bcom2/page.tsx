@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Bba2PreviewShell, { PREVIEW_COURSES } from "@/app/components/Bba2PreviewShell";
+import Bba2PreviewShell from "@/app/components/Bba2PreviewShell";
+import { PREVIEW_COURSES } from "@/lib/asb-preview-routes";
 
 const course = PREVIEW_COURSES.bcom;
 
