@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import LandingPageTracking from "./components/LandingPageTracking";
 import LeadForm from "./components/LeadForm";
 
 const HERO_COURSES = [
@@ -13,6 +14,8 @@ const HERO_COURSES = [
   { value: "IBCOM", label: "B.Com International" },
   { value: "BSc CS", label: "B.Sc. Computer Science" },
   { value: "IBSc CS", label: "B.Sc. Computer Science International" },
+  { value: "BA Psychology", label: "B.A. Psychology" },
+  { value: "BA Psychology International", label: "B.A. Psychology International" },
   { value: "IPM (BBA+PGDM)", label: "IPM (BBA+PGDM)" },
 ];
 
@@ -120,6 +123,7 @@ export default function Page() {
 
   return (
     <>
+      <LandingPageTracking googleTagId="AW-18057910395" />
       <style>{`
         .alc-desktop-logo-strip{display:flex;align-items:center;gap:20px;margin-left:22px}
         .alc-desktop-logo-strip .logo-alc{height:68px;width:auto;display:block;object-fit:contain}
@@ -135,6 +139,10 @@ export default function Page() {
         .recruiter-card{background:#fafafa;border:1px solid #f1f5f9;border-radius:12px;padding:25px;display:flex;align-items:center;justify-content:center;transition:all .3s ease;height:110px}
         .recruiter-card:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(0,0,0,.05);border-color:#e2e8f0}
         .recruiter-card img{max-width:100%;max-height:50px;object-fit:contain;filter:none;transition:all .3s ease}
+        .asb-hero-stats{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:stretch;margin-top:22px}
+        .asb-hero-stat-box{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+        .asb-hero-stat-value{line-height:1;font-weight:800;letter-spacing:-.02em}
+        .asb-hero-stat-label{line-height:1.15;font-weight:700}
         .desktop-cta{display:none}
         .mobile-cta{display:none}
         @media (min-width:992px){
@@ -147,6 +155,11 @@ export default function Page() {
           .asb-desktop-hero-points{list-style:none;padding:0;margin:8px 0 0}
           .asb-desktop-hero-points li{position:relative;padding-left:30px;margin:0 0 3px;font-size:16px;line-height:1.45;color:#fff;font-weight:400!important}
           .asb-desktop-hero-points li::before{content:"\\00BB";position:absolute;left:6px;top:-1px;font-size:24px;line-height:1;color:#fff;opacity:.95}
+          .asb-hero-stats{justify-content:flex-start;width:min(100%,205px);margin-top:24px}
+          .asb-hero-stat-box{min-width:0;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:12px 16px;border:1px solid rgba(255,255,255,.6);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.24) 0%,rgba(255,255,255,.12) 100%);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 18px rgba(15,31,69,.16);text-align:center}
+          .asb-hero-stat-box::before,.asb-hero-stat-box::after{content:none}
+          .asb-hero-stat-value{margin:0 0 4px!important;color:#ffffff!important;font-size:29px;line-height:1;font-weight:800;text-shadow:0 1px 6px rgba(15,31,69,.22);white-space:nowrap}
+          .asb-hero-stat-label{margin:0!important;color:rgba(255,255,255,.95)!important;font-size:15px;line-height:1.2;font-weight:700;text-shadow:0 1px 4px rgba(15,31,69,.18);white-space:normal}
           #heroLeadForm{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;width:100%;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
           #heroLeadForm::before{display:none!important;content:none!important}
           #heroLeadForm .single_form{margin-top:0;width:138px;flex:0 0 auto}
@@ -186,6 +199,10 @@ export default function Page() {
           .mobH{display:none!important}
           .mobV{display:block!important;max-width:420px;margin:0 auto 10px!important;padding:0 0!important}
           .mobV img{width:100%!important;max-width:390px!important;height:auto!important;display:block!important;margin:0 auto!important}
+          .asb-hero-stats{justify-content:center;width:min(100%,170px);margin:14px auto 24px}
+          .asb-hero-stat-box{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:104px;padding:16px 10px;border:1px solid rgba(180,246,242,.95);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.99) 0%,rgba(245,255,254,.98) 36%,rgba(228,255,252,.95) 72%,rgba(214,252,248,.92) 100%);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 0 0 1px rgba(131,234,228,.12),0 10px 20px rgba(15,31,69,.1),0 0 20px rgba(137,255,244,.16);text-align:center}
+          .asb-hero-stat-value{margin:0 0 4px!important;color:#0b7b89!important;font-size:clamp(19px,5.8vw,24px);line-height:1.05;font-weight:800;white-space:nowrap;text-shadow:0 0 8px rgba(164,255,247,.14)}
+          .asb-hero-stat-label{margin:0!important;color:#25434b!important;font-size:13px;line-height:1.15;font-weight:700;white-space:normal}
           #heroLeadForm .single_form{width:100%;margin-top:10px}
           #heroLeadForm .single_form input,#heroLeadForm .single_form select{height:52px;border-radius:12px;border:1px solid #d6dae2;background:#f0f2f5;padding:0 14px;font-size:16px;color:#475569}
           #heroSubmitBtn{height:48px;line-height:48px;border-radius:12px;background:#ff1b23!important;font-weight:800;letter-spacing:.02em;box-shadow:0 10px 18px rgba(255,27,35,.28)}
@@ -264,11 +281,13 @@ export default function Page() {
                     <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">BBA/BCA/B.Com/B.Sc.(CS)</span> Degree Program.</p>
                     <ul className="asb-desktop-hero-points">
                       <li style={{ fontSize: "20px" }}>15 Days Study Trip to Oxford Business College, Oxford & London, U.K.</li>
+                      <li style={{ fontSize: "20px" }}>100% Placement Assistance</li>
                     </ul>
+
                   </div>
                   <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                     <Image
-                      src="/Mobile Banners ASB 2026.jpg"
+                      src="/Mobile Banners ASB Placement.jpg"
                       alt="ASB Admissions 2026"
                       width={390}
                       height={520}

@@ -65,6 +65,17 @@ export default function LeadForm({
   const otpInputRef = useRef<HTMLInputElement>(null);
   const selectedCourse = resolvedCourses.find((item) => item.value === course);
 
+  useEffect(() => {
+    if (resolvedCourses.length === 1) {
+      setCourse(resolvedCourses[0].value);
+      return;
+    }
+
+    setCourse((current) =>
+      resolvedCourses.some((item) => item.value === current) ? current : ""
+    );
+  }, [resolvedCourses]);
+
   function showStatus(msg: string, type: "success" | "error") {
     setStatusMsg(msg);
     setStatusType(type);
@@ -172,8 +183,12 @@ export default function LeadForm({
     try {
       const res = await fetch("/api/verify-otp?q=resend");
       const text = await res.text();
+      if (!res.ok) {
+        showStatus("Failed to resend OTP. Please try again.", "error");
+        return;
+      }
       setStatusMsg(text);
-      setStatusType("success");
+      setStatusType(text.toLowerCase().includes("success") ? "success" : "error");
     } catch {
       showStatus("Failed to resend OTP. Please try again.", "error");
     }
@@ -306,6 +321,29 @@ export default function LeadForm({
           font-size: 0.95rem;
           color: #475569;
         }
+        .course-readonly {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          min-height: 40px;
+          border: 1px solid rgba(71,85,105,.55);
+          border-radius: 4px;
+          background: #fff;
+          color: #334155;
+          padding: 0 10px;
+          font-size: 15px;
+          margin-bottom: 4px;
+        }
+        @media (max-width: 991px) {
+          .course-readonly {
+            min-height: 52px;
+            border-radius: 12px;
+            border: 1px solid #d6dae2;
+            background: #f0f2f5;
+            padding: 0 14px;
+            font-size: 16px;
+          }
+        }
       `}</style>
 
       <div className={`frmD ${className}`} id={id}>
@@ -359,19 +397,25 @@ export default function LeadForm({
             />
           </div>
           <div className="single_form course-select-wrap">
-            <select
-              value={course}
-              onChange={(e) => setCourse(e.target.value)}
-              required
-              style={{ color: course ? "#334155" : "#767676", marginBottom: "4px" }}
-            >
-              <option value="">Select Course*</option>
-              {resolvedCourses.map((c) => (
-                <option key={c.value} value={c.value}>
-                  {c.label}
-                </option>
-              ))}
-            </select>
+            {resolvedCourses.length === 1 ? (
+              <div className="course-readonly" aria-label="Selected Course">
+                {resolvedCourses[0].label}
+              </div>
+            ) : (
+              <select
+                value={course}
+                onChange={(e) => setCourse(e.target.value)}
+                required
+                style={{ color: course ? "#334155" : "#767676", marginBottom: "4px" }}
+              >
+                <option value="">Select Course*</option>
+                {resolvedCourses.map((c) => (
+                  <option key={c.value} value={c.value}>
+                    {c.label}
+                  </option>
+                ))}
+              </select>
+            )}
           </div>
 
           {statusMsg && !otpOpen ? (

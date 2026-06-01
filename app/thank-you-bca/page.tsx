@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BcaThankYouPage() {
-  const { applicantName, courseLabel } = await getThankYouLeadCookieData();
+  const { applicantName, courseLabel, email, phoneE164 } = await getThankYouLeadCookieData();
 
   return (
     <>
@@ -24,11 +24,17 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'AW-18057910395');`}
       </Script>
+      <Script id="bca-user-data" strategy="beforeInteractive">
+        {`gtag('set', 'user_data', {
+  'email': ${JSON.stringify(email)},
+  'phone_number': ${JSON.stringify(phoneE164)}
+});`}
+      </Script>
       <Script id="bca-conversion-event" strategy="beforeInteractive">
         {`gtag('event', 'conversion', {
-    'send_to': 'AW-18057910395/y5BLCI7qipUcEPuw16JD',
-    'value': 1.0,
-    'currency': 'INR'
+  'send_to': 'AW-18057910395/y5BLCI7qipUcEPuw16JD',
+  'value': 1.0,
+  'currency': 'INR'
 });`}
       </Script>
       <ThankYouTracking conversionSendTo="AW-862684608/nckdCLfh1ZAcEMCLrpsD" />

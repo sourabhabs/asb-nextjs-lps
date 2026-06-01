@@ -11,6 +11,9 @@ interface AsbCourseLandingShellProps {
 
 type CourseDetails = {
   highlight: string;
+  contactLabel: string;
+  footerDescription: string;
+  heroFee?: string;
   options: { value: string; label: string }[];
   cardImage: string;
   cardTitle: string;
@@ -18,6 +21,7 @@ type CourseDetails = {
   blocks: {
     title: string;
     subtitle?: string;
+    showPlusBetweenItems?: boolean;
     items: string[];
   }[];
 };
@@ -25,6 +29,10 @@ type CourseDetails = {
 const COURSE_DETAILS: Record<AsbCourseRouteConfig["key"], CourseDetails> = {
   bba: {
     highlight: "BBA",
+    contactLabel: "BBA",
+    footerDescription:
+      "Admissions open for 2026 intake. Build your future in business, management and global leadership with a globally aware academic ecosystem.",
+    heroFee: "Rs. 5.45 Lakh",
     options: [
       { value: "BBA", label: "BBA" },
       { value: "IBBA", label: "BBA International" },
@@ -61,6 +69,10 @@ const COURSE_DETAILS: Record<AsbCourseRouteConfig["key"], CourseDetails> = {
   },
   bca: {
     highlight: "BCA",
+    contactLabel: "BCA",
+    footerDescription:
+      "Admissions open for 2026 intake. Build your future in technology, software and innovation with a globally aware academic ecosystem.",
+    heroFee: "Rs. 4.95 Lakh",
     options: [
       { value: "BCA", label: "BCA" },
       { value: "IBCA", label: "BCA International" },
@@ -94,6 +106,10 @@ const COURSE_DETAILS: Record<AsbCourseRouteConfig["key"], CourseDetails> = {
   },
   bcom: {
     highlight: "B.Com",
+    contactLabel: "B.Com",
+    footerDescription:
+      "Admissions open for 2026 intake. Build your future in commerce, finance and industry with a globally aware academic ecosystem.",
+    heroFee: "Rs. 3.25 Lakh",
     options: [
       { value: "BCOM", label: "B.Com" },
       { value: "IBCOM", label: "B.Com International" },
@@ -125,6 +141,10 @@ const COURSE_DETAILS: Record<AsbCourseRouteConfig["key"], CourseDetails> = {
   },
   bsc: {
     highlight: "B.Sc.(CS)",
+    contactLabel: "B.Sc. (CS)",
+    footerDescription:
+      "Admissions open for 2026 intake. Build your future in computing, data and innovation with a globally aware academic ecosystem.",
+    heroFee: "Rs. 3.25 Lakh",
     options: [
       { value: "BSc CS", label: "B.Sc. Computer Science" },
       { value: "IBSc CS", label: "B.Sc. Computer Science International" },
@@ -150,6 +170,66 @@ const COURSE_DETAILS: Record<AsbCourseRouteConfig["key"], CourseDetails> = {
           "*International Certification in Personal & Professional Development from O.B.C., Oxford/London, UK",
           "New Media Applications from AAFT",
           "Corporate Communications from CSD",
+        ],
+      },
+    ],
+  },
+  "ba-psychology": {
+    highlight: "B.A. Psychology",
+    contactLabel: "B.A. Psychology",
+    footerDescription:
+      "Admissions open for 2026 intake. Build your future in psychology, human behavior and personal development with a future-ready academic ecosystem.",
+    options: [
+      { value: "BA Psychology", label: "B.A. Psychology" },
+    ],
+    cardImage: "/Course/BBA.webp",
+    cardTitle: "B.A. Psychology",
+    description:
+      "Bachelor of Arts in Psychology at Asian School of Business is a three-year full-time degree program affiliated to CCS University. The program is designed to provide young minds with an intellectually stimulating learning environment while fostering a scientific understanding of human behavior and mental processes. Students develop strong foundations for both personal and professional growth through academic rigor and interdisciplinary learning.",
+    blocks: [
+      {
+        title: "3 Year B.A. Psychology Degree Program",
+        items: ["B.A. Psychology"],
+      },
+      {
+        title: "with Additional Diploma/Certification in:",
+        showPlusBetweenItems: true,
+        items: [
+          "Neuro-Linguistic Programming",
+          "Artificial Intelligence in Psychology",
+          "Counseling and Psychotherapy",
+          "Corporate Communications from CSD",
+        ],
+      },
+    ],
+  },
+  "ba-psychology-international": {
+    highlight: "B.A. Psychology",
+    contactLabel: "B.A. Psychology",
+    footerDescription:
+      "Admissions open for 2026 intake. Build your future in psychology, human behavior and personal development with a globally aware academic ecosystem.",
+    options: [
+      { value: "BA Psychology", label: "B.A. Psychology" },
+      { value: "BA Psychology International", label: "B.A. Psychology International" },
+    ],
+    cardImage: "/Course/BBA.webp",
+    cardTitle: "B.A. Psychology (General/International)",
+    description:
+      "Bachelor of Arts in Psychology at Asian School of Business is a three-year full-time degree program affiliated to CCS University. The program is designed to provide young minds with an intellectually stimulating learning environment while fostering a scientific understanding of human behavior and mental processes. Students develop strong foundations for both personal and professional growth through academic rigor, global exposure and interdisciplinary learning.",
+    blocks: [
+      {
+        title: "3 Year B.A. Psychology Degree Program",
+        items: ["B.A. Psychology (General) / B.A. Psychology (International)"],
+      },
+      {
+        title: "with Additional Diploma/Certification in:",
+        showPlusBetweenItems: true,
+        items: [
+          "Neuro-Linguistic Programming",
+          "Artificial Intelligence in Psychology",
+          "Counseling and Psychotherapy",
+          "Corporate Communications from CSD",
+          "International Certification in Personal and Professional Development from Oxford & London",
         ],
       },
     ],
@@ -213,6 +293,11 @@ function videoEmbed(url: string, autoplay = false) {
 export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellProps) {
   const homeRef = useRef<HTMLElement | null>(null);
   const content = COURSE_DETAILS[course.key];
+  const isBaPsychology = course.key === "ba-psychology";
+  const showHeroStats = ["bba", "bca", "bcom", "bsc"].includes(course.key);
+  const showOxfordLogo = course.key !== "ba-psychology";
+  const showHeroOxfordPoint = course.key !== "ba-psychology";
+  const showInternationalSection = course.key !== "ba-psychology";
   const [intlIdx, setIntlIdx] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
   const [testModalUrl, setTestModalUrl] = useState("");
@@ -280,6 +365,11 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
         .banner-content ul li p{background-image:url(/assets/images/arrow-rb.png);background-repeat:no-repeat;background-position:0 13px;padding-left:30px;color:#000;font-size:17px;line-height:1.5;margin:0 0 5px}
         .course-banner{margin:20px 0;padding:10px;background:#0aaeaf;color:#fff;text-align:center;font-weight:400;line-height:23px;font-size:23px}
         .banner-table td{line-height:24px;position:relative;display:block;font-weight:400;font-size:18px}
+        .banner-table td.with-plus::after{content:"+";display:block;color:#ff2b2b;font-weight:700;font-size:24px;line-height:1;margin:6px 0 2px}
+        .psychology-rhs{display:flex;flex-direction:column;justify-content:flex-start;height:100%}
+        .psychology-rhs .course-banner:first-child{margin-top:0}
+        .psychology-rhs .banner-table td{text-align:center}
+        .psychology-rhs .banner-table td:first-child{padding-top:4px}
         .top-recruiters{padding:60px 0;background:#fff}
         .recruiters-head .subtitle{color:#475569;font-size:16px;margin-top:8px}
         .recruiters-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:30px}
@@ -298,6 +388,11 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
           .asb-desktop-hero-points{list-style:none;padding:0;margin:8px 0 0}
           .asb-desktop-hero-points li{position:relative;padding-left:30px;margin:0 0 3px;font-size:16px;line-height:1.45;color:#fff}
           .asb-desktop-hero-points li::before{content:"\\00BB";position:absolute;left:6px;top:-1px;font-size:24px;color:#fff}
+          .asb-hero-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:stretch;justify-content:flex-start;margin-top:24px;width:min(100%,430px)}
+          .asb-hero-stat-box{min-width:0;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:12px 16px;border:1px solid rgba(255,255,255,.6);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.24) 0%,rgba(255,255,255,.12) 100%);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 18px rgba(15,31,69,.16);text-align:center}
+          .asb-hero-stat-box::before,.asb-hero-stat-box::after{content:none}
+          .asb-hero-stat-value{margin:0 0 4px!important;color:#ffffff!important;font-size:29px;line-height:1;font-weight:800;text-shadow:0 1px 6px rgba(15,31,69,.22);white-space:nowrap}
+          .asb-hero-stat-label{margin:0!important;color:rgba(255,255,255,.95)!important;font-size:15px;line-height:1.2;font-weight:700;text-shadow:0 1px 4px rgba(15,31,69,.18);white-space:normal}
           #heroLeadForm{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;width:100%;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
           #heroLeadForm .single_form{margin-top:0;width:138px;flex:0 0 auto}
           #heroLeadForm .course-select-wrap{width:165px}
@@ -323,7 +418,11 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
           .mobH{display:none!important}
           .mobV{display:block!important;max-width:420px;margin:0 auto 10px!important}
           .mobV img{width:100%!important;max-width:390px!important;height:auto!important;display:block!important;margin:0 auto!important}
-          .frmD{position:relative!important;border:1px solid #e2e8f0;border-radius:22px;padding:18px 14px 16px!important;max-width:420px;margin:10px auto 0;box-shadow:0 10px 25px rgba(15,23,42,.12);overflow:visible;background:#fff!important}
+          .asb-hero-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:min(100%,332px);margin:14px auto 24px}
+          .asb-hero-stat-box{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:104px;padding:16px 10px;border:1px solid rgba(180,246,242,.95);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.99) 0%,rgba(245,255,254,.98) 36%,rgba(228,255,252,.95) 72%,rgba(214,252,248,.92) 100%);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 0 0 1px rgba(131,234,228,.12),0 10px 20px rgba(15,31,69,.1),0 0 20px rgba(137,255,244,.16);text-align:center}
+          .asb-hero-stat-value{margin:0 0 4px!important;color:#0b7b89!important;font-size:clamp(19px,5.8vw,24px);line-height:1.05;font-weight:800;white-space:nowrap;text-shadow:0 0 8px rgba(164,255,247,.14)}
+          .asb-hero-stat-label{margin:0!important;color:#25434b!important;font-size:13px;line-height:1.15;font-weight:700;white-space:normal}
+          .frmD{position:relative!important;border:1px solid #e2e8f0;border-radius:22px;padding:18px 14px 16px!important;max-width:420px;margin:18px auto 0;box-shadow:0 10px 25px rgba(15,23,42,.12);overflow:visible;background:#fff!important}
           #heroLeadForm{display:block;padding-top:15px!important;margin-top:0!important}
           .hero-form-title{width:100%!important;margin:0 auto 15px!important;padding-top:0!important;display:block!important}
           .hero-form-title h3{text-align:center!important;margin:0!important;padding:0!important;width:100%!important;color:#0f1f45!important;font-size:2.35rem!important;font-weight:800!important;line-height:1.02!important}
@@ -341,118 +440,148 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
 
       <main style={{ paddingBottom: "88px" }}>
         <header className="header-area">
-        <div className="navbar-area">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-lg-12">
-                <nav className="navbar navbar-expand-lg" style={{ display: "flex", justifyContent: "space-between", width: "100%", minHeight: "78px" }}>
-                  <div className="d-none d-lg-flex align-items-center">
-                    <div className="alc-desktop-logo-strip">
-                      <Image src="/img/logo.jpg" alt="Asian School of Business" className="logo-alc" width={200} height={68} priority />
-                      <Image src="/img/OBC-Logo.png" alt="Oxford Business College" className="logo-obc" width={160} height={54} priority />
+          <div className="navbar-area">
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-lg-12">
+                  <nav className="navbar navbar-expand-lg" style={{ display: "flex", justifyContent: "space-between", width: "100%", minHeight: "78px" }}>
+                    <div className="d-none d-lg-flex align-items-center">
+                      <div className="alc-desktop-logo-strip">
+                        <Image src="/img/logo.jpg" alt="Asian School of Business" className="logo-alc" width={200} height={68} priority />
+                        {showOxfordLogo ? (
+                          <Image src="/img/OBC-Logo.png" alt="Oxford Business College" className="logo-obc" width={160} height={54} priority />
+                        ) : null}
+                      </div>
                     </div>
-                  </div>
-                  <div className="d-flex d-lg-none w-100 align-items-center justify-content-between alc-mobile-header">
-                    <Image className="alc-mobile-badge" src="/assets/images/aicte.jpg" alt="AICTE" width={34} height={34} priority />
-                    <a href="#home" className="navbar-brand mx-auto" style={{ display: "flex", alignItems: "center" }}>
-                      <Image src="/img/logo.jpg" alt="Asian School of Business" width={160} height={68} priority />
-                    </a>
-                    <Image className="alc-mobile-badge" src="/img/naac.webp" alt="NAAC" width={34} height={34} priority />
-                  </div>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <section
-          ref={homeRef}
-          className="header-hero bg_cover d-flex align-items-center bnrbg"
-          style={{ position: "relative", overflow: "hidden", backgroundColor: "#f4f4f5" }}
-        >
-          <div
-            className="mobH"
-            aria-hidden="true"
-            style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}
-          >
-            <Image
-              src="/ASB-BG-D.webp"
-              alt=""
-              fill
-              priority
-              fetchPriority="high"
-              sizes="100vw"
-              style={{ objectFit: "cover" }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28))",
-              }}
-            />
-          </div>
-          <div className="container-l banner-content" style={{ width: "auto" }}>
-            <div className="row" style={{ width: "100%", marginRight: 0, marginLeft: 0 }}>
-              <div className="col-lg-12">
-                <div
-                  className="header-hero-content"
-                  style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
-                >
-                  <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
-                    <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
-                    <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">{content.highlight}</span> Degree Program.</p>
-                    <ul className="asb-desktop-hero-points">
-                      <li style={{ fontSize: "20px" }}>15 Days Study Trip to Oxford Business College, Oxford & London, U.K.</li>
-                    </ul>
-                  </div>
-                  <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
-                    <Image
-                      src={course.heroImage}
-                      alt="ASB Admissions 2026"
-                      width={390}
-                      height={520}
-                      priority
-                      fetchPriority="high"
-                      sizes="(max-width: 420px) 390px, 100vw"
-                      style={{ width: "100%", height: "auto", display: "block" }}
-                    />
-                  </div>
+                    <div className="d-flex d-lg-none w-100 align-items-center justify-content-between alc-mobile-header">
+                      <Image className="alc-mobile-badge" src="/assets/images/aicte.jpg" alt="AICTE" width={34} height={34} priority />
+                      <a href="#home" className="navbar-brand mx-auto" style={{ display: "flex", alignItems: "center" }}>
+                        <Image src="/img/logo.jpg" alt="Asian School of Business" width={160} height={68} priority />
+                      </a>
+                      <Image className="alc-mobile-badge" src="/img/naac.webp" alt="NAAC" width={34} height={34} priority />
+                    </div>
+                  </nav>
                 </div>
               </div>
             </div>
-
-            <LeadForm
-              id="enquire"
-              title="Admissions Open 2026"
-              courses={content.options}
-              queryLabel={course.queryLabel}
-              thankYouPath={course.thankYouPath}
-              submitLabel="Enquire Now"
-            />
           </div>
-        </section>
+
+          <section
+            ref={homeRef}
+            className="header-hero bg_cover d-flex align-items-center bnrbg"
+            style={{ position: "relative", overflow: "hidden", backgroundColor: "#f4f4f5" }}
+          >
+            <div
+              className="mobH"
+              aria-hidden="true"
+              style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}
+            >
+              <Image
+                src="/ASB-BG-D.webp"
+                alt=""
+                fill
+                priority
+                fetchPriority="high"
+                sizes="100vw"
+                style={{ objectFit: "cover" }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28))",
+                }}
+              />
+            </div>
+            <div className="container-l banner-content" style={{ width: "auto" }}>
+              <div className="row" style={{ width: "100%", marginRight: 0, marginLeft: 0 }}>
+                <div className="col-lg-12">
+                  <div
+                    className="header-hero-content"
+                    style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
+                  >
+                    <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
+                      <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
+                      <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">{content.highlight}</span> Degree Program.</p>
+                      {showHeroOxfordPoint ? (
+                        <ul className="asb-desktop-hero-points">
+                          <li style={{ fontSize: "20px" }}>15 Days Study Trip to Oxford Business College, Oxford & London, U.K.</li>
+                        </ul>
+                      ) : null}
+                      {showHeroStats ? (
+                        <div className="asb-hero-stats" aria-label="Course highlights">
+                          <div className="asb-hero-stat-box">
+                            <p className="asb-hero-stat-value">100%</p>
+                            <p className="asb-hero-stat-label">Placement Assistance</p>
+                          </div>
+                          <div className="asb-hero-stat-box">
+                            <p className="asb-hero-stat-value">{content.heroFee}</p>
+                            <p className="asb-hero-stat-label">Total Fees</p>
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+                    <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
+                      <Image
+                        src={course.mobileHeroImage ?? course.heroImage}
+                        alt="ASB Admissions 2026"
+                        width={390}
+                        height={520}
+                        priority
+                        fetchPriority="high"
+                        sizes="(max-width: 420px) 390px, 100vw"
+                        style={{ width: "100%", height: "auto", display: "block" }}
+                      />
+                      {showHeroStats ? (
+                        <div className="asb-hero-stats" aria-label="Course highlights">
+                          <div className="asb-hero-stat-box">
+                            <p className="asb-hero-stat-value">100%</p>
+                            <p className="asb-hero-stat-label">Placement Assistance</p>
+                          </div>
+                          <div className="asb-hero-stat-box">
+                            <p className="asb-hero-stat-value">{content.heroFee}</p>
+                            <p className="asb-hero-stat-label">Total Fees</p>
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <LeadForm
+                id="enquire"
+                title="Admissions Open 2026"
+                courses={content.options}
+                queryLabel={course.queryLabel}
+                thankYouPath={course.thankYouPath}
+                submitLabel="Enquire Now"
+              />
+            </div>
+          </section>
         </header>
 
-        <section className="international" id="international">
-          <div className="container intl-grid">
-            <div>
-              <span className="tag">Global Exposure</span>
-              <h2 className="title1" style={{ fontSize: "33px" }}><span className="title1" style={{ fontSize: "24px" }}>15 Day Fully Paid Study Trip to</span><br />Oxford & London,U.K.</h2>
-              <ul className="intl-list">
-                <li><span className="check"></span>International Certification in Personal & Professional Development</li>
-                <li><span className="check"></span>Hands-on project work and industry exposure</li>
-                <li><span className="check"></span>Networking with Oxford faculty and fellow learners</li>
-                <li><span className="check"></span>Academic immersion across Oxford and London</li>
-              </ul>
-              <button className="btn btn-gold" type="button" onClick={() => scrollToId("enquire", true)}>Explore Program</button>
+        {showInternationalSection ? (
+          <section className="international" id="international">
+            <div className="container intl-grid">
+              <div>
+                <span className="tag">Global Exposure</span>
+                <h2 className="title1" style={{ fontSize: "33px" }}><span className="title1" style={{ fontSize: "24px" }}>15 Day Fully Paid Study Trip to</span><br />Oxford & London,U.K.</h2>
+                <ul className="intl-list">
+                  <li><span className="check"></span>International Certification in Personal & Professional Development</li>
+                  <li><span className="check"></span>Hands-on project work and industry exposure</li>
+                  <li><span className="check"></span>Networking with Oxford faculty and fellow learners</li>
+                  <li><span className="check"></span>Academic immersion across Oxford and London</li>
+                </ul>
+                <button className="btn btn-gold" type="button" onClick={() => scrollToId("enquire", true)}>Explore Program</button>
+              </div>
+              <div className="intl-image-wrap"><div className="intl-image">
+                {INTL_SLIDES.map((src, index) => <img key={src} className={`intl-slide${index === intlIdx ? " active" : ""}`} src={src} alt="Oxford residential program" width="800" height="500" />)}
+              </div></div>
             </div>
-            <div className="intl-image-wrap"><div className="intl-image">
-              {INTL_SLIDES.map((src, index) => <img key={src} className={`intl-slide${index === intlIdx ? " active" : ""}`} src={src} alt="Oxford residential program" width="800" height="500" />)}
-            </div></div>
-          </div>
-        </section>
+          </section>
+        ) : null}
 
         <section className="top-recruiters" id="recruiters"><div className="container"><div className="recruiters-head text-center pb-20"><h2 className="title">Top Recruiters at ASB</h2><p className="subtitle">Renowned brands hiring ASB talent for dynamic roles across diverse fields</p><div className="line mx-auto"></div></div><div className="recruiters-grid">{RECRUITERS.map(([alt, src]) => <div key={alt} className="recruiter-card"><img src={src} alt={alt} /></div>)}</div></div></section>
 
@@ -465,7 +594,15 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
             {content.highlight} Program
           </p>
           <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700, fontSize: "clamp(16px, 2.5vw, 20px)", color: "#0f1f45", maxWidth: "520px", margin: "0 auto", lineHeight: 1.5 }}>
-            Asian School of Business is one of the top {content.highlight} Colleges in Delhi-NCR.
+            {isBaPsychology ? (
+              <>
+                Asian School of Business is one of the top
+                <br />
+                BA Psychology Colleges in Delhi-NCR.
+              </>
+            ) : (
+              <>Asian School of Business is one of the top {content.highlight} Colleges in Delhi-NCR.</>
+            )}
           </p>
         </section>
 
@@ -475,12 +612,12 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
               <div className="col-md-6 h-100 mb-4">
                 <div className="single_courses mt-30 h-100 d-flex flex-column">
                   <img src={content.cardImage} alt="courses" className="w-100" />
-                  <h4 className="title"><a href="javascript:void(0)">{titleParts[0]} <span style={{ fontSize: "19px" }}>{titleParts[1] ? `(${titleParts[1]}` : ""}</span></a></h4>
+                  <h4 className="title"><a href="javascript:void(0)">{titleParts[0]}{titleParts[1] ? <> <span style={{ fontSize: "19px" }}>{`(${titleParts[1]}`}</span></> : null}</a></h4>
                   <p>{content.description}</p>
                 </div>
               </div>
               <div className="col-md-6 h-100 mb-4">
-                <div className="single_courses mt-30 h-100 d-flex flex-column">
+                <div className={`single_courses mt-30 h-100 d-flex flex-column${isBaPsychology ? " psychology-rhs" : ""}`}>
                   {content.blocks.map((block) => (
                     <div key={block.title}>
                       <h3 className="course-banner">
@@ -492,7 +629,9 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
                           <tbody>
                             {block.items.map((item, index) => (
                               <tr key={item} style={index === block.items.length - 1 ? { border: "solid 0px #fff" } : undefined}>
-                                <td>{item}</td>
+                                <td className={block.showPlusBetweenItems && index < block.items.length - 1 ? "with-plus" : undefined}>
+                                  {item}
+                                </td>
                               </tr>
                             ))}
                           </tbody>
@@ -519,9 +658,9 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
 
         <section className="events" id="events"><div className="container"><div className="events-head"><div className="line"></div><h2 className="title">Events at Asian School of Business</h2></div><div className="events-grid">{EVENTS.map(([label, src]) => <div key={label} className="events-card"><div className="events-img"><img src={src} alt={label} width="300" height="200" /></div><div className="events-label">{label}</div></div>)}</div></div></section>
 
-        <section className="contact" id="contact"><div className="container contact-grid"><div><span className="tag">Get In Touch</span><h2 className="title">Start Your ASB Journey</h2><p>Admissions are open for BBA / BCA / B.Com / B.Sc. (CS) Batch 2026. Fill in the form and our admissions team will get in touch with you.</p></div><div className="cta"><div className="cta-box"><button type="button" className="btn btn-gold" onClick={() => scrollToId("enquire", true)}>Enquire Now</button></div></div></div></section>
+        <section className="contact" id="contact"><div className="container contact-grid"><div><span className="tag">Get In Touch</span><h2 className="title">Start Your ASB Journey</h2><p>Admissions are open for {content.contactLabel} Batch 2026. Fill in the form and our admissions team will get in touch with you.</p></div><div className="cta"><div className="cta-box"><button type="button" className="btn btn-gold" onClick={() => scrollToId("enquire", true)}>Enquire Now</button></div></div></div></section>
 
-        <footer className="footer"><div className="container footer-inner"><div className="footer-grid"><div><h4 style={{ color: "#fff" }}>Asian School of Business</h4><p>Admissions open for 2026 intake. Build your future in business, commerce and technology with a globally aware academic ecosystem.</p></div><div><div className="f-title">Quick Links</div><ul className="f-links"><li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToId("home", true); }}>Home</a></li><li><a href="#courses" onClick={(e) => { e.preventDefault(); scrollToId("courses"); }}>Programs Offered</a></li><li><a href="#international" onClick={(e) => { e.preventDefault(); scrollToId("international"); }}>International Exposure</a></li><li><a href="#enquire" onClick={(e) => { e.preventDefault(); scrollToId("enquire", true); }}>Enquire Now</a></li></ul></div><div><div className="f-title">Admissions Office</div><p>Asian School of Business, Noida, Uttar Pradesh</p></div></div><div className="f-bottom"><span>(c) 2026 Asian School of Business. All rights reserved.</span><span>International association with Oxford Business College</span></div></div></footer>
+        <footer className="footer"><div className="container footer-inner"><div className="footer-grid"><div><h4 style={{ color: "#fff" }}>Asian School of Business</h4><p>{content.footerDescription}</p></div><div><div className="f-title">Quick Links</div><ul className="f-links"><li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToId("home", true); }}>Home</a></li><li><a href="#courses" onClick={(e) => { e.preventDefault(); scrollToId("courses"); }}>Programs Offered</a></li>{showInternationalSection ? <li><a href="#international" onClick={(e) => { e.preventDefault(); scrollToId("international"); }}>International Exposure</a></li> : null}<li><a href="#enquire" onClick={(e) => { e.preventDefault(); scrollToId("enquire", true); }}>Enquire Now</a></li></ul></div><div><div className="f-title">Admissions Office</div><p>Asian School of Business, Noida, Uttar Pradesh</p></div></div><div className="f-bottom"><span>(c) 2026 Asian School of Business. All rights reserved.</span>{showInternationalSection ? <span>International association with Oxford Business College</span> : null}</div></div></footer>
 
         <div className="desktop-cta" style={{ opacity: showSticky ? "1" : "0", pointerEvents: showSticky ? "auto" : "none", transform: showSticky ? "translateY(0)" : "translateY(20px)" }} aria-label="Desktop actions"><div className="desktop-cta-strip"><button type="button" className="btn btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button><a href="tel:8448334130" className="btn btn-call" title="Call Us"><svg width="24" height="24" viewBox="0 0 16 16" fill="currentColor"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z" /></svg></a></div></div>
         <div className={`mobile-cta${showSticky ? " is-visible" : ""}`} aria-label="Mobile actions"><div className="mobile-cta-strip"><button type="button" className="mobile-btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button><a href="tel:8448334130" className="mobile-btn-call" title="Call Us" aria-label="Call Us"><svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z" /></svg></a></div></div>

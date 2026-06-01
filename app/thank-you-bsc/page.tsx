@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BscThankYouPage() {
-  const { applicantName, courseLabel } = await getThankYouLeadCookieData();
+  const { applicantName, courseLabel, email, phoneE164 } = await getThankYouLeadCookieData();
 
   return (
     <>
@@ -23,6 +23,12 @@ export default async function BscThankYouPage() {
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'AW-18057960286');`}
+      </Script>
+      <Script id="bsc-user-data" strategy="beforeInteractive">
+        {`gtag('set', 'user_data', {
+  'email': ${JSON.stringify(email)},
+  'phone_number': ${JSON.stringify(phoneE164)}
+});`}
       </Script>
       <Script id="bsc-conversion-event" strategy="beforeInteractive">
         {`gtag('event', 'conversion', {'send_to': 'AW-18057960286/Jc0OCNbl9ZQcEN622qJD'});`}

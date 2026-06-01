@@ -323,11 +323,16 @@ function parseLeadSquaredLeadId(rawResponse: string) {
   return json.Message?.Id ?? "";
 }
 
-async function findLeadSquaredLeadId(phone: string, email?: string) {
-  return (
-    (phone ? await findLeadSquaredLeadIdByPhone(phone) : "") ||
-    (email ? await findLeadSquaredLeadIdByEmail(email) : "")
-  );
+function isLeadSquaredDuplicateError(rawResponse: string) {
+  return rawResponse.includes("MXDuplicateEntryException");
+}
+
+function isLeadSquaredDuplicateEmailError(rawResponse: string) {
+  return rawResponse.includes("same Email already exists");
+}
+
+function isLeadSquaredDuplicatePhoneError(rawResponse: string) {
+  return rawResponse.includes("same Phone Number already exists");
 }
 
 async function findLeadSquaredLeadIdByPhone(phone: string) {
@@ -378,12 +383,78 @@ async function findLeadSquaredLeadIdByEmail(email: string) {
   return json[0]?.ProspectID ?? "";
 }
 
+function filterLeadSquaredAttributes(
+  leadAttributes: LeadSquaredAttribute[],
+  excluded: string[]
+) {
+  const excludedSet = new Set(excluded);
+  return leadAttributes.filter((attribute) => !excludedSet.has(attribute.Attribute));
+}
+
+async function updateExistingLeadByEmail(
+  payload: LeadFormPayload,
+  leadAttributes: LeadSquaredAttribute[],
+  otpStatus: "Not Verified" | "Verified"
+) {
+  if (!payload.email) {
+    return null;
+  }
+
+  const leadId = await findLeadSquaredLeadIdByEmail(payload.email);
+  if (!leadId) {
+    return null;
+  }
+
+  const updated = await updateLeadInLeadSquared(
+    leadId,
+    filterLeadSquaredAttributes(leadAttributes, ["Phone"])
+  );
+  return {
+    leadId: updated.leadId,
+    rawResponse: updated.rawResponse,
+    statusLabel:
+      otpStatus === "Verified"
+        ? "Updated Existing Lead by Email as Verified"
+        : "Updated Existing Lead by Email",
+  } satisfies LeadSquaredSyncResult;
+}
+
+async function updateExistingLeadByPhone(
+  payload: LeadFormPayload,
+  leadAttributes: LeadSquaredAttribute[],
+  otpStatus: "Not Verified" | "Verified"
+) {
+  if (!payload.phone) {
+    return null;
+  }
+
+  const leadId = await findLeadSquaredLeadIdByPhone(payload.phone);
+  if (!leadId) {
+    return null;
+  }
+
+  const updated = await updateLeadInLeadSquared(
+    leadId,
+    filterLeadSquaredAttributes(leadAttributes, ["EmailAddress"])
+  );
+  return {
+    leadId: updated.leadId,
+    rawResponse: updated.rawResponse,
+    statusLabel:
+      otpStatus === "Verified"
+        ? "Updated Existing Lead by Phone as Verified"
+        : "Updated Existing Lead by Phone",
+  } satisfies LeadSquaredSyncResult;
+}
+
 async function recoverAndUpdateLead(
   payload: LeadFormPayload,
   leadAttributes: LeadSquaredAttribute[],
   otpStatus: "Not Verified" | "Verified"
 ) {
-  const recoveredLeadId = await findLeadSquaredLeadId(payload.phone, payload.email);
+  const recoveredLeadId = payload.phone
+    ? await findLeadSquaredLeadIdByPhone(payload.phone)
+    : "";
   if (!recoveredLeadId) {
     return null;
   }
@@ -399,77 +470,149 @@ async function recoverAndUpdateLead(
   } satisfies LeadSquaredSyncResult;
 }
 
-async function upsertLeadInLeadSquared(
-  payload: LeadFormPayload,
-  otpStatus: "Not Verified" | "Verified"
-): Promise<LeadSquaredSyncResult> {
-  const leadAttributes = buildLeadSquaredAttributes(payload, otpStatus);
-  const existingLeadId = await findLeadSquaredLeadId(payload.phone, payload.email);
-
-  if (existingLeadId) {
-    const updated = await updateLeadInLeadSquared(existingLeadId, leadAttributes);
-    return {
-      leadId: updated.leadId,
-      rawResponse: updated.rawResponse,
-      statusLabel:
-        otpStatus === "Verified" ? "Updated Existing Lead as Verified" : "Updated Existing Lead",
-    };
-  }
-
-  const captureAttempts: Array<"Phone" | "EmailAddress"> = [];
-  if (payload.phone) captureAttempts.push("Phone");
-  if (payload.email) captureAttempts.push("EmailAddress");
-
+export async function captureLeadInLeadSquared(payload: LeadFormPayload) {
+  const leadAttributes = buildLeadSquaredAttributes(payload, "Not Verified");
   let lastFailure = "LeadSquared capture could not be completed";
 
-  for (const searchBy of captureAttempts) {
-    const captureRes = await createLeadInLeadSquared(leadAttributes, searchBy);
-
-    if (captureRes.ok) {
+  if (payload.phone) {
+    const captureByPhone = await createLeadInLeadSquared(leadAttributes, "Phone");
+    if (captureByPhone.ok) {
       return {
-        leadId: parseLeadSquaredLeadId(captureRes.rawResponse),
-        rawResponse: captureRes.rawResponse,
-        statusLabel:
-          otpStatus === "Verified"
-            ? "Captured as Verified"
-            : searchBy === "EmailAddress"
-              ? "Captured via Email Match"
-              : "Captured",
+        leadId: parseLeadSquaredLeadId(captureByPhone.rawResponse),
+        rawResponse: captureByPhone.rawResponse,
+        statusLabel: "Captured",
       };
     }
 
-    if (captureRes.rawResponse.includes("MXDuplicateEntryException")) {
-      const duplicateLeadId = await findLeadSquaredLeadId(payload.phone, payload.email);
-      if (duplicateLeadId) {
-        const updated = await updateLeadInLeadSquared(duplicateLeadId, leadAttributes);
+    if (isLeadSquaredDuplicateError(captureByPhone.rawResponse)) {
+      if (payload.email && isLeadSquaredDuplicateEmailError(captureByPhone.rawResponse)) {
+        const updatedByEmail = await updateExistingLeadByEmail(
+          payload,
+          leadAttributes,
+          "Not Verified"
+        );
+        if (updatedByEmail) {
+          return updatedByEmail;
+        }
+      }
+
+      if (isLeadSquaredDuplicatePhoneError(captureByPhone.rawResponse)) {
+        const updatedByPhone = await updateExistingLeadByPhone(
+          payload,
+          leadAttributes,
+          "Not Verified"
+        );
+        if (updatedByPhone) {
+          return updatedByPhone;
+        }
+      }
+
+      const duplicatePhoneLeadId = await findLeadSquaredLeadIdByPhone(payload.phone);
+      if (duplicatePhoneLeadId) {
+        const updated = await updateLeadInLeadSquared(
+          duplicatePhoneLeadId,
+          filterLeadSquaredAttributes(leadAttributes, ["EmailAddress"])
+        );
         return {
           leadId: updated.leadId,
           rawResponse: updated.rawResponse,
-          statusLabel:
-            otpStatus === "Verified"
-              ? "Updated Existing Lead as Verified"
-              : "Updated Existing Lead",
+          statusLabel: "Updated Existing Lead",
         };
       }
     }
 
-    const recoveredLead = await recoverAndUpdateLead(payload, leadAttributes, otpStatus);
-    if (recoveredLead) {
-      return recoveredLead;
-    }
+    lastFailure = `LeadSquared capture failed with ${captureByPhone.status}: ${captureByPhone.rawResponse.slice(0, 300)}`;
+  }
 
-    lastFailure = `LeadSquared capture failed with ${captureRes.status}: ${captureRes.rawResponse.slice(0, 300)}`;
+  if (!payload.phone && payload.email) {
+    const captureByEmail = await createLeadInLeadSquared(leadAttributes, "EmailAddress");
+    if (captureByEmail.ok) {
+      return {
+        leadId: parseLeadSquaredLeadId(captureByEmail.rawResponse),
+        rawResponse: captureByEmail.rawResponse,
+        statusLabel: "Captured via Email Match",
+      };
+    }
+    lastFailure = `LeadSquared capture failed with ${captureByEmail.status}: ${captureByEmail.rawResponse.slice(0, 300)}`;
+  }
+
+  const recoveredLead = await recoverAndUpdateLead(payload, leadAttributes, "Not Verified");
+  if (recoveredLead) {
+    return recoveredLead;
   }
 
   throw new Error(lastFailure);
 }
 
-export async function captureLeadInLeadSquared(payload: LeadFormPayload) {
-  return upsertLeadInLeadSquared(payload, "Not Verified");
-}
-
 async function verifyLeadInLeadSquared(payload: LeadFormPayload) {
-  return upsertLeadInLeadSquared(payload, "Verified");
+  const otpOnlyAttributes: LeadSquaredAttribute[] = [
+    { Attribute: "mx_OTP_Status", Value: "Verified" },
+  ];
+
+  if (payload.phone) {
+    const phoneLeadId = await findLeadSquaredLeadIdByPhone(payload.phone);
+    if (phoneLeadId) {
+      const updated = await updateLeadInLeadSquared(phoneLeadId, otpOnlyAttributes);
+      return {
+        leadId: updated.leadId,
+        rawResponse: updated.rawResponse,
+        statusLabel: "Updated Existing Lead as Verified",
+      };
+    }
+
+    const verifyCaptureAttributes: LeadSquaredAttribute[] = [
+      { Attribute: "mx_OTP_Status", Value: "Verified" },
+      { Attribute: "EmailAddress", Value: payload.email },
+      { Attribute: "Phone", Value: payload.phone },
+    ];
+    const captureByPhone = await createLeadInLeadSquared(verifyCaptureAttributes, "Phone");
+    if (captureByPhone.ok) {
+      return {
+        leadId: parseLeadSquaredLeadId(captureByPhone.rawResponse),
+        rawResponse: captureByPhone.rawResponse,
+        statusLabel: "Captured as Verified",
+      };
+    }
+
+    if (payload.email && isLeadSquaredDuplicateEmailError(captureByPhone.rawResponse)) {
+      const updatedByEmail = await updateExistingLeadByEmail(
+        payload,
+        verifyCaptureAttributes,
+        "Verified"
+      );
+      if (updatedByEmail) {
+        return updatedByEmail;
+      }
+    }
+
+    if (isLeadSquaredDuplicatePhoneError(captureByPhone.rawResponse)) {
+      const updatedByPhone = await updateExistingLeadByPhone(
+        payload,
+        verifyCaptureAttributes,
+        "Verified"
+      );
+      if (updatedByPhone) {
+        return updatedByPhone;
+      }
+    }
+  }
+
+  if (!payload.phone && payload.email) {
+    const verifyCaptureAttributes: LeadSquaredAttribute[] = [
+      { Attribute: "mx_OTP_Status", Value: "Verified" },
+      { Attribute: "EmailAddress", Value: payload.email },
+    ];
+    const captureByEmail = await createLeadInLeadSquared(verifyCaptureAttributes, "EmailAddress");
+    if (captureByEmail.ok) {
+      return {
+        leadId: parseLeadSquaredLeadId(captureByEmail.rawResponse),
+        rawResponse: captureByEmail.rawResponse,
+        statusLabel: "Captured as Verified",
+      };
+    }
+  }
+
+  throw new Error("LeadSquared verify sync could not be completed");
 }
 
 export async function startLeadCapture(
@@ -530,7 +673,9 @@ export async function resendLeadOtp() {
     throw new Error("Session expired. Please fill the form again.");
   }
 
-  await sendOtpSms(phone, otp);
+  void sendOtpSms(phone, otp).catch((error) => {
+    console.error("Failed to resend OTP SMS", error);
+  });
 }
 
 export async function verifyLeadOtp(otp: string) {
@@ -629,5 +774,15 @@ export async function getThankYouLeadCookieData() {
   const courseLabel = decodeURIComponent(
     cookieStore.get("asb_lead_course_label")?.value ?? ""
   ).trim();
-  return { applicantName, course, courseLabel };
+  const email = cookieStore.get("asb_lead_email")?.value?.trim() ?? "";
+  const phoneDigits = (cookieStore.get("asb_lead_phone")?.value ?? "").replace(/\D/g, "");
+
+  let phoneE164 = "";
+  if (phoneDigits.length === 10) {
+    phoneE164 = `+91${phoneDigits}`;
+  } else if (phoneDigits.length >= 11 && phoneDigits.length <= 15) {
+    phoneE164 = `+${phoneDigits}`;
+  }
+
+  return { applicantName, course, courseLabel, email, phoneE164 };
 }

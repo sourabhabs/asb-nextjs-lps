@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
           source: "/thank-you-bsc.php",
           destination: "/thank-you-bsc",
         },
+        {
+          source: "/thank-you-ba-psychology.php",
+          destination: "/thank-you-ba-psychology",
+        },
       ],
     };
   },
