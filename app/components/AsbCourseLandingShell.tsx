@@ -683,22 +683,20 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
           justify-content: center;
           align-items: stretch;
         }
-        @media (max-width: 991px) {
+         @media (max-width: 991px) {
           .psychology-certifications-grid {
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
           }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 767px) {
           .psychology-certifications-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 20px 12px;
           }
-        }
-        @media (max-width: 400px) {
-          .psychology-certifications-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
+          .psychology-certifications-grid .psy-cert-card:last-child {
+            grid-column: span 2;
+            justify-self: center;
           }
         }
         .psy-cert-card {
@@ -784,13 +782,25 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
         @media (max-width: 767px) {
           .psychologists-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 24px 12px;
           }
-        }
-        @media (max-width: 480px) {
-          .psychologists-grid {
-            grid-template-columns: 1fr;
-            gap: 25px;
+          .psychologists-grid .psychologist-card:last-child {
+            grid-column: span 2;
+            justify-self: center;
+          }
+          .psychologist-photo-wrapper {
+            width: 130px;
+            height: 145px;
+            border-radius: 28px;
+            border-width: 3px;
+            margin-bottom: 12px;
+          }
+          .psychologist-name {
+            font-size: 14px;
+          }
+          .psychologist-role {
+            font-size: 11px;
+            max-width: 140px;
           }
         }
         .psychologist-card {
