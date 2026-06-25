@@ -4,7 +4,8 @@ export type AsbCourseKey =
   | "bcom"
   | "bsc"
   | "ba-psychology"
-  | "ba-psychology-international";
+  | "ba-psychology-international"
+  | "ba-psychology3";
 
 export interface AsbCourseRouteConfig {
   key: AsbCourseKey;
@@ -17,6 +18,7 @@ export interface AsbCourseRouteConfig {
   courseValue: string;
   queryLabel: string;
   thankYouPath: string;
+  hasScholarshipAsterisk?: boolean;
 }
 
 export const ASB_MAIN_ROUTE = "/";
@@ -73,15 +75,16 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
   "ba-psychology": {
     key: "ba-psychology",
     route: "/ba-psychology",
-    label: "B.A. Psychology",
-    title: "Best BA Psychology College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
+    label: "BA (Hons) Psychology",
+    title: "Best BA (Hons) Psychology College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
     description:
-      "Asian School of Business offers a future-ready B.A. Psychology program with industry-aligned certifications and a strong foundation in human behavior and mental processes.",
-    heroImage: "/BA-PSY.jpg",
-    mobileHeroImage: "/Mobile ba-psyjpg.jpg",
+      "Asian School of Business offers a future-ready BA (Hons) Psychology program with industry-aligned certifications and a strong foundation in human behavior and mental processes.",
+    heroImage: "/New Website banner ASB 1904x686 (3).jpg",
+    mobileHeroImage: "/Mobile Banners ASB 2026 (1).jpg",
     courseValue: "BA Psychology",
     queryLabel: "ASB BA Psychology Admissions 2026 Landing",
     thankYouPath: "/thank-you-ba-psychology.php",
+    hasScholarshipAsterisk: true,
   },
   "ba-psychology-international": {
     key: "ba-psychology-international",
@@ -96,5 +99,19 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     courseValue: "BA Psychology International",
     queryLabel: "ASB BA Psychology International Admissions 2026 Landing",
     thankYouPath: "/thank-you-ba-psychology.php",
+  },
+  "ba-psychology3": {
+    key: "ba-psychology3",
+    route: "/ba-psychology3",
+    label: "BA (Hons) Psychology 3",
+    title: "Best BA (Hons) Psychology College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
+    description:
+      "Asian School of Business offers a future-ready BA (Hons) Psychology program with industry-aligned certifications and a strong foundation in human behavior and mental processes.",
+    heroImage: "/New Website banner ASB 1904x686 (3).jpg",
+    mobileHeroImage: "/Mobile Banners ASB 2026 (1).jpg",
+    courseValue: "BA Psychology",
+    queryLabel: "ASB BA Psychology Admissions 2026 Landing",
+    thankYouPath: "/thank-you-ba-psychology.php",
+    hasScholarshipAsterisk: true,
   },
 };

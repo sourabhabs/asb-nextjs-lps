@@ -7,15 +7,10 @@ import LeadForm from "./components/LeadForm";
 
 const HERO_COURSES = [
   { value: "BBA", label: "BBA" },
-  { value: "IBBA", label: "BBA International" },
   { value: "BCA", label: "BCA" },
-  { value: "IBCA", label: "BCA International" },
   { value: "BCOM", label: "B.Com" },
-  { value: "IBCOM", label: "B.Com International" },
   { value: "BSc CS", label: "B.Sc. Computer Science" },
-  { value: "IBSc CS", label: "B.Sc. Computer Science International" },
   { value: "BA Psychology", label: "B.A. Psychology" },
-  { value: "BA Psychology International", label: "B.A. Psychology International" },
   { value: "IPM (BBA+PGDM)", label: "IPM (BBA+PGDM)" },
 ];
 
@@ -211,8 +206,128 @@ export default function Page() {
           .mobile-cta-strip{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;background:#ffffff;border-radius:18px;box-shadow:0 12px 32px rgba(15,31,69,.18)}
           .mobile-btn-enq{flex:1;height:48px;border:none;border-radius:999px;background:#0f1f45;color:#fff;font-weight:800;font-size:15px;text-transform:uppercase}
           .mobile-btn-call{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;background:radial-gradient(circle at 30% 30%,#e3fff0,#7ff0ab);color:#0f1f45;box-shadow:0 8px 18px rgba(50,205,125,.24)}
+          @media (max-width:767px){.recruiters-grid{grid-template-columns:repeat(2,1fr);gap:12px}.top-recruiters{padding:40px 0}}
         }
-        @media (max-width:767px){.recruiters-grid{grid-template-columns:repeat(2,1fr);gap:12px}.top-recruiters{padding:40px 0}}
+        .asb-scholarship-card {
+          margin-top: 24px;
+          padding: 16px 20px;
+          border-radius: 14px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+          display: inline-flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          max-width: 480px;
+          text-align: left;
+        }
+        .asb-scholarship-card:hover {
+          transform: translateY(-2px);
+          border-color: rgba(255, 255, 255, 0.4);
+          box-shadow: 0 12px 40px 0 rgba(0, 105, 113, 0.3);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%);
+        }
+        .asb-scholarship-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: rgba(255, 183, 3, 0.15);
+          color: #ffb703;
+          border: 1px solid rgba(255, 183, 3, 0.3);
+          padding: 4px 10px;
+          border-radius: 20px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+        }
+        .badge-glowing-dot {
+          width: 6px;
+          height: 6px;
+          background-color: #ffb703;
+          border-radius: 50%;
+          display: inline-block;
+          box-shadow: 0 0 8px #ffb703;
+          animation: scholarship-glow 1.5s infinite ease-in-out;
+        }
+        @keyframes scholarship-glow {
+          0%, 100% { opacity: 0.5; transform: scale(0.9); }
+          50% { opacity: 1; transform: scale(1.2); }
+        }
+        .asb-scholarship-content {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+        .asb-scholarship-icon-box {
+          width: 48px;
+          height: 48px;
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          transition: transform 0.3s ease;
+        }
+        .asb-scholarship-card:hover .asb-scholarship-icon-box {
+          transform: rotate(5deg) scale(1.05);
+        }
+        .asb-scholarship-details {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+        .asb-scholarship-title {
+          font-size: 22px;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0;
+          line-height: 1.2;
+          letter-spacing: -0.01em;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+        .asb-scholarship-desc {
+          font-size: 14px;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.85) !important;
+          margin: 0 !important;
+          line-height: 1.3;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+        .asb-scholarship-card.mobile-style {
+          display: flex;
+          width: calc(100% - 20px);
+          max-width: 390px;
+          margin: 12px auto 0;
+          background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+        .asb-scholarship-card.mobile-style:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+          border-color: #cbd5e1;
+        }
+        .asb-scholarship-card.mobile-style .asb-scholarship-title {
+          color: #0f1f45;
+          font-size: 19px;
+        }
+        .asb-scholarship-card.mobile-style .asb-scholarship-desc {
+          color: #475569 !important;
+          font-size: 13px;
+        }
+        .asb-scholarship-card.mobile-style .asb-scholarship-icon-box {
+          background: rgba(15, 31, 69, 0.05);
+          border: 1px solid rgba(15, 31, 69, 0.08);
+        }
       `}</style>
 
       <header className="header-area">
@@ -283,7 +398,17 @@ export default function Page() {
                       <li style={{ fontSize: "20px" }}>15 Days Study Trip to Oxford Business College, Oxford & London, U.K.</li>
                       <li style={{ fontSize: "20px" }}>100% Placement Assistance</li>
                     </ul>
-
+                    <div className="asb-scholarship-card">
+                      <div className="asb-scholarship-content">
+                        <div className="asb-scholarship-icon-box">
+                          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703"/>
+                            <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703"/>
+                          </svg>
+                        </div>
+                        <h4 className="asb-scholarship-title">Upto 100% Scholarship</h4>
+                      </div>
+                    </div>
                   </div>
                   <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                     <Image
@@ -296,6 +421,17 @@ export default function Page() {
                       sizes="(max-width: 420px) 390px, 100vw"
                       style={{ width: "100%", height: "auto", display: "block" }}
                     />
+                    <div className="asb-scholarship-card mobile-style">
+                      <div className="asb-scholarship-content">
+                        <div className="asb-scholarship-icon-box">
+                          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703"/>
+                            <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703"/>
+                          </svg>
+                        </div>
+                        <h4 className="asb-scholarship-title">Upto 100% Scholarship</h4>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

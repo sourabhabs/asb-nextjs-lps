@@ -7,6 +7,7 @@ import type { AsbCourseRouteConfig } from "@/lib/asb-routes";
 
 interface AsbCourseLandingShellProps {
   course: AsbCourseRouteConfig;
+  forceTealTheme?: boolean;
 }
 
 type CourseDetails = {
@@ -35,7 +36,6 @@ const COURSE_DETAILS: Record<AsbCourseRouteConfig["key"], CourseDetails> = {
     heroFee: "Rs. 5.45 Lakh",
     options: [
       { value: "BBA", label: "BBA" },
-      { value: "IBBA", label: "BBA International" },
       { value: "IPM (BBA+PGDM)", label: "IPM (BBA+PGDM)" },
     ],
     cardImage: "/Course/BBA.webp",
@@ -75,7 +75,6 @@ const COURSE_DETAILS: Record<AsbCourseRouteConfig["key"], CourseDetails> = {
     heroFee: "Rs. 4.95 Lakh",
     options: [
       { value: "BCA", label: "BCA" },
-      { value: "IBCA", label: "BCA International" },
     ],
     cardImage: "/Course/BCOM.webp",
     cardTitle: "BCA (General/International)",
@@ -112,7 +111,6 @@ const COURSE_DETAILS: Record<AsbCourseRouteConfig["key"], CourseDetails> = {
     heroFee: "Rs. 3.25 Lakh",
     options: [
       { value: "BCOM", label: "B.Com" },
-      { value: "IBCOM", label: "B.Com International" },
     ],
     cardImage: "/Course/BSC.webp",
     cardTitle: "B.Com. (General/International)",
@@ -147,7 +145,6 @@ const COURSE_DETAILS: Record<AsbCourseRouteConfig["key"], CourseDetails> = {
     heroFee: "Rs. 3.25 Lakh",
     options: [
       { value: "BSc CS", label: "B.Sc. Computer Science" },
-      { value: "IBSc CS", label: "B.Sc. Computer Science International" },
     ],
     cardImage: "/Course/BCA.webp",
     cardTitle: "B.Sc.(CS) (General/International)",
@@ -175,61 +172,91 @@ const COURSE_DETAILS: Record<AsbCourseRouteConfig["key"], CourseDetails> = {
     ],
   },
   "ba-psychology": {
-    highlight: "B.A. Psychology",
-    contactLabel: "B.A. Psychology",
+    highlight: "BA (Hons) Psychology",
+    contactLabel: "BA (Hons) Psychology",
     footerDescription:
       "Admissions open for 2026 intake. Build your future in psychology, human behavior and personal development with a future-ready academic ecosystem.",
     options: [
-      { value: "BA Psychology", label: "B.A. Psychology" },
+      { value: "BA Psychology", label: "BA (Hons) Psychology" },
     ],
     cardImage: "/Course/BBA.webp",
-    cardTitle: "B.A. Psychology",
+    cardTitle: "BA (Hons) Psychology",
     description:
-      "Bachelor of Arts in Psychology at Asian School of Business is a three-year full-time degree program affiliated to CCS University. The program is designed to provide young minds with an intellectually stimulating learning environment while fostering a scientific understanding of human behavior and mental processes. Students develop strong foundations for both personal and professional growth through academic rigor and interdisciplinary learning.",
+      "BA (Hons) Psychology at Asian School of Business is a four-year full-time degree program. The program is designed to provide young minds with an intellectually stimulating learning environment while fostering a scientific understanding of human behavior and mental processes. Students develop strong foundations for both personal and professional growth through academic rigor and interdisciplinary learning.",
     blocks: [
       {
-        title: "3 Year B.A. Psychology Degree Program",
-        items: ["B.A. Psychology"],
+        title: "4 Year BA (Hons) Psychology Degree Program",
+        items: ["BA (Hons) Psychology"],
       },
       {
         title: "with Additional Diploma/Certification in:",
         showPlusBetweenItems: true,
         items: [
-          "Neuro-Linguistic Programming",
-          "Artificial Intelligence in Psychology",
-          "Counseling and Psychotherapy",
-          "Corporate Communications from CSD",
+          "AI and Psychology",
+          "Psychological First Aid",
+          "Consumer Psychology and Advertising",
+          "Data Analytics and Research Methods",
+          "Corporate Communication",
         ],
       },
     ],
   },
   "ba-psychology-international": {
-    highlight: "B.A. Psychology",
-    contactLabel: "B.A. Psychology",
+    highlight: "BA (Hons) Psychology",
+    contactLabel: "BA (Hons) Psychology",
     footerDescription:
       "Admissions open for 2026 intake. Build your future in psychology, human behavior and personal development with a globally aware academic ecosystem.",
     options: [
-      { value: "BA Psychology", label: "B.A. Psychology" },
-      { value: "BA Psychology International", label: "B.A. Psychology International" },
+      { value: "BA Psychology", label: "BA (Hons) Psychology" },
     ],
     cardImage: "/Course/BBA.webp",
-    cardTitle: "B.A. Psychology (General/International)",
+    cardTitle: "BA (Hons) Psychology (General/International)",
     description:
-      "Bachelor of Arts in Psychology at Asian School of Business is a three-year full-time degree program affiliated to CCS University. The program is designed to provide young minds with an intellectually stimulating learning environment while fostering a scientific understanding of human behavior and mental processes. Students develop strong foundations for both personal and professional growth through academic rigor, global exposure and interdisciplinary learning.",
+      "BA (Hons) Psychology at Asian School of Business is a three-year full-time degree program affiliated to CCS University. The program is designed to provide young minds with an intellectually stimulating learning environment while fostering a scientific understanding of human behavior and mental processes. Students develop strong foundations for both personal and professional growth through academic rigor, global exposure and interdisciplinary learning.",
     blocks: [
       {
-        title: "3 Year B.A. Psychology Degree Program",
-        items: ["B.A. Psychology (General) / B.A. Psychology (International)"],
+        title: "4 Year BA (Hons) Psychology Degree Program",
+        items: ["BA (Hons) Psychology (General) / BA (Hons) Psychology (International)"],
       },
       {
         title: "with Additional Diploma/Certification in:",
         showPlusBetweenItems: true,
         items: [
-          "Neuro-Linguistic Programming",
-          "Artificial Intelligence in Psychology",
-          "Counseling and Psychotherapy",
-          "Corporate Communications from CSD",
-          "International Certification in Personal and Professional Development from Oxford & London",
+          "AI and Psychology",
+          "Psychological First Aid",
+          "Consumer Psychology and Advertising",
+          "Data Analytics and Research Methods",
+          "Corporate Communication",
+        ],
+      },
+    ],
+  },
+  "ba-psychology3": {
+    highlight: "BA (Hons) Psychology",
+    contactLabel: "BA (Hons) Psychology",
+    footerDescription:
+      "Admissions open for 2026 intake. Build your future in psychology, human behavior and personal development with a future-ready academic ecosystem.",
+    options: [
+      { value: "BA Psychology", label: "BA (Hons) Psychology" },
+    ],
+    cardImage: "/Course/BBA.webp",
+    cardTitle: "BA (Hons) Psychology",
+    description:
+      "BA (Hons) Psychology at Asian School of Business is a four-year full-time degree program. The program is designed to provide young minds with an intellectually stimulating learning environment while fostering a scientific understanding of human behavior and mental processes. Students develop strong foundations for both personal and professional growth through academic rigor and interdisciplinary learning.",
+    blocks: [
+      {
+        title: "4 Year BA (Hons) Psychology Degree Program",
+        items: ["BA (Hons) Psychology"],
+      },
+      {
+        title: "with Additional Diploma/Certification in:",
+        showPlusBetweenItems: true,
+        items: [
+          "AI and Psychology",
+          "Psychological First Aid",
+          "Consumer Psychology and Advertising",
+          "Data Analytics and Research Methods",
+          "Corporate Communication",
         ],
       },
     ],
@@ -290,14 +317,16 @@ function videoEmbed(url: string, autoplay = false) {
   return `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1&controls=0&loop=1&playlist=${id}&autoplay=${autoplay ? 1 : 0}`;
 }
 
-export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellProps) {
+export default function AsbCourseLandingShell({ course, forceTealTheme = false }: AsbCourseLandingShellProps) {
   const homeRef = useRef<HTMLElement | null>(null);
   const content = COURSE_DETAILS[course.key];
   const isBaPsychology = course.key === "ba-psychology";
+  const isPsychologyRoute = course.key.startsWith("ba-psychology") && !forceTealTheme;
+  const isNewPsychology = course.key === "ba-psychology3" || (course.key === "ba-psychology" && !forceTealTheme);
   const showHeroStats = ["bba", "bca", "bcom", "bsc"].includes(course.key);
-  const showOxfordLogo = course.key !== "ba-psychology";
-  const showHeroOxfordPoint = course.key !== "ba-psychology";
-  const showInternationalSection = course.key !== "ba-psychology";
+  const showOxfordLogo = course.key !== "ba-psychology" || isNewPsychology;
+  const showHeroOxfordPoint = course.key !== "ba-psychology" && course.key !== "ba-psychology3";
+  const showInternationalSection = course.key !== "ba-psychology" && course.key !== "ba-psychology3";
   const [intlIdx, setIntlIdx] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
   const [testModalUrl, setTestModalUrl] = useState("");
@@ -436,9 +465,275 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
           .mobile-btn-call{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;background:radial-gradient(circle at 30% 30%,#e3fff0,#7ff0ab);color:#0f1f45;box-shadow:0 8px 18px rgba(50,205,125,.24)}
         }
         @media (max-width:767px){.recruiters-grid{grid-template-columns:repeat(2,1fr);gap:12px}.top-recruiters{padding:40px 0}}
+        .asb-scholarship-card {
+          margin-top: 24px;
+          padding: 16px 20px;
+          border-radius: 14px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+          display: inline-flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          max-width: 480px;
+          text-align: left;
+        }
+        .asb-scholarship-card:hover {
+          transform: translateY(-2px);
+          border-color: rgba(255, 255, 255, 0.4);
+          box-shadow: 0 12px 40px 0 rgba(0, 105, 113, 0.3);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%);
+        }
+        .asb-scholarship-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: rgba(255, 183, 3, 0.15);
+          color: #ffb703;
+          border: 1px solid rgba(255, 183, 3, 0.3);
+          padding: 4px 10px;
+          border-radius: 20px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+        }
+        .badge-glowing-dot {
+          width: 6px;
+          height: 6px;
+          background-color: #ffb703;
+          border-radius: 50%;
+          display: inline-block;
+          box-shadow: 0 0 8px #ffb703;
+          animation: scholarship-glow 1.5s infinite ease-in-out;
+        }
+        @keyframes scholarship-glow {
+          0%, 100% { opacity: 0.5; transform: scale(0.9); }
+          50% { opacity: 1; transform: scale(1.2); }
+        }
+        .asb-scholarship-content {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+        .asb-scholarship-icon-box {
+          width: 48px;
+          height: 48px;
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          transition: transform 0.3s ease;
+        }
+        .asb-scholarship-card:hover .asb-scholarship-icon-box {
+          transform: rotate(5deg) scale(1.05);
+        }
+        .asb-scholarship-details {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+        .asb-scholarship-title {
+          font-size: 22px;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0;
+          line-height: 1.2;
+          letter-spacing: -0.01em;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+        .asb-scholarship-desc {
+          font-size: 14px;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.85) !important;
+          margin: 0 !important;
+          line-height: 1.3;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+        .asb-scholarship-card.mobile-style {
+          display: flex;
+          width: calc(100% - 20px);
+          max-width: 390px;
+          margin: 12px auto 0;
+          background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+        .asb-scholarship-card.mobile-style:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+          border-color: #cbd5e1;
+        }
+        .asb-scholarship-card.mobile-style .asb-scholarship-title {
+          color: #0f1f45;
+          font-size: 19px;
+        }
+        .asb-scholarship-card.mobile-style .asb-scholarship-desc {
+          color: #475569 !important;
+          font-size: 13px;
+        }
+        .asb-scholarship-card.mobile-style .asb-scholarship-icon-box {
+          background: rgba(15, 31, 69, 0.05);
+          border: 1px solid rgba(15, 31, 69, 0.08);
+        }
+
+        /* BA Psychology Theme Overrides (#791F70) */
+        .asb-psychology-theme .bnrbg {
+          background-image: linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)), url("/New Website banner ASB 1904x686 (3).jpg") !important;
+        }
+        .asb-psychology-theme .course-banner {
+          background: #791F70 !important;
+        }
+        .asb-psychology-theme #heroSubmitBtn {
+          background: #791F70 !important;
+        }
+        .asb-psychology-theme #otpSubmit {
+          background: #791F70 !important;
+        }
+        .asb-psychology-theme .otp-resend a {
+          color: #791F70 !important;
+        }
+        .asb-psychology-theme .frmD {
+          background-color: rgba(121, 31, 112, 0.66) !important;
+        }
+        .asb-psychology-theme div[style*="background: #006972"],
+        .asb-psychology-theme div[style*="background:#006972"],
+        .asb-psychology-theme div[style*="background: rgb(0, 105, 114)"] {
+          background: #791F70 !important;
+        }
+        .asb-psychology-theme .main-btn {
+          background: #791F70 !important;
+          border-color: #791F70 !important;
+        }
+        .asb-psychology-theme .btn-gold {
+          background: #791F70 !important;
+        }
+        .asb-psychology-theme .btn-gold:hover {
+          background: #5d1555 !important;
+        }
+        .asb-psychology-theme .tag {
+          color: #791F70 !important;
+        }
+        .asb-course-shell-ba-psychology #heroLeadForm .course-select-wrap,
+        .asb-course-shell-ba-psychology3 #heroLeadForm .course-select-wrap,
+        .asb-psychology-theme #heroLeadForm .course-select-wrap {
+          width: 220px !important;
+        }
+        .asb-course-shell-ba-psychology .course-readonly,
+        .asb-course-shell-ba-psychology3 .course-readonly,
+        .asb-psychology-theme .course-readonly {
+          white-space: nowrap !important;
+          font-size: 14px !important;
+          padding: 0 8px !important;
+        }
+        .asb-psychology3-theme .asb-desktop-hero-highlight {
+          font-size: 1.8em !important;
+        }
+        @media (max-width:991px) {
+          .asb-psychology-theme .frmD {
+            background-color: #fff !important;
+          }
+          .asb-psychology-theme #heroSubmitBtn {
+            background: #791F70 !important;
+          }
+          .asb-psychology3-theme .bnrbg {
+            background: #7B1E72 !important;
+          }
+          .asb-psychology3-theme .mobV {
+            margin-top: 12px !important;
+          }
+        }
+
+        /* BA Psychology Certifications Section Styling */
+        .psychology-certifications-block {
+          background: #791F70;
+          border-radius: 12px;
+          padding: 24px 20px;
+          text-align: center;
+          margin-top: 25px;
+          box-shadow: 0 10px 30px rgba(121, 31, 112, 0.15);
+        }
+        .psychology-certifications-block .course-banner {
+          background: transparent !important;
+          color: #fff !important;
+          text-decoration: underline !important;
+          font-weight: 700;
+          font-size: clamp(20px, 4vw, 24px) !important;
+          margin: 0 0 24px !important;
+          padding: 0 !important;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+        .psychology-certifications-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 15px;
+          justify-content: center;
+          align-items: stretch;
+        }
+        @media (max-width: 991px) {
+          .psychology-certifications-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+          }
+        }
+        @media (max-width: 600px) {
+          .psychology-certifications-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
+        }
+        @media (max-width: 400px) {
+          .psychology-certifications-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+        }
+        .psy-cert-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          color: #fff;
+          gap: 12px;
+        }
+        .psy-cert-icon {
+          width: 60px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          transition: transform 0.3s ease;
+        }
+        .psy-cert-card:hover .psy-cert-icon {
+          transform: scale(1.1) rotate(2deg);
+        }
+        .psy-cert-icon svg {
+          width: 50px;
+          height: 50px;
+          stroke: #fff;
+          stroke-width: 1.5;
+        }
+        .psy-cert-name {
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.35;
+          color: #ffffff;
+          max-width: 120px;
+        }
       `}</style>
 
-      <main style={{ paddingBottom: "88px" }}>
+      <main className={`asb-course-shell-${course.key} ${isPsychologyRoute ? "asb-psychology-theme" : ""} ${isNewPsychology ? "asb-psychology3-theme" : ""}`} style={{ paddingBottom: "88px" }}>
         <header className="header-area">
           <div className="navbar-area">
             <div className="container-fluid">
@@ -477,7 +772,7 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
               style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}
             >
               <Image
-                src="/ASB-BG-D.webp"
+                src={course.key.startsWith("ba-psychology") ? course.heroImage : "/ASB-BG-D.webp"}
                 alt=""
                 fill
                 priority
@@ -521,6 +816,17 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
                           </div>
                         </div>
                       ) : null}
+                      <div className="asb-scholarship-card">
+                        <div className="asb-scholarship-content">
+                          <div className="asb-scholarship-icon-box">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                              <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+                            </svg>
+                          </div>
+                          <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship"}</h4>
+                        </div>
+                      </div>
                     </div>
                     <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                       <Image
@@ -545,6 +851,17 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
                           </div>
                         </div>
                       ) : null}
+                      <div className="asb-scholarship-card mobile-style">
+                        <div className="asb-scholarship-content">
+                          <div className="asb-scholarship-icon-box">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                              <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+                            </svg>
+                          </div>
+                          <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship"}</h4>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -583,7 +900,9 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
           </section>
         ) : null}
 
-        <section className="top-recruiters" id="recruiters"><div className="container"><div className="recruiters-head text-center pb-20"><h2 className="title">Top Recruiters at ASB</h2><p className="subtitle">Renowned brands hiring ASB talent for dynamic roles across diverse fields</p><div className="line mx-auto"></div></div><div className="recruiters-grid">{RECRUITERS.map(([alt, src]) => <div key={alt} className="recruiter-card"><img src={src} alt={alt} /></div>)}</div></div></section>
+        {!isNewPsychology ? (
+          <section className="top-recruiters" id="recruiters"><div className="container"><div className="recruiters-head text-center pb-20"><h2 className="title">Top Recruiters at ASB</h2><p className="subtitle">Renowned brands hiring ASB talent for dynamic roles across diverse fields</p><div className="line mx-auto"></div></div><div className="recruiters-grid">{RECRUITERS.map(([alt, src]) => <div key={alt} className="recruiter-card"><img src={src} alt={alt} /></div>)}</div></div></section>
+        ) : null}
 
         <section style={{ textAlign: "center", padding: "36px 20px 14px", background: "#fff" }}>
           <div style={{ width: "48px", height: "3px", background: "#006972", margin: "0 auto 18px", borderRadius: "2px" }}></div>
@@ -594,11 +913,11 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
             {content.highlight} Program
           </p>
           <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700, fontSize: "clamp(16px, 2.5vw, 20px)", color: "#0f1f45", maxWidth: "520px", margin: "0 auto", lineHeight: 1.5 }}>
-            {isBaPsychology ? (
+            {course.key.startsWith("ba-psychology") ? (
               <>
                 Asian School of Business is one of the top
                 <br />
-                BA Psychology Colleges in Delhi-NCR.
+                BA (Hons) Psychology Colleges in Delhi-NCR.
               </>
             ) : (
               <>Asian School of Business is one of the top {content.highlight} Colleges in Delhi-NCR.</>
@@ -617,8 +936,8 @@ export default function AsbCourseLandingShell({ course }: AsbCourseLandingShellP
                 </div>
               </div>
               <div className="col-md-6 h-100 mb-4">
-                <div className={`single_courses mt-30 h-100 d-flex flex-column${isBaPsychology ? " psychology-rhs" : ""}`}>
-                  {content.blocks.map((block) => (
+                <div className={`single_courses mt-30 h-100 d-flex flex-column${course.key.startsWith("ba-psychology") ? " psychology-rhs" : ""}`}>
+                  {content.blocks.map((block, bIdx) => (
                     <div key={block.title}>
                       <h3 className="course-banner">
                         {block.title}

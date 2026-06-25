@@ -4,7 +4,8 @@ export type PreviewCourseKey =
   | "bcom"
   | "bsc"
   | "ba-psychology"
-  | "ba-psychology-international";
+  | "ba-psychology-international"
+  | "ba-psychology3";
 
 export type PreviewCourseConfig = {
   key: PreviewCourseKey;
@@ -51,6 +52,13 @@ export const PREVIEW_COURSES: Record<PreviewCourseKey, PreviewCourseConfig> = {
     heroImage: "/BA-PSY.jpg",
     mobileHeroImage: "/Mobile ba-psyjpg.jpg",
     queryLabel: "ASB BA Psychology International Preview Landing",
+    thankYouPath: "/thank-you-ba-psychology.php",
+  },
+  "ba-psychology3": {
+    key: "ba-psychology3",
+    heroImage: "/New Website banner ASB 1904x686 (3).jpg",
+    mobileHeroImage: "/Mobile Banners ASB 2026 (1).jpg",
+    queryLabel: "ASB BA Psychology Preview Landing",
     thankYouPath: "/thank-you-ba-psychology.php",
   },
 };
