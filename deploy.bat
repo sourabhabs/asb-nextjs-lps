@@ -1,4 +1,5 @@
 @echo off
+setlocal enabledelayedexpansion
 echo ==============================================
 echo [1/4] Running local build to check for errors...
 echo ==============================================
@@ -18,12 +19,13 @@ echo [2/4] Checking and committing local changes...
 echo ==============================================
 git status --porcelain | findstr /R "^" > nul
 if %errorlevel% equ 0 (
+    set "commit_msg="
     set /p commit_msg="Enter commit message (or press Enter for default): "
-    if "%commit_msg%"=="" (
-        set commit_msg="Deploy: Automatic deployment update"
+    if "!commit_msg!"=="" (
+        set "commit_msg=Deploy: Automatic deployment update"
     )
     git add .
-    git commit -m "%commit_msg%"
+    git commit -m "!commit_msg!"
     echo.
     echo [SUCCESS] Changes committed.
 ) else (
