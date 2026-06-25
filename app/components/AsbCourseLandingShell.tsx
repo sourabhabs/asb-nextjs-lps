@@ -983,65 +983,35 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
                     <div className="psychology-certifications-grid">
                       <div className="psy-cert-card">
                         <div className="psy-cert-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-3.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z" />
-                            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-3.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z" />
-                            <circle cx="9.5" cy="4.5" r="1" fill="currentColor" />
-                            <circle cx="14.5" cy="4.5" r="1" fill="currentColor" />
-                            <circle cx="8" cy="12" r="1" fill="currentColor" />
-                            <circle cx="16" cy="12" r="1" fill="currentColor" />
-                            <circle cx="9.5" cy="19.5" r="1" fill="currentColor" />
-                            <circle cx="14.5" cy="19.5" r="1" fill="currentColor" />
-                          </svg>
+                          <img src="/icons/AI and.png" alt="AI and Psychology" style={{ width: "50px", height: "50px", objectFit: "contain" }} />
                         </div>
                         <div className="psy-cert-name">AI and Psychology</div>
                       </div>
 
                       <div className="psy-cert-card">
                         <div className="psy-cert-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-3.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2Z" />
-                            <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-3.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2Z" />
-                            <line x1="12" y1="9" x2="12" y2="15" strokeWidth="2.5" />
-                            <line x1="9" y1="12" x2="15" y2="12" strokeWidth="2.5" />
-                          </svg>
+                          <img src="/icons/Psychological.png" alt="Psychological First Aid" style={{ width: "50px", height: "50px", objectFit: "contain" }} />
                         </div>
                         <div className="psy-cert-name">Psychological First Aid</div>
                       </div>
 
                       <div className="psy-cert-card">
                         <div className="psy-cert-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                            <path d="M19 12c1.5-1.5 3-1.5 3 0 0 2-3 4.5-3 4.5s-3-2.5-3-4.5c0-1.5 1.5-1.5 3 0Z" />
-                            <path d="M19 2a3 3 0 0 1 3 3c0 2-3 4-3 4s-3-2-3-4a3 3 0 0 1 3-3Z" />
-                          </svg>
+                          <img src="/icons/Consumer.png" alt="Consumer Psychology and Advertising" style={{ width: "50px", height: "50px", objectFit: "contain" }} />
                         </div>
                         <div className="psy-cert-name">Consumer Psychology and Advertising</div>
                       </div>
 
                       <div className="psy-cert-card">
                         <div className="psy-cert-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                            <polyline points="14 2 14 7 19 7" />
-                            <line x1="8" y1="15" x2="8" y2="12" strokeWidth="2" />
-                            <line x1="11" y1="15" x2="11" y2="10" strokeWidth="2" />
-                            <line x1="14" y1="15" x2="14" y2="13" strokeWidth="2" />
-                            <circle cx="16" cy="16" r="3" fill="none" stroke="currentColor" />
-                            <line x1="18.5" y1="18.5" x2="21" y2="21" />
-                          </svg>
+                          <img src="/icons/Data Analytics.png" alt="Data Analytics and Research Methods" style={{ width: "50px", height: "50px", objectFit: "contain" }} />
                         </div>
                         <div className="psy-cert-name">Data Analytics and Research Methods</div>
                       </div>
 
                       <div className="psy-cert-card">
                         <div className="psy-cert-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                            <path d="M16 8a6 6 0 0 1 5.84 7.93L23 21l-5.07-1.16A6 6 0 0 1 16 8z" />
-                          </svg>
+                          <img src="/icons/Corporate.png" alt="Corporate Communication" style={{ width: "50px", height: "50px", objectFit: "contain" }} />
                         </div>
                         <div className="psy-cert-name">Corporate Communication</div>
                       </div>
