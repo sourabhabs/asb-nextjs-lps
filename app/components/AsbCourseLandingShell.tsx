@@ -1071,7 +1071,7 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
                   ))}
                   {isPsychologyRoute && (
                     <div style={{ marginTop: "24px", padding: "0 10px" }}>
-                      <p style={{ fontSize: "16px", fontWeight: 500, lineHeight: "1.7", color: "#1e293b", textAlign: "left", margin: 0 }}>
+                      <p style={{ fontSize: "16px", fontWeight: 500, lineHeight: "1.7", color: "#1e293b", textAlign: "justify", margin: 0 }}>
                         {content.description}
                       </p>
                     </div>
