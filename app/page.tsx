@@ -402,11 +402,11 @@ export default function Page() {
                       <div className="asb-scholarship-content">
                         <div className="asb-scholarship-icon-box">
                           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703"/>
-                            <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703"/>
+                            <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                            <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
                           </svg>
                         </div>
-                        <h4 className="asb-scholarship-title">Upto 100% Scholarship</h4>
+                        <h4 className="asb-scholarship-title">Upto 100% Scholarship*</h4>
                       </div>
                     </div>
                   </div>
@@ -425,11 +425,11 @@ export default function Page() {
                       <div className="asb-scholarship-content">
                         <div className="asb-scholarship-icon-box">
                           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703"/>
-                            <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703"/>
+                            <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                            <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
                           </svg>
                         </div>
-                        <h4 className="asb-scholarship-title">Upto 100% Scholarship</h4>
+                        <h4 className="asb-scholarship-title">Upto 100% Scholarship*</h4>
                       </div>
                     </div>
                   </div>

@@ -817,7 +817,7 @@ export default function Bba2PreviewShell({
                               <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
                             </svg>
                           </div>
-                          <h4 className="asb-scholarship-title">Upto 100% Scholarship</h4>
+                          <h4 className="asb-scholarship-title">Upto 100% Scholarship*</h4>
                         </div>
                       </div>
                     </div>
