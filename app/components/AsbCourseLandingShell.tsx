@@ -734,6 +734,108 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
           color: #ffffff;
           max-width: 120px;
         }
+
+        /* Renowned Psychologists Section Styling */
+        .psychologists-section {
+          background: #791F70;
+          padding: 60px 0;
+          color: #fff;
+          text-align: center;
+        }
+        .psychologists-head {
+          margin-bottom: 40px;
+        }
+        .psychologists-head .tag {
+          color: #ffb703 !important;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          display: block;
+          margin-bottom: 8px;
+        }
+        .psychologists-head .title {
+          color: #fff !important;
+          font-size: clamp(24px, 5vw, 36px) !important;
+          font-weight: 800 !important;
+          margin: 0 !important;
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+        }
+        .psychologists-head .line {
+          width: 60px;
+          height: 3px;
+          background: #ffb703;
+          margin: 15px auto 0;
+          border-radius: 2px;
+        }
+        .psychologists-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 20px;
+          justify-content: center;
+          align-items: start;
+        }
+        @media (max-width: 1199px) {
+          .psychologists-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+          }
+        }
+        @media (max-width: 767px) {
+          .psychologists-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
+        }
+        @media (max-width: 480px) {
+          .psychologists-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+          }
+        }
+        .psychologist-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .psychologist-photo-wrapper {
+          width: 170px;
+          height: 190px;
+          border-radius: 40px;
+          border: 4px solid #fff;
+          overflow: hidden;
+          position: relative;
+          margin-bottom: 18px;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+          background: #fff;
+        }
+        .psychologist-photo-wrapper img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+        .psychologist-card:hover .psychologist-photo-wrapper img {
+          transform: scale(1.08);
+        }
+        .psychologist-name {
+          font-size: 16px;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0 0 6px 0;
+          text-transform: uppercase;
+          letter-spacing: 0.02em;
+          line-height: 1.25;
+        }
+        .psychologist-role {
+          font-size: 12px;
+          font-weight: 600;
+          color: rgba(255, 255, 255, 0.85);
+          line-height: 1.4;
+          max-width: 180px;
+          margin: 0;
+        }
       `}</style>
 
       <main className={`asb-course-shell-${course.key} ${isPsychologyRoute ? "asb-psychology-theme" : ""} ${isNewPsychology ? "asb-psychology3-theme" : ""}`} style={{ paddingBottom: "88px" }}>
@@ -1026,9 +1128,65 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
           </div>
         </section>
 
-        <section className="testimonials" id="testimonials"><div className="container"><div className="test-head"><span className="tag">What Our Students Say</span><h2 className="title">Student Testimonials</h2><div className="line"></div></div><div className="test-wrap"><div className="test-track">{visible.map(([name, url]) => <button key={url} type="button" className="test-video-card" onClick={() => setTestModalUrl(url)} aria-label={`Play testimonial by ${name}`}><span className="test-video-preview"><iframe src={videoEmbed(url)} title={`${name} preview`} frameBorder="0" loading="lazy" tabIndex={-1} aria-hidden="true" sandbox="allow-scripts allow-same-origin allow-presentation"></iframe></span></button>)}</div>{pageCount > 1 ? <div className="test-dots">{Array.from({ length: pageCount }).map((_, index) => <button key={index} type="button" className={`test-dot${index === page ? " is-active" : ""}`} onClick={() => setPage(index)} aria-label={`Go to testimonial page ${index + 1}`}></button>)}</div> : null}</div></div></section>
+        {!isPsychologyRoute && (
+          <>
+            <section className="testimonials" id="testimonials"><div className="container"><div className="test-head"><span className="tag">What Our Students Say</span><h2 className="title">Student Testimonials</h2><div className="line"></div></div><div className="test-wrap"><div className="test-track">{visible.map(([name, url]) => <button key={url} type="button" className="test-video-card" onClick={() => setTestModalUrl(url)} aria-label={`Play testimonial by ${name}`}><span className="test-video-preview"><iframe src={videoEmbed(url)} title={`${name} preview`} frameBorder="0" loading="lazy" tabIndex={-1} aria-hidden="true" sandbox="allow-scripts allow-same-origin allow-presentation"></iframe></span></button>)}</div>{pageCount > 1 ? <div className="test-dots">{Array.from({ length: pageCount }).map((_, index) => <button key={index} type="button" className={`test-dot${index === page ? " is-active" : ""}`} onClick={() => setPage(index)} aria-label={`Go to testimonial page ${index + 1}`}></button>)}</div> : null}</div></div></section>
+            {testModalUrl ? <div className="test-modal is-open" aria-hidden="false"><div className="test-modal-overlay" onClick={() => setTestModalUrl("")}></div><div className="test-modal-dialog" role="dialog" aria-modal="true"><button type="button" className="test-modal-close" onClick={() => setTestModalUrl("")}>x</button><div className="test-modal-media"><iframe title="Student testimonial player" src={videoEmbed(testModalUrl, true)} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" sandbox="allow-scripts allow-same-origin allow-presentation" allowFullScreen></iframe></div></div></div> : null}
+          </>
+        )}
 
-        {testModalUrl ? <div className="test-modal is-open" aria-hidden="false"><div className="test-modal-overlay" onClick={() => setTestModalUrl("")}></div><div className="test-modal-dialog" role="dialog" aria-modal="true"><button type="button" className="test-modal-close" onClick={() => setTestModalUrl("")}>x</button><div className="test-modal-media"><iframe title="Student testimonial player" src={videoEmbed(testModalUrl, true)} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" sandbox="allow-scripts allow-same-origin allow-presentation" allowFullScreen></iframe></div></div></div> : null}
+        {isPsychologyRoute && (
+          <section className="psychologists-section" id="psychologists">
+            <div className="container">
+              <div className="psychologists-head">
+                <span className="tag">Faculty & Experts</span>
+                <h2 className="title">Renowned Psychologists @ ASB</h2>
+                <div className="line"></div>
+              </div>
+              <div className="psychologists-grid">
+                <div className="psychologist-card">
+                  <div className="psychologist-photo-wrapper">
+                    <img src="/icons/psyImages/DR. ARUNA.png" alt="Dr. Aruna Broota" />
+                  </div>
+                  <h4 className="psychologist-name">Dr. Aruna Broota</h4>
+                  <p className="psychologist-role">Globally acclaimed Clinical Psychologist</p>
+                </div>
+
+                <div className="psychologist-card">
+                  <div className="psychologist-photo-wrapper">
+                    <img src="/icons/psyImages/DR. SUSHMA.png" alt="Dr. Sushma Suri" />
+                  </div>
+                  <h4 className="psychologist-name">Dr. Sushma Suri</h4>
+                  <p className="psychologist-role">Professor - Psychology<br />Jamia Millia Islamia</p>
+                </div>
+
+                <div className="psychologist-card">
+                  <div className="psychologist-photo-wrapper">
+                    <img src="/icons/psyImages/DR. JITENDRA.png" alt="Dr. Jitendra Nagpal" />
+                  </div>
+                  <h4 className="psychologist-name">Dr. Jitendra Nagpal</h4>
+                  <p className="psychologist-role">Senior Consultant - Mental Health<br />Moolchand Medicity</p>
+                </div>
+
+                <div className="psychologist-card">
+                  <div className="psychologist-photo-wrapper">
+                    <img src="/icons/psyImages/DR. MEGHA.png" alt="Dr. Megha Pushkarna" />
+                  </div>
+                  <h4 className="psychologist-name">Dr. Megha Pushkarna</h4>
+                  <p className="psychologist-role">Renowned<br />Counseling Psychologist</p>
+                </div>
+
+                <div className="psychologist-card">
+                  <div className="psychologist-photo-wrapper">
+                    <img src="/icons/psyImages/ABSY.png" alt="Absy Sam" />
+                  </div>
+                  <h4 className="psychologist-name">Absy Sam</h4>
+                  <p className="psychologist-role">Renowned Counseling Psychologist,<br />Founder of Bright Counselling</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="chair" id="leadership"><div className="container"><div className="chair-grid"><div className="chair-media"><div className="chair-photo"><img src="/assets/images/sandeep-marwah.webp" alt="Dr. Sandeep Marwah" /></div></div><div className="chair-content"><h2 className="chair-name">Dr. Sandeep Marwah</h2><p className="chair-role">Founder & President</p><div className="chair-divider"></div><p className="chair-message">We at Asian School of Business believe that education in business management is not just about management itself, but about improving the many disciplines and functions that shape business.</p></div></div></div></section>
 
