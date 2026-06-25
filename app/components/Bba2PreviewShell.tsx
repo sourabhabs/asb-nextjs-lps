@@ -951,7 +951,7 @@ export default function Bba2PreviewShell({
                   ))}
                 </div>
               </div>
-              <div className="col-md-12 active" style={{ textAlign: "center" }}>
+              <div className="col-md-12 active" style={{ textAlign: "center", marginBottom: "40px" }}>
                 <button type="button" className="main-btn" style={{ marginTop: "30px" }} onClick={() => scrollToId("home", true)}>Enquire Now</button>
               </div>
             </div>

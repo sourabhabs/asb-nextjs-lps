@@ -583,7 +583,7 @@ export default function Page() {
                 </div>
               </div>
             </div>
-            <div className="col-md-12 active" style={{ textAlign: "center" }}><button type="button" className="main-btn" style={{ marginTop: "30px" }} onClick={() => scrollToId("home", true)}>Enquire Now</button></div>
+            <div className="col-md-12 active" style={{ textAlign: "center", marginBottom: "40px" }}><button type="button" className="main-btn" style={{ marginTop: "30px" }} onClick={() => scrollToId("home", true)}>Enquire Now</button></div>
           </div>
         </div>
       </section>
