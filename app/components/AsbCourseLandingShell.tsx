@@ -395,8 +395,11 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
         .course-banner{margin:20px 0;padding:10px;background:#0aaeaf;color:#fff;text-align:center;font-weight:400;line-height:23px;font-size:23px}
         .banner-table td{line-height:24px;position:relative;display:block;font-weight:400;font-size:18px}
         .banner-table td.with-plus::after{content:"+";display:block;color:#ff2b2b;font-weight:700;font-size:24px;line-height:1;margin:6px 0 2px}
-        .psychology-rhs{display:flex;flex-direction:column;justify-content:flex-start;height:100%}
-        .psychology-rhs .course-banner:first-child{margin-top:0}
+         .psychology-rhs{display:flex;flex-direction:column;justify-content:flex-start;height:100%}
+        @media (min-width: 768px) {
+          .psychology-rhs{justify-content:space-between}
+        }
+        .psychology-rhs .course-banner{margin-top:0!important}
         .psychology-rhs .banner-table td{text-align:center}
         .psychology-rhs .banner-table td:first-child{padding-top:4px}
         .top-recruiters{padding:60px 0;background:#fff}
