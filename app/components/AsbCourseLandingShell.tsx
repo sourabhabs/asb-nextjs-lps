@@ -947,27 +947,26 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
                         {block.title}
                         {block.subtitle ? <><br /><span style={{ fontSize: "15px" }}>{block.subtitle}</span></> : null}
                       </h3>
-                      <div className="additionalimg" style={{ textAlign: "center" }}>
-                        <table className="banner-table" style={{ width: "100%" }}>
-                          <tbody>
-                            {block.items.map((item, index) => (
-                              <tr key={item} style={index === block.items.length - 1 ? { border: "solid 0px #fff" } : undefined}>
-                                <td className={block.showPlusBetweenItems && index < block.items.length - 1 ? "with-plus" : undefined}>
-                                  {item}
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
+                      {!isPsychologyRoute && (
+                        <div className="additionalimg" style={{ textAlign: "center" }}>
+                          <table className="banner-table" style={{ width: "100%" }}>
+                            <tbody>
+                              {block.items.map((item, index) => (
+                                <tr key={item} style={index === block.items.length - 1 ? { border: "solid 0px #fff" } : undefined}>
+                                  <td className={block.showPlusBetweenItems && index < block.items.length - 1 ? "with-plus" : undefined}>
+                                    {item}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
                     </div>
                   ))}
                   {isPsychologyRoute && (
                     <div style={{ marginTop: "24px", padding: "0 10px" }}>
-                      <h4 style={{ fontSize: "22px", fontWeight: 700, color: "#0f1f45", marginBottom: "12px", textAlign: "left" }}>
-                        {titleParts[0]}{titleParts[1] ? <span style={{ fontSize: "18px", fontWeight: 500 }}>{` (${titleParts[1]}`}</span> : null}
-                      </h4>
-                      <p style={{ fontSize: "15px", lineHeight: "1.65", color: "#475569", textAlign: "left", margin: 0 }}>
+                      <p style={{ fontSize: "16px", fontWeight: 500, lineHeight: "1.7", color: "#1e293b", textAlign: "left", margin: 0 }}>
                         {content.description}
                       </p>
                     </div>
