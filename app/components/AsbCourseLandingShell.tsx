@@ -859,7 +859,7 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
                       <div className="alc-desktop-logo-strip">
                         <Image src="/img/logo.jpg" alt="Asian School of Business" className="logo-alc" width={200} height={68} priority />
                         {showOxfordLogo ? (
-                          <Image src="/img/OBC-Logo.png" alt="Oxford Business College" className="logo-obc" width={160} height={54} priority />
+                          <Image src="/img/OBC-Logo.png" style={{ display: "none" }} alt="Oxford Business College" className="logo-obc" width={160} height={54} priority />
                         ) : null}
                       </div>
                     </div>
