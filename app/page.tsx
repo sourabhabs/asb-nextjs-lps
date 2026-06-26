@@ -339,7 +339,7 @@ export default function Page() {
                   <div className="d-none d-lg-flex align-items-center">
                     <div className="alc-desktop-logo-strip">
                       <Image src="/img/logo.jpg" alt="Asian School of Business" className="logo-alc" width={200} height={68} priority />
-                      <Image src="/img/OBC-Logo.png" alt="Oxford Business College" className="logo-obc" width={160} height={54} priority />
+                      <Image style={{ display: "none" }} src="/img/OBC-Logo.png" alt="Oxford Business College" className="logo-obc" width={160} height={54} priority />
                     </div>
                   </div>
                   <div className="d-flex d-lg-none w-100 align-items-center justify-content-between alc-mobile-header">
