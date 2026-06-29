@@ -8,7 +8,17 @@ import type { AsbCourseRouteConfig } from "@/lib/asb-routes";
 interface AsbCourseLandingShellProps {
   course: AsbCourseRouteConfig;
   forceTealTheme?: boolean;
+  customEvents?: ReadonlyArray<EventCard>;
+  desktopScholarshipLogoSrc?: string;
+  desktopScholarshipLogoAlt?: string;
 }
+
+type EventCard = {
+  label: string;
+  src: string;
+  wide?: boolean;
+  subLabels?: readonly string[];
+};
 
 type CourseDetails = {
   highlight: string;
@@ -281,13 +291,13 @@ const RECRUITERS = [
   ["KPMG", "/recruiters/kpmg-logo.jpg"],
 ] as const;
 
-const EVENTS = [
-  ["Aman Gupta", "/Events/Aman-4.webp"],
-  ["Vineeta Singh", "/Events/Vineeta2.webp"],
-  ["Vijay Shekhar Sharma", "/Events/Vijay2.webp"],
-  ["Jazzy-B", "/Events/jazzy-B.webp"],
-  ["Jassie Gill", "/Events/Jassi-Gill-2024.webp"],
-  ["Sunanda Sharma", "/Events/sunanda-sharma.webp"],
+const EVENTS: readonly EventCard[] = [
+  { label: "Aman Gupta", src: "/Events/Aman-4.webp" },
+  { label: "Vineeta Singh", src: "/Events/Vineeta2.webp" },
+  { label: "Vijay Shekhar Sharma", src: "/Events/Vijay2.webp" },
+  { label: "Jazzy-B", src: "/Events/jazzy-B.webp" },
+  { label: "Jassie Gill", src: "/Events/Jassi-Gill-2024.webp" },
+  { label: "Sunanda Sharma", src: "/Events/sunanda-sharma.webp" },
 ] as const;
 
 const CAMPUS = [
@@ -317,7 +327,13 @@ function videoEmbed(url: string, autoplay = false) {
   return `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1&controls=0&loop=1&playlist=${id}&autoplay=${autoplay ? 1 : 0}`;
 }
 
-export default function AsbCourseLandingShell({ course, forceTealTheme = false }: AsbCourseLandingShellProps) {
+export default function AsbCourseLandingShell({
+  course,
+  forceTealTheme = false,
+  customEvents,
+  desktopScholarshipLogoSrc,
+  desktopScholarshipLogoAlt = "Program logo",
+}: AsbCourseLandingShellProps) {
   const homeRef = useRef<HTMLElement | null>(null);
   const content = COURSE_DETAILS[course.key];
   const isBaPsychology = course.key === "ba-psychology";
@@ -327,6 +343,7 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
   const showOxfordLogo = course.key !== "ba-psychology" || isNewPsychology;
   const showHeroOxfordPoint = course.key !== "ba-psychology" && course.key !== "ba-psychology3";
   const showInternationalSection = course.key !== "ba-psychology" && course.key !== "ba-psychology3";
+  const events = customEvents ?? EVENTS;
   const [intlIdx, setIntlIdx] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
   const [testModalUrl, setTestModalUrl] = useState("");
@@ -408,6 +425,22 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
         .recruiter-card{background:#fafafa;border:1px solid #f1f5f9;border-radius:12px;padding:25px;display:flex;align-items:center;justify-content:center;transition:all .3s ease;height:110px}
         .recruiter-card:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(0,0,0,.05);border-color:#e2e8f0}
         .recruiter-card img{max-width:100%;max-height:50px;object-fit:contain;filter:none;transition:all .3s ease}
+        .events-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:start}
+        .events-card{display:flex;flex-direction:column;height:100%}
+        .events-card-wide{grid-column:1 / -1}
+        .events-img{border:1px solid #e5e7eb;background:#fff;overflow:hidden}
+        .events-card .events-img{aspect-ratio:3 / 2}
+        .events-card-wide .events-img{aspect-ratio:auto}
+        .events-img img{display:block;width:100%;height:100%;object-fit:cover}
+        .events-card-wide .events-img img{height:auto;object-fit:contain}
+        .events-label{margin-top:14px;font-size:16px;font-weight:500;color:#334e68;text-align:center}
+        .events-sub-labels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:12px}
+        .events-sub-label{font-size:16px;font-weight:500;color:#334e68;text-align:center}
+        @media (max-width: 767px) {
+          .events-grid{grid-template-columns:1fr;gap:20px}
+          .events-card-wide{grid-column:auto}
+          .events-sub-labels{grid-template-columns:1fr;gap:8px}
+        }
         .desktop-cta{display:none}
         .mobile-cta{display:none}
         @media (min-width:992px){
@@ -588,6 +621,33 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
           background: rgba(15, 31, 69, 0.05);
           border: 1px solid rgba(15, 31, 69, 0.08);
         }
+        .asb-desktop-scholarship-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-top: 24px;
+          width: fit-content;
+          max-width: 100%;
+        }
+        .asb-desktop-scholarship-row .asb-scholarship-card {
+          margin-top: 0;
+        }
+        .asb-desktop-scholarship-logo {
+          margin-top: 0;
+          width: 74px;
+          padding: 2px;
+          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.98);
+          box-shadow: 0 4px 10px rgba(15, 23, 42, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.92);
+          flex: 0 0 auto;
+        }
+        .asb-desktop-scholarship-logo img {
+          display: block;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+        }
 
         /* BA Psychology Theme Overrides (#791F70) */
         .asb-psychology-theme .bnrbg {
@@ -642,6 +702,13 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
           font-size: 1.8em !important;
         }
         @media (max-width:991px) {
+          .asb-desktop-scholarship-row {
+            display: block;
+            margin-top: 0;
+          }
+          .asb-desktop-scholarship-logo {
+            display: none;
+          }
           .asb-psychology-theme .frmD {
             background-color: #fff !important;
           }
@@ -931,16 +998,29 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
                           </div>
                         </div>
                       ) : null}
-                      <div className="asb-scholarship-card">
-                        <div className="asb-scholarship-content">
-                          <div className="asb-scholarship-icon-box">
-                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
-                              <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
-                            </svg>
+                      <div className="asb-desktop-scholarship-row">
+                        <div className="asb-scholarship-card">
+                          <div className="asb-scholarship-content">
+                            <div className="asb-scholarship-icon-box">
+                              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                                <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+                              </svg>
+                            </div>
+                            <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship*"}</h4>
                           </div>
-                          <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship*"}</h4>
                         </div>
+                        {desktopScholarshipLogoSrc ? (
+                          <div className="asb-desktop-scholarship-logo mobH">
+                            <Image
+                              src={desktopScholarshipLogoSrc}
+                              alt={desktopScholarshipLogoAlt}
+                              width={420}
+                              height={200}
+                              sizes="118px"
+                            />
+                          </div>
+                        ) : null}
                       </div>
                     </div>
                     <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
@@ -1203,7 +1283,7 @@ export default function AsbCourseLandingShell({ course, forceTealTheme = false }
 
         <section className="campus" id="campus"><div className="container"><div className="campus-head"><div className="line"></div><h2 className="title">Our Campus</h2></div><div className="campus-grid">{CAMPUS.map(([label, src]) => <div key={label} className="campus-card"><div className="campus-img"><img src={src} alt={label} width="400" height="300" /></div><div className="campus-label">{label}</div></div>)}</div></div></section>
 
-        <section className="events" id="events"><div className="container"><div className="events-head"><div className="line"></div><h2 className="title">Events at Asian School of Business</h2></div><div className="events-grid">{EVENTS.map(([label, src]) => <div key={label} className="events-card"><div className="events-img"><img src={src} alt={label} width="300" height="200" /></div><div className="events-label">{label}</div></div>)}</div></div></section>
+        <section className="events" id="events"><div className="container"><div className="events-head"><div className="line"></div><h2 className="title">Events at Asian School of Business</h2></div><div className="events-grid">{events.map((event, index) => <div key={`${event.label || "event"}-${index}`} className={`events-card${event.wide ? " events-card-wide" : ""}`}><div className="events-img"><img src={event.src} alt={event.label || "Event"} width="300" height="200" /></div>{event.subLabels?.length ? <div className="events-sub-labels">{event.subLabels.map((subLabel) => <div key={subLabel} className="events-sub-label">{subLabel}</div>)}</div> : <div className="events-label">{event.label}</div>}</div>)}</div></div></section>
 
         <section className="contact" id="contact"><div className="container contact-grid"><div><span className="tag">Get In Touch</span><h2 className="title">Start Your ASB Journey</h2><p>Admissions are open for {content.contactLabel} Batch 2026. Fill in the form and our admissions team will get in touch with you.</p></div><div className="cta"><div className="cta-box"><button type="button" className="btn btn-gold" onClick={() => scrollToId("enquire", true)}>Enquire Now</button></div></div></div></section>
 
