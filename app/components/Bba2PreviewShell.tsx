@@ -988,7 +988,7 @@ export default function Bba2PreviewShell({
                 href="https://api.whatsapp.com/send?phone=918376025740&text=Hi,%20I%20would%20like%20to%20know%20more%20about%20ASB%20degree%20programs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-wa"
+                className="btn-wa"
                 title="WhatsApp Us"
               >
                 <Image src="/whatsapp.png" alt="WhatsApp Us" width={52} height={52} />
