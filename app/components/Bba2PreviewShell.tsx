@@ -442,8 +442,9 @@ export default function Bba2PreviewShell({
           .desktop-cta-strip{display:flex;align-items:center;background:#fff;border-radius:80px;padding:8px 10px;box-shadow:0 15px 35px rgba(15,31,69,.2);pointer-events:auto;gap:12px}
           .btn-enq{background:#0f1f45!important;color:#fff!important;border-radius:50px!important;padding:14px 35px!important;font-weight:700;font-size:16px;text-transform:uppercase;border:none;cursor:pointer;white-space:nowrap}
           .btn-call{width:52px;height:52px;background:#0f1f45!important;color:#fff!important;border-radius:50%!important;display:flex;align-items:center;justify-content:center;text-decoration:none}
-          .btn-wa{width:52px;height:52px;background:#25d366!important;color:#fff!important;border-radius:50%!important;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform 0.2s ease}
-          .btn-wa:hover{transform:scale(1.05);background:#20ba5a!important}
+          .btn-wa{width:52px;height:52px;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform 0.2s ease}
+          .btn-wa:hover{transform:scale(1.05)}
+          .btn-wa img{width:100%;height:100%;object-fit:contain}
         }
         @media (max-width:991px){
           .navbar-area{position:relative!important;top:auto!important;left:auto!important;background:#fff!important;box-shadow:none!important}
@@ -473,8 +474,9 @@ export default function Bba2PreviewShell({
           .mobile-cta-strip{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;background:#ffffff;border-radius:18px;box-shadow:0 12px 32px rgba(15,31,69,.18)}
           .mobile-btn-enq{flex:1;height:48px;border:none;border-radius:999px;background:#0f1f45;color:#fff;font-weight:800;font-size:15px;text-transform:uppercase}
           .mobile-btn-call{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;background:radial-gradient(circle at 30% 30%,#e3fff0,#7ff0ab);color:#0f1f45;box-shadow:0 8px 18px rgba(50,205,125,.24)}
-          .mobile-btn-wa{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;background:#25d366!important;color:#fff!important;box-shadow:0 8px 18px rgba(37,211,102,.24);transition:transform 0.2s ease}
-          .mobile-btn-wa:hover{transform:scale(1.05);background:#20ba5a!important}
+          .mobile-btn-wa{width:48px;height:48px;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform 0.2s ease}
+          .mobile-btn-wa:hover{transform:scale(1.05)}
+          .mobile-btn-wa img{width:100%;height:100%;object-fit:contain}
         }
         @media (max-width:767px){.recruiters-grid{grid-template-columns:repeat(2,1fr);gap:12px}.top-recruiters{padding:40px 0}}
         .asb-scholarship-card {
@@ -989,9 +991,7 @@ export default function Bba2PreviewShell({
                 className="btn btn-wa"
                 title="WhatsApp Us"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.115-2.905-6.99C16.488 1.876 14.02 .843 11.5 1.873c-5.437 0-9.862 4.42-9.866 9.865-.001 1.758.468 3.473 1.358 4.974l-.99 3.61 3.705-.97c1.554.848 3.206 1.293 4.85 1.293zm10.748-7.393c-.273-.137-1.62-.8-1.872-.893-.254-.09-.438-.137-.622.137-.184.272-.713.89-.873 1.072-.16.183-.32.206-.593.07-1.085-.544-1.82-1.035-2.544-2.28-.192-.33.192-.307.549-1.017.06-.122.03-.228-.015-.32-.045-.09-.438-1.054-.6-1.447-.158-.382-.33-.33-.454-.33-.117-.006-.252-.008-.388-.008-.136 0-.358.05-.546.254-.188.205-.717.702-.717 1.71 0 1.01.736 1.986.837 2.122.102.137 1.448 2.21 3.51 3.1 1.472.634 1.957.51 2.658.406.84-.124 1.62-.663 1.85-1.3.23-.637.23-1.182.162-1.3-.068-.117-.253-.183-.526-.32z"/>
-                </svg>
+                <Image src="/whatsapp.png" alt="WhatsApp Us" width={52} height={52} />
               </a>
             )}
             <a href="tel:+918037898031" className="btn btn-call" title="Call Us"><svg width="24" height="24" viewBox="0 0 16 16" fill="currentColor"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z" /></svg></a>
@@ -1009,9 +1009,7 @@ export default function Bba2PreviewShell({
                 title="WhatsApp Us"
                 aria-label="WhatsApp Us"
               >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.115-2.905-6.99C16.488 1.876 14.02 .843 11.5 1.873c-5.437 0-9.862 4.42-9.866 9.865-.001 1.758.468 3.473 1.358 4.974l-.99 3.61 3.705-.97c1.554.848 3.206 1.293 4.85 1.293zm10.748-7.393c-.273-.137-1.62-.8-1.872-.893-.254-.09-.438-.137-.622.137-.184.272-.713.89-.873 1.072-.16.183-.32.206-.593.07-1.085-.544-1.82-1.035-2.544-2.28-.192-.33.192-.307.549-1.017.06-.122.03-.228-.015-.32-.045-.09-.438-1.054-.6-1.447-.158-.382-.33-.33-.454-.33-.117-.006-.252-.008-.388-.008-.136 0-.358.05-.546.254-.188.205-.717.702-.717 1.71 0 1.01.736 1.986.837 2.122.102.137 1.448 2.21 3.51 3.1 1.472.634 1.957.51 2.658.406.84-.124 1.62-.663 1.85-1.3.23-.637.23-1.182.162-1.3-.068-.117-.253-.183-.526-.32z"/>
-                </svg>
+                <Image src="/whatsapp.png" alt="WhatsApp Us" width={48} height={48} />
               </a>
             )}
             <a href="tel:+918037898031" className="mobile-btn-call" title="Call Us" aria-label="Call Us"><svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z" /></svg></a>
