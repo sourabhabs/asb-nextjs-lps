@@ -426,9 +426,9 @@ export default function AsbCourseLandingShell({
         .recruiter-card:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(0,0,0,.05);border-color:#e2e8f0}
         .recruiter-card img{max-width:100%;max-height:50px;object-fit:contain;filter:none;transition:all .3s ease}
         .events-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:start}
-        .events-card{display:flex;flex-direction:column;height:100%}
+        .events-card{display:flex;flex-direction:column;height:100%;width:100%}
         .events-card-wide{grid-column:1 / -1}
-        .events-img{border:1px solid #e5e7eb;background:#fff;overflow:hidden}
+        .events-img{width:100%;border:1px solid #e5e7eb;background:#fff;overflow:hidden}
         .events-card .events-img{aspect-ratio:3 / 2}
         .events-card-wide .events-img{aspect-ratio:auto}
         .events-img img{display:block;width:100%;height:100%;object-fit:cover}
@@ -437,9 +437,23 @@ export default function AsbCourseLandingShell({
         .events-sub-labels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:12px}
         .events-sub-label{font-size:16px;font-weight:500;color:#334e68;text-align:center}
         @media (max-width: 767px) {
-          .events-grid{grid-template-columns:1fr;gap:20px}
-          .events-card-wide{grid-column:auto}
+          .events{padding-bottom:12px}
+          .events-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:360px;margin:0 auto}
+          .events-card{max-width:100%;margin:0 auto}
+          .events-card-wide{grid-column:1 / -1}
+          .events-card .events-img{aspect-ratio:1 / 1;border-radius:18px}
+          .events-card-wide .events-img{aspect-ratio:auto}
+          .events-card-wide .events-img img{min-height:220px;object-fit:cover}
+          .events-label{margin-top:10px;font-size:14px;line-height:1.3;padding:0 4px}
           .events-sub-labels{grid-template-columns:1fr;gap:8px}
+          .events-head .title{font-size:clamp(28px,9vw,42px);line-height:1.08}
+          .asb-course-shell-ba-psychology .events-card:last-child,
+          .asb-course-shell-ba-psychology3 .events-card:last-child{
+            grid-column:1 / -1;
+            max-width:100%;
+            width:100%;
+            justify-self:stretch;
+          }
         }
         .desktop-cta{display:none}
         .mobile-cta{display:none}
@@ -611,7 +625,8 @@ export default function AsbCourseLandingShell({
         }
         .asb-scholarship-card.mobile-style .asb-scholarship-title {
           color: #0f1f45;
-          font-size: 19px;
+          font-size: 16px;
+          line-height: 1.15;
         }
         .asb-scholarship-card.mobile-style .asb-scholarship-desc {
           color: #475569 !important;
@@ -620,6 +635,43 @@ export default function AsbCourseLandingShell({
         .asb-scholarship-card.mobile-style .asb-scholarship-icon-box {
           background: rgba(15, 31, 69, 0.05);
           border: 1px solid rgba(15, 31, 69, 0.08);
+          transform: none;
+        }
+        .asb-scholarship-card.mobile-style:hover .asb-scholarship-icon-box {
+          transform: none;
+        }
+        .asb-mobile-scholarship-row {
+          display: flex;
+          align-items: stretch;
+          justify-content: center;
+          gap: 8px;
+          width: calc(100% - 20px);
+          max-width: 390px;
+          margin: 12px auto 0;
+        }
+        .asb-mobile-scholarship-row .asb-scholarship-card.mobile-style {
+          flex: 1 1 auto;
+          width: auto;
+          margin: 0;
+        }
+        .asb-mobile-scholarship-logo {
+          flex: 0 0 68px;
+          width: 68px;
+          min-height: 100%;
+          padding: 6px;
+          border-radius: 12px;
+          background: #fff;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .asb-mobile-scholarship-logo img {
+          display: block;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
         }
         .asb-desktop-scholarship-row {
           display: flex;
@@ -708,6 +760,13 @@ export default function AsbCourseLandingShell({
           }
           .asb-desktop-scholarship-logo {
             display: none;
+          }
+          .asb-mobile-scholarship-row {
+            gap: 8px;
+          }
+          .asb-mobile-scholarship-logo {
+            flex-basis: 68px;
+            width: 68px;
           }
           .asb-psychology-theme .frmD {
             background-color: #fff !important;
@@ -1046,16 +1105,29 @@ export default function AsbCourseLandingShell({
                           </div>
                         </div>
                       ) : null}
-                      <div className="asb-scholarship-card mobile-style">
-                        <div className="asb-scholarship-content">
-                          <div className="asb-scholarship-icon-box">
-                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
-                              <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
-                            </svg>
+                      <div className="asb-mobile-scholarship-row">
+                        <div className="asb-scholarship-card mobile-style">
+                          <div className="asb-scholarship-content">
+                            <div className="asb-scholarship-icon-box">
+                              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                                <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+                              </svg>
+                            </div>
+                            <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship"}</h4>
                           </div>
-                          <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship"}</h4>
                         </div>
+                        {desktopScholarshipLogoSrc ? (
+                          <div className="asb-mobile-scholarship-logo">
+                            <Image
+                              src={desktopScholarshipLogoSrc}
+                              alt={desktopScholarshipLogoAlt}
+                              width={180}
+                              height={180}
+                              sizes="58px"
+                            />
+                          </div>
+                        ) : null}
                       </div>
                     </div>
                   </div>

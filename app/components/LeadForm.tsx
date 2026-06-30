@@ -336,6 +336,8 @@ export default function LeadForm({
         }
         @media (max-width: 991px) {
           .course-readonly {
+            justify-content: center;
+            text-align: center;
             min-height: 52px;
             border-radius: 12px;
             border: 1px solid #d6dae2;

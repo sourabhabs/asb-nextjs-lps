@@ -15,5 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function Bba2Page() {
-  return <Bba2PreviewShell course={course} />;
+  return <Bba2PreviewShell course={course} showWhatsApp={true} />;
 }

@@ -7,7 +7,7 @@ const course = ASB_COURSE_ROUTES["ba-psychology"];
 const customEvents = [
   {
     label: "Nukkad Natak",
-    src: "/nukkad-natak/boy.jpg",
+    src: "/nukkad-natak/boy.png",
     wide: true,
   },
   { label: "Aman Gupta", src: "/Events/Aman-4.webp" },
