@@ -31,7 +31,7 @@ type CourseDetails = {
   }[];
 };
 
-const COURSE_DETAILS: Record<PreviewCourseKey, CourseDetails> = {
+const COURSE_DETAILS: Record<string, CourseDetails> = {
   bba: {
     highlight: "BBA",
     contactLabel: "BBA",
@@ -328,10 +328,10 @@ export default function Bba2PreviewShell({
   showWhatsApp = false,
 }: Bba2PreviewShellProps) {
   const homeRef = useRef<HTMLElement | null>(null);
-  const content = COURSE_DETAILS[course.key];
+  const content = course.key === "bba3" ? COURSE_DETAILS["bba"] : COURSE_DETAILS[course.key];
   const isBaPsychology = course.key === "ba-psychology";
   const isPsychologyRoute = course.key.startsWith("ba-psychology");
-  const showHeroStats = ["bba", "bca", "bcom", "bsc"].includes(course.key);
+  const showHeroStats = ["bba", "bca", "bcom", "bsc", "bba3"].includes(course.key);
   const showOxfordLogo = course.key !== "ba-psychology";
   const showHeroOxfordPoint = course.key !== "ba-psychology";
   const showInternationalSection = course.key !== "ba-psychology";
@@ -607,6 +607,157 @@ export default function Bba2PreviewShell({
           border: 1px solid rgba(15, 31, 69, 0.08);
         }
 
+        /* BBA3 Custom Hero Overlay Styling */
+        .asb-bba3-pill {
+          display: inline-block;
+          background: linear-gradient(90deg, #09479b 0%, #06316f 100%);
+          border: 1.5px solid #22f0ff;
+          border-radius: 14px;
+          padding: 10px 24px;
+          color: #fff;
+          font-weight: 700;
+          font-size: 19px;
+          line-height: 1;
+          margin-bottom: 20px;
+          box-shadow: 0 4px 15px rgba(9, 71, 155, 0.25);
+        }
+        .asb-bba3-pill-highlight {
+          color: #22f0ff;
+          font-weight: 800;
+        }
+        .asb-bba3-points {
+          list-style: none;
+          padding: 0;
+          margin: 10px 0 24px;
+        }
+        .asb-bba3-points li {
+          position: relative;
+          padding-left: 30px;
+          font-size: 18px;
+          line-height: 1.4;
+          color: #fff;
+          font-weight: 600;
+        }
+        .asb-bba3-points li::before {
+          content: "\\00BB";
+          position: absolute;
+          left: 6px;
+          top: -1px;
+          font-size: 24px;
+          color: #22f0ff;
+        }
+        .asb-bba3-scholarship-card {
+          border: 2px solid #ffb703;
+          border-radius: 24px;
+          background: rgba(3, 15, 38, 0.85);
+          backdrop-filter: blur(10px);
+          padding: 18px 24px;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          width: fit-content;
+          min-width: 420px;
+          margin-top: 24px;
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 15px rgba(255, 183, 3, 0.1);
+        }
+        .asb-bba3-scholarship-left {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 84px;
+          height: 84px;
+          background: rgba(255, 183, 3, 0.08);
+          border: 1.5px solid rgba(255, 183, 3, 0.2);
+          border-radius: 20px;
+          flex-shrink: 0;
+        }
+        .asb-bba3-scholarship-right {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 2px;
+        }
+        .asb-bba3-scholarship-upto {
+          font-size: 14px;
+          font-weight: 800;
+          color: #fff;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin: 0;
+          line-height: 1;
+        }
+        .asb-bba3-scholarship-title {
+          font-size: 28px;
+          font-weight: 900;
+          color: #ffffff;
+          margin: 0;
+          line-height: 0.95;
+          letter-spacing: -0.02em;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .asb-bba3-scholarship-badge {
+          background: #ffb703;
+          color: #051630;
+          font-size: 12px;
+          font-weight: 800;
+          padding: 4px 10px;
+          border-radius: 6px;
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+          margin-top: 4px;
+          line-height: 1;
+        }
+        .asb-bba3-stats {
+          display: flex;
+          gap: 16px;
+          margin-top: 24px;
+          width: 100%;
+          max-width: 520px;
+        }
+        .asb-bba3-stat-box {
+          flex: 1;
+          background: rgba(3, 15, 38, 0.8);
+          backdrop-filter: blur(10px);
+          border: 1.5px solid rgba(255, 255, 255, 0.15);
+          border-radius: 18px;
+          padding: 14px 18px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+        }
+        .asb-bba3-stat-icon-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          background: rgba(255, 255, 255, 0.08);
+          border-radius: 50%;
+          color: #fff;
+          font-size: 20px;
+          font-weight: bold;
+          flex-shrink: 0;
+        }
+        .asb-bba3-stat-details {
+          display: flex;
+          flex-direction: column;
+        }
+        .asb-bba3-stat-value {
+          font-size: 22px;
+          font-weight: 800;
+          color: #fff;
+          margin: 0 !important;
+          line-height: 1.1;
+        }
+        .asb-bba3-stat-label {
+          font-size: 13px;
+          font-weight: 600;
+          color: rgba(255,255,255,0.9) !important;
+          margin: 0 !important;
+          line-height: 1.2;
+        }
+
         /* BA Psychology Theme Overrides (#791F70) */
         .asb-psychology-theme .bnrbg {
           background-image: linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)), url("/New Website banner ASB 1904x686 (3).jpg") !important;
@@ -814,7 +965,74 @@ export default function Bba2PreviewShell({
                     className="header-hero-content"
                     style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
                   >
-                    {course.key !== "bba" ? (
+                    {course.key === "bba3" ? (
+                      <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
+                        <h1 className="asb-desktop-hero-title" style={{ fontSize: "54px", fontWeight: 800, color: "#fff", lineHeight: "1.1", textTransform: "none", marginBottom: "20px" }}>
+                          Join the Best<br />Undergrad College<br />in Delhi-NCR
+                        </h1>
+                        
+                        <div className="asb-bba3-pill">
+                          Pursue Full-Time <span className="asb-bba3-pill-highlight">BBA</span> Degree Program.
+                        </div>
+
+                        <ul className="asb-bba3-points">
+                          <li>15 Days Study Trip to Oxford Business College, Oxford & London, U.K.</li>
+                        </ul>
+
+                        <div className="asb-bba3-scholarship-card">
+                          <div className="asb-bba3-scholarship-left">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              {/* Graduation Cap */}
+                              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#ffb703" />
+                              <path d="M17 9.5V12C17 13 15.5 14 12 14C8.5 14 7 13 7 12V9.5L12 11.5L17 9.5Z" fill="#ffb703" />
+                              <path d="M21 7.5V12.5" stroke="#ffb703" strokeWidth="1.2" strokeLinecap="round" />
+                              <circle cx="21" cy="12.5" r="0.8" fill="#ffb703" />
+                              
+                              {/* Diploma Scroll */}
+                              <path d="M4 16C4 15.17 4.67 14.5 5.5 14.5H18.5C19.33 14.5 20 15.17 20 16C20 16.83 19.33 17.5 18.5 17.5H5.5C4.67 17.5 4 16.83 4 16Z" fill="#ffffff" />
+                              <path d="M5.5 17.5C4.67 17.5 4 18.17 4 19C4 19.83 4.67 20.5 5.5 20.5H18.5C19.33 20.5 20 19.83 20 19C20 18.17 19.33 17.5 18.5 17.5" fill="#ffffff" />
+                              {/* Ribbon */}
+                              <path d="M11 14.5V17.5" stroke="#ffb703" strokeWidth="1.5" />
+                              <path d="M13 14.5V17.5" stroke="#ffb703" strokeWidth="1.5" />
+                            </svg>
+                          </div>
+                          <div className="asb-bba3-scholarship-right">
+                            <p className="asb-bba3-scholarship-upto">Upto</p>
+                            <h4 className="asb-bba3-scholarship-title">
+                              <span style={{ fontSize: "56px", fontWeight: 900, display: "block", color: "#ffffff", margin: "2px 0 6px", lineHeight: "1" }}>100%</span>
+                              SCHOLARSHIP*
+                            </h4>
+                            <span className="asb-bba3-scholarship-badge">Available For All</span>
+                          </div>
+                        </div>
+
+                        <div className="asb-bba3-stats">
+                          <div className="asb-bba3-stat-box">
+                            <div className="asb-bba3-stat-icon-wrapper">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffb703" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                              </svg>
+                            </div>
+                            <div className="asb-bba3-stat-details">
+                              <p className="asb-bba3-stat-value">100%</p>
+                              <p className="asb-bba3-stat-label">Placement Assistance</p>
+                            </div>
+                          </div>
+                          <div className="asb-bba3-stat-box">
+                            <div className="asb-bba3-stat-icon-wrapper" style={{ color: "#ffb703", fontSize: "24px", fontFamily: "Inter, sans-serif" }}>
+                              ₹
+                            </div>
+                            <div className="asb-bba3-stat-details">
+                              <p className="asb-bba3-stat-value">{content.heroFee}</p>
+                              <p className="asb-bba3-stat-label">Total Fees</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : course.key !== "bba" ? (
                       <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
                         <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
                         <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">{content.highlight}</span> Degree Program.</p>

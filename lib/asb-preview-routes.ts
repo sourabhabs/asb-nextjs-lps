@@ -5,7 +5,8 @@ export type PreviewCourseKey =
   | "bsc"
   | "ba-psychology"
   | "ba-psychology-international"
-  | "ba-psychology3";
+  | "ba-psychology3"
+  | "bba3";
 
 export type PreviewCourseConfig = {
   key: PreviewCourseKey;
@@ -16,6 +17,12 @@ export type PreviewCourseConfig = {
 };
 
 export const PREVIEW_COURSES: Record<PreviewCourseKey, PreviewCourseConfig> = {
+  bba3: {
+    key: "bba3",
+    heroImage: "/ASB-BG-D.webp",
+    queryLabel: "ASB BBA3 Preview Landing",
+    thankYouPath: "/thank-you-bba.php",
+  },
   bba: {
     key: "bba",
     heroImage: "/BBA.jpg",
