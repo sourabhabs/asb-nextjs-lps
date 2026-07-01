@@ -985,7 +985,7 @@ export default function Bba2PreviewShell({
             <button type="button" className="btn btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
             {showWhatsApp && (
               <a
-                href="https://api.whatsapp.com/send?phone=918376025740&text=Hi,%20I%20would%20like%20to%20know%20more%20about%20ASB%20degree%20programs"
+                href="https://api.whatsapp.com/send?phone=918376025740&text=Hi,%20I%20would%20like%20to%20know%20more%20about%20ASB%203%20year%20degree%20programs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-wa"
@@ -1002,7 +1002,7 @@ export default function Bba2PreviewShell({
             <button type="button" className="mobile-btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
             {showWhatsApp && (
               <a
-                href="https://api.whatsapp.com/send?phone=918376025740&text=Hi,%20I%20would%20like%20to%20know%20more%20about%20ASB%20degree%20programs"
+                href="https://api.whatsapp.com/send?phone=918376025740&text=Hi,%20I%20would%20like%20to%20know%20more%20about%20ASB%203%20year%20degree%20programs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mobile-btn-wa"
