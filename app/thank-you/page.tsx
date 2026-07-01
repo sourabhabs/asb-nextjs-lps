@@ -22,6 +22,14 @@ export default async function MainThankYouPage() {
         applicantName={applicantName}
         courseLabel={courseLabel || "Undergraduate"}
       />
+      {/* Partner MRN Digital Tracking Pixel */}
+      <img
+        src="https://trk.mrndigital.in/pixel?av=6a421702efcf607d560a3202"
+        width="1"
+        height="1"
+        style={{ display: "none" }}
+        alt=""
+      />
     </>
   );
 }

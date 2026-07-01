@@ -35,6 +35,14 @@ gtag('config', 'AW-18057960286');`}
       </Script>
       <ThankYouTracking conversionSendTo="AW-862684608/nckdCLfh1ZAcEMCLrpsD" />
       <ThankYouPage applicantName={applicantName} courseLabel={courseLabel || "B.Sc. (CS)"} />
+      {/* Partner MRN Digital Tracking Pixel */}
+      <img
+        src="https://trk.mrndigital.in/pixel?av=6a421702efcf607d560a3202"
+        width="1"
+        height="1"
+        style={{ display: "none" }}
+        alt=""
+      />
     </>
   );
 }
