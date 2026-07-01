@@ -391,6 +391,13 @@ export default function Bba2PreviewShell({
   return (
     <>
       <style>{`
+        ${course.key === "bba" ? `
+          @media (min-width: 992px) {
+            .header-hero {
+              height: calc(45.42vw + 146px) !important;
+            }
+          }
+        ` : ""}
         .alc-desktop-logo-strip{display:flex;align-items:center;gap:20px;margin-left:22px}
         .alc-desktop-logo-strip .logo-alc{height:68px;width:auto;display:block;object-fit:contain}
         .alc-desktop-logo-strip .logo-obc{height:54px;width:auto;display:block;object-fit:contain}
@@ -417,7 +424,7 @@ export default function Bba2PreviewShell({
         .mobile-cta{display:none}
         @media (min-width:992px){
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
-          .bnrbg{background-image:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),url("/ASB-BG-D.webp")!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
+          .bnrbg{background-image:${course.key === "bba" ? 'none' : 'linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),url("/ASB-BG-D.webp")'}!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
           .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff}
           .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff}
           .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600}
@@ -770,10 +777,18 @@ export default function Bba2PreviewShell({
             <div
               className="mobH"
               aria-hidden="true"
-              style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}
+              style={{
+                position: "absolute",
+                top: course.key === "bba" ? "78px" : 0,
+                left: 0,
+                right: 0,
+                bottom: course.key === "bba" ? "68px" : 0,
+                zIndex: 0,
+                pointerEvents: "none",
+              }}
             >
               <Image
-                src={isPsychologyRoute ? course.heroImage : "/ASB-BG-D.webp"}
+                src={course.key === "bba" ? "/BBA2.png" : (isPsychologyRoute ? course.heroImage : "/ASB-BG-D.webp")}
                 alt=""
                 fill
                 priority
@@ -781,14 +796,16 @@ export default function Bba2PreviewShell({
                 sizes="100vw"
                 style={{ objectFit: "cover" }}
               />
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background:
-                    "linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28))",
-                }}
-              />
+              {course.key !== "bba" && (
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28))",
+                  }}
+                />
+              )}
             </div>
             <div className="container-l banner-content" style={{ width: "auto" }}>
               <div className="row" style={{ width: "100%", marginRight: 0, marginLeft: 0 }}>
@@ -797,38 +814,43 @@ export default function Bba2PreviewShell({
                     className="header-hero-content"
                     style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
                   >
-                    <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
-                      <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
-                      <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">{content.highlight}</span> Degree Program.</p>
-                      {showHeroOxfordPoint ? (
-                        <ul className="asb-desktop-hero-points">
-                          <li style={{ fontSize: "20px" }}>15 Days Study Trip to Oxford Business College, Oxford & London, U.K.</li>
-                        </ul>
-                      ) : null}
-                      {showHeroStats ? (
-                        <div className="asb-hero-stats" aria-label="Course highlights">
-                          <div className="asb-hero-stat-box">
-                            <p className="asb-hero-stat-value">100%</p>
-                            <p className="asb-hero-stat-label">Placement Assistance</p>
+                    {course.key !== "bba" ? (
+                      <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
+                        <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
+                        <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">{content.highlight}</span> Degree Program.</p>
+                        {showHeroOxfordPoint ? (
+                          <ul className="asb-desktop-hero-points">
+                            <li style={{ fontSize: "20px" }}>15 Days Study Trip to Oxford Business College, Oxford & London, U.K.</li>
+                          </ul>
+                        ) : null}
+                        {showHeroStats ? (
+                          <div className="asb-hero-stats" aria-label="Course highlights">
+                            <div className="asb-hero-stat-box">
+                              <p className="asb-hero-stat-value">100%</p>
+                              <p className="asb-hero-stat-label">Placement Assistance</p>
+                            </div>
+                            <div className="asb-hero-stat-box">
+                              <p className="asb-hero-stat-value">{content.heroFee}</p>
+                              <p className="asb-hero-stat-label">Total Fees</p>
+                            </div>
                           </div>
-                          <div className="asb-hero-stat-box">
-                            <p className="asb-hero-stat-value">{content.heroFee}</p>
-                            <p className="asb-hero-stat-label">Total Fees</p>
+                        ) : null}
+                        <div className="asb-scholarship-card">
+                          <div className="asb-scholarship-content">
+                            <div className="asb-scholarship-icon-box">
+                              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                                <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+                              </svg>
+                            </div>
+                            <h4 className="asb-scholarship-title">Upto 100% Scholarship*</h4>
                           </div>
-                        </div>
-                      ) : null}
-                      <div className="asb-scholarship-card">
-                        <div className="asb-scholarship-content">
-                          <div className="asb-scholarship-icon-box">
-                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
-                              <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
-                            </svg>
-                          </div>
-                          <h4 className="asb-scholarship-title">Upto 100% Scholarship*</h4>
                         </div>
                       </div>
-                    </div>
+                    ) : (
+                      /* Spacer to prevent layout/height collapse on desktop */
+                      <div className="mobH" style={{ height: "460px" }} />
+                    )}
                     <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                       <Image
                         src={course.mobileHeroImage ?? course.heroImage}
