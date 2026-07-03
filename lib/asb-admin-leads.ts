@@ -20,6 +20,10 @@ export type LeadAdminDoc = {
   source?: string;
   pageUrl?: string;
   createdAt?: string | Date;
+  completedClass12?: string;
+  class12Score?: string;
+  englishComfort?: string;
+  higherEducationPlanning?: string;
   utm?: {
     source?: string;
     medium?: string;
@@ -122,6 +126,10 @@ export function toLeadCsvRows(leads: LeadAdminDoc[]) {
     "LeadSquared Capture Error",
     "LeadSquared Verify Status",
     "LeadSquared Verify Error",
+    "Class 12 Completed",
+    "Class 12 Score",
+    "English Comfort",
+    "Higher Ed Planning",
     "UTM Source",
     "UTM Medium",
     "UTM Campaign",
@@ -156,6 +164,10 @@ export function toLeadCsvRows(leads: LeadAdminDoc[]) {
       lead.leadSquaredCaptureError,
       lead.leadSquaredVerifyStatus,
       lead.leadSquaredVerifyError,
+      lead.completedClass12,
+      lead.class12Score,
+      lead.englishComfort,
+      lead.higherEducationPlanning,
       lead.sourceRaw,
       lead.utm?.medium,
       lead.utm?.campaign,

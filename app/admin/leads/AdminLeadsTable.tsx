@@ -17,6 +17,10 @@ export type SerializableLead = {
   lsCaptureError: string;
   lsVerifyStatus: string;
   lsVerifyError: string;
+  completedClass12: string;
+  class12Score: string;
+  englishComfort: string;
+  higherEducationPlanning: string;
   utmSource: string;
   utmMedium: string;
   utmCampaign: string;
@@ -283,6 +287,10 @@ export default function AdminLeadsTable({ leads }: { leads: SerializableLead[] }
               <th style={th}>SMS</th>
               <th style={th}>LS Capture</th>
               <th style={th}>LS Verify</th>
+              <th style={th}>Class 12?</th>
+              <th style={th}>Score</th>
+              <th style={th}>English</th>
+              <th style={th}>Planning</th>
               <th style={th}>UTM Source</th>
               <th style={th}>UTM Medium</th>
               <th style={th}>UTM Campaign</th>
@@ -345,6 +353,10 @@ export default function AdminLeadsTable({ leads }: { leads: SerializableLead[] }
                   <td style={td}>
                     <ErrorCell status={lead.lsVerifyStatus} error={lead.lsVerifyError} />
                   </td>
+                  <td style={{ ...td, whiteSpace: "nowrap" }}>{lead.completedClass12}</td>
+                  <td style={{ ...td, whiteSpace: "nowrap" }}>{lead.class12Score}</td>
+                  <td style={{ ...td, whiteSpace: "nowrap" }}>{lead.englishComfort}</td>
+                  <td style={{ ...td, whiteSpace: "nowrap" }}>{lead.higherEducationPlanning}</td>
                   <td style={{ ...td, fontSize: "12px" }}>{lead.utmSource}</td>
                   <td style={{ ...td, fontSize: "12px" }}>{lead.utmMedium}</td>
                   <td

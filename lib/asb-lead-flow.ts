@@ -786,3 +786,104 @@ export async function getThankYouLeadCookieData() {
 
   return { applicantName, course, courseLabel, email, phoneE164 };
 }
+
+export async function startPmaxLeadCapture(
+  payload: LeadFormPayload,
+  forwardedFor: string | null
+): Promise<string> {
+  const otp = "PMAX";
+  const leadDocId = await insertLeadRecord(payload, forwardedFor, otp);
+
+  await updateLeadRecord(leadDocId, {
+    otpStatus: "Pmax In Progress",
+    smsStatus: "Bypassed",
+  });
+
+  void syncLeadSquaredCapture(leadDocId, payload);
+
+  return leadDocId;
+}
+
+export async function submitPmaxLeadQuestionnaire(
+  leadDocId: string,
+  answers: {
+    completedClass12: string;
+    class12Score: string;
+    englishComfort: string;
+    higherEducationPlanning: string;
+  }
+) {
+  const db = await getMongoDb();
+
+  await updateLeadRecord(leadDocId, {
+    completedClass12: answers.completedClass12,
+    class12Score: answers.class12Score,
+    englishComfort: answers.englishComfort,
+    higherEducationPlanning: answers.higherEducationPlanning,
+    otpStatus: "Verified",
+    otpVerifiedAt: new Date(),
+  });
+
+  const objectId = new ObjectId(leadDocId);
+  const lead = await db.collection(LEADS_COLLECTION).findOne({ _id: objectId });
+  if (!lead) {
+    throw new Error("Lead not found");
+  }
+
+  const payload = toLeadPayloadFromRecord(
+    lead as Parameters<typeof toLeadPayloadFromRecord>[0]
+  );
+
+  void syncLeadSquaredPmaxSubmit(leadDocId, payload, answers);
+}
+
+async function syncLeadSquaredPmaxSubmit(
+  leadDocId: string,
+  payload: LeadFormPayload,
+  answers: {
+    completedClass12: string;
+    class12Score: string;
+    englishComfort: string;
+    higherEducationPlanning: string;
+  }
+) {
+  const baseAttributes = buildLeadSquaredAttributes(payload, "Verified");
+
+  const leadAttributes = [
+    ...baseAttributes,
+    { Attribute: "mx_Completed_Class_12", Value: answers.completedClass12 },
+    { Attribute: "mx_Class_12_Score", Value: answers.class12Score },
+    { Attribute: "mx_English_Comfort", Value: answers.englishComfort },
+    { Attribute: "mx_Higher_Education_Planning", Value: answers.higherEducationPlanning },
+  ];
+
+  try {
+    const db = await getMongoDb();
+    const lead = await db.collection(LEADS_COLLECTION).findOne({ _id: new ObjectId(leadDocId) });
+    const lsqLeadId = lead?.leadSquaredLeadId;
+
+    if (lsqLeadId) {
+      await updateLeadInLeadSquared(lsqLeadId, leadAttributes);
+    } else {
+      const verifyResult = await verifyLeadInLeadSquared(payload);
+      await updateLeadInLeadSquared(verifyResult.leadId, [
+        { Attribute: "mx_Completed_Class_12", Value: answers.completedClass12 },
+        { Attribute: "mx_Class_12_Score", Value: answers.class12Score },
+        { Attribute: "mx_English_Comfort", Value: answers.englishComfort },
+        { Attribute: "mx_Higher_Education_Planning", Value: answers.higherEducationPlanning },
+      ]);
+    }
+
+    await updateLeadRecord(leadDocId, {
+      leadSquaredVerifyStatus: "Updated with Profile",
+      leadSquaredVerifyError: "",
+    });
+  } catch (error) {
+    console.error("Failed to sync Pmax lead questionnaire details to LeadSquared", error);
+    await updateLeadRecord(leadDocId, {
+      leadSquaredVerifyStatus: "Profile Sync Failed",
+      leadSquaredVerifyError: error instanceof Error ? error.message : "Sync failed",
+    });
+  }
+}
+
