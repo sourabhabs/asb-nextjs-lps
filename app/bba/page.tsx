@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import AsbCourseLandingShell from "@/app/components/AsbCourseLandingShell";
+import Bba2PreviewShell from "@/app/components/Bba2PreviewShell";
 import { ASB_COURSE_ROUTES } from "@/lib/asb-routes";
 
 const course = ASB_COURSE_ROUTES.bba;
@@ -10,5 +10,6 @@ export const metadata: Metadata = {
 };
 
 export default function BbaPage() {
-  return <AsbCourseLandingShell course={course} />;
+  return <Bba2PreviewShell course={course} showWhatsApp={true} />;
 }
+
