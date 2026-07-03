@@ -199,6 +199,61 @@ export default function LeadFormMultiStep({
           line-height: 1.45;
           text-align: center;
         }
+        .q-input-group {
+          margin-bottom: 14px;
+        }
+        .q-input {
+          width: 100%;
+          height: 48px;
+          border-radius: 10px;
+          border: 1px solid #cbd5e1;
+          padding: 0 14px;
+          font-size: 15px;
+          color: #0f172a;
+          background: #fff;
+          outline: none;
+          transition: border-color 0.2s;
+        }
+        .q-input:focus {
+          border-color: #0d9488;
+          box-shadow: 0 0 0 1px #0d9488;
+        }
+        .course-readonly {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 48px;
+          border-radius: 10px;
+          border: 1px solid #e2e8f0;
+          background: #f8fafc;
+          padding: 0 14px;
+          font-size: 15px;
+          color: #64748b;
+          font-weight: 600;
+        }
+        .q-submit-btn {
+          width: 100%;
+          height: 48px;
+          border: none;
+          border-radius: 12px;
+          background: #0d9488;
+          color: #fff;
+          font-weight: 800;
+          font-size: 15px;
+          cursor: pointer;
+          transition: opacity 0.2s;
+          text-transform: uppercase;
+          letter-spacing: 0.02em;
+          box-shadow: 0 4px 12px rgba(13, 148, 136, 0.15);
+        }
+        .q-submit-btn:hover {
+          opacity: 0.95;
+        }
+        .q-submit-btn:disabled {
+          background: #94a3b8;
+          cursor: not-allowed;
+          box-shadow: none;
+        }
         .progress-wrapper {
           margin-bottom: 24px;
         }
@@ -353,13 +408,15 @@ export default function LeadFormMultiStep({
       `}</style>
 
       {step === 0 && (
-        <div className={`frmD ${className}`} id={id}>
-          <form id="heroLeadForm" onSubmit={handleContactSubmit} noValidate>
-            <div className="single_form hero-form-title" style={{ width: "auto" }}>
-              <h3>{title}&nbsp;</h3>
-            </div>
-            <div className="single_form">
+        <div className={`q-container ${className}`} id={id}>
+          <h3 className="q-title">{title}</h3>
+          <p className="q-sub">
+            Takes under a minute. Our admissions team will guide you on the next steps.
+          </p>
+          <form onSubmit={handleContactSubmit} noValidate>
+            <div className="q-input-group">
               <input
+                className="q-input"
                 type="text"
                 placeholder="Name*"
                 value={name}
@@ -369,8 +426,9 @@ export default function LeadFormMultiStep({
                 autoComplete="off"
               />
             </div>
-            <div className="single_form">
+            <div className="q-input-group">
               <input
+                className="q-input"
                 type="email"
                 placeholder="Email*"
                 value={email}
@@ -380,8 +438,9 @@ export default function LeadFormMultiStep({
                 autoComplete="off"
               />
             </div>
-            <div className="single_form">
+            <div className="q-input-group">
               <input
+                className="q-input"
                 type="tel"
                 placeholder="Mobile Number*"
                 value={phone}
@@ -392,8 +451,9 @@ export default function LeadFormMultiStep({
                 autoComplete="off"
               />
             </div>
-            <div className="single_form">
+            <div className="q-input-group">
               <input
+                className="q-input"
                 type="text"
                 placeholder="City*"
                 value={city}
@@ -403,17 +463,18 @@ export default function LeadFormMultiStep({
                 autoComplete="off"
               />
             </div>
-            <div className="single_form course-select-wrap">
+            <div className="q-input-group">
               {courses.length === 1 ? (
                 <div className="course-readonly" aria-label="Selected Course">
                   {courses[0].label}
                 </div>
               ) : (
                 <select
+                  className="q-input"
                   value={course}
                   onChange={(e) => setCourse(e.target.value)}
                   required
-                  style={{ color: course ? "#334155" : "#767676", marginBottom: "4px" }}
+                  style={{ color: course ? "#334155" : "#767676" }}
                 >
                   <option value="">Select Course*</option>
                   {courses.map((c) => (
@@ -426,16 +487,14 @@ export default function LeadFormMultiStep({
             </div>
 
             {statusMsg && (
-              <div className="hero-form-status-wrap" style={{ width: "100%" }}>
-                <div className="pmax-form-status">{statusMsg}</div>
+              <div className="pmax-form-status" style={{ marginBottom: "12px" }}>
+                {statusMsg}
               </div>
             )}
 
-            <div className="single_form">
-              <button id="heroSubmitBtn" type="submit" className="main-btn" disabled={isLoading}>
-                {isLoading ? "SAVING..." : submitLabel}
-              </button>
-            </div>
+            <button type="submit" className="q-submit-btn" disabled={isLoading}>
+              {isLoading ? "SAVING..." : submitLabel}
+            </button>
           </form>
         </div>
       )}

@@ -155,23 +155,15 @@ export default function Page() {
           .asb-hero-stat-box::before,.asb-hero-stat-box::after{content:none}
           .asb-hero-stat-value{margin:0 0 4px!important;color:#ffffff!important;font-size:29px;line-height:1;font-weight:800;text-shadow:0 1px 6px rgba(15,31,69,.22);white-space:nowrap}
           .asb-hero-stat-label{margin:0!important;color:rgba(255,255,255,.95)!important;font-size:15px;line-height:1.2;font-weight:700;text-shadow:0 1px 4px rgba(15,31,69,.18);white-space:normal}
-          #heroLeadForm{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;width:100%;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
-          #heroLeadForm::before{display:none!important;content:none!important}
-          #heroLeadForm .single_form{margin-top:0;width:138px;flex:0 0 auto}
-          #heroLeadForm .course-select-wrap{width:165px}
-          #heroLeadForm .hero-form-title{width:auto;min-width:190px;margin-right:2px}
-          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:33px;line-height:1;font-weight:800;letter-spacing:-.01em}
-          .frmD{padding:14px 8px;background-color:rgba(0,105,113,.66)}
-          #heroLeadForm .single_form input,#heroLeadForm .single_form select{display:block;width:100%;box-sizing:border-box;height:40px;border-radius:4px;border:1px solid rgba(71,85,105,.55);background:#fff;color:#334155;padding:0 10px;font-size:15px;margin:0;vertical-align:middle}
-          #heroLeadForm .single_form input::placeholder{font-size:14px;color:#6b7280}
-          #heroLeadForm #Phone{width:100%!important;padding:0 10px!important;font-size:15px!important}
-          #heroLeadForm #Phone::placeholder{font-size:14px!important}
-          #heroSubmitBtn{height:40px;line-height:40px;background:#006972!important;font-weight:700;padding:0 10px;min-width:92px;border-radius:4px}
-          #heroLeadForm .course-select-wrap select{margin-bottom:0!important;position:relative;top:0}
           .desktop-cta{display:flex!important;justify-content:flex-end;position:fixed;bottom:25px;left:25px;right:25px;z-index:9999;pointer-events:none;transition:opacity .3s ease,transform .3s ease}
           .desktop-cta-strip{display:flex;align-items:center;background:#fff;border-radius:80px;padding:8px 10px;box-shadow:0 15px 35px rgba(15,31,69,.2);pointer-events:auto;gap:12px}
           .btn-enq{background:#0f1f45!important;color:#fff!important;border-radius:50px!important;padding:14px 35px!important;font-weight:700;font-size:16px;text-transform:uppercase;border:none;cursor:pointer;white-space:nowrap}
           .btn-call{width:52px;height:52px;background:#0f1f45!important;color:#fff!important;border-radius:50%!important;display:flex;align-items:center;justify-content:center;text-decoration:none}
+          .container-l {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+          }
         }
         @media (max-width:991px){
           .navbar-area{position:relative!important;top:auto!important;left:auto!important;background:#fff!important;box-shadow:none!important}
@@ -179,10 +171,6 @@ export default function Page() {
           .navbar-area .row{margin-left:0!important;margin-right:0!important}
           .navbar-area .col-lg-12{padding-left:0!important;padding-right:0!important}
           .navbar-area .navbar{padding:0!important;min-height:auto!important}
-          .frmD{position:relative!important;border:1px solid #e2e8f0;border-radius:22px;padding:18px 14px 16px!important;max-width:420px;margin:10px auto 0;box-shadow:0 10px 25px rgba(15,23,42,.12);overflow:visible;background:#fff!important}
-          #heroLeadForm{display:block;padding-top:15px!important;margin-top:0!important}
-          .hero-form-title{width:100%!important;margin:0 auto 15px!important;padding-top:0!important;display:block!important}
-          .hero-form-title h3{text-align:center!important;margin:0!important;padding:0!important;width:100%!important;color:#0f1f45!important;font-size:2.35rem!important;font-weight:800!important;line-height:1.02!important}
           .alc-mobile-header{padding:10px 14px 8px!important;max-width:420px;margin:0 auto;background:#fff}
           .alc-mobile-header .navbar-brand{margin:0!important}
           .alc-mobile-header .navbar-brand img{height:46px!important}
@@ -198,9 +186,6 @@ export default function Page() {
           .asb-hero-stat-box{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:104px;padding:16px 10px;border:1px solid rgba(180,246,242,.95);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.99) 0%,rgba(245,255,254,.98) 36%,rgba(228,255,252,.95) 72%,rgba(214,252,248,.92) 100%);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 0 0 1px rgba(131,234,228,.12),0 10px 20px rgba(15,31,69,.1),0 0 20px rgba(137,255,244,.16);text-align:center}
           .asb-hero-stat-value{margin:0 0 4px!important;color:#0b7b89!important;font-size:clamp(19px,5.8vw,24px);line-height:1.05;font-weight:800;white-space:nowrap;text-shadow:0 0 8px rgba(164,255,247,.14)}
           .asb-hero-stat-label{margin:0!important;color:#25434b!important;font-size:13px;line-height:1.15;font-weight:700;white-space:normal}
-          #heroLeadForm .single_form{width:100%;margin-top:10px}
-          #heroLeadForm .single_form input,#heroLeadForm .single_form select{height:52px;border-radius:12px;border:1px solid #d6dae2;background:#f0f2f5;padding:0 14px;font-size:16px;color:#475569}
-          #heroSubmitBtn{height:48px;line-height:48px;border-radius:12px;background:#ff1b23!important;font-weight:800;letter-spacing:.02em;box-shadow:0 10px 18px rgba(255,27,35,.28)}
           .mobile-cta{display:flex;position:fixed;left:14px;right:14px;bottom:12px;z-index:9999;opacity:0;pointer-events:none;transform:translateY(18px);transition:opacity .3s ease,transform .3s ease}
           .mobile-cta.is-visible{opacity:1;pointer-events:auto;transform:translateY(0)}
           .mobile-cta-strip{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;background:#ffffff;border-radius:18px;box-shadow:0 12px 32px rgba(15,31,69,.18)}
@@ -385,8 +370,8 @@ export default function Page() {
             />
           </div>
           <div className="container-l banner-content" style={{ width: "auto" }}>
-            <div className="row" style={{ width: "100%", marginRight: 0, marginLeft: 0 }}>
-              <div className="col-lg-12">
+            <div className="row align-items-center" style={{ width: "100%", marginRight: 0, marginLeft: 0 }}>
+              <div className="col-lg-7 col-md-12">
                 <div
                   className="header-hero-content"
                   style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
@@ -410,40 +395,42 @@ export default function Page() {
                       </div>
                     </div>
                   </div>
-                  <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
-                    <Image
-                      src="/Mobile Banners ASB Placement.jpg"
-                      alt="ASB Admissions 2026"
-                      width={390}
-                      height={520}
-                      priority
-                      fetchPriority="high"
-                      sizes="(max-width: 420px) 390px, 100vw"
-                      style={{ width: "100%", height: "auto", display: "block" }}
-                    />
-                    <div className="asb-scholarship-card mobile-style">
-                      <div className="asb-scholarship-content">
-                        <div className="asb-scholarship-icon-box">
-                          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
-                            <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
-                          </svg>
-                        </div>
-                        <h4 className="asb-scholarship-title">Upto 100% Scholarship*</h4>
+                </div>
+              </div>
+              <div className="col-lg-5 col-md-12" style={{ position: "relative", zIndex: 2 }}>
+                <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
+                  <Image
+                    src="/Mobile Banners ASB Placement.jpg"
+                    alt="ASB Admissions 2026"
+                    width={390}
+                    height={520}
+                    priority
+                    fetchPriority="high"
+                    sizes="(max-width: 420px) 390px, 100vw"
+                    style={{ width: "100%", height: "auto", display: "block" }}
+                  />
+                  <div className="asb-scholarship-card mobile-style">
+                    <div className="asb-scholarship-content">
+                      <div className="asb-scholarship-icon-box">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                          <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+                        </svg>
                       </div>
+                      <h4 className="asb-scholarship-title">Upto 100% Scholarship*</h4>
                     </div>
                   </div>
                 </div>
+                <LeadFormMultiStep
+                  id="enquire"
+                  title="Start Your Application"
+                  courses={HERO_COURSES}
+                  queryLabel="ASB Pmax campaign 2026 Landing"
+                  thankYouPath="/thank-you.php"
+                  submitLabel="Continue Application"
+                />
               </div>
             </div>
-            <LeadFormMultiStep
-              id="enquire"
-              title="Start Your Application"
-              courses={HERO_COURSES}
-              queryLabel="ASB Pmax campaign 2026 Landing"
-              thankYouPath="/thank-you.php"
-              submitLabel="Continue Application"
-            />
           </div>
         </section>
       </header>
