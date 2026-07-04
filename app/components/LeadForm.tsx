@@ -158,9 +158,15 @@ export default function LeadForm({
     showStatus("", "success");
 
     try {
-      const res = await fetch(`/api/verify-otp?q=${encodeURIComponent(otp)}`);
+      const verifyUrl = onSuccess
+        ? `/api/verify-otp?q=${encodeURIComponent(otp)}&returnId=1`
+        : `/api/verify-otp?q=${encodeURIComponent(otp)}`;
+      const res = await fetch(verifyUrl);
       const text = await res.text();
-      if (text.trim() === "1") {
+      const trimmedText = text.trim();
+      const isSuccess = trimmedText === "1" || trimmedText.startsWith("1|");
+
+      if (isSuccess) {
         if (trackMetaCompleteRegistration && typeof window !== "undefined") {
           const fbq = (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq;
           fbq?.("track", "CompleteRegistration");
@@ -168,8 +174,8 @@ export default function LeadForm({
         setStatus("done");
         setOtpOpen(false);
         if (onSuccess) {
-          const match = typeof document !== "undefined" ? document.cookie.match(/(^| )asb_lead_doc_id_client=([^;]+)/) : null;
-          const leadDocId = match ? decodeURIComponent(match[2]) : "";
+          const parts = trimmedText.split("|");
+          const leadDocId = parts[1] || "";
           onSuccess(leadDocId, name);
         } else {
           showStatus("Verified! Redirecting...", "success");
