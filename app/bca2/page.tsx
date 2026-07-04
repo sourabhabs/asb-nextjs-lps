@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
-import Bba2PreviewShell from "@/app/components/Bba2PreviewShell";
-import { PREVIEW_COURSES } from "@/lib/asb-preview-routes";
+import AsbCourseLandingShell from "@/app/components/AsbCourseLandingShell";
+import LandingPageTracking from "@/app/components/LandingPageTracking";
+import { ASB_COURSE_ROUTES } from "@/lib/asb-routes";
 
-const course = PREVIEW_COURSES.bca;
+const course = ASB_COURSE_ROUTES.bca;
 
 export const metadata: Metadata = {
-  title: "BCA Preview | Asian School of Business",
-  description:
-    "Top BCA college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-  robots: {
-    index: false,
-    follow: false,
-  },
+  title: course.title,
+  description: course.description,
 };
 
 export default function Bca2Page() {
-  return <Bba2PreviewShell course={course} />;
+  return (
+    <>
+      <LandingPageTracking googleTagId="AW-18057910395" />
+      <AsbCourseLandingShell
+        course={course}
+        formConsentNote="I have read and agree to the Privacy Policy and the collection of my personal information."
+      />
+    </>
+  );
 }

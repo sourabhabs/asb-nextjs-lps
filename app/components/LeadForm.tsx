@@ -14,6 +14,7 @@ interface LeadFormProps {
   trackMetaLead?: boolean;
   trackMetaCompleteRegistration?: boolean;
   onSuccess?: (leadDocId: string, name: string) => void;
+  consentNote?: string;
 }
 
 const DEFAULT_COURSES_ALC = [
@@ -49,6 +50,7 @@ export default function LeadForm({
   trackMetaLead = false,
   trackMetaCompleteRegistration = false,
   onSuccess,
+  consentNote,
 }: LeadFormProps) {
   const resolvedCourses =
     courses ?? (variant === "alc" ? DEFAULT_COURSES_ALC : DEFAULT_COURSES_ASB);
@@ -360,6 +362,26 @@ export default function LeadForm({
             font-size: 16px;
           }
         }
+        .lead-form-consent-note {
+          margin-top: 10px;
+          color: rgba(255, 255, 255, 0.88);
+          font-size: 12px;
+          line-height: 1.5;
+          text-align: left;
+          width: fit-content;
+          max-width: 100%;
+          margin-left: 0;
+        }
+        @media (max-width: 991px) {
+          .lead-form-consent-note {
+            color: #64748b;
+            font-size: 11px;
+            margin-top: 12px;
+            text-align: center;
+            width: 100%;
+            margin-left: 0;
+          }
+        }
       `}</style>
 
       <div className={`frmD ${className}`} id={id}>
@@ -448,6 +470,7 @@ export default function LeadForm({
             </button>
           </div>
         </form>
+        {consentNote ? <div className="lead-form-consent-note">{consentNote}</div> : null}
       </div>
 
       {otpOpen ? (

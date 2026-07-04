@@ -816,6 +816,7 @@ export async function submitPmaxLeadQuestionnaire(
     class12Score: string;
     englishComfort: string;
     higherEducationPlanning: string;
+    openToNoida?: string;
   }
 ) {
   const db = await getMongoDb();
@@ -825,6 +826,7 @@ export async function submitPmaxLeadQuestionnaire(
     class12Score: answers.class12Score,
     englishComfort: answers.englishComfort,
     higherEducationPlanning: answers.higherEducationPlanning,
+    openToNoida: answers.openToNoida || "",
     otpStatus: "Verified",
     otpVerifiedAt: new Date(),
   });
@@ -850,16 +852,24 @@ async function syncLeadSquaredPmaxSubmit(
     class12Score: string;
     englishComfort: string;
     higherEducationPlanning: string;
+    openToNoida?: string;
   }
 ) {
   const baseAttributes = buildLeadSquaredAttributes(payload, "Verified");
 
+  const notesParts = [
+    `Class 12th: ${answers.completedClass12}`,
+    `Class 12th Score: ${answers.class12Score}`,
+    `Planning for higher education in 12 months: ${answers.higherEducationPlanning}`,
+    answers.openToNoida ? `Open to Noida location: ${answers.openToNoida}` : "",
+    `English Comfort: ${answers.englishComfort}`,
+  ].filter(Boolean);
+
+  const notesText = notesParts.join(" | ");
+
   const leadAttributes = [
     ...baseAttributes,
-    { Attribute: "mx_Completed_Class_12", Value: answers.completedClass12 },
-    { Attribute: "mx_Class_12_Score", Value: answers.class12Score },
-    { Attribute: "mx_English_Comfort", Value: answers.englishComfort },
-    { Attribute: "mx_Higher_Education_Planning", Value: answers.higherEducationPlanning },
+    { Attribute: "Notes", Value: notesText },
   ];
 
   try {
@@ -872,10 +882,7 @@ async function syncLeadSquaredPmaxSubmit(
     } else {
       const verifyResult = await verifyLeadInLeadSquared(payload);
       await updateLeadInLeadSquared(verifyResult.leadId, [
-        { Attribute: "mx_Completed_Class_12", Value: answers.completedClass12 },
-        { Attribute: "mx_Class_12_Score", Value: answers.class12Score },
-        { Attribute: "mx_English_Comfort", Value: answers.englishComfort },
-        { Attribute: "mx_Higher_Education_Planning", Value: answers.higherEducationPlanning },
+        { Attribute: "Notes", Value: notesText },
       ]);
     }
 

@@ -12,6 +12,7 @@ interface AsbCourseLandingShellProps {
   desktopScholarshipLogoSrc?: string;
   desktopScholarshipLogoAlt?: string;
   showWhatsApp?: boolean;
+  formConsentNote?: string;
 }
 
 type EventCard = {
@@ -335,6 +336,7 @@ export default function AsbCourseLandingShell({
   desktopScholarshipLogoSrc,
   desktopScholarshipLogoAlt = "Program logo",
   showWhatsApp = true,
+  formConsentNote,
 }: AsbCourseLandingShellProps) {
   const homeRef = useRef<HTMLElement | null>(null);
   const content = COURSE_DETAILS[course.key];
@@ -1148,6 +1150,7 @@ export default function AsbCourseLandingShell({
                 queryLabel={course.queryLabel}
                 thankYouPath={course.thankYouPath}
                 submitLabel="Enquire Now"
+                consentNote={formConsentNote}
               />
             </div>
           </section>

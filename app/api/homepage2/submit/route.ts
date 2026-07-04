@@ -9,6 +9,7 @@ export async function POST(req: NextRequest) {
       class12Score,
       englishComfort,
       higherEducationPlanning,
+      openToNoida,
     } = await req.json();
 
     if (!leadDocId || !completedClass12 || !class12Score || !englishComfort || !higherEducationPlanning) {
@@ -23,6 +24,7 @@ export async function POST(req: NextRequest) {
       class12Score,
       englishComfort,
       higherEducationPlanning,
+      openToNoida,
     });
 
     return NextResponse.json({ success: true, message: "Questionnaire submitted successfully" });
