@@ -10,7 +10,7 @@ import {
 } from "@/lib/asb-preview-routes";
 
 interface Bba2PreviewShellProps {
-  course?: PreviewCourseConfig;
+  course?: any;
   showWhatsApp?: boolean;
 }
 
@@ -328,13 +328,35 @@ export default function Bba2PreviewShell({
   showWhatsApp = true,
 }: Bba2PreviewShellProps) {
   const homeRef = useRef<HTMLElement | null>(null);
-  const content = course.key === "bba3" ? COURSE_DETAILS["bba"] : COURSE_DETAILS[course.key];
-  const isBaPsychology = course.key === "ba-psychology";
-  const isPsychologyRoute = course.key.startsWith("ba-psychology");
-  const showHeroStats = ["bba", "bca", "bcom", "bsc", "bba3"].includes(course.key);
-  const showOxfordLogo = course.key !== "ba-psychology";
-  const showHeroOxfordPoint = course.key !== "ba-psychology";
-  const showInternationalSection = course.key !== "ba-psychology";
+  
+  const isScholarshipPage = [
+    "bba",
+    "bcom-scholarship",
+    "bsc-scholarship",
+    "bca-scholarship",
+    "ba-psy-scholarship",
+  ].includes(course.key);
+
+  let detailsKey = course.key;
+  if (course.key === "bba3" || course.key === "bba") {
+    detailsKey = "bba";
+  } else if (course.key === "bca-scholarship") {
+    detailsKey = "bca";
+  } else if (course.key === "bcom-scholarship") {
+    detailsKey = "bcom";
+  } else if (course.key === "bsc-scholarship") {
+    detailsKey = "bsc";
+  } else if (course.key === "ba-psy-scholarship") {
+    detailsKey = "ba-psychology";
+  }
+
+  const content = COURSE_DETAILS[detailsKey];
+  const isBaPsychology = detailsKey === "ba-psychology";
+  const isPsychologyRoute = detailsKey.startsWith("ba-psychology") || course.key === "ba-psy-scholarship";
+  const showHeroStats = ["bba", "bca", "bcom", "bsc", "bba3"].includes(detailsKey);
+  const showOxfordLogo = detailsKey !== "ba-psychology";
+  const showHeroOxfordPoint = detailsKey !== "ba-psychology";
+  const showInternationalSection = detailsKey !== "ba-psychology";
   const [intlIdx, setIntlIdx] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
   const [testModalUrl, setTestModalUrl] = useState("");
@@ -939,7 +961,7 @@ export default function Bba2PreviewShell({
               }}
             >
               <Image
-                src={course.key === "bba" ? "/BBA2.png" : (isPsychologyRoute ? course.heroImage : "/ASB-BG-D.webp")}
+                src={isScholarshipPage ? course.heroImage : (isPsychologyRoute ? course.heroImage : "/ASB-BG-D.webp")}
                 alt=""
                 fill
                 priority
@@ -947,7 +969,7 @@ export default function Bba2PreviewShell({
                 sizes="100vw"
                 style={{ objectFit: "cover" }}
               />
-              {course.key !== "bba" && (
+              {!isScholarshipPage && (
                 <div
                   style={{
                     position: "absolute",
@@ -1032,7 +1054,7 @@ export default function Bba2PreviewShell({
                           </div>
                         </div>
                       </div>
-                    ) : course.key !== "bba" ? (
+                    ) : !isScholarshipPage ? (
                       <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
                         <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
                         <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">{content.highlight}</span> Degree Program.</p>
@@ -1080,7 +1102,7 @@ export default function Bba2PreviewShell({
                         sizes="(max-width: 420px) 390px, 100vw"
                         style={{ width: "100%", height: "auto", display: "block" }}
                       />
-                      {showHeroStats ? (
+                      {!isScholarshipPage && showHeroStats ? (
                         <div className="asb-hero-stats" aria-label="Course highlights">
                           <div className="asb-hero-stat-box">
                             <p className="asb-hero-stat-value">100%</p>
@@ -1092,17 +1114,19 @@ export default function Bba2PreviewShell({
                           </div>
                         </div>
                       ) : null}
-                      <div className="asb-scholarship-card mobile-style">
-                        <div className="asb-scholarship-content">
-                          <div className="asb-scholarship-icon-box">
-                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
-                              <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
-                            </svg>
+                      {!isScholarshipPage && (
+                        <div className="asb-scholarship-card mobile-style">
+                          <div className="asb-scholarship-content">
+                            <div className="asb-scholarship-icon-box">
+                              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                                <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+                              </svg>
+                            </div>
+                            <h4 className="asb-scholarship-title">Upto 100% Scholarship</h4>
                           </div>
-                          <h4 className="asb-scholarship-title">Upto 100% Scholarship</h4>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </div>

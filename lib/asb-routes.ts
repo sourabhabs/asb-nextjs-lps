@@ -5,7 +5,11 @@ export type AsbCourseKey =
   | "bsc"
   | "ba-psychology"
   | "ba-psychology-international"
-  | "ba-psychology3";
+  | "ba-psychology3"
+  | "bcom-scholarship"
+  | "bsc-scholarship"
+  | "bca-scholarship"
+  | "ba-psy-scholarship";
 
 export interface AsbCourseRouteConfig {
   key: AsbCourseKey;
@@ -31,7 +35,8 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best BBA College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
     description:
       "Top BBA college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-    heroImage: "/BBA.jpg",
+    heroImage: "/desktop/BBA.jpg",
+    mobileHeroImage: "/mobile/BBA.jpg",
     courseValue: "BBA",
     queryLabel: "ASB BBA Admissions 2026 Landing",
     thankYouPath: "/thank-you-bba.php",
@@ -113,5 +118,57 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     queryLabel: "ASB BA Psychology Admissions 2026 Landing",
     thankYouPath: "/thank-you-ba-psychology.php",
     hasScholarshipAsterisk: true,
+  },
+  "bcom-scholarship": {
+    key: "bcom-scholarship",
+    route: "/bcom-scholarship",
+    label: "B.Com Scholarship",
+    title: "Best B.Com College in Delhi NCR | Scholarship Admissions Open 2026 - Asian School of Business",
+    description:
+      "Top B.Com college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
+    heroImage: "/desktop/BCOM.jpg",
+    mobileHeroImage: "/mobile/BCOM.jpg",
+    courseValue: "BCOM",
+    queryLabel: "ASB BCOM Scholarship Admissions 2026 Landing",
+    thankYouPath: "/thank-you-bcom.php",
+  },
+  "bsc-scholarship": {
+    key: "bsc-scholarship",
+    route: "/bsc-scholarship",
+    label: "B.Sc. (CS) Scholarship",
+    title: "Best B.Sc. (CS) College in Delhi NCR | Scholarship Admissions Open 2026 - Asian School of Business",
+    description:
+      "Top B.Sc. (CS) college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
+    heroImage: "/desktop/BSC.jpg",
+    mobileHeroImage: "/mobile/BSC.jpg",
+    courseValue: "BSc CS",
+    queryLabel: "ASB BSC Scholarship Admissions 2026 Landing",
+    thankYouPath: "/thank-you-bsc.php",
+  },
+  "bca-scholarship": {
+    key: "bca-scholarship",
+    route: "/bca-scholarship",
+    label: "BCA Scholarship",
+    title: "Best BCA College in Delhi NCR | Scholarship Admissions Open 2026 - Asian School of Business",
+    description:
+      "Top BCA college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
+    heroImage: "/desktop/BCA.jpg",
+    mobileHeroImage: "/mobile/BCA.jpg",
+    courseValue: "BCA",
+    queryLabel: "ASB BCA Scholarship Admissions 2026 Landing",
+    thankYouPath: "/thank-you-bca.php",
+  },
+  "ba-psy-scholarship": {
+    key: "ba-psy-scholarship",
+    route: "/ba-psy-scholarship",
+    label: "BA Psychology Scholarship",
+    title: "Best BA Psychology College in Delhi NCR | Scholarship Admissions Open 2026 - Asian School of Business",
+    description:
+      "Asian School of Business offers a future-ready BA (Hons) Psychology program with industry-aligned certifications and a strong foundation in human behavior and mental processes.",
+    heroImage: "/desktop/BA.jpg",
+    mobileHeroImage: "/mobile/BA.jpg",
+    courseValue: "BA Psychology",
+    queryLabel: "ASB BA Psychology Scholarship Admissions 2026 Landing",
+    thankYouPath: "/thank-you-ba-psychology.php",
   },
 };

@@ -38,7 +38,7 @@ type CourseDetails = {
   }[];
 };
 
-const COURSE_DETAILS: Record<AsbCourseRouteConfig["key"], CourseDetails> = {
+const COURSE_DETAILS: Record<string, CourseDetails> = {
   bba: {
     highlight: "BBA",
     contactLabel: "BBA",
