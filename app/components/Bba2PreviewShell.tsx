@@ -413,7 +413,7 @@ export default function Bba2PreviewShell({
   return (
     <>
       <style>{`
-        ${course.key === "bba" ? `
+        ${isScholarshipPage ? `
           @media (min-width: 992px) {
             .header-hero {
               height: calc(45.42vw + 146px) !important;
