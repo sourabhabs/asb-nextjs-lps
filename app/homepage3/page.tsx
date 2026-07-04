@@ -375,6 +375,7 @@ export default function Page() {
         .asb-scholarship-card.mobile-style .asb-scholarship-title {
           color: #0f1f45;
           font-size: 19px;
+        }
         .asb-scholarship-card.mobile-style .asb-scholarship-desc {
           color: #475569 !important;
           font-size: 13px;
