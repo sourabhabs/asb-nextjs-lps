@@ -640,6 +640,11 @@ export async function startLeadCapture(
     path: "/",
     sameSite: "lax",
   });
+  cookieStore.set("asb_lead_doc_id_client", leadDocId, {
+    httpOnly: false,
+    path: "/",
+    sameSite: "lax",
+  });
   cookieStore.set("asb_lead_otp", otp, { httpOnly: true, path: "/", sameSite: "lax" });
   cookieStore.set("asb_lead_phone", payload.phone, { httpOnly: true, path: "/", sameSite: "lax" });
   cookieStore.set("asb_lead_email", payload.email, { httpOnly: true, path: "/", sameSite: "lax" });

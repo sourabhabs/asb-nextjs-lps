@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import LandingPageTracking from "@/app/components/LandingPageTracking";
-import LeadFormMultiStep from "@/app/components/LeadFormMultiStep";
+import LeadForm from "@/app/components/LeadForm";
 
 const HERO_COURSES = [
   { value: "BBA", label: "BBA" },
@@ -75,6 +75,69 @@ export default function Page() {
   const [testModalUrl, setTestModalUrl] = useState("");
   const [page, setPage] = useState(0);
   const [perPage, setPerPage] = useState(2);
+
+  // Popup states
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [popupStep, setPopupStep] = useState(0);
+  const [leadDocId, setLeadDocId] = useState("");
+  const [applicantName, setApplicantName] = useState("");
+  const [completedClass12, setCompletedClass12] = useState("");
+  const [class12Score, setClass12Score] = useState("");
+  const [englishComfort, setEnglishComfort] = useState("");
+  const [higherEducationPlanning, setHigherEducationPlanning] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
+  const [statusMsg, setStatusMsg] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPopupOpen((isOpen) => {
+        if (!isOpen) {
+          return true;
+        }
+        return isOpen;
+      });
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  async function handleQuestionnaireSubmit() {
+    if (!completedClass12 || !class12Score || !englishComfort || !higherEducationPlanning) {
+      setStatusMsg("Please answer all questions before submitting.");
+      return;
+    }
+
+    setStatus("sending");
+    setStatusMsg("");
+
+    try {
+      const res = await fetch("/api/homepage2/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          leadDocId,
+          completedClass12,
+          class12Score,
+          englishComfort,
+          higherEducationPlanning,
+        }),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("idle");
+        setPopupStep(5);
+        setTimeout(() => {
+          window.location.href = "/thank-you.php";
+        }, 2000);
+      } else {
+        setStatusMsg(data.message || "Failed to submit questionnaire. Please try again.");
+        setStatus("idle");
+      }
+    } catch {
+      setStatusMsg("Network error. Please try again.");
+      setStatus("idle");
+    }
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -318,6 +381,221 @@ export default function Page() {
           background: rgba(15, 31, 69, 0.05);
           border: 1px solid rgba(15, 31, 69, 0.08);
         }
+        /* Popup overlay and styling */
+        .asb-popup-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(15, 23, 42, 0.45);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 100000;
+          padding: 16px;
+          overflow-y: auto;
+        }
+        .asb-popup-card {
+          width: min(500px, 100%);
+          background: #fff;
+          border-radius: 20px;
+          padding: 28px 24px;
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+          position: relative;
+          color: #0f172a;
+        }
+        .modal-lead-form #heroLeadForm {
+          display: block !important;
+        }
+        .modal-lead-form #heroLeadForm .single_form {
+          width: 100% !important;
+          margin-top: 10px !important;
+          flex: none !important;
+        }
+        .modal-lead-form #heroLeadForm .course-select-wrap {
+          width: 100% !important;
+        }
+        .modal-lead-form #heroLeadForm .hero-form-title {
+          width: 100% !important;
+          text-align: center !important;
+          margin-bottom: 15px !important;
+          display: block !important;
+        }
+        .modal-lead-form #heroLeadForm .hero-form-title h3 {
+          color: #0f1f45 !important;
+          font-size: 26px !important;
+          font-weight: 800 !important;
+          margin: 0 !important;
+        }
+        .modal-lead-form #heroSubmitBtn {
+          width: 100% !important;
+          height: 48px !important;
+          line-height: 48px !important;
+          background: #0d9488 !important;
+          border-radius: 12px !important;
+          margin-top: 10px !important;
+          color: #fff !important;
+          font-weight: 800 !important;
+          border: none !important;
+          box-shadow: 0 4px 12px rgba(13, 148, 136, 0.15) !important;
+        }
+        .modal-lead-form .frmD {
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+        }
+        .q-card {
+          margin-bottom: 20px;
+        }
+        .q-question {
+          font-size: 20px;
+          font-weight: 800;
+          color: #0f172a;
+          margin: 0 0 6px;
+          line-height: 1.3;
+        }
+        .q-qsub {
+          font-size: 14px;
+          color: #64748b;
+          margin: 0 0 16px;
+          line-height: 1.4;
+        }
+        .option-button {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          padding: 14px 18px;
+          margin-bottom: 10px;
+          background: #fff;
+          border: 1px solid #cbd5e1;
+          border-radius: 12px;
+          font-size: 16px;
+          font-weight: 600;
+          color: #334155;
+          text-align: left;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .option-button:hover {
+          background: #f8fafc;
+          border-color: #94a3b8;
+        }
+        .option-button.active {
+          background: #f0fdfa;
+          border-color: #0d9488;
+          color: #0f766e;
+          box-shadow: 0 0 0 1px #0d9488;
+        }
+        .option-circle {
+          width: 18px;
+          height: 18px;
+          border: 2px solid #cbd5e1;
+          border-radius: 50%;
+          display: inline-block;
+          flex-shrink: 0;
+          position: relative;
+        }
+        .option-button.active .option-circle {
+          border-color: #0d9488;
+        }
+        .option-button.active .option-circle::after {
+          content: "";
+          position: absolute;
+          inset: 3px;
+          background: #0d9488;
+          border-radius: 50%;
+        }
+        .q-actions {
+          display: flex;
+          gap: 12px;
+          margin-top: 24px;
+        }
+        .btn-back {
+          flex: 1;
+          height: 48px;
+          border: 1px solid #cbd5e1;
+          border-radius: 12px;
+          background: #fff;
+          color: #475569;
+          font-weight: 700;
+          font-size: 15px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+        }
+        .btn-back:hover {
+          background: #f8fafc;
+        }
+        .btn-continue {
+          flex: 2;
+          height: 48px;
+          border: none;
+          border-radius: 12px;
+          background: #0f1f45;
+          color: #fff;
+          font-weight: 700;
+          font-size: 15px;
+          cursor: pointer;
+          transition: opacity 0.2s;
+        }
+        .btn-continue:hover {
+          opacity: 0.95;
+        }
+        .btn-continue:disabled {
+          background: #94a3b8;
+          cursor: not-allowed;
+        }
+        .progress-wrapper {
+          margin-bottom: 24px;
+        }
+        .progress-text {
+          display: flex;
+          justify-content: space-between;
+          font-size: 13px;
+          font-weight: 700;
+          color: #475569;
+          margin-bottom: 6px;
+        }
+        .progress-bar-bg {
+          width: 100%;
+          height: 6px;
+          background: #e2e8f0;
+          border-radius: 99px;
+          overflow: hidden;
+        }
+        .progress-bar-fill {
+          height: 100%;
+          background: #0d9488;
+          border-radius: 99px;
+          transition: width 0.3s ease;
+        }
+        .thank-you-card {
+          text-align: center;
+          padding: 30px 10px;
+        }
+        .thank-you-icon {
+          width: 64px;
+          height: 64px;
+          background: #dcfce7;
+          color: #15803d;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 20px;
+        }
+        .thank-you-title {
+          font-size: 28px;
+          font-weight: 800;
+          color: #0f1f45;
+          margin-bottom: 12px;
+        }
+        .thank-you-desc {
+          font-size: 16px;
+          color: #475569;
+          line-height: 1.6;
+        }
       `}</style>
 
       <header className="header-area">
@@ -375,8 +653,8 @@ export default function Page() {
             />
           </div>
           <div className="container-l banner-content" style={{ width: "auto" }}>
-            <div className="row align-items-center" style={{ width: "100%", marginRight: 0, marginLeft: 0 }}>
-              <div className="col-lg-7 col-md-12">
+            <div className="row" style={{ width: "100%", marginRight: 0, marginLeft: 0 }}>
+              <div className="col-lg-12">
                 <div
                   className="header-hero-content"
                   style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
@@ -400,42 +678,48 @@ export default function Page() {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="col-lg-5 col-md-12" style={{ position: "relative", zIndex: 2 }}>
-                <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
-                  <Image
-                    src="/Mobile Banners ASB Placement.jpg"
-                    alt="ASB Admissions 2026"
-                    width={390}
-                    height={520}
-                    priority
-                    fetchPriority="high"
-                    sizes="(max-width: 420px) 390px, 100vw"
-                    style={{ width: "100%", height: "auto", display: "block" }}
-                  />
-                  <div className="asb-scholarship-card mobile-style">
-                    <div className="asb-scholarship-content">
-                      <div className="asb-scholarship-icon-box">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
-                          <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
-                        </svg>
+                  <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
+                    <Image
+                      src="/Mobile Banners ASB Placement.jpg"
+                      alt="ASB Admissions 2026"
+                      width={390}
+                      height={520}
+                      priority
+                      fetchPriority="high"
+                      sizes="(max-width: 420px) 390px, 100vw"
+                      style={{ width: "100%", height: "auto", display: "block" }}
+                    />
+                    <div className="asb-scholarship-card mobile-style">
+                      <div className="asb-scholarship-content">
+                        <div className="asb-scholarship-icon-box">
+                          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                            <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+                          </svg>
+                        </div>
+                        <h4 className="asb-scholarship-title">Upto 100% Scholarship*</h4>
                       </div>
-                      <h4 className="asb-scholarship-title">Upto 100% Scholarship*</h4>
                     </div>
                   </div>
                 </div>
-                <LeadFormMultiStep
-                  id="enquire"
-                  title="Start Your Application"
-                  courses={HERO_COURSES}
-                  queryLabel="ASB Pmax campaign 2026 Landing"
-                  thankYouPath="/thank-you.php"
-                  submitLabel="Continue Application"
-                />
               </div>
             </div>
+            <LeadForm
+              id="enquire"
+              title="Admissions Open 2026"
+              courses={HERO_COURSES}
+              queryLabel="ASB Pmax campaign 2026 Landing"
+              thankYouPath="/thank-you.php"
+              submitLabel="ENQUIRE NOW"
+              trackMetaLead
+              trackMetaCompleteRegistration
+              onSuccess={(id, name) => {
+                setLeadDocId(id);
+                setApplicantName(name);
+                setPopupStep(1);
+                setPopupOpen(true);
+              }}
+            />
           </div>
         </section>
       </header>
@@ -622,7 +906,246 @@ export default function Page() {
            </a>
            <a href="tel:+918037898031" className="mobile-btn-call" title="Call Us" aria-label="Call Us"><svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z" /></svg></a>
          </div>
-       </div>
-    </>
-  );
-}
+        </div>
+
+        {popupOpen && (
+          <div className="asb-popup-overlay">
+            <div className="asb-popup-card">
+              {popupStep === 0 && (
+                <div className="modal-lead-form">
+                  <LeadForm
+                    title="Start Your Application"
+                    courses={HERO_COURSES}
+                    queryLabel="ASB Pmax campaign 2026 Landing"
+                    thankYouPath="/thank-you.php"
+                    submitLabel="ENQUIRE NOW"
+                    onSuccess={(id, name) => {
+                      setLeadDocId(id);
+                      setApplicantName(name);
+                      setPopupStep(1);
+                    }}
+                  />
+                </div>
+              )}
+
+              {popupStep >= 1 && popupStep <= 4 && (
+                <div>
+                  <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#0f1f45", textAlign: "center", marginBottom: "4px" }}>
+                    Complete Your Application Profile
+                  </h3>
+                  <p style={{ fontSize: "14px", color: "#475569", textAlign: "center", marginBottom: "20px" }}>
+                    Answer a few quick questions to help us guide you towards the right program and scholarship opportunities.
+                  </p>
+
+                  <div className="progress-wrapper">
+                    <div className="progress-text">
+                      <span>Step {popupStep} of 4</span>
+                      <span>Hi {applicantName || "Applicant"}!</span>
+                    </div>
+                    <div className="progress-bar-bg">
+                      <div
+                        className="progress-bar-fill"
+                        style={{ width: `${(popupStep / 4) * 100}%` }}
+                      ></div>
+                    </div>
+                  </div>
+
+                  {popupStep === 1 && (
+                    <div className="q-card">
+                      <h4 className="q-question">Have you completed Class 12?</h4>
+                      <p className="q-qsub">This helps us confirm eligibility for our undergraduate programs.</p>
+
+                      {["Yes", "No"].map((val) => (
+                        <button
+                          key={val}
+                          type="button"
+                          className={`option-button${completedClass12 === val ? " active" : ""}`}
+                          onClick={() => setCompletedClass12(val)}
+                        >
+                          <span>{val}</span>
+                          <span className="option-circle"></span>
+                        </button>
+                      ))}
+
+                      <div className="q-actions">
+                        <button
+                          type="button"
+                          className="btn-continue"
+                          style={{ width: "100%" }}
+                          disabled={!completedClass12}
+                          onClick={() => {
+                            setStatusMsg("");
+                            setPopupStep(2);
+                          }}
+                        >
+                          Continue
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {popupStep === 2 && (
+                    <div className="q-card">
+                      <h4 className="q-question">What was your Class 12 score?</h4>
+                      <p className="q-qsub">This helps us calculate any scholarship you may be eligible for.</p>
+
+                      {["Below 80%", "80 - 84.9%", "85 - 89.9%", "90 - 94.9%", "95 - 100%"].map((val) => (
+                        <button
+                          key={val}
+                          type="button"
+                          className={`option-button${class12Score === val ? " active" : ""}`}
+                          onClick={() => setClass12Score(val)}
+                        >
+                          <span>{val}</span>
+                          <span className="option-circle"></span>
+                        </button>
+                      ))}
+
+                      {class12Score && (
+                        <div
+                          style={{
+                            marginTop: "16px",
+                            padding: "12px 16px",
+                            borderRadius: "10px",
+                            background: class12Score === "Below 80%" ? "#f8fafc" : "#f0fdf4",
+                            border: class12Score === "Below 80%" ? "1px solid #e2e8f0" : "1px solid #bbf7d0",
+                            color: class12Score === "Below 80%" ? "#475569" : "#166534",
+                            fontSize: "14px",
+                            fontWeight: 700,
+                            textAlign: "center",
+                          }}
+                        >
+                          {class12Score === "Below 80%" ? (
+                            "Standard Admission Criteria Apply"
+                          ) : (
+                            <>
+                              🎉 You are eligible for {" "}
+                              {class12Score === "95 - 100%" ? "100%" :
+                               class12Score === "90 - 94.9%" ? "75%" :
+                               class12Score === "85 - 89.9%" ? "50%" :
+                               class12Score === "80 - 84.9%" ? "25%" : ""
+                              } Scholarship on Tuition Fee!
+                            </>
+                          )}
+                        </div>
+                      )}
+
+                      <div className="q-actions">
+                        <button type="button" className="btn-back" onClick={() => setPopupStep(1)}>
+                          Back
+                        </button>
+                        <button
+                          type="button"
+                          className="btn-continue"
+                          disabled={!class12Score}
+                          onClick={() => {
+                            setStatusMsg("");
+                            setPopupStep(3);
+                          }}
+                        >
+                          Continue
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {popupStep === 3 && (
+                    <div className="q-card">
+                      <h4 className="q-question">ASB programs are delivered in English. Are you comfortable studying in English?</h4>
+                      <p className="q-qsub">This helps us understand if you require additional language assistance.</p>
+
+                      {[
+                        { value: "Yes", label: "Yes" },
+                        { value: "Need additional support", label: "Need additional support" },
+                        { value: "No", label: "No" },
+                      ].map((opt) => (
+                        <button
+                          key={opt.value}
+                          type="button"
+                          className={`option-button${englishComfort === opt.value ? " active" : ""}`}
+                          onClick={() => setEnglishComfort(opt.value)}
+                        >
+                          <span>{opt.label}</span>
+                          <span className="option-circle"></span>
+                        </button>
+                      ))}
+
+                      <div className="q-actions">
+                        <button type="button" className="btn-back" onClick={() => setPopupStep(2)}>
+                          Back
+                        </button>
+                        <button
+                          type="button"
+                          className="btn-continue"
+                          disabled={!englishComfort}
+                          onClick={() => {
+                            setStatusMsg("");
+                            setPopupStep(4);
+                          }}
+                        >
+                          Continue
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {popupStep === 4 && (
+                    <div className="q-card">
+                      <h4 className="q-question">Are you actively planning to pursue higher education within the next 12 months?</h4>
+                      <p className="q-qsub">This helps us gauge your admission timeline.</p>
+
+                      {["Yes", "Exploring Options", "No"].map((val) => (
+                        <button
+                          key={val}
+                          type="button"
+                          className={`option-button${higherEducationPlanning === val ? " active" : ""}`}
+                          onClick={() => setHigherEducationPlanning(val)}
+                        >
+                          <span>{val}</span>
+                          <span className="option-circle"></span>
+                        </button>
+                      ))}
+
+                      {statusMsg && (
+                        <div style={{ color: "#cc2f2f", fontSize: "14px", fontWeight: 700, textAlign: "center", marginTop: "10px" }}>
+                          {statusMsg}
+                        </div>
+                      )}
+
+                      <div className="q-actions">
+                        <button type="button" className="btn-back" onClick={() => setPopupStep(3)}>
+                          Back
+                        </button>
+                        <button
+                          type="button"
+                          className="btn-continue"
+                          disabled={!higherEducationPlanning || status === "sending"}
+                          onClick={handleQuestionnaireSubmit}
+                        >
+                          {status === "sending" ? "SUBMITTING..." : "Submit Application"}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {popupStep === 5 && (
+                <div className="thank-you-card">
+                  <div className="thank-you-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 16.2L4.8 12L3.4 13.4L9 19L21 7L19.6 5.6L9 16.2Z" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <h3 className="thank-you-title">Thank You!</h3>
+                  <p className="thank-you-desc">
+                    Your application profile has been submitted successfully. Our admissions team will guide you on the next steps.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+     </>
+   );
+ }

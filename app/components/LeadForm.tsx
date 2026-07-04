@@ -13,6 +13,7 @@ interface LeadFormProps {
   submitLabel?: string;
   trackMetaLead?: boolean;
   trackMetaCompleteRegistration?: boolean;
+  onSuccess?: (leadDocId: string, name: string) => void;
 }
 
 const DEFAULT_COURSES_ALC = [
@@ -47,6 +48,7 @@ export default function LeadForm({
   submitLabel = "APPLY NOW",
   trackMetaLead = false,
   trackMetaCompleteRegistration = false,
+  onSuccess,
 }: LeadFormProps) {
   const resolvedCourses =
     courses ?? (variant === "alc" ? DEFAULT_COURSES_ALC : DEFAULT_COURSES_ASB);
@@ -165,10 +167,16 @@ export default function LeadForm({
         }
         setStatus("done");
         setOtpOpen(false);
-        showStatus("Verified! Redirecting...", "success");
-        setTimeout(() => {
-          window.location.href = thankYouPath;
-        }, 150);
+        if (onSuccess) {
+          const match = typeof document !== "undefined" ? document.cookie.match(/(^| )asb_lead_doc_id_client=([^;]+)/) : null;
+          const leadDocId = match ? decodeURIComponent(match[2]) : "";
+          onSuccess(leadDocId, name);
+        } else {
+          showStatus("Verified! Redirecting...", "success");
+          setTimeout(() => {
+            window.location.href = thankYouPath;
+          }, 150);
+        }
       } else {
         showStatus("Invalid OTP. Please try again.", "error");
         setStatus("otp");
