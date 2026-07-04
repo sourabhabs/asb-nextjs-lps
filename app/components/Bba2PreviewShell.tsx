@@ -325,7 +325,7 @@ const DEFAULT_COURSE = PREVIEW_COURSES.bba;
 
 export default function Bba2PreviewShell({
   course = DEFAULT_COURSE,
-  showWhatsApp = false,
+  showWhatsApp = true,
 }: Bba2PreviewShellProps) {
   const homeRef = useRef<HTMLElement | null>(null);
   const content = course.key === "bba3" ? COURSE_DETAILS["bba"] : COURSE_DETAILS[course.key];
