@@ -479,7 +479,7 @@ export default function AsbCourseLandingShell({
           #heroLeadForm{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;width:100%;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
           #heroLeadForm .single_form{margin-top:0;width:138px;flex:0 0 auto}
           #heroLeadForm .course-select-wrap{width:165px}
-          #heroLeadForm .hero-form-title{width:auto;min-width:190px;margin-right:2px}
+          #heroLeadForm .hero-form-title{width:auto;min-width:350px;margin-right:2px}
           #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:33px;line-height:1;font-weight:800}
           .frmD{padding:14px 8px;background-color:rgba(0,105,113,.66)}
           #heroLeadForm .single_form input,#heroLeadForm .single_form select{display:block;width:100%;box-sizing:border-box;height:40px;border-radius:4px;border:1px solid rgba(71,85,105,.55);background:#fff;color:#334155;padding:0 10px;font-size:15px;margin:0}
