@@ -474,7 +474,7 @@ export default function LeadForm({
           {consentNote ? 
           <div id="heroLeadForm">
 <div className="single_form hero-form-title" style={{width:"auto"}}><h3></h3></div>
-<div className=""><input type="checkbox" required name = "pl" value={"Y"} /><span style={{color:"#fff"}}> &nbsp; I have read and agree to the Privacy Policy and the collection of my personal information.</span></div>
+<div className=""><input type="checkbox" checked name = "pl" value={"Y"} /><span style={{color:"#fff"}}> &nbsp; I have read and agree to the Privacy Policy and the collection of my personal information.</span></div>
 </div>: null}
         </form>
         
