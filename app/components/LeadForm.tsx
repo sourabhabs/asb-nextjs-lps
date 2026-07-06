@@ -385,7 +385,8 @@ export default function LeadForm({
       `}</style>
 
       <div className={`frmD ${className}`} id={id}>
-        <form id="heroLeadForm" onSubmit={handleSubmit} noValidate>
+        <form  onSubmit={handleSubmit} noValidate>
+          <div id="heroLeadForm">
           <div className="single_form hero-form-title" style={{ width: "auto" }}>
             <h3>{title}&nbsp;</h3>
           </div>
@@ -469,12 +470,14 @@ export default function LeadForm({
               {status === "sending" ? "SENDING OTP..." : submitLabel}
             </button>
           </div>
-        </form>
-        <div id="heroLeadForm">
+          </div>
+          {consentNote ? 
+          <div id="heroLeadForm">
 <div className="single_form hero-form-title" style={{width:"auto"}}><h3></h3></div>
-<div className=""><input type="checkbox" checked name = "pl" value={'Y'} /><span style={{color:"#fff"}}> &nbsp; I have read and agree to the Privacy Policy and the collection of my personal information.</span></div>
-</div>
-        {consentNote ? <div className="lead-form-consent-note" style={{display:"none"}}>{consentNote}</div> : null}
+<div className=""><input type="checkbox" required name = "pl" value={"Y"} /><span style={{color:"#fff"}}> &nbsp; I have read and agree to the Privacy Policy and the collection of my personal information.</span></div>
+</div>: null}
+        </form>
+        
       </div>
 
       {otpOpen ? (
