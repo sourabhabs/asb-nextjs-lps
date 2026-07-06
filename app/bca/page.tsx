@@ -14,7 +14,9 @@ export default function BcaPage() {
   return (
     <>
       <LandingPageTracking googleTagId="AW-18057910395" />
-      <AsbCourseLandingShell course={course} />
+      <AsbCourseLandingShell course={course} 
+      formConsentNote="I have read and agree to the Privacy Policy and the collection of my personal information."
+      />
     </>
   );
 }
