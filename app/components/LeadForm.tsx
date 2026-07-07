@@ -68,7 +68,7 @@ export default function LeadForm({
   const [otpOpen, setOtpOpen] = useState(false);
   const otpInputRef = useRef<HTMLInputElement>(null);
   const selectedCourse = resolvedCourses.find((item) => item.value === course);
-  const [plbx, setPlbx] = useState("");
+  const [plbx, setPlbx] = useState(false);
 
   useEffect(() => {
     if (resolvedCourses.length === 1) {
@@ -93,7 +93,7 @@ export default function LeadForm({
       return;
     }
 
-    if (!plbx) {
+    if (!plbx && consentNote) {
       showStatus("Please read and agree to the privacy policy.", "error");
       return;
     }
@@ -482,7 +482,7 @@ export default function LeadForm({
           {consentNote ? 
           <div id="heroLeadForm">
 <div className="single_form hero-form-title" style={{width:"auto"}}><h3></h3></div>
-<div className=""><input type="checkbox"  name = "plbx" value={"Y"} onChange={(e) => setPlbx(e.target.value)} /> <span style={{color:"#fff"}}> &nbsp; I have read and agree to the Privacy Policy and the collection of my personal information.</span></div>
+<div className=""><input type="checkbox"  name = "plbx" value={"Y"} onChange={(e) => setPlbx(e.target.checked)} /> <span style={{color:"#fff"}}> &nbsp; I have read and agree to the Privacy Policy and the collection of my personal information.</span></div>
 </div>: null}
         </form>
         
