@@ -68,7 +68,7 @@ export default function LeadForm({
   const [otpOpen, setOtpOpen] = useState(false);
   const otpInputRef = useRef<HTMLInputElement>(null);
   const selectedCourse = resolvedCourses.find((item) => item.value === course);
-  const [plbx, setPlbx] = useState(false);
+  const [plbx, setPlbx] = useState("");
 
   useEffect(() => {
     if (resolvedCourses.length === 1) {
@@ -110,7 +110,7 @@ export default function LeadForm({
       email,
       phone,
       city,
-      plbx,
+      plbx: plbx ? "Y" : "N",
       course,
       course_label: selectedCourse?.label ?? course,
       query: queryLabel,
