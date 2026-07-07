@@ -68,6 +68,7 @@ export default function LeadForm({
   const [otpOpen, setOtpOpen] = useState(false);
   const otpInputRef = useRef<HTMLInputElement>(null);
   const selectedCourse = resolvedCourses.find((item) => item.value === course);
+  const [plbx, setPlbx] = useState("");
 
   useEffect(() => {
     if (resolvedCourses.length === 1) {
@@ -92,6 +93,11 @@ export default function LeadForm({
       return;
     }
 
+    if (!plbx) {
+      showStatus("Please read and agree to the privacy policy.", "error");
+      return;
+    }
+
     setStatus("sending");
     showStatus("", "success");
     setOtp("");
@@ -104,6 +110,7 @@ export default function LeadForm({
       email,
       phone,
       city,
+      plbx,
       course,
       course_label: selectedCourse?.label ?? course,
       query: queryLabel,
@@ -243,7 +250,8 @@ export default function LeadForm({
           font-size: 14px;
           font-weight: 700;
           line-height: 1.3;
-          padding: 8px 2px 0;
+          padding: 8px;
+          margin: 0px !important;
         }
         #heroFormStatus.status.success,
         #otpStatus.status.success {
@@ -459,7 +467,7 @@ export default function LeadForm({
 
           {statusMsg && !otpOpen ? (
             <div className="hero-form-status-wrap">
-              <div className={`status ${statusType}`} id="heroFormStatus" style={{ display: "block" }}>
+              <div className={`status ${statusType}`} id="heroFormStatus" style={{ display: "block"}}>
                 {statusMsg}
               </div>
             </div>
@@ -474,7 +482,7 @@ export default function LeadForm({
           {consentNote ? 
           <div id="heroLeadForm">
 <div className="single_form hero-form-title" style={{width:"auto"}}><h3></h3></div>
-<div className=""><input type="checkbox" checked name = "pl" value={"Y"} /><span style={{color:"#fff"}}> &nbsp; I have read and agree to the Privacy Policy and the collection of my personal information.</span></div>
+<div className=""><input type="checkbox"  name = "plbx" value={"plbx"} onChange={(e) => setPlbx(e.target.checked)} /> <span style={{color:"#fff"}}> &nbsp; I have read and agree to the Privacy Policy and the collection of my personal information.</span></div>
 </div>: null}
         </form>
         

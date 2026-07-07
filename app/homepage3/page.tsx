@@ -10,7 +10,6 @@ const HERO_COURSES = [
   { value: "BCA", label: "BCA" },
   { value: "BCOM", label: "B.Com" },
   { value: "BSc CS", label: "B.Sc. Computer Science" },
-  { value: "BA Psychology", label: "B.A. Psychology" },
   { value: "IPM (BBA+PGDM)", label: "IPM (BBA+PGDM)" },
 ];
 
@@ -1011,7 +1010,7 @@ export default function Page() {
 
                    {popupStep === 3 && (
                      <div className="q-card">
-                       <h4 className="q-question">Are you actively planning to pursue higher education within the next 12 months?</h4>
+                       <h4 className="q-question">Are you actively planning to pursue higher education within the next 2 months?</h4>
                        <p className="q-qsub">Select your timeline option</p>
 
                        <button
@@ -1043,8 +1042,8 @@ export default function Page() {
 
                    {popupStep === 4 && (
                      <div className="q-card">
-                       <h4 className="q-question">ASB is located in Noida.</h4>
-                       <p className="q-qsub">Are you open to studying in Noida?</p>
+                       <h4 className="q-question">ASB is located in Noida (Delhi/NCR).</h4>
+                       <p className="q-qsub">Are you open to studying in Noida (Delhi/NCR)?</p>
 
                        <button
                          type="button"
