@@ -98,7 +98,7 @@ export default function ThankYouPage({
               Thank you for your query.
             </p>
             <p style={{ margin: "0 0 26px", fontSize: "1rem", lineHeight: 1.75 }}>
-              Our adviser will contact you at the earliest. Meanwhile you may
+              Our counsellor will contact you at the earliest. Meanwhile you may
               fill in the complete application form for admissions to the ASB
               Full-Time{" "}
               <strong style={{ color: "#005a5a" }}>{courseLabel}</strong>{" "}
