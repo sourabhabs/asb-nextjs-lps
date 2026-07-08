@@ -347,6 +347,7 @@ export default function AsbCourseLandingShell({
   const showOxfordLogo = course.key !== "ba-psychology" || isNewPsychology;
   const showHeroOxfordPoint = course.key !== "ba-psychology" && course.key !== "ba-psychology3";
   const showInternationalSection = course.key !== "ba-psychology" && course.key !== "ba-psychology3";
+  const hideHeroPromoBlock = ["bca", "bcom", "bsc"].includes(course.key);
   const events = customEvents ?? EVENTS;
   const [intlIdx, setIntlIdx] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
@@ -1046,51 +1047,53 @@ export default function AsbCourseLandingShell({
                     className="header-hero-content"
                     style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
                   >
-                    <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
-                      <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
-                      <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">{content.highlight}</span> Degree Program.</p>
-                      {showHeroOxfordPoint ? (
-                        <ul className="asb-desktop-hero-points">
-                          <li style={{ fontSize: "20px" }}>15 Days Study Trip to Oxford Business College, Oxford & London, U.K.</li>
-                        </ul>
-                      ) : null}
-                      {showHeroStats ? (
-                        <div className="asb-hero-stats" aria-label="Course highlights">
-                          <div className="asb-hero-stat-box">
-                            <p className="asb-hero-stat-value">100%</p>
-                            <p className="asb-hero-stat-label">Placement Assistance</p>
-                          </div>
-                          <div className="asb-hero-stat-box">
-                            <p className="asb-hero-stat-value">{content.heroFee}</p>
-                            <p className="asb-hero-stat-label">Total Fees</p>
-                          </div>
-                        </div>
-                      ) : null}
-                      <div className="asb-desktop-scholarship-row">
-                        <div className="asb-scholarship-card">
-                          <div className="asb-scholarship-content">
-                            <div className="asb-scholarship-icon-box">
-                              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
-                                <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
-                              </svg>
+                    {!hideHeroPromoBlock ? (
+                      <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
+                        <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
+                        <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">{content.highlight}</span> Degree Program.</p>
+                        {showHeroOxfordPoint ? (
+                          <ul className="asb-desktop-hero-points">
+                            <li style={{ fontSize: "20px" }}>15 Days Study Trip to Oxford Business College, Oxford & London, U.K.</li>
+                          </ul>
+                        ) : null}
+                        {showHeroStats ? (
+                          <div className="asb-hero-stats" aria-label="Course highlights">
+                            <div className="asb-hero-stat-box">
+                              <p className="asb-hero-stat-value">100%</p>
+                              <p className="asb-hero-stat-label">Placement Assistance</p>
                             </div>
-                            <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship*"}</h4>
-                          </div>
-                        </div>
-                        {desktopScholarshipLogoSrc ? (
-                          <div className="asb-desktop-scholarship-logo mobH">
-                            <Image
-                              src={desktopScholarshipLogoSrc}
-                              alt={desktopScholarshipLogoAlt}
-                              width={420}
-                              height={200}
-                              sizes="118px"
-                            />
+                            <div className="asb-hero-stat-box">
+                              <p className="asb-hero-stat-value">{content.heroFee}</p>
+                              <p className="asb-hero-stat-label">Total Fees</p>
+                            </div>
                           </div>
                         ) : null}
+                        <div className="asb-desktop-scholarship-row">
+                          <div className="asb-scholarship-card">
+                            <div className="asb-scholarship-content">
+                              <div className="asb-scholarship-icon-box">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                                  <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+                                </svg>
+                              </div>
+                              <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship*"}</h4>
+                            </div>
+                          </div>
+                          {desktopScholarshipLogoSrc ? (
+                            <div className="asb-desktop-scholarship-logo mobH">
+                              <Image
+                                src={desktopScholarshipLogoSrc}
+                                alt={desktopScholarshipLogoAlt}
+                                width={420}
+                                height={200}
+                                sizes="118px"
+                              />
+                            </div>
+                          ) : null}
+                        </div>
                       </div>
-                    </div>
+                    ) : null}
                     <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                       <Image
                         src={course.mobileHeroImage ?? course.heroImage}
@@ -1102,7 +1105,7 @@ export default function AsbCourseLandingShell({
                         sizes="(max-width: 420px) 390px, 100vw"
                         style={{ width: "100%", height: "auto", display: "block" }}
                       />
-                      {showHeroStats ? (
+                      {!hideHeroPromoBlock && showHeroStats ? (
                         <div className="asb-hero-stats" aria-label="Course highlights">
                           <div className="asb-hero-stat-box">
                             <p className="asb-hero-stat-value">100%</p>
@@ -1114,30 +1117,32 @@ export default function AsbCourseLandingShell({
                           </div>
                         </div>
                       ) : null}
-                      <div className="asb-mobile-scholarship-row">
-                        <div className="asb-scholarship-card mobile-style">
-                          <div className="asb-scholarship-content">
-                            <div className="asb-scholarship-icon-box">
-                              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
-                                <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
-                              </svg>
+                      {!hideHeroPromoBlock ? (
+                        <div className="asb-mobile-scholarship-row">
+                          <div className="asb-scholarship-card mobile-style">
+                            <div className="asb-scholarship-content">
+                              <div className="asb-scholarship-icon-box">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                                  <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+                                </svg>
+                              </div>
+                              <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship"}</h4>
                             </div>
-                            <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship"}</h4>
                           </div>
+                          {desktopScholarshipLogoSrc ? (
+                            <div className="asb-mobile-scholarship-logo">
+                              <Image
+                                src={desktopScholarshipLogoSrc}
+                                alt={desktopScholarshipLogoAlt}
+                                width={180}
+                                height={180}
+                                sizes="58px"
+                              />
+                            </div>
+                          ) : null}
                         </div>
-                        {desktopScholarshipLogoSrc ? (
-                          <div className="asb-mobile-scholarship-logo">
-                            <Image
-                              src={desktopScholarshipLogoSrc}
-                              alt={desktopScholarshipLogoAlt}
-                              width={180}
-                              height={180}
-                              sizes="58px"
-                            />
-                          </div>
-                        ) : null}
-                      </div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
