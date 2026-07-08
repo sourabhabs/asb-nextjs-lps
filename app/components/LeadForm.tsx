@@ -370,24 +370,70 @@ export default function LeadForm({
             font-size: 16px;
           }
         }
+        .lead-form-consent-row {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+          gap: 6px;
+          width: 100%;
+          background: transparent !important;
+          border: 0 !important;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          padding: 0 !important;
+          position: static !important;
+          margin-top: 0px;
+        }
+        .consent-empty-title {
+          display: block;
+        }
         .lead-form-consent-note {
-          margin-top: 10px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
           color: rgba(255, 255, 255, 0.88);
-          font-size: 12px;
-          line-height: 1.5;
+          font-size: 14px;
+          line-height: 1.4;
           text-align: left;
           width: fit-content;
           max-width: 100%;
           margin-left: 0;
+          margin-top: 2px;
+        }
+        .lead-form-consent-note input[type="checkbox"] {
+          margin-top: 0px !important;
+          flex-shrink: 0 !important;
+          width: 16px !important;
+          height: 16px !important;
+          cursor: pointer !important;
         }
         @media (max-width: 991px) {
+          .lead-form-consent-row {
+            display: block !important;
+            margin-top: 10px !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            position: static !important;
+          }
+          .consent-empty-title {
+            display: none !important;
+          }
           .lead-form-consent-note {
+            display: flex;
+            align-items: flex-start;
             color: #64748b;
             font-size: 11px;
             margin-top: 12px;
-            text-align: center;
+            text-align: left;
             width: 100%;
             margin-left: 0;
+            padding: 0 4px;
+          }
+          .lead-form-consent-note input[type="checkbox"] {
+            margin-top: 2px !important;
           }
         }
       `}</style>
@@ -479,11 +525,23 @@ export default function LeadForm({
             </button>
           </div>
           </div>
-          {consentNote ? 
-          <div id="heroLeadForm">
-<div className="single_form hero-form-title" style={{width:"auto"}}><h3></h3></div>
-<div className=""><input type="checkbox"  name = "plbx" value={"plbx"} onChange={(e) => setPlbx(e.target.checked ? "Y" : "N")} /> <span style={{color:"#fff"}}> &nbsp; I have read and agree to the Privacy Policy and the collection of my personal information.</span></div>
-</div>: null}
+          {consentNote ? (
+            <div id="heroLeadForm" className="lead-form-consent-row">
+              <div className="single_form hero-form-title consent-empty-title" style={{ width: "auto" }}>
+                <h3></h3>
+              </div>
+              <div className="lead-form-consent-note">
+                <input
+                  type="checkbox"
+                  name="plbx"
+                  value="plbx"
+                  checked={plbx === "Y"}
+                  onChange={(e) => setPlbx(e.target.checked ? "Y" : "N")}
+                />
+                <span>{consentNote}</span>
+              </div>
+            </div>
+          ) : null}
         </form>
         
       </div>
