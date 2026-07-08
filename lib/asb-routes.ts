@@ -48,7 +48,8 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best BCA College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
     description:
       "Top BCA college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-    heroImage: "/BCA.jpg",
+    heroImage: "/desktop/BCA.jpg",
+    mobileHeroImage: "/mobile/BCA.jpg",
     courseValue: "BCA",
     queryLabel: "ASB BCA Admissions 2026 Landing",
     thankYouPath: "/thank-you-bca.php",
@@ -60,7 +61,8 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best B.Com College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
     description:
       "Top B.Com college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-    heroImage: "/BCOM.jpg",
+    heroImage: "/desktop/BCOM.jpg",
+    mobileHeroImage: "/mobile/BCOM.jpg",
     courseValue: "BCOM",
     queryLabel: "ASB BCOM Admissions 2026 Landing",
     thankYouPath: "/thank-you-bcom.php",
@@ -72,7 +74,8 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best B.Sc. (CS) College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
     description:
       "Top B.Sc. (CS) college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-    heroImage: "/BSC.jpg",
+    heroImage: "/desktop/BSC.jpg",
+    mobileHeroImage: "/mobile/BSC.jpg",
     courseValue: "BSc CS",
     queryLabel: "ASB BSC Admissions 2026 Landing",
     thankYouPath: "/thank-you-bsc.php",

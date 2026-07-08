@@ -205,7 +205,7 @@ export default function Page() {
         .mobile-cta{display:none}
         @media (min-width:992px){
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
-          .bnrbg{background-image:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),url("/ASB-BG-D.webp")!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
+          .bnrbg{background-image:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),url("/desktop/homepage.jpg")!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
           .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.2)}
           .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff;letter-spacing:-.02em}
           .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.22)}
@@ -635,7 +635,7 @@ export default function Page() {
             style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}
           >
             <Image
-              src="/ASB-BG-D.webp"
+              src="/desktop/homepage.jpg"
               alt=""
               fill
               priority
@@ -680,7 +680,7 @@ export default function Page() {
                   </div>
                   <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                     <Image
-                      src="/Mobile Banners ASB Placement.jpg"
+                      src="/mobile/homepage.jpg"
                       alt="ASB Admissions 2026"
                       width={390}
                       height={520}
