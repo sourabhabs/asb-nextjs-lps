@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import AsbCourseLandingShell from "@/app/components/AsbCourseLandingShell";
+import Bba2PreviewShell from "@/app/components/Bba2PreviewShell";
 import LandingPageTracking from "@/app/components/LandingPageTracking";
 import { ASB_COURSE_ROUTES } from "@/lib/asb-routes";
 
@@ -14,9 +14,7 @@ export default function BcaPage() {
   return (
     <>
       <LandingPageTracking googleTagId="AW-18057910395" />
-      <AsbCourseLandingShell course={course} 
-      formConsentNote="I have read and agree to the Privacy Policy and the collection of my personal information."
-      />
+      <Bba2PreviewShell course={course} showWhatsApp={true} />
     </>
   );
 }

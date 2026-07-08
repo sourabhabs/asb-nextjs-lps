@@ -357,6 +357,7 @@ export default function Bba2PreviewShell({
   const showOxfordLogo = detailsKey !== "ba-psychology";
   const showHeroOxfordPoint = detailsKey !== "ba-psychology";
   const showInternationalSection = detailsKey !== "ba-psychology";
+  const hideHeroPromoBlock = ["bca", "bcom", "bsc"].includes(detailsKey) && !isScholarshipPage;
   const [intlIdx, setIntlIdx] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
   const [testModalUrl, setTestModalUrl] = useState("");
@@ -1054,7 +1055,7 @@ export default function Bba2PreviewShell({
                           </div>
                         </div>
                       </div>
-                    ) : !isScholarshipPage ? (
+                    ) : !isScholarshipPage && !hideHeroPromoBlock ? (
                       <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
                         <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
                         <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">{content.highlight}</span> Degree Program.</p>
@@ -1102,7 +1103,7 @@ export default function Bba2PreviewShell({
                         sizes="(max-width: 420px) 390px, 100vw"
                         style={{ width: "100%", height: "auto", display: "block" }}
                       />
-                      {!isScholarshipPage && showHeroStats ? (
+                      {!isScholarshipPage && !hideHeroPromoBlock && showHeroStats ? (
                         <div className="asb-hero-stats" aria-label="Course highlights">
                           <div className="asb-hero-stat-box">
                             <p className="asb-hero-stat-value">100%</p>
@@ -1114,7 +1115,7 @@ export default function Bba2PreviewShell({
                           </div>
                         </div>
                       ) : null}
-                      {!isScholarshipPage && (
+                      {!isScholarshipPage && !hideHeroPromoBlock && (
                         <div className="asb-scholarship-card mobile-style">
                           <div className="asb-scholarship-content">
                             <div className="asb-scholarship-icon-box">
