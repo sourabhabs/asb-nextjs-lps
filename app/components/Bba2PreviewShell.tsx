@@ -358,6 +358,7 @@ export default function Bba2PreviewShell({
   const showHeroOxfordPoint = detailsKey !== "ba-psychology";
   const showInternationalSection = detailsKey !== "ba-psychology";
   const hideHeroPromoBlock = ["bca", "bcom", "bsc"].includes(detailsKey) && !isScholarshipPage;
+  const useFramedDesktopHero = isScholarshipPage || hideHeroPromoBlock;
   const [intlIdx, setIntlIdx] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
   const [testModalUrl, setTestModalUrl] = useState("");
@@ -953,10 +954,10 @@ export default function Bba2PreviewShell({
               aria-hidden="true"
               style={{
                 position: "absolute",
-                top: isScholarshipPage ? "78px" : 0,
+                top: useFramedDesktopHero ? "78px" : 0,
                 left: 0,
                 right: 0,
-                bottom: isScholarshipPage ? "68px" : 0,
+                bottom: useFramedDesktopHero ? "68px" : 0,
                 zIndex: 0,
                 pointerEvents: "none",
               }}
