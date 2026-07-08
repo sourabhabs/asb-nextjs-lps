@@ -10,7 +10,7 @@ const HERO_COURSES = [
   { value: "BCA", label: "BCA" },
   { value: "BCOM", label: "B.Com" },
   { value: "BSc CS", label: "B.Sc. Computer Science" },
-  { value: "BA Psychology", label: "B.A. Psychology" },
+  // { value: "BA Psychology", label: "B.A. Psychology" },
   { value: "IPM (BBA+PGDM)", label: "IPM (BBA+PGDM)" },
 ];
 
