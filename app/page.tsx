@@ -397,23 +397,6 @@ export default function Page() {
                   style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
                 >
                   <div className="mobH wow fadeInUp asb-desktop-hero-copy" data-wow-duration="1.3s" style={{ maxWidth: "760px" }}>
-                    <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
-                    <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">BBA/BCA/B.Com/B.Sc.(CS)</span> Degree Program.</p>
-                    <ul className="asb-desktop-hero-points">
-                      <li style={{ fontSize: "20px" }}>15 Days Study Trip to Oxford Business College, Oxford & London, U.K.</li>
-                      <li style={{ fontSize: "20px" }}>100% Placement Assistance</li>
-                    </ul>
-                    <div className="asb-scholarship-card">
-                      <div className="asb-scholarship-content">
-                        <div className="asb-scholarship-icon-box">
-                          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
-                            <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
-                          </svg>
-                        </div>
-                        <h4 className="asb-scholarship-title">Upto 100% Scholarship*</h4>
-                      </div>
-                    </div>
                   </div>
                   <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                     <Image

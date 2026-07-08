@@ -446,7 +446,7 @@ export default function Bba2PreviewShell({
         .mobile-cta{display:none}
         @media (min-width:992px){
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
-          .bnrbg{background-image:${isScholarshipPage ? 'none' : 'linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),url("/ASB-BG-D.webp")'}!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
+          .bnrbg{background-image:${isScholarshipPage ? 'none' : `linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),url("${course.heroImage}")`}!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
           .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff}
           .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff}
           .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600}
@@ -961,7 +961,7 @@ export default function Bba2PreviewShell({
               }}
             >
               <Image
-                src={isScholarshipPage ? course.heroImage : (isPsychologyRoute ? course.heroImage : "/ASB-BG-D.webp")}
+                src={course.heroImage}
                 alt=""
                 fill
                 priority
