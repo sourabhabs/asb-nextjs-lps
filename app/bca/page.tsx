@@ -14,7 +14,11 @@ export default function BcaPage() {
   return (
     <>
       <LandingPageTracking googleTagId="AW-18057910395" />
-      <Bba2PreviewShell course={course} showWhatsApp={true} />
+      <Bba2PreviewShell
+        course={course}
+        showWhatsApp={true}
+        formConsentNote="I have read and agree to the Privacy Policy and the collection of my personal information."
+      />
     </>
   );
 }

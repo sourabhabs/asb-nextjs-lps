@@ -12,6 +12,7 @@ import {
 interface Bba2PreviewShellProps {
   course?: any;
   showWhatsApp?: boolean;
+  formConsentNote?: string;
 }
 
 type CourseDetails = {
@@ -326,6 +327,7 @@ const DEFAULT_COURSE = PREVIEW_COURSES.bba;
 export default function Bba2PreviewShell({
   course = DEFAULT_COURSE,
   showWhatsApp = true,
+  formConsentNote,
 }: Bba2PreviewShellProps) {
   const homeRef = useRef<HTMLElement | null>(null);
   
@@ -415,13 +417,11 @@ export default function Bba2PreviewShell({
   return (
     <>
       <style>{`
-        ${isScholarshipPage ? `
-          @media (min-width: 992px) {
-            .header-hero {
-              height: calc(45.42vw + 146px) !important;
-            }
+        @media (min-width: 992px) {
+          .header-hero {
+            height: calc(45.42vw + 146px) !important;
           }
-        ` : ""}
+        }
         .alc-desktop-logo-strip{display:flex;align-items:center;gap:20px;margin-left:22px}
         .alc-desktop-logo-strip .logo-alc{height:68px;width:auto;display:block;object-fit:contain}
         .alc-desktop-logo-strip .logo-obc{height:54px;width:auto;display:block;object-fit:contain}
@@ -448,7 +448,7 @@ export default function Bba2PreviewShell({
         .mobile-cta{display:none}
         @media (min-width:992px){
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
-          .bnrbg{background-image:${isScholarshipPage ? 'none' : `linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,.28)),url("${course.heroImage}")`}!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
+          .bnrbg{background-image:none!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
           .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff}
           .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff}
           .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600}
@@ -1141,6 +1141,7 @@ export default function Bba2PreviewShell({
                 queryLabel={course.queryLabel}
                 thankYouPath={course.thankYouPath}
                 submitLabel="Enquire Now"
+                consentNote={formConsentNote}
               />
             </div>
           </section>
