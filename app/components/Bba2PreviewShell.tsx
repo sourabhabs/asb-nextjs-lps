@@ -971,16 +971,6 @@ export default function Bba2PreviewShell({
                 sizes="100vw"
                 style={{ objectFit: "cover" }}
               />
-              {!isScholarshipPage && (
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28))",
-                  }}
-                />
-              )}
             </div>
             <div className="container-l banner-content" style={{ width: "auto" }}>
               <div className="row" style={{ width: "100%", marginRight: 0, marginLeft: 0 }}>
