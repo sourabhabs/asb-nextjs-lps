@@ -622,7 +622,7 @@ export default function Page() {
                   </div>
                   <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                     <Image
-                      src="/mobile2/homepage.jpg"
+                      src="/main-mobile.jpg"
                       alt="ASB Admissions 2026"
                       width={390}
                       height={520}
