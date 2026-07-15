@@ -602,7 +602,7 @@ export default function Page() {
             style={{ position: "absolute", top: "78px", left: 0, right: 0, bottom: "68px", zIndex: 0, pointerEvents: "none" }}
           >
             <Image
-              src="/desktop2/homepage.jpg"
+              src="/main.jpg"
               alt=""
               fill
               priority
