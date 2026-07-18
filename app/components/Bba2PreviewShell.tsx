@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import LeadForm from "./LeadForm";
+import AdmissionsTimer from "./AdmissionsTimer";
 import {
   PREVIEW_COURSES,
   type PreviewCourseConfig,
@@ -836,6 +837,90 @@ export default function Bba2PreviewShell({
           }
         }
 
+        /* Admissions Countdown Timer Styling */
+        .admissions-timer-container {
+          background: linear-gradient(135deg, rgba(15, 31, 69, 0.92) 0%, rgba(10, 60, 80, 0.96) 100%);
+          border: 1.5px solid rgba(34, 240, 255, 0.45);
+          border-radius: 16px;
+          padding: 16px 20px;
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          width: fit-content;
+          max-width: 100%;
+          margin: 15px auto;
+          text-align: center;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-container {
+            margin: 0;
+            text-align: left;
+          }
+          .admissions-timer-desktop-wrapper {
+            position: absolute;
+            bottom: 40px;
+            left: 35px;
+            z-index: 5;
+          }
+        }
+        .admissions-timer-title {
+          color: #ffffff;
+          font-size: 20px;
+          font-weight: 800;
+          margin: 0 0 12px 0;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .admissions-timer-digits-row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+        .admissions-timer-item-group {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .admissions-timer-card-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4px;
+        }
+        .admissions-timer-card {
+          background: #ffffff;
+          border-radius: 12px;
+          width: 58px;
+          height: 58px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .admissions-timer-digit {
+          color: #990000;
+          font-size: 26px;
+          font-weight: 800;
+          font-family: 'Inter', sans-serif;
+          line-height: 1;
+        }
+        .admissions-timer-colon {
+          color: #ffffff;
+          font-size: 26px;
+          font-weight: 800;
+          line-height: 1;
+          margin-top: -16px;
+        }
+        .admissions-timer-label {
+          color: rgba(255, 255, 255, 0.85);
+          font-size: 11px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
         /* BA Psychology Certifications Section Styling */
         .psychology-certifications-block {
           background: #791F70;
@@ -1081,7 +1166,14 @@ export default function Bba2PreviewShell({
                       </div>
                     ) : (
                       /* Spacer to prevent layout/height collapse on desktop */
-                      <div className="mobH" style={{ height: "460px" }} />
+                      <>
+                        <div className="mobH" style={{ height: "460px" }} />
+                        {course.queryLabel === "ASB BBA2 Preview Landing" ? (
+                          <div className="mobH admissions-timer-desktop-wrapper">
+                            <AdmissionsTimer />
+                          </div>
+                        ) : null}
+                      </>
                     )}
                     <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                       <Image
@@ -1094,6 +1186,9 @@ export default function Bba2PreviewShell({
                         sizes="(max-width: 420px) 390px, 100vw"
                         style={{ width: "100%", height: "auto", display: "block" }}
                       />
+                      {course.queryLabel === "ASB BBA2 Preview Landing" ? (
+                        <AdmissionsTimer />
+                      ) : null}
                       {!isScholarshipPage && !hideHeroPromoBlock && showHeroStats ? (
                         <div className="asb-hero-stats" aria-label="Course highlights">
                           <div className="asb-hero-stat-box">
