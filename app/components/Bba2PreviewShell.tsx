@@ -886,7 +886,9 @@ export default function Bba2PreviewShell({
           .admissions-timer-container {
             margin: 0;
             text-align: left;
-            padding: 12px 16px;
+            padding: 16px 22px;
+            border-radius: 16px;
+            border-width: 2px;
           }
           .admissions-timer-desktop-lhs {
             position: absolute;
@@ -963,28 +965,36 @@ export default function Bba2PreviewShell({
         }
         @media (min-width: 992px) {
           .asb-bba2-scholarship-badge {
-            margin: 0 0 10px 0;
-            padding: 10px 16px;
-            gap: 16px;
+            margin: 0 0 14px 0;
+            padding: 16px 24px;
+            gap: 20px;
+            border-radius: 16px;
+            border-width: 2px;
+          }
+          .asb-bba2-sch-left svg {
+            width: 48px !important;
+            height: 48px !important;
           }
           .asb-bba2-sch-divider {
-            height: 56px;
+            height: 68px;
+            width: 1.5px;
           }
           .asb-bba2-sch-upto {
-            font-size: 10px;
+            font-size: 12px;
           }
           .asb-bba2-sch-percent {
-            font-size: 26px;
+            font-size: 36px;
           }
           .asb-bba2-sch-title {
-            font-size: 13px;
+            font-size: 17px;
           }
           .asb-bba2-sch-sub {
-            font-size: 8px;
+            font-size: 9.5px;
           }
           .asb-bba2-sch-pill {
-            font-size: 8px;
-            padding: 2px 8px;
+            font-size: 9.5px;
+            padding: 3px 10px;
+            margin-top: 5px;
           }
         }
         .asb-placement-badge {
@@ -1013,10 +1023,17 @@ export default function Bba2PreviewShell({
         }
         @media (min-width: 992px) {
           .asb-placement-badge {
-            margin: 0 0 12px 0;
-            padding: 8px 16px;
-            font-size: 14px;
+            margin: 0 0 14px 0;
+            padding: 12px 22px;
+            font-size: 16px;
             justify-content: flex-start;
+            border-radius: 14px;
+            border-width: 2px;
+            gap: 10px;
+          }
+          .asb-placement-icon svg {
+            width: 20px !important;
+            height: 20px !important;
           }
         }
         .admissions-timer-title {
@@ -1030,7 +1047,8 @@ export default function Bba2PreviewShell({
         }
         @media (min-width: 992px) {
           .admissions-timer-title {
-            font-size: 16px;
+            font-size: 18px;
+            margin-bottom: 12px;
           }
         }
         .admissions-timer-digits-row {
@@ -1039,10 +1057,20 @@ export default function Bba2PreviewShell({
           justify-content: center;
           gap: 6px;
         }
+        @media (min-width: 992px) {
+          .admissions-timer-digits-row {
+            gap: 8px;
+          }
+        }
         .admissions-timer-item-group {
           display: flex;
           align-items: center;
           gap: 6px;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-item-group {
+            gap: 8px;
+          }
         }
         .admissions-timer-card-wrapper {
           display: flex;
@@ -1062,9 +1090,9 @@ export default function Bba2PreviewShell({
         }
         @media (min-width: 992px) {
           .admissions-timer-card {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
+            width: 58px;
+            height: 58px;
+            border-radius: 12px;
           }
         }
         .admissions-timer-digit {
@@ -1076,7 +1104,7 @@ export default function Bba2PreviewShell({
         }
         @media (min-width: 992px) {
           .admissions-timer-digit {
-            font-size: 22px;
+            font-size: 26px;
           }
         }
         .admissions-timer-colon {
@@ -1088,8 +1116,8 @@ export default function Bba2PreviewShell({
         }
         @media (min-width: 992px) {
           .admissions-timer-colon {
-            font-size: 22px;
-            margin-top: -14px;
+            font-size: 26px;
+            margin-top: -16px;
           }
         }
         .admissions-timer-label {
@@ -1101,9 +1129,10 @@ export default function Bba2PreviewShell({
         }
         @media (min-width: 992px) {
           .admissions-timer-label {
-            font-size: 10px;
+            font-size: 11px;
           }
         }
+
 
         /* BA Psychology Certifications Section Styling */
         .psychology-certifications-block {
