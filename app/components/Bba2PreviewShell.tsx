@@ -856,10 +856,11 @@ export default function Bba2PreviewShell({
             margin: 0;
             text-align: left;
           }
-          .admissions-timer-desktop-wrapper {
+          .admissions-timer-desktop-rhs {
             position: absolute;
             bottom: 40px;
-            right: 35px;
+            right: 180px !important;
+            left: auto !important;
             z-index: 5;
           }
         }
@@ -1169,7 +1170,7 @@ export default function Bba2PreviewShell({
                       <>
                         <div className="mobH" style={{ height: "460px" }} />
                         {course.queryLabel === "ASB BBA2 Preview Landing" ? (
-                          <div className="mobH admissions-timer-desktop-wrapper">
+                          <div className="mobH admissions-timer-desktop-rhs">
                             <AdmissionsTimer />
                           </div>
                         ) : null}
