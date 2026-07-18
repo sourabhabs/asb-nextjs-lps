@@ -859,7 +859,7 @@ export default function Bba2PreviewShell({
           .admissions-timer-desktop-wrapper {
             position: absolute;
             bottom: 40px;
-            left: 35px;
+            right: 35px;
             z-index: 5;
           }
         }
