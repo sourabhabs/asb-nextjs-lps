@@ -1058,7 +1058,7 @@ export default function Bba2PreviewShell({
                 style={{ objectFit: "cover" }}
               />
             </div>
-            <div className="container-l banner-content" style={{ width: "auto" }}>
+            <div className="container-l banner-content" style={{ width: "100%" }}>
               <div className="row" style={{ width: "100%", marginRight: 0, marginLeft: 0 }}>
                 <div className="col-lg-12">
                   <div
