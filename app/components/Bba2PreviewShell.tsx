@@ -28,6 +28,25 @@ const PlacementBadge = () => (
   </div>
 );
 
+const ScholarshipBadgeBba2 = () => (
+  <div className="asb-bba2-scholarship-badge">
+    <div className="asb-bba2-sch-left">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+        <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+      </svg>
+    </div>
+    <div className="asb-bba2-sch-divider"></div>
+    <div className="asb-bba2-sch-right">
+      <div className="asb-bba2-sch-upto">GET UPTO</div>
+      <div className="asb-bba2-sch-percent">100%</div>
+      <div className="asb-bba2-sch-title">SCHOLARSHIPS*</div>
+      <div className="asb-bba2-sch-sub">BASED ON YOUR 12TH SCORE</div>
+      <div className="asb-bba2-sch-pill">AVAILABLE FOR ALL</div>
+    </div>
+  </div>
+);
+
 type CourseDetails = {
   highlight: string;
   contactLabel: string;
@@ -872,9 +891,100 @@ export default function Bba2PreviewShell({
           .admissions-timer-desktop-lhs {
             position: absolute;
             bottom: 15px;
-            left: 330px !important;
+            left: 35px !important;
             right: auto !important;
             z-index: 5;
+          }
+        }
+        .asb-bba2-scholarship-badge {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 8px 12px;
+          background: rgba(15, 31, 69, 0.95);
+          border: 1.5px solid #ffb703;
+          border-radius: 12px;
+          box-shadow: 0 0 12px rgba(255, 183, 3, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+          width: fit-content;
+          margin: 10px auto;
+          text-align: left;
+        }
+        .asb-bba2-sch-left {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .asb-bba2-sch-divider {
+          width: 1px;
+          height: 48px;
+          background: rgba(255, 183, 3, 0.4);
+        }
+        .asb-bba2-sch-right {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          line-height: 1;
+        }
+        .asb-bba2-sch-upto {
+          color: #ffb703;
+          font-size: 8px;
+          font-weight: 800;
+          letter-spacing: 0.05em;
+        }
+        .asb-bba2-sch-percent {
+          color: #ffb703;
+          font-size: 22px;
+          font-weight: 900;
+          line-height: 0.95;
+          margin: 2px 0;
+        }
+        .asb-bba2-sch-title {
+          color: #ffffff;
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 0.05em;
+        }
+        .asb-bba2-sch-sub {
+          color: #ffffff;
+          font-size: 7px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          margin-top: 1px;
+        }
+        .asb-bba2-sch-pill {
+          background: #ffb703;
+          color: #000000;
+          font-size: 7px;
+          font-weight: 900;
+          padding: 2px 6px;
+          border-radius: 99px;
+          margin-top: 3px;
+          letter-spacing: 0.03em;
+        }
+        @media (min-width: 992px) {
+          .asb-bba2-scholarship-badge {
+            margin: 0 0 10px 0;
+            padding: 10px 16px;
+            gap: 16px;
+          }
+          .asb-bba2-sch-divider {
+            height: 56px;
+          }
+          .asb-bba2-sch-upto {
+            font-size: 10px;
+          }
+          .asb-bba2-sch-percent {
+            font-size: 26px;
+          }
+          .asb-bba2-sch-title {
+            font-size: 13px;
+          }
+          .asb-bba2-sch-sub {
+            font-size: 8px;
+          }
+          .asb-bba2-sch-pill {
+            font-size: 8px;
+            padding: 2px 8px;
           }
         }
         .asb-placement-badge {
@@ -1244,6 +1354,7 @@ export default function Bba2PreviewShell({
                         <div className="mobH" style={{ height: "460px" }} />
                         {course.queryLabel === "ASB BBA2 Preview Landing" ? (
                           <div className="mobH admissions-timer-desktop-lhs">
+                            <ScholarshipBadgeBba2 />
                             <PlacementBadge />
                             <AdmissionsTimer />
                           </div>
@@ -1263,6 +1374,7 @@ export default function Bba2PreviewShell({
                       />
                       {course.queryLabel === "ASB BBA2 Preview Landing" ? (
                         <>
+                          <ScholarshipBadgeBba2 />
                           <PlacementBadge />
                           <AdmissionsTimer />
                         </>
