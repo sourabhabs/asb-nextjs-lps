@@ -872,7 +872,7 @@ export default function Bba2PreviewShell({
           .admissions-timer-desktop-lhs {
             position: absolute;
             bottom: 15px;
-            left: 35px !important;
+            left: 330px !important;
             right: auto !important;
             z-index: 5;
           }
