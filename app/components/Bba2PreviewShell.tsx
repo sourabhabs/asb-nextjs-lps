@@ -841,20 +841,21 @@ export default function Bba2PreviewShell({
         .admissions-timer-container {
           background: linear-gradient(135deg, rgba(15, 31, 69, 0.92) 0%, rgba(10, 60, 80, 0.96) 100%);
           border: 1.5px solid rgba(34, 240, 255, 0.45);
-          border-radius: 16px;
-          padding: 16px 20px;
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+          border-radius: 12px;
+          padding: 8px 12px;
+          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
           width: fit-content;
           max-width: 100%;
-          margin: 15px auto;
+          margin: 12px auto;
           text-align: center;
         }
         @media (min-width: 992px) {
           .admissions-timer-container {
             margin: 0;
             text-align: left;
+            padding: 12px 16px;
           }
           .admissions-timer-desktop-rhs {
             position: absolute;
@@ -866,60 +867,88 @@ export default function Bba2PreviewShell({
         }
         .admissions-timer-title {
           color: #ffffff;
-          font-size: 20px;
+          font-size: 13px;
           font-weight: 800;
-          margin: 0 0 12px 0;
+          margin: 0 0 8px 0;
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+          text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-title {
+            font-size: 16px;
+          }
         }
         .admissions-timer-digits-row {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 8px;
+          gap: 6px;
         }
         .admissions-timer-item-group {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 6px;
         }
         .admissions-timer-card-wrapper {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 4px;
+          gap: 3px;
         }
         .admissions-timer-card {
           background: #ffffff;
-          border-radius: 12px;
-          width: 58px;
-          height: 58px;
+          border-radius: 8px;
+          width: 42px;
+          height: 42px;
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+          box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-card {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+          }
         }
         .admissions-timer-digit {
           color: #990000;
-          font-size: 26px;
+          font-size: 18px;
           font-weight: 800;
           font-family: 'Inter', sans-serif;
           line-height: 1;
         }
+        @media (min-width: 992px) {
+          .admissions-timer-digit {
+            font-size: 22px;
+          }
+        }
         .admissions-timer-colon {
           color: #ffffff;
-          font-size: 26px;
+          font-size: 18px;
           font-weight: 800;
           line-height: 1;
-          margin-top: -16px;
+          margin-top: -12px;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-colon {
+            font-size: 22px;
+            margin-top: -14px;
+          }
         }
         .admissions-timer-label {
           color: rgba(255, 255, 255, 0.85);
-          font-size: 11px;
+          font-size: 8px;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.05em;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-label {
+            font-size: 10px;
+          }
         }
 
         /* BA Psychology Certifications Section Styling */
