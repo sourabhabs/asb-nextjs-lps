@@ -858,7 +858,7 @@ export default function Bba2PreviewShell({
           }
           .admissions-timer-desktop-rhs {
             position: absolute;
-            bottom: -120px;
+            bottom: 15px;
             right: 180px !important;
             left: auto !important;
             z-index: 5;
