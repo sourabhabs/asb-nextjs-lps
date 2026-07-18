@@ -25,8 +25,8 @@ export const PREVIEW_COURSES: Record<PreviewCourseKey, PreviewCourseConfig> = {
   },
   bba: {
     key: "bba",
-    heroImage: "/desktop/BBA_updated.jpg",
-    mobileHeroImage: "/mobile/BBA.jpg",
+    heroImage: "/bba2timer.jpg",
+    mobileHeroImage: "/bba2timer.jpg",
     queryLabel: "ASB BBA2 Preview Landing",
     thankYouPath: "/thank-you-bba.php",
   },
