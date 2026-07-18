@@ -42,3 +42,8 @@ D:\asb-lps\asb-nextjs\asb-next\confidential
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Backups and temporary updated images
+public/desktop-backup/
+public/desktop-updated/
+public/desktop2-backup/
