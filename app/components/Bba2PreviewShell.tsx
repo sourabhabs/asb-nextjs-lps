@@ -1427,6 +1427,7 @@ export default function Bba2PreviewShell({
           box-shadow: none !important;
           padding: 0 !important;
           margin: 0 !important;
+          position: relative !important;
         }
         .check-form-card .hero-form-title {
           margin-bottom: 20px !important;
