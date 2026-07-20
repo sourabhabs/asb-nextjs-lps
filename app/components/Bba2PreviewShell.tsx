@@ -1283,8 +1283,70 @@ export default function Bba2PreviewShell({
         }
         @media (max-width: 767px) {
           .slabs-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          .slab-card {
+            display: grid !important;
+            grid-template-columns: 1fr auto !important;
+            grid-template-rows: auto auto auto !important;
+            grid-template-areas: 
+              "range percentage"
+              "bar bar"
+              "label label" !important;
+            gap: 8px !important;
+            align-items: center !important;
+            text-align: left !important;
+            background: #f8fafc !important;
+            padding: 16px !important;
+            border-radius: 12px !important;
+            border: 1px solid #cbd5e1 !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04) !important;
+            width: 100% !important;
+          }
+          .slab-percentage {
+            grid-area: percentage !important;
+            font-size: 20px !important;
+            margin: 0 !important;
+            color: #008a96 !important;
+            font-weight: 800 !important;
+          }
+          .slab-bar-wrapper {
+            grid-area: bar !important;
+            width: 100% !important;
+            max-width: none !important;
+            height: 12px !important;
+            margin: 4px 0 6px 0 !important;
+            background-color: #e2e8f0 !important;
+            border-radius: 999px !important;
+            overflow: hidden !important;
+            display: block !important;
+          }
+          .slab-bar {
+            height: 100% !important;
+            border-radius: 999px !important;
+          }
+          .bar-100 { width: 100% !important; height: 100% !important; }
+          .bar-75 { width: 75% !important; height: 100% !important; }
+          .bar-50 { width: 50% !important; height: 100% !important; }
+          .bar-25 { width: 25% !important; height: 100% !important; }
+          
+          .slab-divider {
+            display: none !important;
+          }
+          .slab-range {
+            grid-area: range !important;
+            font-size: 16px !important;
+            font-weight: 800 !important;
+            color: #0f1f45 !important;
+            margin: 0 !important;
+          }
+          .slab-label {
+            grid-area: label !important;
+            font-size: 13px !important;
+            color: #64748b !important;
+            font-weight: 500 !important;
+            margin: 0 !important;
           }
         }
         .slab-card {
