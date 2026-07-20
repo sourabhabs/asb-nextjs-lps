@@ -15,6 +15,7 @@ export type LeadFormPayload = {
   source: string;
   pageUrl: string;
   utm: Record<string, string>;
+  class12Marks?: string;
 };
 
 type LeadFlowEnv = {
@@ -98,6 +99,7 @@ export function normalizeLeadPayload(formData: FormData): LeadFormPayload {
     query: f("query") || "ASB UG Admissions 2026 Landing",
     source: f("source"),
     pageUrl: f("page_url"),
+    class12Marks: f("class12Marks"),
     utm: {
       medium: f("utm_medium"),
       campaign: f("utm_campaign"),
@@ -146,6 +148,7 @@ async function insertLeadRecord(
     sourceRaw: payload.source,
     pageUrl: payload.pageUrl,
     utm: payload.utm,
+    class12Marks: payload.class12Marks || "",
     ip: getClientIp(forwardedFor),
     otp,
     otpStatus: "Not Verified",
@@ -196,9 +199,9 @@ export async function sendOtpSms(phone: string, otp: string) {
 
 function buildLeadSquaredAttributes(
   payload: LeadFormPayload,
-  otpStatus: "Not Verified" | "Verified"
+  otpStatus: string
 ): LeadSquaredAttribute[] {
-  return [
+  const attrs = [
     { Attribute: "FirstName", Value: payload.name },
     { Attribute: "EmailAddress", Value: payload.email },
     { Attribute: "Phone", Value: payload.phone },
@@ -217,6 +220,10 @@ function buildLeadSquaredAttributes(
     { Attribute: "mx_GCLID", Value: payload.utm.gclid ?? "" },
     { Attribute: "mx_OTP_Status", Value: otpStatus },
   ];
+  if (payload.class12Marks) {
+    attrs.push({ Attribute: "mx_12th_Percentage", Value: payload.class12Marks });
+  }
+  return attrs;
 }
 
 function toLeadPayloadFromRecord(
@@ -231,6 +238,7 @@ function toLeadPayloadFromRecord(
     sourceRaw: string;
     pageUrl: string;
     utm: Record<string, string | undefined>;
+    class12Marks: string;
   }>
 ): LeadFormPayload {
   return {
@@ -243,6 +251,7 @@ function toLeadPayloadFromRecord(
     query: String(lead.query ?? "ASB UG Admissions 2026 Landing"),
     source: String(lead.sourceRaw ?? ""),
     pageUrl: String(lead.pageUrl ?? ""),
+    class12Marks: String(lead.class12Marks ?? ""),
     utm: {
       medium: String(lead.utm?.medium ?? ""),
       campaign: String(lead.utm?.campaign ?? ""),

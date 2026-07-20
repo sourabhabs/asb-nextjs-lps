@@ -15,6 +15,8 @@ interface LeadFormProps {
   trackMetaCompleteRegistration?: boolean;
   onSuccess?: (leadDocId: string, name: string) => void;
   consentNote?: string;
+  isScholarshipCheck?: boolean;
+  show12thMarks?: boolean;
 }
 
 const DEFAULT_COURSES_ALC = [
@@ -51,6 +53,8 @@ export default function LeadForm({
   trackMetaCompleteRegistration = false,
   onSuccess,
   consentNote,
+  isScholarshipCheck = false,
+  show12thMarks = false,
 }: LeadFormProps) {
   const resolvedCourses =
     courses ?? (variant === "alc" ? DEFAULT_COURSES_ALC : DEFAULT_COURSES_ASB);
@@ -60,6 +64,7 @@ export default function LeadForm({
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
   const [course, setCourse] = useState("");
+  const [class12Marks, setClass12Marks] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "otp" | "verifying" | "done">("idle");
   const [statusMsg, setStatusMsg] = useState("");
   const [statusType, setStatusType] = useState<"success" | "error">("success");
@@ -92,6 +97,10 @@ export default function LeadForm({
       showStatus("Please fill all required fields correctly.", "error");
       return;
     }
+    if (show12thMarks && !class12Marks) {
+      showStatus("Please enter your Class 12th marks.", "error");
+      return;
+    }
 
     if (plbx!=="Y" && consentNote) {
       showStatus("Please read and agree to the privacy policy.", "error");
@@ -121,12 +130,16 @@ export default function LeadForm({
       utm_content: getUTMParam("utm_content"),
       utm_campaignid: getUTMParam("utm_campaignid"),
       utm_adgroupid: getUTMParam("utm_adgroupid"),
-      utm_creativeid: getUTMParam("utm_creativeid"),
-      utm_keyword: getUTMParam("utm_keyword"),
-      utm_matchtype: getUTMParam("utm_matchtype"),
-      utm_network: getUTMParam("utm_network"),
-      utm_gclid: getUTMParam("utm_gclid"),
+      creativeid: getUTMParam("utm_creativeid"),
+      keyword: getUTMParam("utm_keyword"),
+      matchtype: getUTMParam("utm_matchtype"),
+      network: getUTMParam("utm_network"),
+      gclid: getUTMParam("utm_gclid"),
     });
+
+    if (show12thMarks) {
+      body.append("class12Marks", class12Marks);
+    }
 
     try {
       const res = await fetch("/api/send-otp", {
@@ -299,6 +312,14 @@ export default function LeadForm({
           color: #0f172a;
           margin: 0;
         }
+        .form-label-top {
+          display: block;
+          font-size: 13px;
+          font-weight: 700;
+          color: #334155;
+          margin-bottom: 6px;
+          text-align: left;
+        }
         .alc-otp-sub {
           font-size: 14px;
           color: #475569;
@@ -436,18 +457,125 @@ export default function LeadForm({
             margin-top: 2px !important;
           }
         }
+
+        /* Vertical Form (Scholarship Check) Styles */
+        #scholarshipLeadForm {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 12px !important;
+          width: 100% !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          position: static !important;
+        }
+        #scholarshipLeadForm .single_form {
+          width: 100% !important;
+          flex: 0 0 auto !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        #scholarshipLeadForm .course-select-wrap {
+          width: 100% !important;
+        }
+        #scholarshipLeadForm .hero-form-title {
+          width: 100% !important;
+          margin: 0 0 10px 0 !important;
+          display: block !important;
+        }
+        #scholarshipLeadForm .hero-form-title h3 {
+          font-size: 24px !important;
+          color: #0f1f45 !important;
+          font-weight: 800 !important;
+          text-align: center !important;
+          margin: 0 !important;
+          line-height: 1.3 !important;
+        }
+        #scholarshipLeadForm .single_form input,
+        #scholarshipLeadForm .single_form select {
+          height: 48px !important;
+          border-radius: 8px !important;
+          border: 1px solid #cbd5e1 !important;
+          background: #ffffff !important;
+          padding: 0 14px !important;
+          font-size: 14.5px !important;
+          color: #0f172a !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          display: block !important;
+          margin: 0 !important;
+        }
+        #scholarshipLeadForm .single_form input:focus,
+        #scholarshipLeadForm .single_form select:focus {
+          border-color: #006972 !important;
+          outline: none !important;
+          box-shadow: 0 0 0 2px rgba(0, 105, 114, 0.15) !important;
+        }
+        #scholarshipLeadForm .single_form label {
+          color: #334155 !important;
+          font-weight: 700 !important;
+          margin-bottom: 6px !important;
+          display: block !important;
+          text-align: left !important;
+        }
+        #scholarshipLeadForm #heroSubmitBtn {
+          height: 48px !important;
+          line-height: 48px !important;
+          border-radius: 8px !important;
+          background: #006972 !important;
+          color: #ffffff !important;
+          font-weight: 800 !important;
+          width: 100% !important;
+          margin-top: 8px !important;
+          box-shadow: 0 6px 16px rgba(0, 105, 114, 0.25) !important;
+          transition: all 0.2s ease !important;
+          border: 0 !important;
+          cursor: pointer !important;
+        }
+        #scholarshipLeadForm #heroSubmitBtn:hover {
+          background: #005259 !important;
+          box-shadow: 0 8px 20px rgba(0, 105, 114, 0.35) !important;
+        }
+        #scholarshipLeadForm.lead-form-consent-row {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          width: 100% !important;
+          margin-top: 10px !important;
+          background: transparent !important;
+          padding: 0 !important;
+        }
+        #scholarshipLeadForm.lead-form-consent-row .consent-empty-title {
+          display: none !important;
+        }
+        #scholarshipLeadForm.lead-form-consent-row .lead-form-consent-note {
+          display: flex !important;
+          align-items: flex-start !important;
+          gap: 8px !important;
+          color: #475569 !important;
+          font-size: 11px !important;
+          margin-top: 6px !important;
+          text-align: left !important;
+          width: 100% !important;
+        }
+        #scholarshipLeadForm.lead-form-consent-row .lead-form-consent-note input[type="checkbox"] {
+          margin-top: 2px !important;
+          flex-shrink: 0 !important;
+          width: 14px !important;
+          height: 14px !important;
+        }
       `}</style>
 
       <div className={`frmD ${className}`} id={id}>
         <form  onSubmit={handleSubmit} noValidate>
-          <div id="heroLeadForm">
+          <div id={isScholarshipCheck ? "scholarshipLeadForm" : "heroLeadForm"}>
           <div className="single_form hero-form-title" style={{ width: "auto" }}>
             <h3>{title}&nbsp;</h3>
           </div>
           <div className="single_form">
+            {isScholarshipCheck && <label className="form-label-top">Full Name</label>}
             <input
               type="text"
-              placeholder="Name*"
+              placeholder={isScholarshipCheck ? "Enter your full name" : "Name*"}
               value={name}
               onChange={(e) => setName(e.target.value)}
               maxLength={100}
@@ -456,9 +584,10 @@ export default function LeadForm({
             />
           </div>
           <div className="single_form">
+            {isScholarshipCheck && <label className="form-label-top">Email Address</label>}
             <input
               type="email"
-              placeholder="Email*"
+              placeholder={isScholarshipCheck ? "Enter your email address" : "Email*"}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               maxLength={100}
@@ -467,9 +596,10 @@ export default function LeadForm({
             />
           </div>
           <div className="single_form">
+            {isScholarshipCheck && <label className="form-label-top">Phone Number</label>}
             <input
               type="tel"
-              placeholder="Mobile Number*"
+              placeholder={isScholarshipCheck ? "Enter your phone number" : "Mobile Number*"}
               value={phone}
               onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
               maxLength={10}
@@ -479,9 +609,10 @@ export default function LeadForm({
             />
           </div>
           <div className="single_form">
+            {isScholarshipCheck && <label className="form-label-top">City</label>}
             <input
               type="text"
-              placeholder="City*"
+              placeholder={isScholarshipCheck ? "Enter your city" : "City*"}
               value={city}
               onChange={(e) => setCity(e.target.value)}
               maxLength={50}
@@ -490,6 +621,7 @@ export default function LeadForm({
             />
           </div>
           <div className="single_form course-select-wrap">
+            {isScholarshipCheck && <label className="form-label-top">Select Course</label>}
             {resolvedCourses.length === 1 ? (
               <div className="course-readonly" aria-label="Selected Course">
                 {resolvedCourses[0].label}
@@ -501,7 +633,7 @@ export default function LeadForm({
                 required
                 style={{ color: course ? "#334155" : "#767676", marginBottom: "4px" }}
               >
-                <option value="">Select Course*</option>
+                <option value="">{isScholarshipCheck ? "Select a course" : "Select Course*"}</option>
                 {resolvedCourses.map((c) => (
                   <option key={c.value} value={c.value}>
                     {c.label}
@@ -510,6 +642,20 @@ export default function LeadForm({
               </select>
             )}
           </div>
+          {show12thMarks && (
+            <div className="single_form">
+              {isScholarshipCheck && <label className="form-label-top">Class 12th Marks (%)</label>}
+              <input
+                type="text"
+                placeholder={isScholarshipCheck ? "e.g. 92%" : "Class 12th Marks (%)*"}
+                value={class12Marks}
+                onChange={(e) => setClass12Marks(e.target.value)}
+                maxLength={10}
+                required
+                autoComplete="off"
+              />
+            </div>
+          )}
 
           {statusMsg && !otpOpen ? (
             <div className="hero-form-status-wrap">
@@ -526,7 +672,7 @@ export default function LeadForm({
           </div>
           </div>
           {consentNote ? (
-            <div id="heroLeadForm" className="lead-form-consent-row">
+            <div id={isScholarshipCheck ? "scholarshipLeadForm" : "heroLeadForm"} className="lead-form-consent-row">
               <div className="single_form hero-form-title consent-empty-title" style={{ width: "auto" }}>
                 <h3></h3>
               </div>
