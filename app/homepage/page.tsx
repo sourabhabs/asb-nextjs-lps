@@ -171,6 +171,9 @@ export default function Page() {
   return (
     <>
       <LandingPageTracking googleTagId="AW-18057910395" />
+      <LandingPageTracking googleTagId="AW-862684608" />
+      <LandingPageTracking googleTagId="AW-18057855257" />
+      <LandingPageTracking googleTagId="AW-18057960286" />
       <style>{`
         .alc-desktop-logo-strip{display:flex;align-items:center;gap:20px;margin-left:22px}
         .alc-desktop-logo-strip .logo-alc{height:68px;width:auto;display:block;object-fit:contain}
@@ -821,30 +824,11 @@ export default function Page() {
         <div className="desktop-cta" style={{ opacity: showSticky ? "1" : "0", pointerEvents: showSticky ? "auto" : "none", transform: showSticky ? "translateY(0)" : "translateY(20px)" }} aria-label="Desktop actions">
           <div className="desktop-cta-strip">
             <button type="button" className="btn btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
-            <a
-              href="https://api.whatsapp.com/send?phone=918376025740&text=Hi,%20I%20would%20like%20to%20know%20more%20about%20ASB%203%20year%20degree%20programs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-wa"
-              title="WhatsApp Us"
-            >
-              <Image src="/whatsapp.png" alt="WhatsApp Us" width={52} height={52} />
-            </a>
           </div>
         </div>
         <div className={`mobile-cta${showSticky ? " is-visible" : ""}`} aria-label="Mobile actions">
           <div className="mobile-cta-strip">
             <button type="button" className="mobile-btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
-            <a
-              href="https://api.whatsapp.com/send?phone=918376025740&text=Hi,%20I%20would%20like%20to%20know%20more%20about%20ASB%203%20year%20degree%20programs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mobile-btn-wa"
-              title="WhatsApp Us"
-              aria-label="WhatsApp Us"
-            >
-              <Image src="/whatsapp.png" alt="WhatsApp Us" width={48} height={48} />
-            </a>
           </div>
         </div>
          {popupOpen && (
