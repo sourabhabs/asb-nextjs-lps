@@ -362,7 +362,7 @@ export default function Bba2PreviewShell({
   formConsentNote,
 }: Bba2PreviewShellProps) {
   const homeRef = useRef<HTMLElement | null>(null);
-  
+
   const isScholarshipPage = [
     "bba",
     "bcom-scholarship",
@@ -1655,7 +1655,7 @@ export default function Bba2PreviewShell({
                         <h1 className="asb-desktop-hero-title" style={{ fontSize: "54px", fontWeight: 800, color: "#fff", lineHeight: "1.1", textTransform: "none", marginBottom: "20px" }}>
                           Join the Best<br />Undergrad College<br />in Delhi-NCR
                         </h1>
-                        
+
                         <div className="asb-bba3-pill">
                           Pursue Full-Time <span className="asb-bba3-pill-highlight">BBA</span> Degree Program.
                         </div>
@@ -1672,7 +1672,7 @@ export default function Bba2PreviewShell({
                               <path d="M17 9.5V12C17 13 15.5 14 12 14C8.5 14 7 13 7 12V9.5L12 11.5L17 9.5Z" fill="#ffb703" />
                               <path d="M21 7.5V12.5" stroke="#ffb703" strokeWidth="1.2" strokeLinecap="round" />
                               <circle cx="21" cy="12.5" r="0.8" fill="#ffb703" />
-                              
+
                               {/* Diploma Scroll */}
                               <path d="M4 16C4 15.17 4.67 14.5 5.5 14.5H18.5C19.33 14.5 20 15.17 20 16C20 16.83 19.33 17.5 18.5 17.5H5.5C4.67 17.5 4 16.83 4 16Z" fill="#ffffff" />
                               <path d="M5.5 17.5C4.67 17.5 4 18.17 4 19C4 19.83 4.67 20.5 5.5 20.5H18.5C19.33 20.5 20 19.83 20 19C20 18.17 19.33 17.5 18.5 17.5" fill="#ffffff" />
@@ -1867,7 +1867,7 @@ export default function Bba2PreviewShell({
                       <div className="slab-bar bar-75"></div>
                     </div>
                     <div className="slab-divider"></div>
-                    <span className="slab-range">90% – 94.5%</span>
+                    <span className="slab-range">90% – 94.9%</span>
                     <span className="slab-label">75% Scholarship</span>
                   </div>
 
@@ -1878,7 +1878,7 @@ export default function Bba2PreviewShell({
                       <div className="slab-bar bar-50"></div>
                     </div>
                     <div className="slab-divider"></div>
-                    <span className="slab-range">85% – 89.5%</span>
+                    <span className="slab-range">85% – 89.9%</span>
                     <span className="slab-label">50% Scholarship</span>
                   </div>
 
@@ -1889,7 +1889,7 @@ export default function Bba2PreviewShell({
                       <div className="slab-bar bar-25"></div>
                     </div>
                     <div className="slab-divider"></div>
-                    <span className="slab-range">80% – 84.5%</span>
+                    <span className="slab-range">80% – 84.9%</span>
                     <span className="slab-label">25% Scholarship</span>
                   </div>
                 </div>
