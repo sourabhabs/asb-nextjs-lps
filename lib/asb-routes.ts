@@ -35,7 +35,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best BBA College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
     description:
       "Top BBA college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-    heroImage: "/desktop2/bba_updated.jpg",
+    heroImage: "/new-desk/BBA.jpg",
     mobileHeroImage: "/mobile2/bba.jpg",
     courseValue: "BBA",
     queryLabel: "ASB BBA Admissions 2026 Landing",
@@ -48,7 +48,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best BCA College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
     description:
       "Top BCA college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-    heroImage: "/desktop2/bca_updated.jpg",
+    heroImage: "/new-desk/BCA.jpg",
     mobileHeroImage: "/mobile2/bca.jpg",
     courseValue: "BCA",
     queryLabel: "ASB BCA Admissions 2026 Landing",
@@ -61,7 +61,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best B.Com College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
     description:
       "Top B.Com college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-    heroImage: "/desktop2/bcom_updated.jpg",
+    heroImage: "/new-desk/BCOM.jpg",
     mobileHeroImage: "/mobile2/bcom.jpg",
     courseValue: "BCOM",
     queryLabel: "ASB BCOM Admissions 2026 Landing",
@@ -74,7 +74,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best B.Sc. (CS) College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
     description:
       "Top B.Sc. (CS) college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-    heroImage: "/desktop2/bsc_updated.jpg",
+    heroImage: "/new-desk/BSC.jpg",
     mobileHeroImage: "/mobile2/bsc.jpg",
     courseValue: "BSc CS",
     queryLabel: "ASB BSC Admissions 2026 Landing",
@@ -129,7 +129,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best B.Com College in Delhi NCR | Scholarship Admissions Open 2026 - Asian School of Business",
     description:
       "Top B.Com college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-    heroImage: "/desktop2/bcom_updated.jpg",
+    heroImage: "/new-desk/BCOM.jpg",
     mobileHeroImage: "/mobile2/bcom.jpg",
     courseValue: "BCOM",
     queryLabel: "ASB BCOM Scholarship Admissions 2026 Landing",
@@ -142,7 +142,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best B.Sc. (CS) College in Delhi NCR | Scholarship Admissions Open 2026 - Asian School of Business",
     description:
       "Top B.Sc. (CS) college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-    heroImage: "/desktop2/bsc_updated.jpg",
+    heroImage: "/new-desk/BSC.jpg",
     mobileHeroImage: "/mobile2/bsc.jpg",
     courseValue: "BSc CS",
     queryLabel: "ASB BSC Scholarship Admissions 2026 Landing",
@@ -155,7 +155,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best BCA College in Delhi NCR | Scholarship Admissions Open 2026 - Asian School of Business",
     description:
       "Top BCA college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-    heroImage: "/desktop2/bca_updated.jpg",
+    heroImage: "/new-desk/BCA.jpg",
     mobileHeroImage: "/mobile2/bca.jpg",
     courseValue: "BCA",
     queryLabel: "ASB BCA Scholarship Admissions 2026 Landing",

@@ -75,7 +75,7 @@ const COURSE_DETAILS: Record<string, CourseDetails> = {
       { value: "BBA", label: "BBA" },
       { value: "IPM (BBA+PGDM)", label: "IPM (BBA+PGDM)" },
     ],
-    cardImage: "/Course/BBA.webp",
+    cardImage: "/new-desk/BBA.jpg",
     cardTitle: "BBA (General/International)",
     description:
       "ASB Noida is ranked among the best BBA colleges in Noida. Their specialised programs, BBA (General) and BBA (International), are affiliated with CCS university and offer students with the essentials of business management and corporate functioning. Over three years, students receive a well-structured education that equips them with all of the skills and expertise to succeed in a highly complex and competitive business environment.",
@@ -113,7 +113,7 @@ const COURSE_DETAILS: Record<string, CourseDetails> = {
     options: [
       { value: "BCA", label: "BCA" },
     ],
-    cardImage: "/Course/BCOM.webp",
+    cardImage: "/new-desk/BCA.jpg",
     cardTitle: "BCA (General/International)",
     description:
       "Bachelor of Computer Applications (BCA) at Asian School of Business is a three years full-time degree course affiliated with CCS University. This course is designed and structured with the intent to provide students a dynamically stimulating environment, where the students can get transformed into highly skilled IT specialists. The curriculum at the best BCA college in Delhi NCR has been designed to give the students an in-depth knowledge of various subjects.",
@@ -149,7 +149,7 @@ const COURSE_DETAILS: Record<string, CourseDetails> = {
     options: [
       { value: "BCOM", label: "B.Com" },
     ],
-    cardImage: "/Course/BSC.webp",
+    cardImage: "/new-desk/BCOM.jpg",
     cardTitle: "B.Com. (General/International)",
     description:
       "Bachelor of Commerce (B.Com) at Asian School of Business is a three-year full-time degree program affiliated to CCSU. The objective of this program at ASB is to provide the young students with a basic understanding of finance and commerce-related concepts. ASB Noida is one of the best B.Com colleges in NCR and is capable of producing excellent professionals.",
@@ -183,7 +183,7 @@ const COURSE_DETAILS: Record<string, CourseDetails> = {
     options: [
       { value: "BSc CS", label: "B.Sc. Computer Science" },
     ],
-    cardImage: "/Course/BCA.webp",
+    cardImage: "/new-desk/BSC.jpg",
     cardTitle: "B.Sc.(CS) (General/International)",
     description:
       "Bachelor Of Science (B.Sc.) in Computer Science at Asian School of Business is a three years full time degree course affiliated to CCSU. This course is designed and structured with the intent of providing our students with a dynamically stimulating environment, where they can be transformed into highly skilled IT specialists.",
@@ -365,6 +365,9 @@ export default function Bba2PreviewShell({
 
   const isScholarshipPage = [
     "bba",
+    "bca",
+    "bcom",
+    "bsc",
     "bcom-scholarship",
     "bsc-scholarship",
     "bca-scholarship",
@@ -1754,7 +1757,7 @@ export default function Bba2PreviewShell({
                       /* Spacer to prevent layout/height collapse on desktop */
                       <>
                         <div className="mobH" style={{ height: "460px" }} />
-                        {course.queryLabel === "ASB BBA2 Preview Landing" ? (
+                        {isScholarshipPage ? (
                           <div className="mobH admissions-timer-desktop-lhs">
                             <ScholarshipBadgeBba2 />
                             <PlacementBadge />
@@ -1774,7 +1777,7 @@ export default function Bba2PreviewShell({
                         sizes="(max-width: 420px) 390px, 100vw"
                         style={{ width: "100%", height: "auto", display: "block" }}
                       />
-                      {course.queryLabel === "ASB BBA2 Preview Landing" ? (
+                      {isScholarshipPage ? (
                         <>
                           <AdmissionsTimer />
                         </>
