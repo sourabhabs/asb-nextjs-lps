@@ -4,6 +4,38 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import LandingPageTracking from "./components/LandingPageTracking";
 import LeadForm from "./components/LeadForm";
+import AdmissionsTimer from "./components/AdmissionsTimer";
+
+const PlacementBadge = () => (
+  <div className="asb-placement-badge">
+    <span className="asb-placement-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+      </svg>
+    </span>
+    <span className="asb-placement-text">100% Placement Assistance</span>
+  </div>
+);
+
+const ScholarshipBadgeBba2 = () => (
+  <div className="asb-bba2-scholarship-badge">
+    <div className="asb-bba2-sch-left">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+        <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+      </svg>
+    </div>
+    <div className="asb-bba2-sch-divider"></div>
+    <div className="asb-bba2-sch-right">
+      <div className="asb-bba2-sch-upto">GET UPTO</div>
+      <div className="asb-bba2-sch-percent">100%</div>
+      <div className="asb-bba2-sch-title">SCHOLARSHIPS*</div>
+      <div className="asb-bba2-sch-sub">BASED ON YOUR 12TH SCORE</div>
+      <div className="asb-bba2-sch-pill">AVAILABLE FOR ALL</div>
+    </div>
+  </div>
+);
 
 const HERO_COURSES = [
   { value: "BBA", label: "BBA" },
@@ -214,7 +246,622 @@ export default function Page() {
           .mobile-btn-wa{width:48px;height:48px;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform 0.2s ease}
           .mobile-btn-wa:hover{transform:scale(1.05)}
           .mobile-btn-wa img{width:100%;height:100%;object-fit:contain}
-          @media (max-width:767px){.recruiters-grid{grid-template-columns:repeat(2,1fr);gap:12px}.top-recruiters{padding:40px 0}}
+        @media (max-width:767px){.recruiters-grid{grid-template-columns:repeat(2,1fr);gap:12px}.top-recruiters{padding:40px 0}}
+        }
+
+        .admissions-timer-desktop-lhs {
+          position: absolute;
+          bottom: -85px;
+          left: 35px !important;
+          right: auto !important;
+          z-index: 5;
+        }
+        .asb-bba2-scholarship-badge {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 8px 12px;
+          background: rgba(15, 31, 69, 0.95);
+          border: 1.5px solid #ffb703;
+          border-radius: 12px;
+          box-shadow: 0 0 12px rgba(255, 183, 3, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+          width: fit-content;
+          margin: 10px auto;
+          text-align: left;
+        }
+        .asb-bba2-sch-left {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .asb-bba2-sch-divider {
+          width: 1px;
+          height: 48px;
+          background: rgba(255, 183, 3, 0.4);
+        }
+        .asb-bba2-sch-right {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          line-height: 1;
+        }
+        .asb-bba2-sch-upto {
+          color: #ffb703;
+          font-size: 8px;
+          font-weight: 800;
+          letter-spacing: 0.05em;
+        }
+        .asb-bba2-sch-percent {
+          color: #ffb703;
+          font-size: 22px;
+          font-weight: 900;
+          line-height: 0.95;
+          margin: 2px 0;
+        }
+        .asb-bba2-sch-title {
+          color: #ffffff;
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 0.05em;
+        }
+        .asb-bba2-sch-sub {
+          color: #ffffff;
+          font-size: 7px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          margin-top: 1px;
+        }
+        .asb-bba2-sch-pill {
+          background: #ffb703;
+          color: #000000;
+          font-size: 7px;
+          font-weight: 900;
+          padding: 2px 6px;
+          border-radius: 99px;
+          margin-top: 3px;
+          letter-spacing: 0.03em;
+        }
+        @media (min-width: 992px) {
+          .asb-bba2-scholarship-badge {
+            margin: 0 0 8px 0;
+            padding: 16px 24px;
+            gap: 20px;
+            border-radius: 16px;
+            border-width: 2px;
+          }
+          .asb-bba2-sch-left svg {
+            width: 48px !important;
+            height: 48px !important;
+          }
+          .asb-bba2-sch-divider {
+            height: 68px;
+            width: 1.5px;
+          }
+          .asb-bba2-sch-upto {
+            font-size: 12px;
+          }
+          .asb-bba2-sch-percent {
+            font-size: 36px;
+          }
+          .asb-bba2-sch-title {
+            font-size: 17px;
+          }
+          .asb-bba2-sch-sub {
+            font-size: 9.5px;
+          }
+          .asb-bba2-sch-pill {
+            font-size: 9.5px;
+            padding: 3px 10px;
+            margin-top: 5px;
+          }
+        }
+        .asb-placement-badge {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 8px 14px;
+          background: rgba(15, 31, 69, 0.92);
+          border: 1.5px solid rgba(255, 255, 255, 0.8);
+          border-radius: 12px;
+          color: #ffffff;
+          font-weight: 800;
+          font-size: 13px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          width: fit-content;
+          margin: 10px auto;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        .asb-placement-icon svg {
+          stroke: #24f6f2;
+          width: 16px;
+          height: 16px;
+          display: block;
+        }
+        @media (min-width: 992px) {
+          .asb-placement-badge {
+            margin: 0 0 8px 0;
+            padding: 12px 22px;
+            font-size: 16px;
+            justify-content: flex-start;
+            border-radius: 14px;
+            border-width: 2px;
+            gap: 10px;
+          }
+          .asb-placement-icon svg {
+            width: 20px !important;
+            height: 20px !important;
+          }
+        }
+        .admissions-timer-title {
+          color: #ffffff;
+          font-size: 13px;
+          font-weight: 800;
+          margin: 0 0 8px 0;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-title {
+            font-size: 18px;
+            margin-bottom: 12px;
+          }
+        }
+        .admissions-timer-digits-row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-digits-row {
+            gap: 8px;
+          }
+        }
+        .admissions-timer-item-group {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-item-group {
+            gap: 8px;
+          }
+        }
+        .admissions-timer-card-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 3px;
+        }
+        .admissions-timer-card {
+          background: #ffffff;
+          border-radius: 8px;
+          width: 42px;
+          height: 42px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-card {
+            width: 58px;
+            height: 58px;
+            border-radius: 12px;
+          }
+        }
+        .admissions-timer-digit {
+          color: #990000;
+          font-size: 18px;
+          font-weight: 800;
+          font-family: 'Inter', sans-serif;
+          line-height: 1;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-digit {
+            font-size: 26px;
+          }
+        }
+        .admissions-timer-colon {
+          color: #ffffff;
+          font-size: 18px;
+          font-weight: 800;
+          line-height: 1;
+          margin-top: -12px;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-colon {
+            font-size: 26px;
+            margin-top: -16px;
+          }
+        }
+        .admissions-timer-label {
+          color: rgba(255, 255, 255, 0.85);
+          font-size: 8px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-label {
+            font-size: 11px;
+          }
+        }
+
+        /* Scholarship Waiver Banner */
+        .asb-scholarship-waiver-banner {
+          background-color: #f7f6f2;
+          padding: 50px 20px;
+          text-align: center;
+        }
+        .waiver-title {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: clamp(24px, 4vw, 42px);
+          font-weight: 800;
+          color: #0f1f45;
+          line-height: 1.25;
+          margin: 0 auto 12px;
+          max-width: 900px;
+        }
+        .waiver-highlight {
+          color: #008a96;
+        }
+        .waiver-sub {
+          font-size: clamp(11px, 2.5vw, 15px);
+          font-weight: 700;
+          color: #475569;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+
+        /* Scholarship Criteria & Slabs */
+        .asb-scholarship-slabs-section {
+          background-color: #ffffff;
+          padding: 60px 20px;
+        }
+        .criteria-header {
+          margin-bottom: 50px;
+        }
+        .criteria-tag {
+          font-size: 13px;
+          font-weight: 800;
+          color: #008a96;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          display: block;
+          margin-bottom: 8px;
+        }
+        .criteria-title {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: clamp(26px, 3.5vw, 36px);
+          font-weight: 800;
+          color: #0f1f45;
+          margin: 0 auto 16px;
+          max-width: 800px;
+          line-height: 1.2;
+        }
+        .criteria-desc {
+          font-size: clamp(14px, 2vw, 17px);
+          color: #475569;
+          max-width: 700px;
+          margin: 0 auto;
+          line-height: 1.5;
+        }
+
+        .slabs-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 24px;
+          width: 100%;
+          margin: 0 auto;
+          align-items: flex-end;
+        }
+        @media (max-width: 767px) {
+          .slabs-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          .slab-card {
+            display: grid !important;
+            grid-template-columns: 1fr auto !important;
+            grid-template-rows: auto auto auto !important;
+            grid-template-areas: 
+              "range percentage"
+              "bar bar"
+              "label label" !important;
+            gap: 8px !important;
+            align-items: center !important;
+            text-align: left !important;
+            background: #f8fafc !important;
+            padding: 16px !important;
+            border-radius: 12px !important;
+            border: 1px solid #cbd5e1 !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04) !important;
+            width: 100% !important;
+          }
+          .slab-percentage {
+            grid-area: percentage !important;
+            font-size: 20px !important;
+            margin: 0 !important;
+            color: #008a96 !important;
+            font-weight: 800 !important;
+          }
+          .slab-bar-wrapper {
+            grid-area: bar !important;
+            width: 100% !important;
+            max-width: none !important;
+            height: 12px !important;
+            margin: 4px 0 6px 0 !important;
+            background-color: #e2e8f0 !important;
+            border-radius: 999px !important;
+            overflow: hidden !important;
+            display: block !important;
+          }
+          .slab-bar {
+            height: 100% !important;
+            border-radius: 999px !important;
+          }
+          .bar-100 { width: 100% !important; height: 100% !important; }
+          .bar-75 { width: 75% !important; height: 100% !important; }
+          .bar-50 { width: 50% !important; height: 100% !important; }
+          .bar-25 { width: 25% !important; height: 100% !important; }
+          
+          .slab-divider {
+            display: none !important;
+          }
+          .slab-range {
+            grid-area: range !important;
+            font-size: 16px !important;
+            font-weight: 800 !important;
+            color: #0f1f45 !important;
+            margin: 0 !important;
+          }
+          .slab-label {
+            grid-area: label !important;
+            font-size: 13px !important;
+            color: #64748b !important;
+            font-weight: 500 !important;
+            margin: 0 !important;
+          }
+        }
+        .slab-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .slab-percentage {
+          font-size: clamp(22px, 3vw, 30px);
+          font-weight: 900;
+          color: #0f1f45;
+          margin-bottom: 8px;
+        }
+        .slab-bar-wrapper {
+          width: 100%;
+          max-width: 80px;
+          height: 160px;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          margin-bottom: 16px;
+        }
+        .slab-bar {
+          width: 100%;
+          border-radius: 6px 6px 0 0;
+          background: linear-gradient(180deg, #0aaeaf 0%, #006972 100%);
+          box-shadow: 0 4px 15px rgba(0, 105, 114, 0.2);
+        }
+        .bar-100 { height: 100%; }
+        .bar-75 { height: 75%; }
+        .bar-50 { height: 50%; }
+        .bar-25 { height: 25%; }
+
+        .slab-divider {
+          width: 100%;
+          height: 2px;
+          background-color: #006972;
+          margin-bottom: 12px;
+        }
+        .slab-range {
+          font-size: clamp(15px, 2.5vw, 19px);
+          font-weight: 800;
+          color: #0f1f45;
+          margin-bottom: 4px;
+        }
+        .slab-label {
+          font-size: clamp(12px, 2vw, 14px);
+          color: #64748b;
+          font-weight: 500;
+        }
+
+        .criteria-note-box {
+          max-width: 1000px;
+          margin: 40px auto 0;
+          background-color: #fcfbfa;
+          border-left: 4px solid #008a96;
+          padding: 16px 20px;
+          border-radius: 0 8px 8px 0;
+          text-align: left;
+        }
+        .criteria-note-box p {
+          font-size: 13.5px;
+          color: #475569;
+          margin: 0;
+          line-height: 1.5;
+        }
+
+        /* Scholarship Check Section */
+        .asb-scholarship-check-section {
+          background: linear-gradient(135deg, #091e42 0%, #051024 100%);
+          padding: 60px 20px;
+          color: #ffffff;
+        }
+        .check-grid {
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 40px;
+          width: 100%;
+          margin: 0 auto;
+          align-items: center;
+        }
+        @media (max-width: 991px) {
+          .check-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+        }
+        .check-content-col {
+          text-align: left;
+        }
+        .check-brand-accent {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 14px;
+        }
+        .accent-line {
+          width: 24px;
+          height: 2px;
+          background-color: #008a96;
+          display: inline-block;
+        }
+        .accent-text {
+          font-size: 12px;
+          font-weight: 800;
+          color: #008a96;
+          letter-spacing: 0.1em;
+        }
+        .check-title {
+          font-family: 'Playfair Display', Georgia, serif;
+          font-size: clamp(28px, 4vw, 42px);
+          font-weight: 800;
+          color: #ffffff;
+          line-height: 1.2;
+          margin-bottom: 16px;
+        }
+        .check-text {
+          font-size: 17px;
+          font-weight: 600;
+          color: rgba(255,255,255,0.9);
+          margin-bottom: 8px;
+        }
+        .check-text-sub {
+          font-size: 15px;
+          color: rgba(255,255,255,0.7);
+          line-height: 1.5;
+          margin: 0;
+        }
+        .check-form-card {
+          background-color: #ffffff;
+          border-radius: 16px;
+          padding: 24px;
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+          color: #000000;
+        }
+        .check-form-card .frmD {
+          background: transparent !important;
+          border: 0 !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          position: relative !important;
+        }
+        .check-form-card .hero-form-title {
+          margin-bottom: 20px !important;
+          text-align: left !important;
+        }
+        .check-form-card .hero-form-title h3 {
+          font-size: 24px !important;
+          color: #0f1f45 !important;
+          font-weight: 800 !important;
+          text-align: left !important;
+        }
+        .check-form-card #heroLeadForm,
+        .check-form-card #scholarshipLeadForm {
+          display: flex !important;
+          flex-direction: column !important;
+          flex-wrap: wrap !important;
+          gap: 12px !important;
+          width: 100% !important;
+          padding-top: 0 !important;
+          background: transparent !important;
+        }
+        .check-form-card #heroLeadForm .single_form,
+        .check-form-card #scholarshipLeadForm .single_form {
+          width: 100% !important;
+          flex: 0 0 auto !important;
+          margin: 0 !important;
+        }
+        .check-form-card #heroLeadForm .course-select-wrap,
+        .check-form-card #scholarshipLeadForm .course-select-wrap {
+          width: 100% !important;
+        }
+        .check-form-card #heroLeadForm .hero-form-title,
+        .check-form-card #scholarshipLeadForm .hero-form-title {
+          width: 100% !important;
+          margin: 0 0 15px 0 !important;
+        }
+        .check-form-card .lead-form-consent-row {
+          display: block !important;
+          width: 100% !important;
+          margin-top: 10px !important;
+        }
+        .check-form-card .lead-form-consent-note {
+          display: flex !important;
+          color: #475569 !important;
+          font-size: 11px !important;
+          margin-top: 6px !important;
+          text-align: left !important;
+        }
+        .check-form-card #heroLeadForm .single_form input,
+        .check-form-card #heroLeadForm .single_form select,
+        .check-form-card #scholarshipLeadForm .single_form input,
+        .check-form-card #scholarshipLeadForm .single_form select {
+          height: 46px !important;
+          border-radius: 8px !important;
+          border: 1px solid #cbd5e1 !important;
+          background: #ffffff !important;
+          padding: 0 12px !important;
+          font-size: 14.5px !important;
+          color: #0f172a !important;
+          width: 100% !important;
+          box-sizing: border-box !important;
+          display: block !important;
+        }
+        .check-form-card #heroLeadForm .single_form input:focus,
+        .check-form-card #heroLeadForm .single_form select:focus,
+        .check-form-card #scholarshipLeadForm .single_form input:focus,
+        .check-form-card #scholarshipLeadForm .single_form select:focus {
+          border-color: #006972 !important;
+          outline: none !important;
+          box-shadow: 0 0 0 2px rgba(0, 105, 114, 0.15) !important;
+        }
+        .check-form-card #heroLeadForm .single_form label,
+        .check-form-card #scholarshipLeadForm .single_form label {
+          color: #334155 !important;
+          font-weight: 700 !important;
+          margin-bottom: 6px !important;
+          display: block !important;
+          text-align: left !important;
+        }
+        .check-form-card #heroSubmitBtn {
+          height: 48px !important;
+          line-height: 48px !important;
+          border-radius: 8px !important;
+          background: #006972 !important;
+          color: #ffffff !important;
+          font-weight: 800 !important;
+          width: 100% !important;
+          margin-top: 8px !important;
+          box-shadow: 0 6px 16px rgba(0, 105, 114, 0.25) !important;
+          transition: all 0.2s ease !important;
+        }
+        .check-form-card #heroSubmitBtn:hover {
+          background: #005259 !important;
+          box-shadow: 0 8px 20px rgba(0, 105, 114, 0.35) !important;
         }
         .asb-scholarship-card {
           margin-top: 24px;
@@ -375,7 +1022,7 @@ export default function Page() {
             style={{ position: "absolute", top: "78px", left: 0, right: 0, bottom: "68px", zIndex: 0, pointerEvents: "none" }}
           >
             <Image
-              src="/main.jpg"
+              src="/banner-main.jpg"
               alt=""
               fill
               priority
@@ -391,7 +1038,11 @@ export default function Page() {
                   className="header-hero-content"
                   style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
                 >
-                  <div className="mobH wow fadeInUp asb-desktop-hero-copy" data-wow-duration="1.3s" style={{ maxWidth: "760px" }}>
+                  <div className="mobH" style={{ height: "460px" }} />
+                  <div className="mobH admissions-timer-desktop-lhs">
+                    <ScholarshipBadgeBba2 />
+                    <PlacementBadge />
+                    <AdmissionsTimer />
                   </div>
                   <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                     <Image
@@ -404,17 +1055,7 @@ export default function Page() {
                       sizes="(max-width: 420px) 390px, 100vw"
                       style={{ width: "100%", height: "auto", display: "block" }}
                     />
-                    <div className="asb-scholarship-card mobile-style">
-                      <div className="asb-scholarship-content">
-                        <div className="asb-scholarship-icon-box">
-                          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
-                            <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
-                          </svg>
-                        </div>
-                        <h4 className="asb-scholarship-title">Upto 100% Scholarship*</h4>
-                      </div>
-                    </div>
+                    <AdmissionsTimer />
                   </div>
                 </div>
               </div>
@@ -432,6 +1073,84 @@ export default function Page() {
           </div>
         </section>
       </header>
+
+      {/* Component 1: Waiver Banner */}
+      <section className="asb-scholarship-waiver-banner">
+        <div className="container text-center">
+          <h2 className="waiver-title">
+            Your 12th board marks <br />
+            could waive <span className="waiver-highlight">upto 100%</span> of your tuition fee.
+          </h2>
+          <div className="waiver-sub">
+            BATCH 2026–2029 &bull; BBA &bull; BCA &bull; B.COM &bull; B.Sc. (CS)
+          </div>
+        </div>
+      </section>
+
+      {/* Component 2: Slabs & Criteria */}
+      <section className="asb-scholarship-slabs-section">
+        <div className="container">
+          <div className="criteria-header text-center">
+            <span className="criteria-tag">Scholarship Criteria</span>
+            <h3 className="criteria-title">Four slabs. One simple rule: your marks decide.</h3>
+            <p className="criteria-desc">
+              Scholarship on tuition fee is awarded based on marks obtained in the Class 12th Board (Intermediate) Examination.
+            </p>
+          </div>
+
+          <div className="slabs-grid">
+            {/* Slab 1 */}
+            <div className="slab-card">
+              <span className="slab-percentage">100%</span>
+              <div className="slab-bar-wrapper">
+                <div className="slab-bar bar-100"></div>
+              </div>
+              <div className="slab-divider"></div>
+              <span className="slab-range">95% – 100%</span>
+              <span className="slab-label">100% Scholarship</span>
+            </div>
+
+            {/* Slab 2 */}
+            <div className="slab-card">
+              <span className="slab-percentage">75%</span>
+              <div className="slab-bar-wrapper">
+                <div className="slab-bar bar-75"></div>
+              </div>
+              <div className="slab-divider"></div>
+              <span className="slab-range">90% – 94.9%</span>
+              <span className="slab-label">75% Scholarship</span>
+            </div>
+
+            {/* Slab 3 */}
+            <div className="slab-card">
+              <span className="slab-percentage">50%</span>
+              <div className="slab-bar-wrapper">
+                <div className="slab-bar bar-50"></div>
+              </div>
+              <div className="slab-divider"></div>
+              <span className="slab-range">85% – 89.9%</span>
+              <span className="slab-label">50% Scholarship</span>
+            </div>
+
+            {/* Slab 4 */}
+            <div className="slab-card">
+              <span className="slab-percentage">25%</span>
+              <div className="slab-bar-wrapper">
+                <div className="slab-bar bar-25"></div>
+              </div>
+              <div className="slab-divider"></div>
+              <span className="slab-range">80% – 84.9%</span>
+              <span className="slab-label">25% Scholarship</span>
+            </div>
+          </div>
+
+          <div className="criteria-note-box">
+            <p>
+              <strong>Note:</strong> Scholarship will be awarded subject to verification of academic records and fulfilment of the institution's admission requirements. For the international programme, the scholarship will be given in 6 parts.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section className="international" id="international">
         <div className="container intl-grid">
@@ -581,7 +1300,42 @@ export default function Page() {
 
       <section className="events" id="events"><div className="container"><div className="events-head"><div className="line"></div><h2 className="title">Events at Asian School of Business</h2></div><div className="events-grid">{EVENTS.map(([label, src]) => <div key={label} className="events-card"><div className="events-img"><img src={src} alt={label} width="300" height="200" /></div><div className="events-label">{label}</div></div>)}</div></div></section>
 
-      <section className="contact" id="contact"><div className="container contact-grid"><div><span className="tag">Get In Touch</span><h2 className="title">Start Your ASB Journey</h2><p>Admissions are open for BBA / BCA / B.Com / B.Sc. (CS) Batch 2026. Fill in the form and our admissions team will get in touch with you.</p></div><div className="cta"><div className="cta-box"><button type="button" className="btn btn-gold" onClick={() => scrollToId("enquire", true)}>Enquire Now</button></div></div></div></section>
+      <section className="asb-scholarship-check-section">
+        <div className="container">
+          <div className="check-grid">
+            <div className="check-content-col">
+              <div className="check-brand-accent">
+                <span className="accent-line"></span>
+                <span className="accent-text">START YOUR ASB JOURNEY</span>
+              </div>
+              <h2 className="check-title">Find out how much scholarship you qualify for</h2>
+              <p className="check-text">
+                Admissions are open for BBA / BCA / B.Com / B.Sc. (CS), Batch 2026-2029.
+              </p>
+              <p className="check-text-sub">
+                Share your Class 12th marks and our admissions team will confirm your scholarship slab and fee plan within one working day.
+              </p>
+            </div>
+            <div className="check-form-col">
+              <div className="check-form-card">
+                <LeadForm
+                  id="scholarship-check-enquire"
+                  title="Admissions Open 2026"
+                  courses={HERO_COURSES}
+                  queryLabel="ASB UG Admissions 2026 Landing - Scholarship Check"
+                  thankYouPath="/thank-you.php"
+                  submitLabel="Enquire Now"
+                  consentNote="I have read and agree to the Privacy Policy and the collection of my personal information."
+                  isScholarshipCheck={true}
+                  show12thMarks={false}
+                  trackMetaLead
+                  trackMetaCompleteRegistration
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <footer className="footer"><div className="container footer-inner"><div className="footer-grid"><div><h4 style={{ color: "#fff" }}>Asian School of Business</h4><p>Admissions open for 2026 intake. Build your future in business, commerce and technology with a globally aware academic ecosystem.</p></div><div><div className="f-title">Quick Links</div><ul className="f-links"><li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToId("home", true); }}>Home</a></li><li><a href="#courses" onClick={(e) => { e.preventDefault(); scrollToId("courses"); }}>Programs Offered</a></li><li><a href="#international" onClick={(e) => { e.preventDefault(); scrollToId("international"); }}>International Exposure</a></li><li><a href="#enquire" onClick={(e) => { e.preventDefault(); scrollToId("enquire", true); }}>Enquire Now</a></li></ul></div><div><div className="f-title">Admissions Office</div><p>Asian School of Business, Noida, Uttar Pradesh</p></div></div><div className="f-bottom"><span>(c) 2026 Asian School of Business. All rights reserved.</span><span>International association with Oxford Business College</span></div></div></footer>
 
