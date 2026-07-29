@@ -41,7 +41,7 @@ function getUTMParam(name: string): string {
 }
 
 export default function LeadForm({
-  title = "Admissions Open 2026",
+  title = "Admissions Open",
   courses,
   thankYouPath = "/thank-you.php",
   queryLabel = "ASB UG Admissions 2026 Landing",

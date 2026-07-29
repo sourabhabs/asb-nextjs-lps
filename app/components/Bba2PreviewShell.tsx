@@ -397,7 +397,7 @@ export default function Bba2PreviewShell({
   const hideHeroPromoBlock = ["bca", "bcom", "bsc"].includes(detailsKey) && !isScholarshipPage;
   const useFramedDesktopHero = isScholarshipPage || hideHeroPromoBlock;
   const useMainDesktopHero = ["bba", "bca", "bcom", "bsc"].includes(course.key);
-  const desktopHeroImage = useMainDesktopHero ? "/desktop-images/common.jpg" : course.heroImage;
+  const desktopHeroImage = course.heroImage;
   const showDesktopOxfordLogo = showOxfordLogo && !useMainDesktopHero;
   const [intlIdx, setIntlIdx] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
@@ -514,8 +514,8 @@ export default function Bba2PreviewShell({
           #heroLeadForm{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 6px;width:100%;max-width:1320px;margin:0 auto;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
           #heroLeadForm .single_form{margin-top:0;flex:1 1 120px;max-width:180px;min-width:110px}
           #heroLeadForm .course-select-wrap{flex:1.1 1 130px;max-width:190px;min-width:120px}
-          #heroLeadForm .hero-form-title{width:auto;flex:0 0 auto;min-width:160px;margin-right:2px}
-          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(20px, 2.2vw, 33px);line-height:1;font-weight:800;white-space:nowrap}
+          #heroLeadForm .hero-form-title{width:auto;flex:0 0 auto;min-width:230px;margin-right:6px}
+          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(18px, 1.95vw, 30px);line-height:1;font-weight:800;white-space:nowrap}
           .frmD{padding:14px 8px;background-color:rgba(0,105,113,.66)}
           #heroLeadForm .single_form input,#heroLeadForm .single_form select{display:block;width:100%;box-sizing:border-box;height:40px;border-radius:4px;border:1px solid rgba(71,85,105,.55);background:#fff;color:#334155;padding:0 10px;font-size:15px;margin:0}
           #heroSubmitBtn{height:40px;line-height:40px;background:#006972!important;font-weight:700;padding:0 10px;min-width:92px;flex:0 0 auto;border-radius:4px}
@@ -542,8 +542,8 @@ export default function Bba2PreviewShell({
           #heroLeadForm{gap:6px 4px!important}
           #heroLeadForm .single_form{flex:1 1 106px;max-width:156px;min-width:98px}
           #heroLeadForm .course-select-wrap{flex:1.1 1 116px;max-width:166px;min-width:108px}
-          #heroLeadForm .hero-form-title{min-width:0;margin-right:24px!important;padding-right:8px!important}
-          #heroLeadForm .hero-form-title h3{font-size:clamp(12px,1.05vw,15px)!important}
+          #heroLeadForm .hero-form-title{min-width:200px;margin-right:20px!important;padding-right:8px!important}
+          #heroLeadForm .hero-form-title h3{font-size:clamp(14px,1.15vw,17px)!important}
           .frmD{padding:10px 8px}
         }
         @media (max-width:991px){
@@ -1750,7 +1750,7 @@ export default function Bba2PreviewShell({
 
               <LeadForm
                 id="enquire"
-                title="Admissions Open 2026"
+                title="Admissions Open"
                 courses={content.options}
                 queryLabel={course.queryLabel}
                 thankYouPath={course.thankYouPath}
@@ -1963,7 +1963,7 @@ export default function Bba2PreviewShell({
                   <div className="check-form-card">
                     <LeadForm
                       id="scholarship-check-enquire"
-                      title="Admissions Open 2026"
+                      title="Admissions Open"
                       courses={content.options}
                       queryLabel={`${course.queryLabel} - Scholarship Check`}
                       thankYouPath={course.thankYouPath}

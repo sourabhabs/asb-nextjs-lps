@@ -252,8 +252,8 @@ export default function Page() {
           #heroLeadForm::before{display:none!important;content:none!important}
           #heroLeadForm .single_form{margin-top:0;flex:1 1 120px;max-width:180px;min-width:110px}
           #heroLeadForm .course-select-wrap{flex:1.1 1 130px;max-width:190px;min-width:120px}
-          #heroLeadForm .hero-form-title{width:auto;flex:0 0 auto;min-width:160px;margin-right:2px}
-          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(20px, 2.2vw, 33px);line-height:1;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
+          #heroLeadForm .hero-form-title{width:auto;flex:0 0 auto;min-width:230px;margin-right:6px}
+          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(18px, 1.95vw, 30px);line-height:1;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
           .frmD{padding:14px 8px;background-color:rgba(0,105,113,.66)}
           #heroLeadForm .single_form input,#heroLeadForm .single_form select{display:block;width:100%;box-sizing:border-box;height:40px;border-radius:4px;border:1px solid rgba(71,85,105,.55);background:#fff;color:#334155;padding:0 10px;font-size:15px;margin:0;vertical-align:middle}
           #heroLeadForm .single_form input::placeholder{font-size:14px;color:#6b7280}
@@ -1337,7 +1337,7 @@ export default function Page() {
             </div>
             <LeadForm
               id="enquire"
-              title="Admissions Open 2026"
+              title="Admissions Open"
               courses={HERO_COURSES}
               queryLabel="ASB Pmax campaign 2026 Landing"
               thankYouPath="/thank-you.php"
@@ -1601,7 +1601,7 @@ export default function Page() {
               <div className="check-form-card">
                 <LeadForm
                   id="scholarship-check-enquire"
-                  title="Admissions Open 2026"
+                  title="Admissions Open"
                   courses={HERO_COURSES}
                   queryLabel="ASB Pmax campaign 2026 Landing - Scholarship Check"
                   thankYouPath="/thank-you.php"
