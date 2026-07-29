@@ -1718,7 +1718,7 @@ p.form-message.success.form-message.error, p.form-message.error.form-message.err
             font-size: 18px; margin-bottom:30px;}
 		}
 
-@media all and (max-width:1200px) and (min-width:100px) {
+@media all and (max-width:991px) and (min-width:100px) {
 	.bnrbg {
     background-image: none;
 	background-color:#006973;

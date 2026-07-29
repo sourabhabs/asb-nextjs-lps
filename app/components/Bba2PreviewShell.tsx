@@ -75,7 +75,7 @@ const COURSE_DETAILS: Record<string, CourseDetails> = {
       { value: "BBA", label: "BBA" },
       { value: "IPM (BBA+PGDM)", label: "IPM (BBA+PGDM)" },
     ],
-    cardImage: "/new-desk/BBA.jpg",
+    cardImage: "/desktop%20images/bba.jpg",
     cardTitle: "BBA (General/International)",
     description:
       "ASB Noida is ranked among the best BBA colleges in Noida. Their specialised programs, BBA (General) and BBA (International), are affiliated with CCS university and offer students with the essentials of business management and corporate functioning. Over three years, students receive a well-structured education that equips them with all of the skills and expertise to succeed in a highly complex and competitive business environment.",
@@ -113,7 +113,7 @@ const COURSE_DETAILS: Record<string, CourseDetails> = {
     options: [
       { value: "BCA", label: "BCA" },
     ],
-    cardImage: "/new-desk/BCA.jpg",
+    cardImage: "/desktop%20images/bca.jpg",
     cardTitle: "BCA (General/International)",
     description:
       "Bachelor of Computer Applications (BCA) at Asian School of Business is a three years full-time degree course affiliated with CCS University. This course is designed and structured with the intent to provide students a dynamically stimulating environment, where the students can get transformed into highly skilled IT specialists. The curriculum at the best BCA college in Delhi NCR has been designed to give the students an in-depth knowledge of various subjects.",
@@ -149,7 +149,7 @@ const COURSE_DETAILS: Record<string, CourseDetails> = {
     options: [
       { value: "BCOM", label: "B.Com" },
     ],
-    cardImage: "/new-desk/BCOM.jpg",
+    cardImage: "/desktop%20images/bcom.jpg",
     cardTitle: "B.Com. (General/International)",
     description:
       "Bachelor of Commerce (B.Com) at Asian School of Business is a three-year full-time degree program affiliated to CCSU. The objective of this program at ASB is to provide the young students with a basic understanding of finance and commerce-related concepts. ASB Noida is one of the best B.Com colleges in NCR and is capable of producing excellent professionals.",
@@ -183,7 +183,7 @@ const COURSE_DETAILS: Record<string, CourseDetails> = {
     options: [
       { value: "BSc CS", label: "B.Sc. Computer Science" },
     ],
-    cardImage: "/new-desk/BSC.jpg",
+    cardImage: "/desktop%20images/bsc.jpg",
     cardTitle: "B.Sc.(CS) (General/International)",
     description:
       "Bachelor Of Science (B.Sc.) in Computer Science at Asian School of Business is a three years full time degree course affiliated to CCSU. This course is designed and structured with the intent of providing our students with a dynamically stimulating environment, where they can be transformed into highly skilled IT specialists.",
@@ -484,8 +484,18 @@ export default function Bba2PreviewShell({
         @media (min-width:992px){
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
           .bnrbg{background-image:none!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
+          .header-hero{height:min(calc(45.42vw + 146px),calc(100vh - 78px))!important;min-height:400px!important}
+          .header-hero-content{padding-left:30px!important;padding-right:24px!important}
           .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff}
           .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff}
+          .asb-desktop-hero-header-text{max-width:min(760px,58vw);margin:0 0 10px;text-shadow:0 10px 28px rgba(6,16,38,.32)}
+          .asb-desktop-hero-top-small{margin:0 0 4px;color:#fff;font-size:clamp(22px,2vw,31px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
+          .asb-desktop-hero-main-title{margin:0;color:#fff;font-size:clamp(44px,4.7vw,76px);line-height:.97;font-weight:900;letter-spacing:-.05em}
+          .asb-desktop-hero-bottom-small{margin:6px 0 0;color:#fff;font-size:clamp(20px,1.9vw,29px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
+          .asb-desktop-hero-header-text::after{content:"";display:block;width:102px;height:8px;border-radius:999px;margin:14px 0 16px;background:linear-gradient(90deg,#63fff6 0%,#2f8cff 100%)}
+          .asb-desktop-hero-pill-badge{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px;max-width:min(760px,58vw);padding:9px 16px;border:3px solid #43d6ff;border-radius:16px;background:linear-gradient(180deg,rgba(34,112,209,.48) 0%,rgba(18,76,152,.34) 100%);box-shadow:0 12px 28px rgba(6,16,38,.22),inset 0 0 0 1px rgba(255,255,255,.22);color:#fff;font-size:clamp(17px,1.38vw,25px);line-height:1.22;font-weight:700}
+          .asb-desktop-hero-pill-badge span{color:#67f7ff;font-weight:900}
+          .asb-desktop-hero-spacer{height:clamp(270px,31vw,410px)}
           .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600}
           .asb-desktop-hero-highlight{font-weight:800;color:#22f0ff!important;font-size:1.38em!important;display:inline-block}
           .asb-desktop-hero-points{list-style:none;padding:0;margin:8px 0 0}
@@ -512,6 +522,24 @@ export default function Bba2PreviewShell({
           .btn-wa:hover{transform:scale(1.05)}
           .btn-wa img{width:100%;height:100%;object-fit:contain}
           .mobV{display:none!important}
+        }
+        @media (min-width:992px) and (max-height:700px){
+          .header-hero{height:calc(100vh - 78px)!important;min-height:0!important}
+          .header-hero-content{padding-left:20px!important;padding-right:18px!important}
+          .asb-desktop-hero-header-text{max-width:min(620px,60vw);margin-bottom:8px}
+          .asb-desktop-hero-top-small{font-size:20px}
+          .asb-desktop-hero-main-title{font-size:clamp(36px,4.2vw,58px)}
+          .asb-desktop-hero-bottom-small{font-size:20px}
+          .asb-desktop-hero-header-text::after{width:82px;height:6px;margin:10px 0 12px}
+          .asb-desktop-hero-pill-badge{max-width:min(620px,60vw);padding:7px 12px;border-radius:14px;font-size:clamp(14px,1.18vw,19px)}
+          .asb-desktop-hero-spacer{height:210px}
+          #heroLeadForm{gap:6px 4px!important}
+          #heroLeadForm .single_form{flex:1 1 106px;max-width:156px;min-width:98px}
+          #heroLeadForm .course-select-wrap{flex:1.1 1 116px;max-width:166px;min-width:108px}
+          #heroLeadForm .hero-form-title{min-width:0;margin-right:6px}
+          #heroLeadForm .hero-form-title h3{font-size:clamp(18px,1.8vw,28px)}
+          .frmD{padding:10px 8px}
+          .admissions-timer-desktop-lhs{bottom:52px!important;left:14px!important;transform:scale(.72)!important;transform-origin:bottom left;max-width:280px}
         }
         @media (max-width:991px){
           .navbar-area{position:relative!important;top:auto!important;left:auto!important;background:#fff!important;box-shadow:none!important}
@@ -820,7 +848,7 @@ export default function Bba2PreviewShell({
 
         /* BA Psychology Theme Overrides (#791F70) */
         .asb-psychology-theme .bnrbg {
-          background-image: linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)), url("/New Website banner ASB 1904x686 (3).jpg") !important;
+          background-image: none !important;
         }
         .asb-psychology-theme .course-banner {
           background: #791F70 !important;
@@ -1666,119 +1694,20 @@ export default function Bba2PreviewShell({
                     className="header-hero-content"
                     style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
                   >
-                    {course.key === "bba3" ? (
-                      <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
-                        <h1 className="asb-desktop-hero-title" style={{ fontSize: "54px", fontWeight: 800, color: "#fff", lineHeight: "1.1", textTransform: "none", marginBottom: "20px" }}>
-                          Join the Best<br />Undergrad College<br />in Delhi-NCR
-                        </h1>
-
-                        <div className="asb-bba3-pill">
-                          Pursue Full-Time <span className="asb-bba3-pill-highlight">BBA</span> Degree Program.
-                        </div>
-
-                        <ul className="asb-bba3-points">
-                          <li>15 Days Study Trip to Oxford Business College, Oxford & London, U.K.</li>
-                        </ul>
-
-                        <div className="asb-bba3-scholarship-card">
-                          <div className="asb-bba3-scholarship-left">
-                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              {/* Graduation Cap */}
-                              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#ffb703" />
-                              <path d="M17 9.5V12C17 13 15.5 14 12 14C8.5 14 7 13 7 12V9.5L12 11.5L17 9.5Z" fill="#ffb703" />
-                              <path d="M21 7.5V12.5" stroke="#ffb703" strokeWidth="1.2" strokeLinecap="round" />
-                              <circle cx="21" cy="12.5" r="0.8" fill="#ffb703" />
-
-                              {/* Diploma Scroll */}
-                              <path d="M4 16C4 15.17 4.67 14.5 5.5 14.5H18.5C19.33 14.5 20 15.17 20 16C20 16.83 19.33 17.5 18.5 17.5H5.5C4.67 17.5 4 16.83 4 16Z" fill="#ffffff" />
-                              <path d="M5.5 17.5C4.67 17.5 4 18.17 4 19C4 19.83 4.67 20.5 5.5 20.5H18.5C19.33 20.5 20 19.83 20 19C20 18.17 19.33 17.5 18.5 17.5" fill="#ffffff" />
-                              {/* Ribbon */}
-                              <path d="M11 14.5V17.5" stroke="#ffb703" strokeWidth="1.5" />
-                              <path d="M13 14.5V17.5" stroke="#ffb703" strokeWidth="1.5" />
-                            </svg>
-                          </div>
-                          <div className="asb-bba3-scholarship-right">
-                            <p className="asb-bba3-scholarship-upto">Upto</p>
-                            <h4 className="asb-bba3-scholarship-title">
-                              <span style={{ fontSize: "56px", fontWeight: 900, display: "block", color: "#ffffff", margin: "2px 0 6px", lineHeight: "1" }}>100%</span>
-                              SCHOLARSHIP*
-                            </h4>
-                            <span className="asb-bba3-scholarship-badge">Available For All</span>
-                          </div>
-                        </div>
-
-                        <div className="asb-bba3-stats">
-                          <div className="asb-bba3-stat-box">
-                            <div className="asb-bba3-stat-icon-wrapper">
-                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffb703" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                <circle cx="9" cy="7" r="4" />
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                              </svg>
-                            </div>
-                            <div className="asb-bba3-stat-details">
-                              <p className="asb-bba3-stat-value">100%</p>
-                              <p className="asb-bba3-stat-label">Placement Assistance</p>
-                            </div>
-                          </div>
-                          <div className="asb-bba3-stat-box">
-                            <div className="asb-bba3-stat-icon-wrapper" style={{ color: "#ffb703", fontSize: "24px", fontFamily: "Inter, sans-serif" }}>
-                              ₹
-                            </div>
-                            <div className="asb-bba3-stat-details">
-                              <p className="asb-bba3-stat-value">{content.heroFee}</p>
-                              <p className="asb-bba3-stat-label">Total Fees</p>
-                            </div>
-                          </div>
+                    <div className="mobH asb-desktop-hero-spacer" />
+                    <div className="mobH admissions-timer-desktop-lhs">
+                      <div className="asb-desktop-hero-header-text">
+                        <div className="asb-desktop-hero-top-small">Join the Best</div>
+                        <h1 className="asb-desktop-hero-main-title">Undergrad College</h1>
+                        <div className="asb-desktop-hero-bottom-small">in Delhi-NCR</div>
+                        <div className="asb-desktop-hero-pill-badge">
+                          Pursue Full-Time <span>{content?.highlight ? `${content.highlight} Degree Program` : "BBA | BCA | B.Com. | B.Sc(cs) Degree Program"}</span>
                         </div>
                       </div>
-                    ) : !isScholarshipPage && !hideHeroPromoBlock ? (
-                      <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
-                        <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
-                        <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">{content.highlight}</span> Degree Program.</p>
-                        {showHeroOxfordPoint ? (
-                          <ul className="asb-desktop-hero-points">
-                            <li style={{ fontSize: "20px" }}>15 Days Study Trip to Oxford Business College, Oxford & London, U.K.</li>
-                          </ul>
-                        ) : null}
-                        {showHeroStats ? (
-                          <div className="asb-hero-stats" aria-label="Course highlights">
-                            <div className="asb-hero-stat-box">
-                              <p className="asb-hero-stat-value">100%</p>
-                              <p className="asb-hero-stat-label">Placement Assistance</p>
-                            </div>
-                            <div className="asb-hero-stat-box">
-                              <p className="asb-hero-stat-value">{content.heroFee}</p>
-                              <p className="asb-hero-stat-label">Total Fees</p>
-                            </div>
-                          </div>
-                        ) : null}
-                        <div className="asb-scholarship-card">
-                          <div className="asb-scholarship-content">
-                            <div className="asb-scholarship-icon-box">
-                              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
-                                <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
-                              </svg>
-                            </div>
-                            <h4 className="asb-scholarship-title">Upto 100% Scholarship*</h4>
-                          </div>
-                        </div>
-                      </div>
-                    ) : (
-                      /* Spacer to prevent layout/height collapse on desktop */
-                      <>
-                        <div className="mobH" style={{ height: "clamp(260px, 32vw, 420px)" }} />
-                        {isScholarshipPage ? (
-                          <div className="mobH admissions-timer-desktop-lhs">
-                            <ScholarshipBadgeBba2 />
-                            <PlacementBadge />
-                            <AdmissionsTimer />
-                          </div>
-                        ) : null}
-                      </>
-                    )}
+                      <ScholarshipBadgeBba2 />
+                      <PlacementBadge />
+                      <AdmissionsTimer />
+                    </div>
                     <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                       <Image
                         src={course.mobileHeroImage ?? course.heroImage}

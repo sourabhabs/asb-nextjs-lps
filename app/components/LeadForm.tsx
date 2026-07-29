@@ -378,6 +378,121 @@ export default function LeadForm({
           padding: 0 10px;
           font-size: 15px;
           margin-bottom: 4px;
+          line-height: 1.2;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        @media (min-width: 992px) {
+          .frmD {
+            width: 100% !important;
+            padding: 10px clamp(10px, 1vw, 16px) !important;
+            overflow: visible !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) {
+            display: grid !important;
+            grid-template-columns:
+              minmax(205px, 0.95fr)
+              repeat(4, minmax(118px, 1fr))
+              minmax(150px, 1.1fr)
+              minmax(120px, auto) !important;
+            align-items: center !important;
+            gap: 8px !important;
+            width: 100% !important;
+            max-width: 1360px !important;
+            margin: 0 auto !important;
+            padding: 0 !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .single_form {
+            width: 100% !important;
+            min-width: 0 !important;
+            max-width: none !important;
+            flex: unset !important;
+            margin: 0 !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .hero-form-title {
+            width: 100% !important;
+            min-width: 0 !important;
+            max-width: none !important;
+            margin: 0 !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
+            width: 100% !important;
+            margin: 0 !important;
+            overflow: visible !important;
+            white-space: nowrap !important;
+            color: #fff !important;
+            font-size: clamp(20px, 1.85vw, 30px) !important;
+            line-height: 1.05 !important;
+            letter-spacing: 0 !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .course-select-wrap {
+            width: 100% !important;
+            min-width: 0 !important;
+            max-width: none !important;
+            flex: unset !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .single_form input,
+          #heroLeadForm:not(.lead-form-consent-row) .single_form select,
+          #heroLeadForm:not(.lead-form-consent-row) .course-readonly {
+            width: 100% !important;
+            min-width: 0 !important;
+            height: 40px !important;
+            min-height: 40px !important;
+            margin: 0 !important;
+            box-sizing: border-box !important;
+            font-size: 14px !important;
+            line-height: 40px !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) #heroSubmitBtn {
+            width: 100% !important;
+            min-width: 120px !important;
+            height: 40px !important;
+            line-height: 40px !important;
+            padding: 0 12px !important;
+            white-space: nowrap !important;
+          }
+        }
+        @media (min-width: 992px) and (max-width: 1180px) {
+          #heroLeadForm:not(.lead-form-consent-row) {
+            grid-template-columns:
+              minmax(185px, 0.85fr)
+              repeat(4, minmax(104px, 1fr))
+              minmax(135px, 1fr)
+              minmax(118px, auto) !important;
+            gap: 7px !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
+            font-size: clamp(16px, 1.6vw, 20px) !important;
+          }
+        }
+        @media (min-width: 992px) and (max-height: 700px) {
+          .frmD {
+            padding: 8px clamp(8px, 0.8vw, 12px) !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) {
+            grid-template-columns:
+              minmax(178px, 0.8fr)
+              repeat(4, minmax(96px, 1fr))
+              minmax(128px, 1fr)
+              minmax(114px, auto) !important;
+            gap: 6px !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
+            font-size: clamp(15px, 1.55vw, 18px) !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .single_form input,
+          #heroLeadForm:not(.lead-form-consent-row) .single_form select,
+          #heroLeadForm:not(.lead-form-consent-row) .course-readonly,
+          #heroLeadForm:not(.lead-form-consent-row) #heroSubmitBtn {
+            height: 38px !important;
+            min-height: 38px !important;
+            line-height: 38px !important;
+            font-size: 13px !important;
+          }
         }
         @media (max-width: 991px) {
           .course-readonly {

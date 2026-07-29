@@ -1934,7 +1934,7 @@ p.form-message.error.form-message.error {
   }
 }
 
-@media all and (max-width:1200px) and (min-width:100px) {
+@media all and (max-width:991px) and (min-width:100px) {
   .bnrbg {
     background-image: none;
     background-color: #fff;

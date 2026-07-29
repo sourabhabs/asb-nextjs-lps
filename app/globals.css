@@ -5,3 +5,312 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Universal Desktop Hero & Badges Styling for ALL Routes */
+@media (min-width: 992px) {
+  .mobH {
+    display: block !important;
+  }
+
+  .mobV {
+    display: none !important;
+  }
+
+  .bnrbg {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+
+  .header-hero {
+    height: calc(45.42vw + 146px) !important;
+    max-height: calc(100vh - 78px) !important;
+    min-height: 400px !important;
+  }
+
+  .admissions-timer-desktop-lhs {
+    position: absolute;
+    bottom: 12px;
+    left: 30px !important;
+    right: auto !important;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: max-content;
+    max-width: 620px;
+  }
+
+  .asb-desktop-hero-header-text {
+    margin-bottom: 4px;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .asb-desktop-hero-top-small {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+  }
+
+  .asb-desktop-hero-main-title {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.05;
+    margin: 2px 0 4px;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+
+  .asb-desktop-hero-bottom-small {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    color: #ffffff;
+  }
+
+  .asb-desktop-hero-pill-badge {
+    display: inline-block;
+    width: fit-content;
+    background: rgba(15, 31, 69, 0.88);
+    border: 1.5px solid #24f6f2;
+    border-radius: 30px;
+    padding: 5px 14px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .asb-desktop-hero-pill-badge span {
+    color: #24f6f2;
+    font-weight: 800;
+  }
+
+  .asb-bba2-scholarship-badge {
+    margin: 0 0 6px 0;
+    padding: 8px 14px;
+    gap: 12px;
+    border-radius: 12px;
+    border-width: 1.5px;
+  }
+
+  .asb-bba2-sch-left svg {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .asb-bba2-sch-divider {
+    height: 48px;
+    width: 1px;
+  }
+
+  .asb-bba2-sch-upto {
+    font-size: 10px;
+  }
+
+  .asb-bba2-sch-percent {
+    font-size: 26px;
+  }
+
+  .asb-bba2-sch-title {
+    font-size: 13px;
+  }
+
+  .asb-bba2-sch-sub {
+    font-size: 8px;
+  }
+
+  .asb-bba2-sch-pill {
+    font-size: 8px;
+    padding: 2px 7px;
+    margin-top: 3px;
+  }
+
+  .asb-placement-badge {
+    margin: 0 0 6px 0;
+    padding: 8px 14px;
+    font-size: 13px;
+    justify-content: flex-start;
+    border-radius: 10px;
+    border-width: 1.5px;
+    gap: 8px;
+  }
+
+  .asb-placement-icon svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .admissions-timer-digits-row {
+    justify-content: flex-start !important;
+  }
+
+  .admissions-timer-title {
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-align: left !important;
+  }
+
+  .admissions-timer-card {
+    width: 58px;
+    height: 58px;
+    border-radius: 12px;
+  }
+
+  .admissions-timer-digit {
+    font-size: 26px;
+  }
+
+  .admissions-timer-colon {
+    font-size: 26px;
+    margin-top: -16px;
+  }
+
+  .admissions-timer-label {
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 992px) and (max-height: 850px) {
+  .admissions-timer-desktop-lhs {
+    top: 10px !important;
+    bottom: auto !important;
+    left: 20px !important;
+    transform: none !important;
+    gap: 3px !important;
+  }
+
+  .asb-desktop-hero-top-small {
+    font-size: 14px !important;
+  }
+
+  .asb-desktop-hero-main-title {
+    font-size: 24px !important;
+    margin: 0 0 2px !important;
+  }
+
+  .asb-desktop-hero-bottom-small {
+    font-size: 13px !important;
+    margin-bottom: 3px !important;
+  }
+
+  .asb-desktop-hero-pill-badge {
+    font-size: 10.5px !important;
+    padding: 2px 9px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .asb-bba2-scholarship-badge {
+    margin: 0 0 2px 0 !important;
+    padding: 3px 8px !important;
+    gap: 6px !important;
+  }
+
+  .asb-bba2-sch-left svg {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .asb-bba2-sch-percent {
+    font-size: 18px !important;
+  }
+
+  .asb-bba2-sch-title {
+    font-size: 10px !important;
+  }
+
+  .asb-bba2-sch-sub {
+    font-size: 7px !important;
+  }
+
+  .asb-bba2-sch-pill {
+    font-size: 7px !important;
+    padding: 1px 5px !important;
+  }
+
+  .asb-placement-badge {
+    margin: 0 0 2px 0 !important;
+    padding: 3px 8px !important;
+    font-size: 10.5px !important;
+  }
+
+  .asb-placement-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .admissions-timer-title {
+    font-size: 11px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .admissions-timer-card {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 6px !important;
+  }
+
+  .admissions-timer-digit {
+    font-size: 16px !important;
+  }
+
+  .admissions-timer-colon {
+    font-size: 16px !important;
+    margin-top: -8px !important;
+  }
+
+  .admissions-timer-label {
+    font-size: 8.5px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-height: 680px) {
+  .admissions-timer-desktop-lhs {
+    top: 6px !important;
+    left: 16px !important;
+    gap: 2px !important;
+  }
+
+  .asb-desktop-hero-top-small {
+    font-size: 12px !important;
+  }
+
+  .asb-desktop-hero-main-title {
+    font-size: 20px !important;
+  }
+
+  .asb-desktop-hero-bottom-small {
+    font-size: 11px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .asb-desktop-hero-pill-badge {
+    font-size: 9.5px !important;
+    padding: 2px 7px !important;
+  }
+
+  .asb-bba2-scholarship-badge {
+    padding: 2px 6px !important;
+  }
+
+  .asb-bba2-sch-percent {
+    font-size: 15px !important;
+  }
+
+  .asb-placement-badge {
+    padding: 2px 6px !important;
+    font-size: 9.5px !important;
+  }
+
+  .admissions-timer-card {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .admissions-timer-digit {
+    font-size: 14px !important;
+  }
+}

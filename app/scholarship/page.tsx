@@ -1290,7 +1290,7 @@ export default function Page() {
             style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, pointerEvents: "none" }}
           >
             <Image
-              src="/banner-main.jpg"
+              src="/desktop-images/common.jpg"
               alt=""
               fill
               priority
@@ -1308,6 +1308,14 @@ export default function Page() {
                 >
                   <div className="mobH" style={{ height: "clamp(260px, 32vw, 420px)" }} />
                   <div className="mobH admissions-timer-desktop-lhs">
+                    <div className="asb-desktop-hero-header-text">
+                      <div className="asb-desktop-hero-top-small">Join the Best</div>
+                      <h1 className="asb-desktop-hero-main-title">Undergrad College</h1>
+                      <div className="asb-desktop-hero-bottom-small">in Delhi-NCR</div>
+                      <div className="asb-desktop-hero-pill-badge">
+                        Pursue Full-Time <span>BBA | BCA | B.Com. | B.Sc(cs)</span> Degree Program
+                      </div>
+                    </div>
                     <ScholarshipBadgeBba2 />
                     <PlacementBadge />
                     <AdmissionsTimer />

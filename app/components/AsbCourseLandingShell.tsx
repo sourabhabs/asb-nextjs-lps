@@ -601,7 +601,7 @@ export default function AsbCourseLandingShell({
 
         /* BA Psychology Theme Overrides (#791F70) */
         .asb-psychology-theme .bnrbg {
-          background-image: linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28)), url("/New Website banner ASB 1904x686 (3).jpg") !important;
+          background-image: none !important;
         }
         .asb-psychology-theme .course-banner {
           background: #791F70 !important;
@@ -916,6 +916,7 @@ export default function AsbCourseLandingShell({
                 fill
                 priority
                 fetchPriority="high"
+                unoptimized
                 sizes="100vw"
                 style={{ objectFit: "cover" }}
               />
