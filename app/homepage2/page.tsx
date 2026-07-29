@@ -685,7 +685,7 @@ export default function Page() {
             </div>
             <LeadForm
               id="enquire"
-              title="Admissions Open 2026"
+              title="Admissions Open"
               courses={HERO_COURSES}
               queryLabel="ASB Pmax campaign 2026 Landing"
               thankYouPath="/thank-you.php"

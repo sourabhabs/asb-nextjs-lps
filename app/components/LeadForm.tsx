@@ -392,12 +392,12 @@ export default function LeadForm({
           #heroLeadForm:not(.lead-form-consent-row) {
             display: grid !important;
             grid-template-columns:
-              minmax(205px, 0.95fr)
-              repeat(4, minmax(118px, 1fr))
-              minmax(150px, 1.1fr)
-              minmax(120px, auto) !important;
+              minmax(290px, 1.25fr)
+              repeat(4, minmax(100px, 1fr))
+              minmax(145px, 1.05fr)
+              minmax(112px, auto) !important;
             align-items: center !important;
-            gap: 8px !important;
+            gap: 6px !important;
             width: 100% !important;
             max-width: 1360px !important;
             margin: 0 auto !important;
@@ -422,7 +422,7 @@ export default function LeadForm({
             overflow: visible !important;
             white-space: nowrap !important;
             color: #fff !important;
-            font-size: clamp(20px, 1.85vw, 30px) !important;
+            font-size: clamp(22px, 2vw, 31px) !important;
             line-height: 1.05 !important;
             letter-spacing: 0 !important;
           }
@@ -441,7 +441,7 @@ export default function LeadForm({
             min-height: 40px !important;
             margin: 0 !important;
             box-sizing: border-box !important;
-            font-size: 14px !important;
+            font-size: 15px !important;
             line-height: 40px !important;
             white-space: nowrap !important;
             overflow: hidden !important;
@@ -456,17 +456,86 @@ export default function LeadForm({
             white-space: nowrap !important;
           }
         }
+        @media (min-width: 992px) and (max-width: 1279px) {
+          #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
+            font-size: clamp(21px, 1.95vw, 27px) !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .single_form input,
+          #heroLeadForm:not(.lead-form-consent-row) .single_form select,
+          #heroLeadForm:not(.lead-form-consent-row) .course-readonly,
+          #heroLeadForm:not(.lead-form-consent-row) #heroSubmitBtn {
+            font-size: 14px !important;
+          }
+        }
+        @media (min-width: 1280px) and (max-width: 1599px) {
+          #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
+            font-size: clamp(23px, 2vw, 30px) !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .single_form input,
+          #heroLeadForm:not(.lead-form-consent-row) .single_form select,
+          #heroLeadForm:not(.lead-form-consent-row) .course-readonly,
+          #heroLeadForm:not(.lead-form-consent-row) #heroSubmitBtn {
+            font-size: 15px !important;
+          }
+        }
+        @media (min-width: 1600px) {
+          #heroLeadForm:not(.lead-form-consent-row) {
+            grid-template-columns:
+              minmax(520px, 1.55fr)
+              repeat(4, minmax(150px, 1fr))
+              minmax(220px, 1.16fr)
+              minmax(176px, auto) !important;
+            gap: 14px !important;
+            max-width: 1980px !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
+            font-size: clamp(44px, 2.6vw, 58px) !important;
+            line-height: 1 !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .single_form input,
+          #heroLeadForm:not(.lead-form-consent-row) .single_form select,
+          #heroLeadForm:not(.lead-form-consent-row) .course-readonly,
+          #heroLeadForm:not(.lead-form-consent-row) #heroSubmitBtn {
+            font-size: 20px !important;
+            height: 60px !important;
+            min-height: 60px !important;
+            line-height: 60px !important;
+          }
+        }
+        @media (min-width: 1900px) {
+          #heroLeadForm:not(.lead-form-consent-row) {
+            grid-template-columns:
+              minmax(620px, 1.8fr)
+              repeat(4, minmax(164px, 1fr))
+              minmax(248px, 1.22fr)
+              minmax(194px, auto) !important;
+            gap: 16px !important;
+            max-width: 2320px !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
+            font-size: clamp(54px, 2.8vw, 72px) !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) .single_form input,
+          #heroLeadForm:not(.lead-form-consent-row) .single_form select,
+          #heroLeadForm:not(.lead-form-consent-row) .course-readonly,
+          #heroLeadForm:not(.lead-form-consent-row) #heroSubmitBtn {
+            font-size: 24px !important;
+            height: 68px !important;
+            min-height: 68px !important;
+            line-height: 68px !important;
+          }
+        }
         @media (min-width: 992px) and (max-width: 1180px) {
           #heroLeadForm:not(.lead-form-consent-row) {
             grid-template-columns:
-              minmax(185px, 0.85fr)
-              repeat(4, minmax(104px, 1fr))
-              minmax(135px, 1fr)
-              minmax(118px, auto) !important;
-            gap: 7px !important;
+              minmax(255px, 1.05fr)
+              repeat(4, minmax(92px, 1fr))
+              minmax(132px, 1fr)
+              minmax(108px, auto) !important;
+            gap: 6px !important;
           }
           #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
-            font-size: clamp(16px, 1.6vw, 20px) !important;
+            font-size: clamp(19px, 1.7vw, 23px) !important;
           }
         }
         @media (min-width: 992px) and (max-height: 700px) {
@@ -475,14 +544,14 @@ export default function LeadForm({
           }
           #heroLeadForm:not(.lead-form-consent-row) {
             grid-template-columns:
-              minmax(178px, 0.8fr)
-              repeat(4, minmax(96px, 1fr))
-              minmax(128px, 1fr)
-              minmax(114px, auto) !important;
+              minmax(245px, 1fr)
+              repeat(4, minmax(88px, 1fr))
+              minmax(124px, 1fr)
+              minmax(106px, auto) !important;
             gap: 6px !important;
           }
           #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
-            font-size: clamp(15px, 1.55vw, 18px) !important;
+            font-size: clamp(18px, 1.7vw, 22px) !important;
           }
           #heroLeadForm:not(.lead-form-consent-row) .single_form input,
           #heroLeadForm:not(.lead-form-consent-row) .single_form select,
@@ -491,7 +560,7 @@ export default function LeadForm({
             height: 38px !important;
             min-height: 38px !important;
             line-height: 38px !important;
-            font-size: 13px !important;
+            font-size: 14px !important;
           }
         }
         @media (max-width: 991px) {

@@ -214,8 +214,8 @@ export default function Page() {
           #heroLeadForm::before{display:none!important;content:none!important}
           #heroLeadForm .single_form{margin-top:0;width:138px;flex:0 0 auto}
           #heroLeadForm .course-select-wrap{width:165px}
-          #heroLeadForm .hero-form-title{width:auto;min-width:190px;margin-right:2px}
-          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:33px;line-height:1;font-weight:800;letter-spacing:-.01em}
+          #heroLeadForm .hero-form-title{width:auto;min-width:255px;margin-right:8px}
+          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(20px, 2.2vw, 33px);line-height:1;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
           .frmD{padding:14px 8px;background-color:rgba(0,105,113,.66)}
           #heroLeadForm .single_form input,#heroLeadForm .single_form select{display:block;width:100%;box-sizing:border-box;height:40px;border-radius:4px;border:1px solid rgba(71,85,105,.55);background:#fff;color:#334155;padding:0 10px;font-size:15px;margin:0;vertical-align:middle}
           #heroLeadForm .single_form input::placeholder{font-size:14px;color:#6b7280}
@@ -649,7 +649,7 @@ export default function Page() {
             </div>
             <LeadForm
               id="enquire"
-              title="Admissions Open 2026"
+              title="Admissions Open"
               courses={HERO_COURSES}
               queryLabel="ASB Pmax campaign 2026 Landing"
               thankYouPath="/thank-you.php"

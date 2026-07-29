@@ -500,7 +500,7 @@ export default function Bba2PreviewShell({
           .asb-desktop-hero-header-text::after{content:"";display:block;width:102px;height:8px;border-radius:999px;margin:14px 0 16px;background:linear-gradient(90deg,#63fff6 0%,#2f8cff 100%)}
           .asb-desktop-hero-pill-badge{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px;max-width:min(760px,58vw);padding:9px 16px;border:3px solid #43d6ff;border-radius:16px;background:linear-gradient(180deg,rgba(34,112,209,.48) 0%,rgba(18,76,152,.34) 100%);box-shadow:0 12px 28px rgba(6,16,38,.22),inset 0 0 0 1px rgba(255,255,255,.22);color:#fff;font-size:clamp(17px,1.38vw,25px);line-height:1.22;font-weight:700}
           .asb-desktop-hero-pill-badge span{color:#67f7ff;font-weight:900}
-          .asb-desktop-hero-spacer{height:clamp(270px,31vw,410px)}
+          .asb-desktop-hero-spacer{height:clamp(185px,23vw,300px)}
           .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600}
           .asb-desktop-hero-highlight{font-weight:800;color:#22f0ff!important;font-size:1.38em!important;display:inline-block}
           .asb-desktop-hero-points{list-style:none;padding:0;margin:8px 0 0}
@@ -512,10 +512,10 @@ export default function Bba2PreviewShell({
           .asb-hero-stat-value{margin:0 0 4px!important;color:#ffffff!important;font-size:29px;line-height:1;font-weight:800;text-shadow:0 1px 6px rgba(15,31,69,.22);white-space:nowrap}
           .asb-hero-stat-label{margin:0!important;color:rgba(255,255,255,.95)!important;font-size:15px;line-height:1.2;font-weight:700;text-shadow:0 1px 4px rgba(15,31,69,.18);white-space:normal}
           #heroLeadForm{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 6px;width:100%;max-width:1320px;margin:0 auto;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
-          #heroLeadForm .single_form{margin-top:0;flex:1 1 120px;max-width:180px;min-width:110px}
-          #heroLeadForm .course-select-wrap{flex:1.1 1 130px;max-width:190px;min-width:120px}
-          #heroLeadForm .hero-form-title{width:auto;flex:0 0 auto;min-width:230px;margin-right:6px}
-          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(18px, 1.95vw, 30px);line-height:1;font-weight:800;white-space:nowrap}
+          #heroLeadForm .single_form{margin-top:0;flex:1 1 104px;max-width:160px;min-width:100px}
+          #heroLeadForm .course-select-wrap{flex:1.1 1 122px;max-width:165px;min-width:120px}
+          #heroLeadForm .hero-form-title{width:auto;flex:0 0 auto;min-width:290px;margin-right:6px}
+          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(20px, 2vw, 30px);line-height:1;font-weight:800;white-space:nowrap}
           .frmD{padding:14px 8px;background-color:rgba(0,105,113,.66)}
           #heroLeadForm .single_form input,#heroLeadForm .single_form select{display:block;width:100%;box-sizing:border-box;height:40px;border-radius:4px;border:1px solid rgba(71,85,105,.55);background:#fff;color:#334155;padding:0 10px;font-size:15px;margin:0}
           #heroSubmitBtn{height:40px;line-height:40px;background:#006972!important;font-weight:700;padding:0 10px;min-width:92px;flex:0 0 auto;border-radius:4px}
@@ -538,12 +538,12 @@ export default function Bba2PreviewShell({
           .asb-desktop-hero-bottom-small{font-size:20px}
           .asb-desktop-hero-header-text::after{width:82px;height:6px;margin:10px 0 12px}
           .asb-desktop-hero-pill-badge{max-width:min(620px,60vw);padding:7px 12px;border-radius:14px;font-size:clamp(14px,1.18vw,19px)}
-          .asb-desktop-hero-spacer{height:245px}
+          .asb-desktop-hero-spacer{height:185px}
           #heroLeadForm{gap:6px 4px!important}
-          #heroLeadForm .single_form{flex:1 1 106px;max-width:156px;min-width:98px}
-          #heroLeadForm .course-select-wrap{flex:1.1 1 116px;max-width:166px;min-width:108px}
-          #heroLeadForm .hero-form-title{min-width:200px;margin-right:20px!important;padding-right:8px!important}
-          #heroLeadForm .hero-form-title h3{font-size:clamp(14px,1.15vw,17px)!important}
+          #heroLeadForm .single_form{flex:1 1 96px;max-width:148px;min-width:90px}
+          #heroLeadForm .course-select-wrap{flex:1.1 1 110px;max-width:156px;min-width:102px}
+          #heroLeadForm .hero-form-title{min-width:245px;margin-right:12px!important;padding-right:6px!important}
+          #heroLeadForm .hero-form-title h3{font-size:clamp(18px,1.5vw,21px)!important}
           .frmD{padding:10px 8px}
         }
         @media (max-width:991px){
@@ -922,8 +922,12 @@ export default function Bba2PreviewShell({
         @media (min-width: 992px) {
           .admissions-timer-container {
             margin: 0;
-            align-self: flex-start;
+            align-self: stretch;
             min-width: 286px;
+            min-height: 112px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
           }
         }
         .asb-bba2-scholarship-badge {
@@ -1001,10 +1005,11 @@ export default function Bba2PreviewShell({
             gap: 10px;
             border-radius: 12px;
             border-width: 1.5px;
-            align-self: flex-start;
+            align-self: stretch;
             width: auto;
             max-width: none;
             min-width: 286px;
+            min-height: 112px;
           }
           .asb-bba2-sch-left svg {
             width: 34px !important;
@@ -1066,6 +1071,7 @@ export default function Bba2PreviewShell({
             border-radius: 10px;
             border-width: 1.5px;
             gap: 8px;
+            min-height: 46px;
           }
           .asb-placement-icon svg {
             width: 16px !important;
@@ -1085,6 +1091,7 @@ export default function Bba2PreviewShell({
           .admissions-timer-title {
             font-size: 14px;
             margin-bottom: 6px;
+            text-align: left;
           }
         }
         .admissions-timer-digits-row {
@@ -1095,7 +1102,8 @@ export default function Bba2PreviewShell({
         }
         @media (min-width: 992px) {
           .admissions-timer-digits-row {
-            gap: 8px;
+            gap: 6px;
+            justify-content: flex-start;
           }
         }
         .admissions-timer-item-group {
@@ -1105,7 +1113,7 @@ export default function Bba2PreviewShell({
         }
         @media (min-width: 992px) {
           .admissions-timer-item-group {
-            gap: 8px;
+            gap: 6px;
           }
         }
         .admissions-timer-card-wrapper {
@@ -1166,6 +1174,162 @@ export default function Bba2PreviewShell({
         @media (min-width: 992px) {
           .admissions-timer-label {
             font-size: 11px;
+          }
+        }
+
+        @media (min-width: 1600px) {
+          .asb-desktop-hero-meta-row {
+            gap: 18px !important;
+            align-items: stretch !important;
+          }
+          .asb-desktop-hero-top-small {
+            font-size: 28px !important;
+          }
+          .asb-desktop-hero-main-title {
+            font-size: 58px !important;
+            line-height: 1.03 !important;
+          }
+          .asb-desktop-hero-bottom-small {
+            font-size: 24px !important;
+            margin-bottom: 10px !important;
+          }
+          .asb-desktop-hero-pill-badge {
+            font-size: 16px !important;
+            padding: 6px 16px !important;
+          }
+          .asb-placement-badge {
+            font-size: 18px !important;
+            padding: 10px 16px !important;
+            min-height: 54px !important;
+            gap: 10px !important;
+          }
+          .asb-placement-icon svg {
+            width: 20px !important;
+            height: 20px !important;
+          }
+          .asb-bba2-scholarship-badge {
+            min-width: 340px !important;
+            min-height: 132px !important;
+            padding: 14px 18px !important;
+            gap: 14px !important;
+          }
+          .asb-bba2-sch-left svg {
+            width: 42px !important;
+            height: 42px !important;
+          }
+          .asb-bba2-sch-divider {
+            height: 62px !important;
+          }
+          .asb-bba2-sch-upto {
+            font-size: 14px !important;
+          }
+          .asb-bba2-sch-percent {
+            font-size: 40px !important;
+          }
+          .asb-bba2-sch-title {
+            font-size: 20px !important;
+          }
+          .asb-bba2-sch-sub {
+            font-size: 12px !important;
+          }
+          .asb-bba2-sch-pill {
+            font-size: 12px !important;
+            padding: 4px 10px !important;
+          }
+          .admissions-timer-container {
+            min-width: 340px !important;
+            min-height: 132px !important;
+            padding: 14px 18px !important;
+          }
+          .admissions-timer-title {
+            font-size: 20px !important;
+            margin-bottom: 8px !important;
+          }
+          .admissions-timer-card {
+            width: 70px !important;
+            height: 70px !important;
+            border-radius: 14px !important;
+          }
+          .admissions-timer-digit {
+            font-size: 36px !important;
+          }
+          .admissions-timer-colon {
+            font-size: 34px !important;
+            margin-top: -18px !important;
+          }
+          .admissions-timer-label {
+            font-size: 13px !important;
+          }
+        }
+
+        @media (min-width: 1900px) {
+          .asb-desktop-hero-top-small {
+            font-size: 32px !important;
+          }
+          .asb-desktop-hero-main-title {
+            font-size: 70px !important;
+          }
+          .asb-desktop-hero-bottom-small {
+            font-size: 28px !important;
+          }
+          .asb-desktop-hero-pill-badge {
+            font-size: 18px !important;
+            padding: 7px 18px !important;
+          }
+          .asb-placement-badge {
+            font-size: 20px !important;
+            padding: 12px 18px !important;
+            min-height: 58px !important;
+          }
+          .asb-bba2-scholarship-badge {
+            min-width: 392px !important;
+            min-height: 150px !important;
+            padding: 16px 20px !important;
+          }
+          .asb-bba2-sch-left svg {
+            width: 46px !important;
+            height: 46px !important;
+          }
+          .asb-bba2-sch-divider {
+            height: 72px !important;
+          }
+          .asb-bba2-sch-upto {
+            font-size: 16px !important;
+          }
+          .asb-bba2-sch-percent {
+            font-size: 48px !important;
+          }
+          .asb-bba2-sch-title {
+            font-size: 24px !important;
+          }
+          .asb-bba2-sch-sub {
+            font-size: 14px !important;
+          }
+          .asb-bba2-sch-pill {
+            font-size: 14px !important;
+          }
+          .admissions-timer-container {
+            min-width: 392px !important;
+            min-height: 150px !important;
+            padding: 16px 20px !important;
+          }
+          .admissions-timer-title {
+            font-size: 24px !important;
+          }
+          .admissions-timer-card {
+            width: 78px !important;
+            height: 78px !important;
+            border-radius: 16px !important;
+          }
+          .admissions-timer-digit {
+            font-size: 42px !important;
+          }
+          .admissions-timer-colon {
+            font-size: 38px !important;
+            margin-top: -20px !important;
+          }
+          .admissions-timer-label {
+            font-size: 14px !important;
           }
         }
 
@@ -1696,11 +1860,11 @@ export default function Bba2PreviewShell({
                           Pursue Full-Time <span>{content?.highlight ? `${content.highlight} Degree Program` : "BBA | BCA | B.Com. | B.Sc(cs) Degree Program"}</span>
                         </div>
                       </div>
+                      <PlacementBadge />
                       <div className="asb-desktop-hero-meta-row">
                         <ScholarshipBadgeBba2 />
                         <AdmissionsTimer />
                       </div>
-                      <PlacementBadge />
                     </div>
                     <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                       <Image
