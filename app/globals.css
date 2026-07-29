@@ -27,7 +27,7 @@ body {
     flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: space-between !important;
-    gap: 0 6px !important;
+    gap: 0 8px !important;
     width: 100% !important;
   }
 
@@ -35,17 +35,18 @@ body {
     flex: 0 0 auto !important;
     min-width: 0 !important;
     width: auto !important;
-    margin-right: 18px !important;
-    padding-right: 4px !important;
+    margin-right: 24px !important;
+    padding-right: 8px !important;
   }
 
   #heroLeadForm .hero-form-title h3 {
-    font-size: clamp(13px, 1.1vw, 16px) !important;
+    font-size: clamp(12px, 1.05vw, 15px) !important;
     white-space: nowrap !important;
     line-height: 1.2 !important;
     margin: 0 !important;
     padding: 0 !important;
     color: #ffffff !important;
+    font-weight: 800 !important;
   }
 
   #heroLeadForm .single_form {
@@ -73,8 +74,10 @@ body {
   }
 
   .admissions-timer-desktop-lhs {
-    position: absolute;
-    bottom: 12px;
+    position: absolute !important;
+    top: calc(50% - 30px) !important;
+    transform: translateY(-50%) !important;
+    bottom: auto !important;
     left: 30px !important;
     right: auto !important;
     z-index: 5;
@@ -222,10 +225,10 @@ body {
 /* Tier 1: Large displays & laptop displays >= 781px height (e.g., 1280x800, 1440x900, 1920x1080) */
 @media (min-width: 992px) and (min-height: 781px) {
   .admissions-timer-desktop-lhs {
-    top: 38px !important;
+    top: calc(50% - 25px) !important;
+    transform: translateY(-50%) !important;
     bottom: auto !important;
     left: 35px !important;
-    transform: none !important;
     gap: 6px !important;
   }
 
@@ -307,10 +310,10 @@ body {
 /* Tier 2: Medium height displays 681px - 780px (e.g., 1024x768, 1366x768) */
 @media (min-width: 992px) and (min-height: 681px) and (max-height: 780px) {
   .admissions-timer-desktop-lhs {
-    top: 28px !important;
+    top: calc(50% - 25px) !important;
+    transform: translateY(-50%) !important;
     bottom: auto !important;
     left: 30px !important;
-    transform: none !important;
     gap: 4px !important;
   }
 
@@ -382,10 +385,10 @@ body {
 /* Tier 3: Short display height <= 680px (e.g., 1024x600) */
 @media (min-width: 992px) and (max-height: 680px) {
   .admissions-timer-desktop-lhs {
-    top: 18px !important;
+    top: calc(50% - 25px) !important;
+    transform: translateY(-50%) !important;
     bottom: auto !important;
     left: 24px !important;
-    transform: none !important;
     gap: 2px !important;
   }
 
