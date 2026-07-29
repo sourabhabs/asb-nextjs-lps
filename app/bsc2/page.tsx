@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Bba2PreviewShell from "@/app/components/Bba2PreviewShell";
-import { PREVIEW_COURSES } from "@/lib/asb-preview-routes";
+import LandingPageTracking from "@/app/components/LandingPageTracking";
+import { ASB_COURSE_ROUTES } from "@/lib/asb-routes";
 
-const course = PREVIEW_COURSES.bsc;
+const course = ASB_COURSE_ROUTES.bsc;
 
 export const metadata: Metadata = {
-  title: "B.Sc. (CS) Preview | Asian School of Business",
-  description:
-    "Top B.Sc. (CS) college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
+  title: `${course.title} | Preview`,
+  description: course.description,
   robots: {
     index: false,
     follow: false,
@@ -15,5 +15,10 @@ export const metadata: Metadata = {
 };
 
 export default function Bsc2Page() {
-  return <Bba2PreviewShell course={course} />;
+  return (
+    <>
+      <LandingPageTracking googleTagId="AW-18057960286" />
+      <Bba2PreviewShell course={course} showWhatsApp={true} />
+    </>
+  );
 }
