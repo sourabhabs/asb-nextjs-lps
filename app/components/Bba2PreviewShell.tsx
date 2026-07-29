@@ -536,10 +536,9 @@ export default function Bba2PreviewShell({
           #heroLeadForm{gap:6px 4px!important}
           #heroLeadForm .single_form{flex:1 1 106px;max-width:156px;min-width:98px}
           #heroLeadForm .course-select-wrap{flex:1.1 1 116px;max-width:166px;min-width:108px}
-          #heroLeadForm .hero-form-title{min-width:0;margin-right:6px}
-          #heroLeadForm .hero-form-title h3{font-size:clamp(18px,1.8vw,28px)}
+          #heroLeadForm .hero-form-title{min-width:0;margin-right:24px!important;padding-right:8px!important}
+          #heroLeadForm .hero-form-title h3{font-size:clamp(12px,1.05vw,15px)!important}
           .frmD{padding:10px 8px}
-          .admissions-timer-desktop-lhs{bottom:52px!important;left:14px!important;transform:scale(.72)!important;transform-origin:bottom left;max-width:280px}
         }
         @media (max-width:991px){
           .navbar-area{position:relative!important;top:auto!important;left:auto!important;background:#fff!important;box-shadow:none!important}
@@ -917,36 +916,6 @@ export default function Bba2PreviewShell({
         @media (min-width: 992px) {
           .admissions-timer-container {
             margin: 0;
-            text-align: left;
-            padding: 10px 16px;
-            border-radius: 12px;
-            border-width: 1.5px;
-          }
-          .admissions-timer-desktop-lhs {
-            position: absolute;
-            bottom: 12px;
-            left: 30px !important;
-            right: auto !important;
-            z-index: 5;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            max-width: 320px;
-          }
-        }
-        @media (min-width: 992px) and (max-height: 800px) {
-          .admissions-timer-desktop-lhs {
-            bottom: 8px;
-            left: 20px !important;
-            transform: scale(0.88);
-            transform-origin: bottom left;
-          }
-        }
-        .asb-bba2-scholarship-badge {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 8px 12px;
           background: rgba(15, 31, 69, 0.95);
           border: 1.5px solid #ffb703;
           border-radius: 12px;

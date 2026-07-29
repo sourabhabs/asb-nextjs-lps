@@ -624,26 +624,7 @@ export default function Page() {
             border-radius: 12px;
             border-width: 1.5px;
           }
-          .admissions-timer-desktop-lhs {
-            position: absolute;
-            bottom: 12px;
-            left: 30px !important;
-            right: auto !important;
-            z-index: 5;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            max-width: 320px;
-          }
-        }
-        @media (min-width: 992px) and (max-height: 800px) {
-          .admissions-timer-desktop-lhs {
-            bottom: 8px;
-            left: 20px !important;
-            transform: scale(0.88);
-            transform-origin: bottom left;
-          }
-        }
+
         .asb-bba2-scholarship-badge {
           display: flex;
           align-items: center;
