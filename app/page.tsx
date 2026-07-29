@@ -180,6 +180,8 @@ export default function Page() {
           }
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
           .bnrbg{background-image:url('/banner-main.jpg')!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
+          .admissions-timer-desktop-lhs{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:fit-content;max-width:min(760px,58vw);padding-top:14px}
+          .asb-desktop-hero-meta-row{display:flex;align-items:stretch;gap:16px;flex-wrap:nowrap;margin:0 0 12px 0}
           .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.2)}
           .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff;letter-spacing:-.02em}
           .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.22)}
@@ -212,6 +214,9 @@ export default function Page() {
           .btn-wa{display:flex;align-items:center;justify-content:center;transition:transform 0.2s ease}
           .btn-wa:hover{transform:scale(1.05)}
           .mobV{display:none!important}
+        }
+        @media (min-width:992px) and (max-height:820px){
+          .admissions-timer-desktop-lhs{padding-top:22px}
         }
         @media (max-width:991px){
           .navbar-area{position:relative!important;top:auto!important;left:auto!important;background:#fff!important;box-shadow:none!important}
@@ -320,11 +325,14 @@ export default function Page() {
         }
         @media (min-width: 992px) {
           .asb-bba2-scholarship-badge {
-            margin: 0 0 6px 0;
-            padding: 8px 14px;
+            margin: 0;
+            padding: 10px 16px;
             gap: 12px;
             border-radius: 12px;
             border-width: 1.5px;
+            min-width: 360px;
+            min-height: 112px;
+            align-self: stretch;
           }
           .asb-bba2-sch-left svg {
             width: 34px !important;
@@ -1045,9 +1053,11 @@ export default function Page() {
                         Pursue Full-Time <span>BBA | BCA | B.Com. | B.Sc(cs)</span> Degree Program
                       </div>
                     </div>
-                    <ScholarshipBadgeBba2 />
+                    <div className="asb-desktop-hero-meta-row">
+                      <ScholarshipBadgeBba2 />
+                      <AdmissionsTimer />
+                    </div>
                     <PlacementBadge />
-                    <AdmissionsTimer />
                   </div>
                   <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                     <Image

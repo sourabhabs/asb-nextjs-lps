@@ -396,6 +396,9 @@ export default function Bba2PreviewShell({
   const showInternationalSection = detailsKey !== "ba-psychology";
   const hideHeroPromoBlock = ["bca", "bcom", "bsc"].includes(detailsKey) && !isScholarshipPage;
   const useFramedDesktopHero = isScholarshipPage || hideHeroPromoBlock;
+  const useMainDesktopHero = ["bba", "bca", "bcom", "bsc"].includes(course.key);
+  const desktopHeroImage = useMainDesktopHero ? "/desktop-images/common.jpg" : course.heroImage;
+  const showDesktopOxfordLogo = showOxfordLogo && !useMainDesktopHero;
   const [intlIdx, setIntlIdx] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
   const [testModalUrl, setTestModalUrl] = useState("");
@@ -486,6 +489,8 @@ export default function Bba2PreviewShell({
           .bnrbg{background-image:none!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
           .header-hero{height:min(calc(45.42vw + 146px),calc(100vh - 78px))!important;min-height:400px!important}
           .header-hero-content{padding-left:30px!important;padding-right:24px!important}
+          .admissions-timer-desktop-lhs{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:fit-content;max-width:min(760px,58vw)}
+          .asb-desktop-hero-meta-row{display:flex;align-items:flex-start;gap:14px;flex-wrap:nowrap;margin:0 0 8px 0}
           .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff}
           .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff}
           .asb-desktop-hero-header-text{max-width:min(760px,58vw);margin:0 0 10px;text-shadow:0 10px 28px rgba(6,16,38,.32)}
@@ -526,13 +531,14 @@ export default function Bba2PreviewShell({
         @media (min-width:992px) and (max-height:700px){
           .header-hero{height:calc(100vh - 78px)!important;min-height:0!important}
           .header-hero-content{padding-left:20px!important;padding-right:18px!important}
+          .admissions-timer-desktop-lhs{padding-top:16px}
           .asb-desktop-hero-header-text{max-width:min(620px,60vw);margin-bottom:8px}
           .asb-desktop-hero-top-small{font-size:20px}
           .asb-desktop-hero-main-title{font-size:clamp(36px,4.2vw,58px)}
           .asb-desktop-hero-bottom-small{font-size:20px}
           .asb-desktop-hero-header-text::after{width:82px;height:6px;margin:10px 0 12px}
           .asb-desktop-hero-pill-badge{max-width:min(620px,60vw);padding:7px 12px;border-radius:14px;font-size:clamp(14px,1.18vw,19px)}
-          .asb-desktop-hero-spacer{height:210px}
+          .asb-desktop-hero-spacer{height:245px}
           #heroLeadForm{gap:6px 4px!important}
           #heroLeadForm .single_form{flex:1 1 106px;max-width:156px;min-width:98px}
           #heroLeadForm .course-select-wrap{flex:1.1 1 116px;max-width:166px;min-width:108px}
@@ -916,6 +922,15 @@ export default function Bba2PreviewShell({
         @media (min-width: 992px) {
           .admissions-timer-container {
             margin: 0;
+            align-self: flex-start;
+            min-width: 286px;
+          }
+        }
+        .asb-bba2-scholarship-badge {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 8px 12px;
           background: rgba(15, 31, 69, 0.95);
           border: 1.5px solid #ffb703;
           border-radius: 12px;
@@ -928,6 +943,7 @@ export default function Bba2PreviewShell({
           display: flex;
           align-items: center;
           justify-content: center;
+          flex: 0 0 auto;
         }
         .asb-bba2-sch-divider {
           width: 1px;
@@ -938,6 +954,8 @@ export default function Bba2PreviewShell({
           display: flex;
           flex-direction: column;
           align-items: flex-start;
+          justify-content: center;
+          flex: 0 1 auto;
           line-height: 1;
         }
         .asb-bba2-sch-upto {
@@ -979,17 +997,21 @@ export default function Bba2PreviewShell({
         @media (min-width: 992px) {
           .asb-bba2-scholarship-badge {
             margin: 0 0 6px 0;
-            padding: 8px 14px;
-            gap: 12px;
+            padding: 10px 14px;
+            gap: 10px;
             border-radius: 12px;
             border-width: 1.5px;
+            align-self: flex-start;
+            width: auto;
+            max-width: none;
+            min-width: 286px;
           }
           .asb-bba2-sch-left svg {
             width: 34px !important;
             height: 34px !important;
           }
           .asb-bba2-sch-divider {
-            height: 48px;
+            height: 40px;
             width: 1px;
           }
           .asb-bba2-sch-upto {
@@ -997,16 +1019,17 @@ export default function Bba2PreviewShell({
           }
           .asb-bba2-sch-percent {
             font-size: 26px;
+            margin: 1px 0;
           }
           .asb-bba2-sch-title {
             font-size: 13px;
           }
           .asb-bba2-sch-sub {
-            font-size: 8px;
+            font-size: 9px;
           }
           .asb-bba2-sch-pill {
-            font-size: 8px;
-            padding: 2px 7px;
+            font-size: 9px;
+            padding: 2px 8px;
             margin-top: 3px;
           }
         }
@@ -1610,7 +1633,7 @@ export default function Bba2PreviewShell({
                     <div className="d-none d-lg-flex align-items-center">
                       <div className="alc-desktop-logo-strip">
                         <Image src="/img/logo.jpg" alt="Asian School of Business" className="logo-alc" width={200} height={68} priority />
-                        {showOxfordLogo ? (
+                        {showDesktopOxfordLogo ? (
                           <Image src="/img/OBC-Logo.png" alt="Oxford Business College" className="logo-obc" width={160} height={54} priority />
                         ) : null}
                       </div>
@@ -1638,16 +1661,16 @@ export default function Bba2PreviewShell({
               aria-hidden="true"
               style={{
                 position: "absolute",
-                top: useFramedDesktopHero ? "78px" : 0,
+                top: useMainDesktopHero ? 0 : useFramedDesktopHero ? "78px" : 0,
                 left: 0,
                 right: 0,
-                bottom: useFramedDesktopHero ? "68px" : 0,
+                bottom: useMainDesktopHero ? 0 : useFramedDesktopHero ? "68px" : 0,
                 zIndex: 0,
                 pointerEvents: "none",
               }}
             >
               <Image
-                src={course.heroImage}
+                src={desktopHeroImage}
                 alt=""
                 fill
                 priority
@@ -1656,14 +1679,14 @@ export default function Bba2PreviewShell({
                 style={{ objectFit: "cover" }}
               />
             </div>
-            <div className="container-l banner-content" style={{ width: "100%" }}>
+            <div className="container-l banner-content" style={{ width: useMainDesktopHero ? "auto" : "100%" }}>
               <div className="row" style={{ width: "100%", marginRight: 0, marginLeft: 0 }}>
                 <div className="col-lg-12">
                   <div
                     className="header-hero-content"
                     style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
                   >
-                    <div className="mobH asb-desktop-hero-spacer" />
+                    <div className="mobH asb-desktop-hero-spacer" style={useMainDesktopHero ? { height: "clamp(260px, 32vw, 420px)" } : undefined} />
                     <div className="mobH admissions-timer-desktop-lhs">
                       <div className="asb-desktop-hero-header-text">
                         <div className="asb-desktop-hero-top-small">Join the Best</div>
@@ -1673,9 +1696,11 @@ export default function Bba2PreviewShell({
                           Pursue Full-Time <span>{content?.highlight ? `${content.highlight} Degree Program` : "BBA | BCA | B.Com. | B.Sc(cs) Degree Program"}</span>
                         </div>
                       </div>
-                      <ScholarshipBadgeBba2 />
+                      <div className="asb-desktop-hero-meta-row">
+                        <ScholarshipBadgeBba2 />
+                        <AdmissionsTimer />
+                      </div>
                       <PlacementBadge />
-                      <AdmissionsTimer />
                     </div>
                     <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                       <Image
@@ -1729,7 +1754,7 @@ export default function Bba2PreviewShell({
                 courses={content.options}
                 queryLabel={course.queryLabel}
                 thankYouPath={course.thankYouPath}
-                submitLabel="Enquire Now"
+                submitLabel={useMainDesktopHero ? "ENQUIRE NOW" : "Enquire Now"}
                 consentNote={formConsentNote}
               />
             </div>

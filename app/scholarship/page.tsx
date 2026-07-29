@@ -601,6 +601,13 @@ export default function Page() {
           color: #475569;
           line-height: 1.6;
         }
+        @media (min-width:992px){
+          .admissions-timer-desktop-lhs{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:fit-content;max-width:min(760px,58vw);padding-top:14px}
+          .asb-desktop-hero-meta-row{display:flex;align-items:stretch;gap:16px;flex-wrap:nowrap;margin:0 0 12px 0}
+        }
+        @media (min-width:992px) and (max-height:820px){
+          .admissions-timer-desktop-lhs{padding-top:22px}
+        }
 
         /* Admissions Countdown Timer Styling */
         .admissions-timer-container {
@@ -623,6 +630,12 @@ export default function Page() {
             padding: 10px 16px;
             border-radius: 12px;
             border-width: 1.5px;
+            min-width: 360px;
+            min-height: 112px;
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
           }
 
         .asb-bba2-scholarship-badge {
@@ -692,11 +705,14 @@ export default function Page() {
         }
         @media (min-width: 992px) {
           .asb-bba2-scholarship-badge {
-            margin: 0 0 6px 0;
-            padding: 8px 14px;
+            margin: 0;
+            padding: 10px 16px;
             gap: 12px;
             border-radius: 12px;
             border-width: 1.5px;
+            min-width: 360px;
+            min-height: 112px;
+            align-self: stretch;
           }
           .asb-bba2-sch-left svg {
             width: 34px !important;
@@ -1297,9 +1313,11 @@ export default function Page() {
                         Pursue Full-Time <span>BBA | BCA | B.Com. | B.Sc(cs)</span> Degree Program
                       </div>
                     </div>
-                    <ScholarshipBadgeBba2 />
+                    <div className="asb-desktop-hero-meta-row">
+                      <ScholarshipBadgeBba2 />
+                      <AdmissionsTimer />
+                    </div>
                     <PlacementBadge />
-                    <AdmissionsTimer />
                   </div>
                   <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                     <Image
