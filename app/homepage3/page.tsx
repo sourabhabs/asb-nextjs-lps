@@ -229,6 +229,7 @@ export default function Page() {
           .btn-call{width:52px;height:52px;background:#0f1f45!important;color:#fff!important;border-radius:50%!important;display:flex;align-items:center;justify-content:center;text-decoration:none}
           .btn-wa{display:flex;align-items:center;justify-content:center;transition:transform 0.2s ease}
           .btn-wa:hover{transform:scale(1.05)}
+          .mobV{display:none!important}
         }
         @media (max-width:991px){
           .navbar-area{position:relative!important;top:auto!important;left:auto!important;background:#fff!important;box-shadow:none!important}

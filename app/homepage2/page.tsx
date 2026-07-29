@@ -232,6 +232,7 @@ export default function Page() {
             margin: 0 auto;
             width: 100%;
           }
+          .mobV{display:none!important}
         }
         @media (max-width:991px){
           .navbar-area{position:relative!important;top:auto!important;left:auto!important;background:#fff!important;box-shadow:none!important}

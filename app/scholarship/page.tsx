@@ -231,9 +231,11 @@ export default function Page() {
         @media (min-width:992px){
           .header-hero {
             height: calc(45.42vw + 146px) !important;
+            max-height: calc(100vh - 78px) !important;
+            min-height: 400px !important;
           }
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
-          .bnrbg{background-image:none!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
+          .bnrbg{background-image:url('/banner-main.jpg')!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
           .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.2)}
           .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff;letter-spacing:-.02em}
           .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.22)}
@@ -246,25 +248,25 @@ export default function Page() {
           .asb-hero-stat-box::before,.asb-hero-stat-box::after{content:none}
           .asb-hero-stat-value{margin:0 0 4px!important;color:#ffffff!important;font-size:29px;line-height:1;font-weight:800;text-shadow:0 1px 6px rgba(15,31,69,.22);white-space:nowrap}
           .asb-hero-stat-label{margin:0!important;color:rgba(255,255,255,.95)!important;font-size:15px;line-height:1.2;font-weight:700;text-shadow:0 1px 4px rgba(15,31,69,.18);white-space:normal}
-          #heroLeadForm{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;width:100%;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
+          #heroLeadForm{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 6px;width:100%;max-width:1320px;margin:0 auto;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
           #heroLeadForm::before{display:none!important;content:none!important}
-          #heroLeadForm .single_form{margin-top:0;width:138px;flex:0 0 auto}
-          #heroLeadForm .course-select-wrap{width:165px}
-          #heroLeadForm .hero-form-title{width:auto;min-width:190px;margin-right:2px}
-          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:33px;line-height:1;font-weight:800;letter-spacing:-.01em}
+          #heroLeadForm .single_form{margin-top:0;flex:1 1 120px;max-width:180px;min-width:110px}
+          #heroLeadForm .course-select-wrap{flex:1.1 1 130px;max-width:190px;min-width:120px}
+          #heroLeadForm .hero-form-title{width:auto;flex:0 0 auto;min-width:160px;margin-right:2px}
+          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(20px, 2.2vw, 33px);line-height:1;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
           .frmD{padding:14px 8px;background-color:rgba(0,105,113,.66)}
           #heroLeadForm .single_form input,#heroLeadForm .single_form select{display:block;width:100%;box-sizing:border-box;height:40px;border-radius:4px;border:1px solid rgba(71,85,105,.55);background:#fff;color:#334155;padding:0 10px;font-size:15px;margin:0;vertical-align:middle}
           #heroLeadForm .single_form input::placeholder{font-size:14px;color:#6b7280}
           #heroLeadForm #Phone{width:100%!important;padding:0 10px!important;font-size:15px!important}
           #heroLeadForm #Phone::placeholder{font-size:14px!important}
-          #heroSubmitBtn{height:40px;line-height:40px;background:#006972!important;font-weight:700;padding:0 10px;min-width:92px;border-radius:4px}
+          #heroSubmitBtn{height:40px;line-height:40px;background:#006972!important;font-weight:700;padding:0 10px;min-width:92px;flex:0 0 auto;border-radius:4px}
           #heroLeadForm .course-select-wrap select{margin-bottom:0!important;position:relative;top:0}
           .desktop-cta{display:flex!important;justify-content:flex-end;position:fixed;bottom:25px;left:25px;right:25px;z-index:9999;pointer-events:none;transition:opacity .3s ease,transform .3s ease}
           .desktop-cta-strip{display:flex;align-items:center;background:#fff;border-radius:80px;padding:8px 10px;box-shadow:0 15px 35px rgba(15,31,69,.2);pointer-events:auto;gap:12px}
           .btn-enq{background:#0f1f45!important;color:#fff!important;border-radius:50px!important;padding:14px 35px!important;font-weight:700;font-size:16px;text-transform:uppercase;border:none;cursor:pointer;white-space:nowrap}
           .btn-call{width:52px;height:52px;background:#0f1f45!important;color:#fff!important;border-radius:50%!important;display:flex;align-items:center;justify-content:center;text-decoration:none}
           .btn-wa{display:flex;align-items:center;justify-content:center;transition:transform 0.2s ease}
-          .btn-wa:hover{transform:scale(1.05)}
+          .mobV{display:none!important}
         }
         @media (max-width:991px){
           .navbar-area{position:relative!important;top:auto!important;left:auto!important;background:#fff!important;box-shadow:none!important}
@@ -618,16 +620,28 @@ export default function Page() {
           .admissions-timer-container {
             margin: 0;
             text-align: left;
-            padding: 16px 22px;
-            border-radius: 16px;
-            border-width: 2px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border-width: 1.5px;
           }
           .admissions-timer-desktop-lhs {
             position: absolute;
-            bottom: -85px;
-            left: 35px !important;
+            bottom: 12px;
+            left: 30px !important;
             right: auto !important;
             z-index: 5;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-width: 320px;
+          }
+        }
+        @media (min-width: 992px) and (max-height: 800px) {
+          .admissions-timer-desktop-lhs {
+            bottom: 8px;
+            left: 20px !important;
+            transform: scale(0.88);
+            transform-origin: bottom left;
           }
         }
         .asb-bba2-scholarship-badge {
@@ -697,36 +711,36 @@ export default function Page() {
         }
         @media (min-width: 992px) {
           .asb-bba2-scholarship-badge {
-            margin: 0 0 8px 0;
-            padding: 16px 24px;
-            gap: 20px;
-            border-radius: 16px;
-            border-width: 2px;
+            margin: 0 0 6px 0;
+            padding: 8px 14px;
+            gap: 12px;
+            border-radius: 12px;
+            border-width: 1.5px;
           }
           .asb-bba2-sch-left svg {
-            width: 48px !important;
-            height: 48px !important;
+            width: 34px !important;
+            height: 34px !important;
           }
           .asb-bba2-sch-divider {
-            height: 68px;
-            width: 1.5px;
+            height: 48px;
+            width: 1px;
           }
           .asb-bba2-sch-upto {
-            font-size: 12px;
+            font-size: 10px;
           }
           .asb-bba2-sch-percent {
-            font-size: 36px;
+            font-size: 26px;
           }
           .asb-bba2-sch-title {
-            font-size: 17px;
+            font-size: 13px;
           }
           .asb-bba2-sch-sub {
-            font-size: 9.5px;
+            font-size: 8px;
           }
           .asb-bba2-sch-pill {
-            font-size: 9.5px;
-            padding: 3px 10px;
-            margin-top: 5px;
+            font-size: 8px;
+            padding: 2px 7px;
+            margin-top: 3px;
           }
         }
         .asb-placement-badge {
@@ -755,17 +769,17 @@ export default function Page() {
         }
         @media (min-width: 992px) {
           .asb-placement-badge {
-            margin: 0 0 8px 0;
-            padding: 12px 22px;
-            font-size: 16px;
+            margin: 0 0 6px 0;
+            padding: 8px 14px;
+            font-size: 13px;
             justify-content: flex-start;
-            border-radius: 14px;
-            border-width: 2px;
-            gap: 10px;
+            border-radius: 10px;
+            border-width: 1.5px;
+            gap: 8px;
           }
           .asb-placement-icon svg {
-            width: 20px !important;
-            height: 20px !important;
+            width: 16px !important;
+            height: 16px !important;
           }
         }
         .admissions-timer-title {
@@ -779,8 +793,8 @@ export default function Page() {
         }
         @media (min-width: 992px) {
           .admissions-timer-title {
-            font-size: 18px;
-            margin-bottom: 12px;
+            font-size: 14px;
+            margin-bottom: 6px;
           }
         }
         .admissions-timer-digits-row {
@@ -1273,7 +1287,7 @@ export default function Page() {
           <div
             className="mobH"
             aria-hidden="true"
-            style={{ position: "absolute", top: "78px", left: 0, right: 0, bottom: "68px", zIndex: 0, pointerEvents: "none" }}
+            style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, pointerEvents: "none" }}
           >
             <Image
               src="/banner-main.jpg"
@@ -1281,7 +1295,7 @@ export default function Page() {
               fill
               priority
               fetchPriority="high"
-              sizes="100vw"
+              unoptimized
               style={{ objectFit: "cover" }}
             />
           </div>
@@ -1292,7 +1306,7 @@ export default function Page() {
                   className="header-hero-content"
                   style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
                 >
-                  <div className="mobH" style={{ height: "460px" }} />
+                  <div className="mobH" style={{ height: "clamp(260px, 32vw, 420px)" }} />
                   <div className="mobH admissions-timer-desktop-lhs">
                     <ScholarshipBadgeBba2 />
                     <PlacementBadge />
