@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Bba2PreviewShell from "@/app/components/Bba2PreviewShell";
+import Bsc2PreviewShell from "@/app/components/Bsc2PreviewShell";
 import LandingPageTracking from "@/app/components/LandingPageTracking";
 import { ASB_COURSE_ROUTES } from "@/lib/asb-routes";
 
@@ -18,7 +18,7 @@ export default function Bsc2Page() {
   return (
     <>
       <LandingPageTracking googleTagId="AW-18057960286" />
-      <Bba2PreviewShell course={course} showWhatsApp={true} />
+      <Bsc2PreviewShell course={course} showWhatsApp={true} />
     </>
   );
 }
