@@ -487,21 +487,21 @@ export default function Bba2PreviewShell({
         .mobile-cta{display:none}
         @media (min-width:992px){
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
-          .bnrbg{background-image:none!important;background-size:cover!important;background-position:center top!important;background-repeat:no-repeat!important}
-          .header-hero{min-height:max(calc(45.42vw + 160px),580px)!important;height:auto!important}
+          .bnrbg{background-image:none!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
+          .header-hero{height:calc(45.42vw + 146px)!important}
           .header-hero-content{padding-left:30px!important;padding-right:24px!important}
-          .admissions-timer-desktop-lhs{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:fit-content;max-width:min(760px,58vw)}
-          .asb-desktop-hero-meta-row{display:flex;align-items:flex-start;gap:14px;flex-wrap:nowrap;margin:0 0 8px 0}
+          .admissions-timer-desktop-lhs{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:fit-content;max-width:min(760px,58vw);padding-top:14px}
+          .asb-desktop-hero-meta-row{display:flex;align-items:stretch;gap:16px;flex-wrap:nowrap;margin:0 0 12px 0}
           .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff}
           .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff}
-          .asb-desktop-hero-header-text{max-width:min(760px,58vw);margin:0 0 10px;text-shadow:0 10px 28px rgba(6,16,38,.32)}
-          .asb-desktop-hero-top-small{margin:0 0 4px;color:#fff;font-size:clamp(22px,2vw,31px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
-          .asb-desktop-hero-main-title{margin:0;color:#fff;font-size:clamp(44px,4.7vw,76px);line-height:.97;font-weight:900;letter-spacing:-.05em}
-          .asb-desktop-hero-bottom-small{margin:6px 0 0;color:#fff;font-size:clamp(20px,1.9vw,29px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
-          .asb-desktop-hero-header-text::after{content:"";display:block;width:102px;height:8px;border-radius:999px;margin:14px 0 16px;background:linear-gradient(90deg,#63fff6 0%,#2f8cff 100%)}
-          .asb-desktop-hero-pill-badge{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px;max-width:min(760px,58vw);padding:9px 16px;border:3px solid #43d6ff;border-radius:16px;background:linear-gradient(180deg,rgba(34,112,209,.48) 0%,rgba(18,76,152,.34) 100%);box-shadow:0 12px 28px rgba(6,16,38,.22),inset 0 0 0 1px rgba(255,255,255,.22);color:#fff;font-size:clamp(17px,1.38vw,25px);line-height:1.22;font-weight:700}
+          .asb-desktop-hero-header-text{max-width:660px;margin:0 0 14px;text-shadow:0 10px 28px rgba(6,16,38,.32)}
+          .asb-desktop-hero-top-small{margin:0 0 4px;color:#fff;font-size:clamp(17px,1.18vw,21px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
+          .asb-desktop-hero-main-title{margin:0;color:#fff;font-size:clamp(34px,2.9vw,44px);line-height:.98;font-weight:900;letter-spacing:-.04em}
+          .asb-desktop-hero-bottom-small{margin:6px 0 0;color:#fff;font-size:clamp(14px,.96vw,18px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
+          .asb-desktop-hero-header-text::after{content:"";display:block;width:92px;height:7px;border-radius:999px;margin:12px 0 14px;background:linear-gradient(90deg,#63fff6 0%,#2f8cff 100%)}
+          .asb-desktop-hero-pill-badge{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px;max-width:660px;padding:7px 12px;border:2px solid #43d6ff;border-radius:14px;background:linear-gradient(180deg,rgba(34,112,209,.48) 0%,rgba(18,76,152,.34) 100%);box-shadow:0 12px 28px rgba(6,16,38,.22),inset 0 0 0 1px rgba(255,255,255,.22);color:#fff;font-size:clamp(12px,.82vw,14px);line-height:1.16;font-weight:700}
           .asb-desktop-hero-pill-badge span{color:#67f7ff;font-weight:900}
-          .asb-desktop-hero-spacer{height:clamp(185px,23vw,300px)}
+          .asb-desktop-hero-spacer{height:0}
           .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600}
           .asb-desktop-hero-highlight{font-weight:800;color:#22f0ff!important;font-size:1.38em!important;display:inline-block}
           .asb-desktop-hero-points{list-style:none;padding:0;margin:8px 0 0}
@@ -529,23 +529,8 @@ export default function Bba2PreviewShell({
           .btn-wa img{width:100%;height:100%;object-fit:contain}
           .mobV{display:none!important}
         }
-        @media (min-width:992px) and (max-height:700px){
-          .header-hero{height:calc(100vh - 78px)!important;min-height:0!important}
-          .header-hero-content{padding-left:20px!important;padding-right:18px!important}
-          .admissions-timer-desktop-lhs{padding-top:16px}
-          .asb-desktop-hero-header-text{max-width:min(620px,60vw);margin-bottom:8px}
-          .asb-desktop-hero-top-small{font-size:20px}
-          .asb-desktop-hero-main-title{font-size:clamp(36px,4.2vw,58px)}
-          .asb-desktop-hero-bottom-small{font-size:20px}
-          .asb-desktop-hero-header-text::after{width:82px;height:6px;margin:10px 0 12px}
-          .asb-desktop-hero-pill-badge{max-width:min(620px,60vw);padding:7px 12px;border-radius:14px;font-size:clamp(14px,1.18vw,19px)}
-          .asb-desktop-hero-spacer{height:185px}
-          #heroLeadForm{gap:6px 4px!important}
-          #heroLeadForm .single_form{flex:1 1 96px;max-width:148px;min-width:90px}
-          #heroLeadForm .course-select-wrap{flex:1.1 1 110px;max-width:156px;min-width:102px}
-          #heroLeadForm .hero-form-title{min-width:245px;margin-right:12px!important;padding-right:6px!important}
-          #heroLeadForm .hero-form-title h3{font-size:clamp(18px,1.5vw,21px)!important}
-          .frmD{padding:10px 8px}
+        @media (min-width:992px) and (max-height:820px){
+          .admissions-timer-desktop-lhs{padding-top:22px}
         }
         @media (max-width:991px){
           .navbar-area{position:relative!important;top:auto!important;left:auto!important;background:#fff!important;box-shadow:none!important}
@@ -1178,162 +1163,6 @@ export default function Bba2PreviewShell({
           }
         }
 
-        @media (min-width: 1600px) {
-          .asb-desktop-hero-meta-row {
-            gap: clamp(14px, 1.2vw, 24px) !important;
-            align-items: stretch !important;
-          }
-          .asb-desktop-hero-top-small {
-            font-size: clamp(26px, 1.85vw, 40px) !important;
-          }
-          .asb-desktop-hero-main-title {
-            font-size: clamp(54px, 3.8vw, 84px) !important;
-            line-height: 0.98 !important;
-          }
-          .asb-desktop-hero-bottom-small {
-            font-size: clamp(24px, 1.65vw, 36px) !important;
-            margin-bottom: 10px !important;
-          }
-          .asb-desktop-hero-pill-badge {
-            font-size: clamp(16px, 1.2vw, 26px) !important;
-            padding: clamp(7px, 0.5vw, 14px) clamp(18px, 1.1vw, 26px) !important;
-          }
-          .asb-placement-badge {
-            font-size: clamp(16px, 1.1vw, 24px) !important;
-            padding: clamp(10px, 0.7vw, 16px) clamp(18px, 1.1vw, 26px) !important;
-            min-height: 54px !important;
-            gap: 10px !important;
-          }
-          .asb-placement-icon svg {
-            width: clamp(20px, 1.2vw, 26px) !important;
-            height: clamp(20px, 1.2vw, 26px) !important;
-          }
-          .asb-bba2-scholarship-badge {
-            min-width: clamp(340px, 22vw, 440px) !important;
-            min-height: clamp(124px, 8vw, 160px) !important;
-            padding: clamp(14px, 1vw, 22px) clamp(18px, 1.2vw, 28px) !important;
-            gap: clamp(14px, 1vw, 22px) !important;
-          }
-          .asb-bba2-sch-left svg {
-            width: clamp(42px, 2.6vw, 56px) !important;
-            height: clamp(42px, 2.6vw, 56px) !important;
-          }
-          .asb-bba2-sch-divider {
-            height: clamp(62px, 3.6vw, 80px) !important;
-          }
-          .asb-bba2-sch-upto {
-            font-size: clamp(12px, 0.8vw, 16px) !important;
-          }
-          .asb-bba2-sch-percent {
-            font-size: clamp(34px, 2.4vw, 52px) !important;
-          }
-          .asb-bba2-sch-title {
-            font-size: clamp(16px, 1.1vw, 24px) !important;
-          }
-          .asb-bba2-sch-sub {
-            font-size: clamp(9.5px, 0.65vw, 13px) !important;
-          }
-          .asb-bba2-sch-pill {
-            font-size: clamp(9.5px, 0.65vw, 13px) !important;
-            padding: clamp(3px, 0.25vw, 5px) clamp(9px, 0.5vw, 12px) !important;
-          }
-          .admissions-timer-container {
-            min-width: clamp(340px, 22vw, 440px) !important;
-            min-height: clamp(124px, 8vw, 160px) !important;
-            padding: clamp(14px, 1vw, 22px) clamp(18px, 1.2vw, 28px) !important;
-          }
-          .admissions-timer-title {
-            font-size: clamp(16px, 1.15vw, 24px) !important;
-            margin-bottom: clamp(8px, 0.5vw, 12px) !important;
-          }
-          .admissions-timer-card {
-            width: clamp(66px, 4.2vw, 92px) !important;
-            height: clamp(66px, 4.2vw, 92px) !important;
-            border-radius: clamp(12px, 0.8vw, 16px) !important;
-          }
-          .admissions-timer-digit {
-            font-size: clamp(30px, 2.1vw, 46px) !important;
-          }
-          .admissions-timer-colon {
-            font-size: clamp(30px, 2.1vw, 46px) !important;
-            margin-top: clamp(-16px, -1vw, -22px) !important;
-          }
-          .admissions-timer-label {
-            font-size: clamp(11.5px, 0.8vw, 16px) !important;
-          }
-        }
-
-        @media (min-width: 1900px) {
-          .asb-desktop-hero-top-small {
-            font-size: clamp(30px, 1.9vw, 42px) !important;
-          }
-          .asb-desktop-hero-main-title {
-            font-size: clamp(62px, 4.1vw, 90px) !important;
-          }
-          .asb-desktop-hero-bottom-small {
-            font-size: clamp(28px, 1.7vw, 38px) !important;
-          }
-          .asb-desktop-hero-pill-badge {
-            font-size: clamp(18px, 1.25vw, 28px) !important;
-            padding: clamp(8px, 0.55vw, 16px) clamp(20px, 1.2vw, 30px) !important;
-          }
-          .asb-placement-badge {
-            font-size: clamp(18px, 1.15vw, 26px) !important;
-            padding: clamp(12px, 0.75vw, 18px) clamp(22px, 1.2vw, 30px) !important;
-            min-height: 58px !important;
-          }
-          .asb-bba2-scholarship-badge {
-            min-width: clamp(392px, 23vw, 480px) !important;
-            min-height: clamp(140px, 8.5vw, 175px) !important;
-            padding: clamp(18px, 1.1vw, 26px) clamp(24px, 1.3vw, 32px) !important;
-          }
-          .asb-bba2-sch-left svg {
-            width: clamp(48px, 2.8vw, 60px) !important;
-            height: clamp(48px, 2.8vw, 60px) !important;
-          }
-          .asb-bba2-sch-divider {
-            height: clamp(68px, 4vw, 88px) !important;
-          }
-          .asb-bba2-sch-upto {
-            font-size: clamp(13.5px, 0.85vw, 18px) !important;
-          }
-          .asb-bba2-sch-percent {
-            font-size: clamp(40px, 2.5vw, 56px) !important;
-          }
-          .asb-bba2-sch-title {
-            font-size: clamp(18px, 1.15vw, 26px) !important;
-          }
-          .asb-bba2-sch-sub {
-            font-size: clamp(11px, 0.7vw, 15px) !important;
-          }
-          .asb-bba2-sch-pill {
-            font-size: clamp(11px, 0.7vw, 15px) !important;
-            padding: clamp(4px, 0.3vw, 6px) clamp(10px, 0.6vw, 14px) !important;
-          }
-          .admissions-timer-container {
-            min-width: clamp(392px, 23vw, 480px) !important;
-            min-height: clamp(140px, 8.5vw, 175px) !important;
-            padding: clamp(18px, 1.1vw, 26px) clamp(24px, 1.3vw, 32px) !important;
-          }
-          .admissions-timer-title {
-            font-size: clamp(18px, 1.15vw, 26px) !important;
-          }
-          .admissions-timer-card {
-            width: clamp(74px, 4.4vw, 98px) !important;
-            height: clamp(74px, 4.4vw, 98px) !important;
-            border-radius: clamp(14px, 0.9vw, 18px) !important;
-          }
-          .admissions-timer-digit {
-            font-size: clamp(34px, 2.2vw, 50px) !important;
-          }
-          .admissions-timer-colon {
-            font-size: clamp(34px, 2.2vw, 50px) !important;
-            margin-top: clamp(-18px, -1.1vw, -24px) !important;
-          }
-          .admissions-timer-label {
-            font-size: clamp(13px, 0.8vw, 17px) !important;
-          }
-        }
 
 
         /* BA Psychology Certifications Section Styling */

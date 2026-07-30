@@ -636,10 +636,115 @@ export default function AsbCourseLandingShell({
         .asb-psychology-theme .tag {
           color: #791F70 !important;
         }
+        .asb-psychology-theme .header-hero {
+          min-height: clamp(430px, 42vw, 620px) !important;
+        }
+        .asb-psychology-theme .header-hero-content {
+          min-height: clamp(320px, 30vw, 420px) !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: center !important;
+        }
+        .asb-psychology-theme .asb-psychology-hero-stack {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          width: min(100%, 720px);
+          max-width: min(100%, 720px);
+        }
+        .asb-psychology-theme .asb-desktop-hero-header-text {
+          max-width: min(100%, 720px) !important;
+          margin: 0 0 18px !important;
+          color: #fff !important;
+          text-shadow: 0 12px 28px rgba(6, 16, 38, 0.35);
+        }
+        .asb-psychology-theme .asb-desktop-hero-top-small {
+          margin: 0 0 4px !important;
+          color: #fff !important;
+          font-size: clamp(18px, 1.28vw, 24px) !important;
+          line-height: 1.06 !important;
+          font-weight: 800 !important;
+          letter-spacing: -0.02em !important;
+        }
+        .asb-psychology-theme .asb-desktop-hero-main-title {
+          margin: 0 !important;
+          color: #fff !important;
+          font-size: clamp(40px, 3.25vw, 52px) !important;
+          line-height: 0.98 !important;
+          font-weight: 900 !important;
+          letter-spacing: -0.04em !important;
+        }
+        .asb-psychology-theme .asb-desktop-hero-bottom-small {
+          margin: 6px 0 0 !important;
+          color: #fff !important;
+          font-size: clamp(16px, 1.05vw, 20px) !important;
+          line-height: 1.08 !important;
+          font-weight: 800 !important;
+          letter-spacing: -0.02em !important;
+        }
+        .asb-psychology-theme .asb-desktop-hero-header-text::after {
+          content: "";
+          display: block;
+          width: 92px;
+          height: 7px;
+          border-radius: 999px;
+          margin: 14px 0 0;
+          background: linear-gradient(90deg, #f9b4ef 0%, #ffffff 100%);
+        }
+        .asb-psychology-theme .asb-desktop-hero-pill-badge {
+          display: inline-flex !important;
+          align-items: center !important;
+          flex-wrap: wrap !important;
+          gap: 4px !important;
+          max-width: min(100%, 720px) !important;
+          padding: 8px 14px !important;
+          border: 2px solid #f0b7ea !important;
+          border-radius: 15px !important;
+          background: rgba(121, 31, 112, 0.28) !important;
+          box-shadow: 0 12px 28px rgba(6, 16, 38, 0.18) !important;
+          color: #fff !important;
+          font-size: clamp(13px, 0.88vw, 16px) !important;
+          line-height: 1.18 !important;
+          font-weight: 700 !important;
+          margin-bottom: 0 !important;
+        }
+        .asb-psychology-theme .asb-desktop-hero-pill-badge span {
+          color: #fff1fd !important;
+        }
+        .asb-psychology-theme .asb-desktop-scholarship-row {
+          margin-top: 12px !important;
+        }
+        .asb-psychology-theme .asb-scholarship-card {
+          display: flex;
+          align-items: center;
+          background: rgba(255, 255, 255, 0.97);
+          border: 1px solid #e6d7e5;
+          border-radius: 14px;
+          box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+          padding: 12px 16px;
+        }
+        .asb-psychology-theme .asb-scholarship-icon-box {
+          background: rgba(121, 31, 112, 0.08);
+          border: 1px solid rgba(121, 31, 112, 0.12);
+        }
+        .asb-psychology-theme .asb-scholarship-title {
+          color: #102044 !important;
+          font-size: clamp(16px, 1.12vw, 24px) !important;
+          text-shadow: none !important;
+          line-height: 1.15 !important;
+        }
+        .asb-course-shell-ba-psychology #heroLeadForm .hero-form-title,
+        .asb-course-shell-ba-psychology3 #heroLeadForm .hero-form-title,
+        .asb-psychology-theme #heroLeadForm .hero-form-title {
+          min-width: 236px !important;
+        }
         .asb-course-shell-ba-psychology #heroLeadForm .course-select-wrap,
         .asb-course-shell-ba-psychology3 #heroLeadForm .course-select-wrap,
         .asb-psychology-theme #heroLeadForm .course-select-wrap {
-          width: 220px !important;
+          width: auto !important;
+          min-width: 180px !important;
+          max-width: 230px !important;
         }
         .asb-course-shell-ba-psychology .course-readonly,
         .asb-course-shell-ba-psychology3 .course-readonly,
@@ -650,6 +755,23 @@ export default function AsbCourseLandingShell({
         }
         .asb-psychology3-theme .asb-desktop-hero-highlight {
           font-size: 1.8em !important;
+        }
+        .asb-psychology-theme .contact-grid {
+          grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
+          gap: 48px;
+          align-items: center;
+        }
+        .asb-psychology-theme .cta {
+          display: flex;
+          justify-content: flex-end;
+        }
+        .asb-psychology-theme .cta-box {
+          width: 100%;
+          max-width: 420px;
+          padding: 14px 16px;
+        }
+        .asb-psychology-theme .cta-box .btn {
+          width: 100%;
         }
         @media (max-width:991px) {
           .asb-desktop-scholarship-row {
@@ -671,6 +793,16 @@ export default function AsbCourseLandingShell({
           }
           .asb-psychology-theme #heroSubmitBtn {
             background: #791F70 !important;
+          }
+          .asb-psychology-theme .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+          .asb-psychology-theme .cta {
+            justify-content: stretch;
+          }
+          .asb-psychology-theme .cta-box {
+            max-width: 100%;
           }
           .asb-psychology3-theme .bnrbg {
             background: #7B1E72 !important;
@@ -872,7 +1004,7 @@ export default function AsbCourseLandingShell({
         }
       `}</style>
 
-      <main className={`asb-course-shell-${course.key} ${isPsychologyRoute ? "asb-psychology-theme" : ""} ${isNewPsychology ? "asb-psychology3-theme" : ""}`} style={{ paddingBottom: "88px" }}>
+      <main className={`asb-course-shell-${course.key} ${isPsychologyRoute ? "asb-psychology-theme" : ""} ${isNewPsychology ? "asb-psychology3-theme" : ""}`} style={{ paddingBottom: isPsychologyRoute ? "0" : "88px" }}>
         <header className="header-area">
           <div className="navbar-area">
             <div className="container-fluid">
@@ -937,6 +1069,31 @@ export default function AsbCourseLandingShell({
                     style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
                   >
                     {!hideHeroPromoBlock ? (
+                      isPsychologyRoute ? (
+                      <div className="mobH asb-psychology-hero-stack">
+                        <div className="asb-desktop-hero-header-text">
+                          <div className="asb-desktop-hero-top-small">Join the best</div>
+                          <h1 className="asb-desktop-hero-main-title">Undergrad College</h1>
+                          <div className="asb-desktop-hero-bottom-small">in Delhi-NCR</div>
+                          <div className="asb-desktop-hero-pill-badge">
+                            Pursue Full-Time <span>{content.highlight}</span> Degree Program.
+                          </div>
+                        </div>
+                        <div className="asb-desktop-scholarship-row">
+                          <div className="asb-scholarship-card">
+                            <div className="asb-scholarship-content">
+                              <div className="asb-scholarship-icon-box">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                                  <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+                                </svg>
+                              </div>
+                              <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship*"}</h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      ) : (
                       <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
                         <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
                         <p className="asb-desktop-hero-subtitle">Pursue Full-Time <span className="asb-desktop-hero-highlight">{content.highlight}</span> Degree Program.</p>
@@ -982,6 +1139,7 @@ export default function AsbCourseLandingShell({
                           ) : null}
                         </div>
                       </div>
+                      )
                     ) : null}
                     <div className="mobV" style={{ textAlign: "center", marginBottom: "10px", marginTop: "-4px" }}>
                       <Image
@@ -1265,7 +1423,7 @@ export default function AsbCourseLandingShell({
 
         <footer className="footer"><div className="container footer-inner"><div className="footer-grid"><div><h4 style={{ color: "#fff" }}>Asian School of Business</h4><p>{content.footerDescription}</p></div><div><div className="f-title">Quick Links</div><ul className="f-links"><li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToId("home", true); }}>Home</a></li><li><a href="#courses" onClick={(e) => { e.preventDefault(); scrollToId("courses"); }}>Programs Offered</a></li>{showInternationalSection ? <li><a href="#international" onClick={(e) => { e.preventDefault(); scrollToId("international"); }}>International Exposure</a></li> : null}<li><a href="#enquire" onClick={(e) => { e.preventDefault(); scrollToId("enquire", true); }}>Enquire Now</a></li></ul></div><div><div className="f-title">Admissions Office</div><p>Asian School of Business, Noida, Uttar Pradesh</p></div></div><div className="f-bottom"><span>(c) 2026 Asian School of Business. All rights reserved.</span>{showInternationalSection ? <span>International association with Oxford Business College</span> : null}</div></div></footer>
 
-        <div className="desktop-cta" style={{ opacity: showSticky ? "1" : "0", pointerEvents: showSticky ? "auto" : "none", transform: showSticky ? "translateY(0)" : "translateY(20px)" }} aria-label="Desktop actions">
+        {!isPsychologyRoute ? <div className="desktop-cta" style={{ opacity: showSticky ? "1" : "0", pointerEvents: showSticky ? "auto" : "none", transform: showSticky ? "translateY(0)" : "translateY(20px)" }} aria-label="Desktop actions">
           <div className="desktop-cta-strip">
             <button type="button" className="btn btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
             {showWhatsApp && (
@@ -1281,8 +1439,8 @@ export default function AsbCourseLandingShell({
             )}
             <a href="tel:+918037898031" className="btn btn-call" title="Call Us"><svg width="24" height="24" viewBox="0 0 16 16" fill="currentColor"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z" /></svg></a>
           </div>
-        </div>
-        <div className={`mobile-cta${showSticky ? " is-visible" : ""}`} aria-label="Mobile actions">
+        </div> : null}
+        {!isPsychologyRoute ? <div className={`mobile-cta${showSticky ? " is-visible" : ""}`} aria-label="Mobile actions">
           <div className="mobile-cta-strip">
             <button type="button" className="mobile-btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
             {showWhatsApp && (
@@ -1299,7 +1457,7 @@ export default function AsbCourseLandingShell({
             )}
             <a href="tel:+918037898031" className="mobile-btn-call" title="Call Us" aria-label="Call Us"><svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z" /></svg></a>
           </div>
-        </div>
+        </div> : null}
       </main>
     </>
   );
