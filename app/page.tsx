@@ -180,8 +180,8 @@ export default function Page() {
           }
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
           .bnrbg{background-image:url('/banner-main.jpg')!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
-          .admissions-timer-desktop-lhs{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:fit-content;max-width:min(760px,58vw);padding-top:14px}
-          .asb-desktop-hero-meta-row{display:flex;align-items:stretch;gap:16px;flex-wrap:nowrap;margin:0 0 12px 0}
+          .admissions-timer-desktop-lhs{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;width:fit-content;max-width:min(760px,58vw);padding-top:0}
+          .asb-desktop-hero-meta-row{display:flex;align-items:stretch;gap:14px;flex-wrap:nowrap;margin:0}
           .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.2)}
           .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff;letter-spacing:-.02em}
           .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.22)}
@@ -194,18 +194,19 @@ export default function Page() {
           .asb-hero-stat-box::before,.asb-hero-stat-box::after{content:none}
           .asb-hero-stat-value{margin:0 0 4px!important;color:#ffffff!important;font-size:29px;line-height:1;font-weight:800;text-shadow:0 1px 6px rgba(15,31,69,.22);white-space:nowrap}
           .asb-hero-stat-label{margin:0!important;color:rgba(255,255,255,.95)!important;font-size:15px;line-height:1.2;font-weight:700;text-shadow:0 1px 4px rgba(15,31,69,.18);white-space:normal}
-          #heroLeadForm{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 6px;width:100%;max-width:1320px;margin:0 auto;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
+          #heroLeadForm{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 4px;width:100%;max-width:1320px;margin:0 auto;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
           #heroLeadForm::before{display:none!important;content:none!important}
-          #heroLeadForm .single_form{margin-top:0;flex:1 1 104px;max-width:160px;min-width:100px}
-          #heroLeadForm .course-select-wrap{flex:1.1 1 122px;max-width:165px;min-width:120px}
-          #heroLeadForm .hero-form-title{width:auto;flex:0 0 auto;min-width:290px;margin-right:6px}
-          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(20px, 2vw, 30px);line-height:1;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
+          #heroLeadForm .single_form{margin-top:0;flex:1 1 80px;max-width:132px;min-width:78px}
+          #heroLeadForm .course-select-wrap{flex:1 1 102px;max-width:144px;min-width:98px}
+          #heroLeadForm .hero-form-title{width:auto;flex:0 1 auto;min-width:196px;margin-right:2px}
+          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(16px, 1.55vw, 24px);line-height:1;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
           .frmD{padding:14px 8px;background-color:rgba(0,105,113,.66)}
           #heroLeadForm .single_form input,#heroLeadForm .single_form select{display:block;width:100%;box-sizing:border-box;height:40px;border-radius:4px;border:1px solid rgba(71,85,105,.55);background:#fff;color:#334155;padding:0 10px;font-size:15px;margin:0;vertical-align:middle}
           #heroLeadForm .single_form input::placeholder{font-size:14px;color:#6b7280}
           #heroLeadForm #Phone{width:100%!important;padding:0 10px!important;font-size:15px!important}
           #heroLeadForm #Phone::placeholder{font-size:14px!important}
-          #heroSubmitBtn{height:40px;line-height:40px;background:#006972!important;font-weight:700;padding:0 10px;min-width:92px;flex:0 0 auto;border-radius:4px}
+          #heroLeadForm>.single_form:last-child{flex:0 0 132px;max-width:132px;min-width:132px}
+          #heroSubmitBtn{display:block;width:100%;height:40px;line-height:40px;background:#006972!important;font-weight:700;padding:0 10px;min-width:0;flex:0 0 auto;border-radius:4px;white-space:nowrap;font-size:14px}
           #heroLeadForm .course-select-wrap select{margin-bottom:0!important;position:relative;top:0}
           .desktop-cta{display:flex!important;justify-content:flex-end;position:fixed;bottom:25px;left:25px;right:25px;z-index:9999;pointer-events:none;transition:opacity .3s ease,transform .3s ease}
           .desktop-cta-strip{display:flex;align-items:center;background:#fff;border-radius:80px;padding:8px 10px;box-shadow:0 15px 35px rgba(15,31,69,.2);pointer-events:auto;gap:12px}
@@ -493,6 +494,435 @@ export default function Page() {
         @media (min-width: 992px) {
           .admissions-timer-label {
             font-size: 11px;
+          }
+        }
+        .admissions-timer-container {
+          background: linear-gradient(135deg, rgba(15, 31, 69, 0.92) 0%, rgba(10, 60, 80, 0.96) 100%);
+          border: 1.5px solid rgba(34, 240, 255, 0.45);
+          border-radius: 12px;
+          padding: 8px 12px;
+          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          width: fit-content;
+          max-width: 100%;
+          margin: 12px auto;
+          text-align: center;
+        }
+        .mobV .admissions-timer-container {
+          width: min(100%, 320px);
+          margin: 10px auto 14px;
+          padding: 10px 12px;
+        }
+        .mobV .admissions-timer-title {
+          text-align: center;
+        }
+        .mobV .admissions-timer-digits-row {
+          justify-content: center;
+        }
+        @media (min-width: 992px) {
+          .header-hero-content {
+            padding-left: 30px !important;
+            padding-right: 24px !important;
+            min-height: clamp(318px, 30vw, 430px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+          .admissions-timer-desktop-lhs {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            width: fit-content;
+            max-width: min(720px, 56vw);
+            padding-top: 0;
+          }
+          .asb-desktop-hero-header-text {
+            max-width: min(720px, 56vw);
+            margin: 0 0 14px;
+            text-shadow: 0 10px 28px rgba(6, 16, 38, 0.32);
+          }
+          .asb-desktop-hero-top-small {
+            margin: 0 0 4px;
+            color: #fff;
+            font-size: clamp(17px, 1.18vw, 21px);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+          }
+          .asb-desktop-hero-main-title {
+            margin: 0;
+            color: #fff;
+            font-size: clamp(34px, 2.9vw, 44px);
+            line-height: 0.98;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+          }
+          .asb-desktop-hero-bottom-small {
+            margin: 6px 0 0;
+            color: #fff;
+            font-size: clamp(14px, 0.96vw, 18px);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+          }
+          .asb-desktop-hero-header-text::after {
+            content: "";
+            display: block;
+            width: 92px;
+            height: 7px;
+            border-radius: 999px;
+            margin: 12px 0 14px;
+            background: linear-gradient(90deg, #63fff6 0%, #2f8cff 100%);
+          }
+          .asb-desktop-hero-pill-badge {
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
+            max-width: min(720px, 56vw);
+            padding: 7px 12px;
+            border: 2px solid #43d6ff;
+            border-radius: 14px;
+            background: linear-gradient(180deg, rgba(34, 112, 209, 0.48) 0%, rgba(18, 76, 152, 0.34) 100%);
+            box-shadow: 0 12px 28px rgba(6, 16, 38, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+            color: #fff;
+            font-size: clamp(12px, 0.82vw, 14px);
+            line-height: 1.16;
+            font-weight: 700;
+          }
+          .asb-desktop-hero-pill-badge span {
+            color: #67f7ff;
+            font-weight: 900;
+            font-size: 1.16em;
+            letter-spacing: -0.01em;
+          }
+          .asb-placement-badge {
+            margin: 0 0 10px 0;
+            padding: 7px 12px;
+            font-size: clamp(10px, .68vw, 12px);
+            justify-content: flex-start;
+            border-radius: 12px;
+            border-width: 1.5px;
+            gap: 8px;
+            min-height: 40px;
+          }
+          .asb-placement-icon svg {
+            width: 18px !important;
+            height: 18px !important;
+          }
+          .asb-desktop-hero-meta-row {
+            display: flex;
+            align-items: stretch;
+            gap: 14px;
+            flex-wrap: nowrap;
+            margin: 0;
+          }
+          .asb-bba2-scholarship-badge {
+            margin: 0;
+            padding: 8px 12px;
+            gap: 10px;
+            border-radius: 12px;
+            border-width: 1.5px;
+            align-self: stretch;
+            height: 84px;
+            min-height: 84px;
+            max-height: 84px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+          }
+          .asb-bba2-sch-left {
+            flex: 0 0 auto;
+          }
+          .asb-bba2-sch-left svg {
+            width: 28px !important;
+            height: 28px !important;
+          }
+          .asb-bba2-sch-divider {
+            width: 1px;
+            height: 38px;
+          }
+          .asb-bba2-sch-right {
+            justify-content: center;
+          }
+          .asb-bba2-sch-upto {
+            font-size: 9px;
+            font-weight: 800;
+          }
+          .asb-bba2-sch-percent {
+            font-size: 22px;
+            font-weight: 900;
+            margin: 1px 0;
+          }
+          .asb-bba2-sch-title {
+            font-size: 11px;
+            font-weight: 800;
+          }
+          .asb-bba2-sch-sub {
+            font-size: 7.5px;
+            font-weight: 700;
+          }
+          .asb-bba2-sch-pill {
+            font-size: 7.5px;
+            font-weight: 900;
+            padding: 2px 6px;
+            margin-top: 2px;
+          }
+          .admissions-timer-container {
+            margin: 0;
+            align-self: stretch;
+            height: 84px;
+            min-height: 84px;
+            max-height: 84px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8px 12px;
+            border-radius: 12px;
+          }
+          .admissions-timer-title {
+            font-size: 11px;
+            line-height: 1.1;
+            margin-bottom: 4px;
+            text-align: left;
+            white-space: normal;
+            max-width: 100%;
+            text-transform: uppercase;
+            font-weight: 800;
+          }
+          .admissions-timer-digits-row {
+            gap: 5px;
+            justify-content: flex-start;
+          }
+          .admissions-timer-item-group {
+            gap: 5px;
+          }
+          .admissions-timer-card {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+          }
+          .admissions-timer-digit {
+            font-size: 18px;
+            font-weight: 800;
+          }
+          .admissions-timer-colon {
+            font-size: 18px;
+            margin-top: -6px;
+          }
+          .admissions-timer-label {
+            font-size: 8px;
+          }
+        }
+        @media (min-width: 992px) and (max-height: 820px) {
+          .header-hero-content {
+            min-height: clamp(300px, 29vw, 390px);
+            justify-content: center;
+            padding-top: 0;
+          }
+          .admissions-timer-desktop-lhs {
+            padding-top: 0;
+          }
+          .asb-desktop-hero-top-small {
+            font-size: 20px;
+          }
+          .asb-desktop-hero-main-title {
+            font-size: clamp(38px, 3.4vw, 52px);
+          }
+          .asb-desktop-hero-bottom-small {
+            font-size: 17px;
+          }
+          .asb-desktop-hero-header-text::after {
+            width: 92px;
+            height: 6px;
+            margin: 10px 0 12px;
+          }
+          .asb-desktop-hero-pill-badge {
+            padding: 7px 12px;
+            border-radius: 14px;
+            font-size: clamp(14px, .98vw, 17px);
+          }
+          .asb-desktop-hero-pill-badge span {
+            font-size: 1.12em;
+          }
+          .asb-placement-badge {
+            min-height: 40px;
+            font-size: 12px;
+            padding: 7px 12px;
+          }
+          .asb-bba2-scholarship-badge,
+          .admissions-timer-container {
+            min-height: 102px;
+          }
+          .asb-bba2-scholarship-badge {
+            width: clamp(270px, 21vw, 330px);
+            min-width: clamp(270px, 21vw, 330px);
+            padding: 10px 12px;
+          }
+          .admissions-timer-container {
+            width: clamp(270px, 21vw, 330px);
+            min-width: clamp(270px, 21vw, 330px);
+            padding: 10px 12px;
+          }
+          .asb-bba2-sch-percent {
+            font-size: clamp(28px, 2vw, 36px);
+          }
+          .asb-bba2-sch-title {
+            font-size: clamp(13px, .92vw, 16px);
+          }
+          .admissions-timer-card {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+          }
+          .admissions-timer-digit {
+            font-size: 20px;
+          }
+          .admissions-timer-colon {
+            font-size: 20px;
+            margin-top: -10px;
+          }
+          .admissions-timer-title {
+            font-size: 13px;
+            margin-bottom: 6px;
+          }
+        }
+        @media (min-width: 992px) and (max-width: 1600px) {
+          .header-hero-content {
+            min-height: clamp(286px, 26vw, 380px);
+          }
+          .admissions-timer-desktop-lhs {
+            justify-content: center;
+          }
+          .asb-desktop-hero-top-small {
+            font-size: clamp(16px, 0.96vw, 19px);
+          }
+          .asb-desktop-hero-main-title {
+            font-size: clamp(31px, 2.4vw, 38px);
+          }
+          .asb-desktop-hero-bottom-small {
+            font-size: clamp(13px, 0.8vw, 16px);
+          }
+          .asb-desktop-hero-header-text::after {
+            width: 84px;
+            height: 6px;
+            margin: 10px 0 12px;
+          }
+          .asb-desktop-hero-pill-badge {
+            padding: 6px 10px;
+            border-width: 2px;
+            border-radius: 12px;
+            font-size: clamp(10px, 0.64vw, 12px);
+          }
+          .asb-placement-badge {
+            padding: 7px 12px;
+            font-size: clamp(9px, 0.58vw, 11px);
+            min-height: 38px;
+          }
+          .asb-desktop-hero-meta-row {
+            gap: 10px;
+          }
+          .asb-bba2-scholarship-badge,
+          .admissions-timer-container {
+            min-height: 88px;
+          }
+          .asb-bba2-scholarship-badge {
+            width: clamp(214px, 16vw, 266px);
+            min-width: clamp(214px, 16vw, 266px);
+            padding: 8px 10px;
+            gap: 8px;
+          }
+          .asb-bba2-sch-left svg {
+            width: 28px !important;
+            height: 28px !important;
+          }
+          .asb-bba2-sch-divider {
+            height: 38px;
+          }
+          .asb-bba2-sch-upto {
+            font-size: 8px;
+          }
+          .asb-bba2-sch-percent {
+            font-size: clamp(19px, 1.28vw, 24px);
+          }
+          .asb-bba2-sch-title {
+            font-size: clamp(9px, 0.6vw, 11px);
+          }
+          .asb-bba2-sch-sub {
+            font-size: clamp(6px, 0.42vw, 8px);
+          }
+          .asb-bba2-sch-pill {
+            font-size: 7px;
+            padding: 2px 6px;
+          }
+          .admissions-timer-container {
+            width: clamp(214px, 16vw, 266px);
+            min-width: clamp(214px, 16vw, 266px);
+            padding: 8px 10px;
+          }
+          .admissions-timer-title {
+            font-size: clamp(8px, 0.54vw, 10px);
+            margin-bottom: 5px;
+          }
+          .admissions-timer-digits-row,
+          .admissions-timer-item-group {
+            gap: 4px;
+          }
+          .admissions-timer-card {
+            width: clamp(34px, 2.25vw, 40px);
+            height: clamp(34px, 2.25vw, 40px);
+            border-radius: 9px;
+          }
+          .admissions-timer-digit {
+            font-size: clamp(14px, 0.92vw, 16px);
+          }
+          .admissions-timer-colon {
+            font-size: clamp(12px, 0.74vw, 14px);
+            margin-top: -6px;
+          }
+          .admissions-timer-label {
+            font-size: clamp(6px, 0.4vw, 8px);
+          }
+          #heroLeadForm {
+            gap: 4px;
+          }
+          #heroLeadForm .hero-form-title {
+            min-width: 152px;
+          }
+          #heroLeadForm .hero-form-title h3 {
+            font-size: clamp(12px, 0.82vw, 15px);
+          }
+          #heroLeadForm .single_form {
+            flex: 1 1 66px;
+            max-width: 112px;
+            min-width: 64px;
+          }
+          #heroLeadForm .course-select-wrap {
+            flex: 1 1 82px;
+            max-width: 122px;
+            min-width: 78px;
+          }
+          #heroLeadForm .single_form input,
+          #heroLeadForm .single_form select,
+          #heroLeadForm #Phone {
+            font-size: 12px !important;
+          }
+          #heroLeadForm .single_form input::placeholder,
+          #heroLeadForm #Phone::placeholder {
+            font-size: 11px !important;
+          }
+          #heroLeadForm > .single_form:last-child {
+            flex: 0 0 114px;
+            max-width: 114px;
+            min-width: 114px;
+          }
+          #heroSubmitBtn {
+            min-width: 0;
+            padding: 0 8px;
+            font-size: 12px;
           }
         }
 
@@ -1043,7 +1473,6 @@ export default function Page() {
                   className="header-hero-content"
                   style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
                 >
-                  <div className="mobH" style={{ height: "clamp(260px, 32vw, 420px)" }} />
                   <div className="mobH admissions-timer-desktop-lhs">
                     <div className="asb-desktop-hero-header-text">
                       <div className="asb-desktop-hero-top-small">Join the Best</div>

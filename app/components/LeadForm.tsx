@@ -102,7 +102,7 @@ export default function LeadForm({
       return;
     }
 
-    if (plbx!=="Y" && consentNote) {
+    if (plbx !== "Y" && consentNote) {
       showStatus("Please read and agree to the privacy policy.", "error");
       return;
     }
@@ -481,48 +481,56 @@ export default function LeadForm({
         @media (min-width: 1600px) {
           #heroLeadForm:not(.lead-form-consent-row) {
             grid-template-columns:
-              minmax(520px, 1.55fr)
-              repeat(4, minmax(150px, 1fr))
-              minmax(220px, 1.16fr)
-              minmax(176px, auto) !important;
-            gap: 14px !important;
-            max-width: 1980px !important;
+              minmax(270px, 1.2fr)
+              repeat(4, minmax(110px, 1fr))
+              minmax(145px, 1.05fr)
+              minmax(130px, auto) !important;
+            gap: 8px !important;
+            max-width: 1560px !important;
           }
           #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
-            font-size: clamp(44px, 2.6vw, 58px) !important;
-            line-height: 1 !important;
+            font-size: clamp(25px, 1.9vw, 32px) !important;
+            line-height: 1.05 !important;
           }
           #heroLeadForm:not(.lead-form-consent-row) .single_form input,
           #heroLeadForm:not(.lead-form-consent-row) .single_form select,
           #heroLeadForm:not(.lead-form-consent-row) .course-readonly,
           #heroLeadForm:not(.lead-form-consent-row) #heroSubmitBtn {
-            font-size: 20px !important;
-            height: 60px !important;
-            min-height: 60px !important;
-            line-height: 60px !important;
+            font-size: 15px !important;
+            height: 42px !important;
+            min-height: 42px !important;
+            line-height: 42px !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) #heroSubmitBtn {
+            min-width: 125px !important;
+            padding: 0 14px !important;
           }
         }
         @media (min-width: 1900px) {
           #heroLeadForm:not(.lead-form-consent-row) {
             grid-template-columns:
-              minmax(620px, 1.8fr)
-              repeat(4, minmax(164px, 1fr))
-              minmax(248px, 1.22fr)
-              minmax(194px, auto) !important;
-            gap: 16px !important;
-            max-width: 2320px !important;
+              minmax(300px, 1.25fr)
+              repeat(4, minmax(120px, 1fr))
+              minmax(160px, 1.1fr)
+              minmax(140px, auto) !important;
+            gap: 10px !important;
+            max-width: 1800px !important;
           }
           #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
-            font-size: clamp(54px, 2.8vw, 72px) !important;
+            font-size: clamp(28px, 2vw, 36px) !important;
           }
           #heroLeadForm:not(.lead-form-consent-row) .single_form input,
           #heroLeadForm:not(.lead-form-consent-row) .single_form select,
           #heroLeadForm:not(.lead-form-consent-row) .course-readonly,
           #heroLeadForm:not(.lead-form-consent-row) #heroSubmitBtn {
-            font-size: 24px !important;
-            height: 68px !important;
-            min-height: 68px !important;
-            line-height: 68px !important;
+            font-size: 16px !important;
+            height: 46px !important;
+            min-height: 46px !important;
+            line-height: 46px !important;
+          }
+          #heroLeadForm:not(.lead-form-consent-row) #heroSubmitBtn {
+            min-width: 135px !important;
+            padding: 0 16px !important;
           }
         }
         @media (min-width: 992px) and (max-width: 1180px) {
@@ -750,110 +758,110 @@ export default function LeadForm({
       `}</style>
 
       <div className={`frmD ${className}`} id={id}>
-        <form  onSubmit={handleSubmit} noValidate>
+        <form onSubmit={handleSubmit} noValidate>
           <div id={isScholarshipCheck ? "scholarshipLeadForm" : "heroLeadForm"}>
-          <div className="single_form hero-form-title" style={{ width: "auto" }}>
-            <h3>{title}&nbsp;</h3>
-          </div>
-          <div className="single_form">
-            {isScholarshipCheck && <label className="form-label-top">Full Name</label>}
-            <input
-              type="text"
-              placeholder={isScholarshipCheck ? "Enter your full name" : "Name*"}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              maxLength={100}
-              required
-              autoComplete="off"
-            />
-          </div>
-          <div className="single_form">
-            {isScholarshipCheck && <label className="form-label-top">Email Address</label>}
-            <input
-              type="email"
-              placeholder={isScholarshipCheck ? "Enter your email address" : "Email*"}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              maxLength={100}
-              required
-              autoComplete="off"
-            />
-          </div>
-          <div className="single_form">
-            {isScholarshipCheck && <label className="form-label-top">Phone Number</label>}
-            <input
-              type="tel"
-              placeholder={isScholarshipCheck ? "Enter your phone number" : "Mobile Number*"}
-              value={phone}
-              onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
-              maxLength={10}
-              inputMode="numeric"
-              required
-              autoComplete="off"
-            />
-          </div>
-          <div className="single_form">
-            {isScholarshipCheck && <label className="form-label-top">City</label>}
-            <input
-              type="text"
-              placeholder={isScholarshipCheck ? "Enter your city" : "City*"}
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              maxLength={50}
-              required
-              autoComplete="off"
-            />
-          </div>
-          <div className="single_form course-select-wrap">
-            {isScholarshipCheck && <label className="form-label-top">Select Course</label>}
-            {resolvedCourses.length === 1 ? (
-              <div className="course-readonly" aria-label="Selected Course">
-                {resolvedCourses[0].label}
-              </div>
-            ) : (
-              <select
-                value={course}
-                onChange={(e) => setCourse(e.target.value)}
-                required
-                style={{ color: course ? "#334155" : "#767676", marginBottom: "4px" }}
-              >
-                <option value="">{isScholarshipCheck ? "Select a course" : "Select Course*"}</option>
-                {resolvedCourses.map((c) => (
-                  <option key={c.value} value={c.value}>
-                    {c.label}
-                  </option>
-                ))}
-              </select>
-            )}
-          </div>
-          {show12thMarks && (
+            <div className="single_form hero-form-title" style={{ width: "auto" }}>
+              <h3>{title}&nbsp;</h3>
+            </div>
             <div className="single_form">
-              {isScholarshipCheck && <label className="form-label-top">Class 12th Marks (%)</label>}
+              {isScholarshipCheck && <label className="form-label-top">Full Name</label>}
               <input
                 type="text"
-                placeholder={isScholarshipCheck ? "e.g. 92%" : "Class 12th Marks (%)*"}
-                value={class12Marks}
-                onChange={(e) => setClass12Marks(e.target.value)}
-                maxLength={10}
+                placeholder={isScholarshipCheck ? "Enter your full name" : "Name*"}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                maxLength={100}
                 required
                 autoComplete="off"
               />
             </div>
-          )}
-
-          {statusMsg && !otpOpen ? (
-            <div className="hero-form-status-wrap">
-              <div className={`status ${statusType}`} id="heroFormStatus" style={{ display: "block"}}>
-                {statusMsg}
-              </div>
+            <div className="single_form">
+              {isScholarshipCheck && <label className="form-label-top">Email Address</label>}
+              <input
+                type="email"
+                placeholder={isScholarshipCheck ? "Enter your email address" : "Email*"}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                maxLength={100}
+                required
+                autoComplete="off"
+              />
             </div>
-          ) : null}
+            <div className="single_form">
+              {isScholarshipCheck && <label className="form-label-top">Phone Number</label>}
+              <input
+                type="tel"
+                placeholder={isScholarshipCheck ? "Enter your phone number" : "Mobile Number*"}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
+                maxLength={10}
+                inputMode="numeric"
+                required
+                autoComplete="off"
+              />
+            </div>
+            <div className="single_form">
+              {isScholarshipCheck && <label className="form-label-top">City</label>}
+              <input
+                type="text"
+                placeholder={isScholarshipCheck ? "Enter your city" : "City*"}
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                maxLength={50}
+                required
+                autoComplete="off"
+              />
+            </div>
+            <div className="single_form course-select-wrap">
+              {isScholarshipCheck && <label className="form-label-top">Select Course</label>}
+              {resolvedCourses.length === 1 ? (
+                <div className="course-readonly" aria-label="Selected Course">
+                  {resolvedCourses[0].label}
+                </div>
+              ) : (
+                <select
+                  value={course}
+                  onChange={(e) => setCourse(e.target.value)}
+                  required
+                  style={{ color: course ? "#334155" : "#767676", marginBottom: "4px" }}
+                >
+                  <option value="">{isScholarshipCheck ? "Select a course" : "Select Course*"}</option>
+                  {resolvedCourses.map((c) => (
+                    <option key={c.value} value={c.value}>
+                      {c.label}
+                    </option>
+                  ))}
+                </select>
+              )}
+            </div>
+            {show12thMarks && (
+              <div className="single_form">
+                {isScholarshipCheck && <label className="form-label-top">Class 12th Marks (%)</label>}
+                <input
+                  type="text"
+                  placeholder={isScholarshipCheck ? "e.g. 92%" : "Class 12th Marks (%)*"}
+                  value={class12Marks}
+                  onChange={(e) => setClass12Marks(e.target.value)}
+                  maxLength={10}
+                  required
+                  autoComplete="off"
+                />
+              </div>
+            )}
 
-          <div className="single_form">
-            <button id="heroSubmitBtn" type="submit" className="main-btn" disabled={isLoading}>
-              {status === "sending" ? "SENDING OTP..." : submitLabel}
-            </button>
-          </div>
+            {statusMsg && !otpOpen ? (
+              <div className="hero-form-status-wrap">
+                <div className={`status ${statusType}`} id="heroFormStatus" style={{ display: "block" }}>
+                  {statusMsg}
+                </div>
+              </div>
+            ) : null}
+
+            <div className="single_form">
+              <button id="heroSubmitBtn" type="submit" className="main-btn" disabled={isLoading}>
+                {status === "sending" ? "SENDING OTP..." : submitLabel}
+              </button>
+            </div>
           </div>
           {consentNote ? (
             <div id={isScholarshipCheck ? "scholarshipLeadForm" : "heroLeadForm"} className="lead-form-consent-row">
@@ -873,7 +881,7 @@ export default function LeadForm({
             </div>
           ) : null}
         </form>
-        
+
       </div>
 
       {otpOpen ? (
