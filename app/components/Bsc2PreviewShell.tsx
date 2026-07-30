@@ -457,7 +457,8 @@ export default function Bba2PreviewShell({
       <style>{`
         @media (min-width: 992px) {
           .header-hero {
-            height: calc(45.42vw + 146px) !important;
+            min-height: max(calc(45.42vw + 160px), 580px) !important;
+            height: auto !important;
           }
         }
         .alc-desktop-logo-strip{display:flex;align-items:center;gap:20px;margin-left:22px}
@@ -486,13 +487,12 @@ export default function Bba2PreviewShell({
         .mobile-cta{display:none}
         @media (min-width:992px){
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
-          .bnrbg{background-image:none!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
-          .header-hero{height:min(calc(45.42vw + 146px),calc(100vh - 78px))!important;min-height:400px!important}
+          .bnrbg{background-image:none!important;background-size:cover!important;background-position:center top!important;background-repeat:no-repeat!important}
+          .header-hero{min-height:max(calc(45.42vw + 160px),580px)!important;height:auto!important}
           .header-hero-content{padding-left:30px!important;padding-right:24px!important}
           .admissions-timer-desktop-lhs{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:fit-content;max-width:min(760px,58vw)}
           .asb-desktop-hero-meta-row{display:flex;align-items:flex-start;gap:14px;flex-wrap:nowrap;margin:0 0 8px 0}
           .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff}
-          .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff}
           .asb-desktop-hero-header-text{max-width:min(760px,58vw);margin:0 0 10px;text-shadow:0 10px 28px rgba(6,16,38,.32)}
           .asb-desktop-hero-top-small{margin:0 0 4px;color:#fff;font-size:clamp(22px,2vw,31px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
           .asb-desktop-hero-main-title{margin:0;color:#fff;font-size:clamp(44px,4.7vw,76px);line-height:.97;font-weight:900;letter-spacing:-.05em}
@@ -1179,157 +1179,158 @@ export default function Bba2PreviewShell({
 
         @media (min-width: 1600px) {
           .asb-desktop-hero-meta-row {
-            gap: 18px !important;
+            gap: clamp(14px, 1.2vw, 24px) !important;
             align-items: stretch !important;
           }
           .asb-desktop-hero-top-small {
-            font-size: 28px !important;
+            font-size: clamp(26px, 1.85vw, 40px) !important;
           }
           .asb-desktop-hero-main-title {
-            font-size: 58px !important;
-            line-height: 1.03 !important;
+            font-size: clamp(54px, 3.8vw, 84px) !important;
+            line-height: 0.98 !important;
           }
           .asb-desktop-hero-bottom-small {
-            font-size: 24px !important;
+            font-size: clamp(24px, 1.65vw, 36px) !important;
             margin-bottom: 10px !important;
           }
           .asb-desktop-hero-pill-badge {
-            font-size: 16px !important;
-            padding: 6px 16px !important;
+            font-size: clamp(16px, 1.2vw, 26px) !important;
+            padding: clamp(7px, 0.5vw, 14px) clamp(18px, 1.1vw, 26px) !important;
           }
           .asb-placement-badge {
-            font-size: 18px !important;
-            padding: 10px 16px !important;
+            font-size: clamp(16px, 1.1vw, 24px) !important;
+            padding: clamp(10px, 0.7vw, 16px) clamp(18px, 1.1vw, 26px) !important;
             min-height: 54px !important;
             gap: 10px !important;
           }
           .asb-placement-icon svg {
-            width: 20px !important;
-            height: 20px !important;
+            width: clamp(20px, 1.2vw, 26px) !important;
+            height: clamp(20px, 1.2vw, 26px) !important;
           }
           .asb-bba2-scholarship-badge {
-            min-width: 340px !important;
-            min-height: 132px !important;
-            padding: 14px 18px !important;
-            gap: 14px !important;
+            min-width: clamp(340px, 22vw, 440px) !important;
+            min-height: clamp(124px, 8vw, 160px) !important;
+            padding: clamp(14px, 1vw, 22px) clamp(18px, 1.2vw, 28px) !important;
+            gap: clamp(14px, 1vw, 22px) !important;
           }
           .asb-bba2-sch-left svg {
-            width: 42px !important;
-            height: 42px !important;
+            width: clamp(42px, 2.6vw, 56px) !important;
+            height: clamp(42px, 2.6vw, 56px) !important;
           }
           .asb-bba2-sch-divider {
-            height: 62px !important;
+            height: clamp(62px, 3.6vw, 80px) !important;
           }
           .asb-bba2-sch-upto {
-            font-size: 14px !important;
+            font-size: clamp(12px, 0.8vw, 16px) !important;
           }
           .asb-bba2-sch-percent {
-            font-size: 40px !important;
+            font-size: clamp(34px, 2.4vw, 52px) !important;
           }
           .asb-bba2-sch-title {
-            font-size: 20px !important;
+            font-size: clamp(16px, 1.1vw, 24px) !important;
           }
           .asb-bba2-sch-sub {
-            font-size: 12px !important;
+            font-size: clamp(9.5px, 0.65vw, 13px) !important;
           }
           .asb-bba2-sch-pill {
-            font-size: 12px !important;
-            padding: 4px 10px !important;
+            font-size: clamp(9.5px, 0.65vw, 13px) !important;
+            padding: clamp(3px, 0.25vw, 5px) clamp(9px, 0.5vw, 12px) !important;
           }
           .admissions-timer-container {
-            min-width: 340px !important;
-            min-height: 132px !important;
-            padding: 14px 18px !important;
+            min-width: clamp(340px, 22vw, 440px) !important;
+            min-height: clamp(124px, 8vw, 160px) !important;
+            padding: clamp(14px, 1vw, 22px) clamp(18px, 1.2vw, 28px) !important;
           }
           .admissions-timer-title {
-            font-size: 20px !important;
-            margin-bottom: 8px !important;
+            font-size: clamp(16px, 1.15vw, 24px) !important;
+            margin-bottom: clamp(8px, 0.5vw, 12px) !important;
           }
           .admissions-timer-card {
-            width: 70px !important;
-            height: 70px !important;
-            border-radius: 14px !important;
+            width: clamp(66px, 4.2vw, 92px) !important;
+            height: clamp(66px, 4.2vw, 92px) !important;
+            border-radius: clamp(12px, 0.8vw, 16px) !important;
           }
           .admissions-timer-digit {
-            font-size: 36px !important;
+            font-size: clamp(30px, 2.1vw, 46px) !important;
           }
           .admissions-timer-colon {
-            font-size: 34px !important;
-            margin-top: -18px !important;
+            font-size: clamp(30px, 2.1vw, 46px) !important;
+            margin-top: clamp(-16px, -1vw, -22px) !important;
           }
           .admissions-timer-label {
-            font-size: 13px !important;
+            font-size: clamp(11.5px, 0.8vw, 16px) !important;
           }
         }
 
         @media (min-width: 1900px) {
           .asb-desktop-hero-top-small {
-            font-size: 32px !important;
+            font-size: clamp(30px, 1.9vw, 42px) !important;
           }
           .asb-desktop-hero-main-title {
-            font-size: 70px !important;
+            font-size: clamp(62px, 4.1vw, 90px) !important;
           }
           .asb-desktop-hero-bottom-small {
-            font-size: 28px !important;
+            font-size: clamp(28px, 1.7vw, 38px) !important;
           }
           .asb-desktop-hero-pill-badge {
-            font-size: 18px !important;
-            padding: 7px 18px !important;
+            font-size: clamp(18px, 1.25vw, 28px) !important;
+            padding: clamp(8px, 0.55vw, 16px) clamp(20px, 1.2vw, 30px) !important;
           }
           .asb-placement-badge {
-            font-size: 20px !important;
-            padding: 12px 18px !important;
+            font-size: clamp(18px, 1.15vw, 26px) !important;
+            padding: clamp(12px, 0.75vw, 18px) clamp(22px, 1.2vw, 30px) !important;
             min-height: 58px !important;
           }
           .asb-bba2-scholarship-badge {
-            min-width: 392px !important;
-            min-height: 150px !important;
-            padding: 16px 20px !important;
+            min-width: clamp(392px, 23vw, 480px) !important;
+            min-height: clamp(140px, 8.5vw, 175px) !important;
+            padding: clamp(18px, 1.1vw, 26px) clamp(24px, 1.3vw, 32px) !important;
           }
           .asb-bba2-sch-left svg {
-            width: 46px !important;
-            height: 46px !important;
+            width: clamp(48px, 2.8vw, 60px) !important;
+            height: clamp(48px, 2.8vw, 60px) !important;
           }
           .asb-bba2-sch-divider {
-            height: 72px !important;
+            height: clamp(68px, 4vw, 88px) !important;
           }
           .asb-bba2-sch-upto {
-            font-size: 16px !important;
+            font-size: clamp(13.5px, 0.85vw, 18px) !important;
           }
           .asb-bba2-sch-percent {
-            font-size: 48px !important;
+            font-size: clamp(40px, 2.5vw, 56px) !important;
           }
           .asb-bba2-sch-title {
-            font-size: 24px !important;
+            font-size: clamp(18px, 1.15vw, 26px) !important;
           }
           .asb-bba2-sch-sub {
-            font-size: 14px !important;
+            font-size: clamp(11px, 0.7vw, 15px) !important;
           }
           .asb-bba2-sch-pill {
-            font-size: 14px !important;
+            font-size: clamp(11px, 0.7vw, 15px) !important;
+            padding: clamp(4px, 0.3vw, 6px) clamp(10px, 0.6vw, 14px) !important;
           }
           .admissions-timer-container {
-            min-width: 392px !important;
-            min-height: 150px !important;
-            padding: 16px 20px !important;
+            min-width: clamp(392px, 23vw, 480px) !important;
+            min-height: clamp(140px, 8.5vw, 175px) !important;
+            padding: clamp(18px, 1.1vw, 26px) clamp(24px, 1.3vw, 32px) !important;
           }
           .admissions-timer-title {
-            font-size: 24px !important;
+            font-size: clamp(18px, 1.15vw, 26px) !important;
           }
           .admissions-timer-card {
-            width: 78px !important;
-            height: 78px !important;
-            border-radius: 16px !important;
+            width: clamp(74px, 4.4vw, 98px) !important;
+            height: clamp(74px, 4.4vw, 98px) !important;
+            border-radius: clamp(14px, 0.9vw, 18px) !important;
           }
           .admissions-timer-digit {
-            font-size: 42px !important;
+            font-size: clamp(34px, 2.2vw, 50px) !important;
           }
           .admissions-timer-colon {
-            font-size: 38px !important;
-            margin-top: -20px !important;
+            font-size: clamp(34px, 2.2vw, 50px) !important;
+            margin-top: clamp(-18px, -1.1vw, -24px) !important;
           }
           .admissions-timer-label {
-            font-size: 14px !important;
+            font-size: clamp(13px, 0.8vw, 17px) !important;
           }
         }
         .mobV .admissions-timer-container {

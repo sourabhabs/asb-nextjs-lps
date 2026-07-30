@@ -698,6 +698,96 @@ export default function Page() {
           color: #000000;
           font-size: 7px;
           font-weight: 900;
+
+        /* Admissions Countdown Timer Styling */
+        .admissions-timer-container {
+          background: linear-gradient(135deg, rgba(15, 31, 69, 0.92) 0%, rgba(10, 60, 80, 0.96) 100%);
+          border: 1.5px solid rgba(34, 240, 255, 0.45);
+          border-radius: 12px;
+          padding: 8px 12px;
+          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          width: fit-content;
+          max-width: 100%;
+          margin: 12px auto;
+          text-align: center;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-container {
+            margin: 0;
+            text-align: left;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border-width: 1.5px;
+            min-width: 360px;
+            min-height: 112px;
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+
+        .asb-bba2-scholarship-badge {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 8px 12px;
+          background: rgba(15, 31, 69, 0.95);
+          border: 1.5px solid #ffb703;
+          border-radius: 12px;
+          box-shadow: 0 0 12px rgba(255, 183, 3, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+          width: fit-content;
+          margin: 10px auto;
+          text-align: left;
+        }
+        .asb-bba2-sch-left {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .asb-bba2-sch-divider {
+          width: 1px;
+          height: 48px;
+          background: rgba(255, 183, 3, 0.4);
+        }
+        .asb-bba2-sch-right {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          line-height: 1;
+        }
+        .asb-bba2-sch-upto {
+          color: #ffb703;
+          font-size: 8px;
+          font-weight: 800;
+          letter-spacing: 0.05em;
+        }
+        .asb-bba2-sch-percent {
+          color: #ffb703;
+          font-size: 22px;
+          font-weight: 900;
+          line-height: 0.95;
+          margin: 2px 0;
+        }
+        .asb-bba2-sch-title {
+          color: #ffffff;
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 0.05em;
+        }
+        .asb-bba2-sch-sub {
+          color: #ffffff;
+          font-size: 7px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          margin-top: 1px;
+        }
+        .asb-bba2-sch-pill {
+          background: #ffb703;
+          color: #000000;
+          font-size: 7px;
+          font-weight: 900;
           padding: 2px 6px;
           border-radius: 99px;
           margin-top: 3px;
@@ -710,145 +800,6 @@ export default function Page() {
             gap: 12px;
             border-radius: 12px;
             border-width: 1.5px;
-            min-width: 360px;
-            min-height: 112px;
-            align-self: stretch;
-          }
-          .asb-bba2-sch-left svg {
-            width: 34px !important;
-            height: 34px !important;
-          }
-          .asb-bba2-sch-divider {
-            height: 48px;
-            width: 1px;
-          }
-          .asb-bba2-sch-upto {
-            font-size: 10px;
-          }
-          .asb-bba2-sch-percent {
-            font-size: 26px;
-          }
-          .asb-bba2-sch-title {
-            font-size: 13px;
-          }
-          .asb-bba2-sch-sub {
-            font-size: 8px;
-          }
-          .asb-bba2-sch-pill {
-            font-size: 8px;
-            padding: 2px 7px;
-            margin-top: 3px;
-          }
-        }
-        .asb-placement-badge {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          padding: 8px 14px;
-          background: rgba(15, 31, 69, 0.92);
-          border: 1.5px solid rgba(255, 255, 255, 0.8);
-          border-radius: 12px;
-          color: #ffffff;
-          font-weight: 800;
-          font-size: 13px;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          width: fit-content;
-          margin: 10px auto;
-          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        }
-        .asb-placement-icon svg {
-          stroke: #24f6f2;
-          width: 16px;
-          height: 16px;
-          display: block;
-        }
-        @media (min-width: 992px) {
-          .asb-placement-badge {
-            margin: 0 0 6px 0;
-            padding: 8px 14px;
-            font-size: 13px;
-            justify-content: flex-start;
-            border-radius: 10px;
-            border-width: 1.5px;
-            gap: 8px;
-          }
-          .asb-placement-icon svg {
-            width: 16px !important;
-            height: 16px !important;
-          }
-        }
-        .admissions-timer-title {
-          color: #ffffff;
-          font-size: 13px;
-          font-weight: 800;
-          margin: 0 0 8px 0;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-        }
-        @media (min-width: 992px) {
-          .admissions-timer-title {
-            font-size: 14px;
-            margin-bottom: 6px;
-          }
-        }
-        .admissions-timer-digits-row {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 6px;
-        }
-        @media (min-width: 992px) {
-          .admissions-timer-digits-row {
-            gap: 8px;
-          }
-        }
-        .admissions-timer-item-group {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-        }
-        @media (min-width: 992px) {
-          .admissions-timer-item-group {
-            gap: 8px;
-          }
-        }
-        .admissions-timer-card-wrapper {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 3px;
-        }
-        .admissions-timer-card {
-          background: #ffffff;
-          border-radius: 8px;
-          width: 42px;
-          height: 42px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        @media (min-width: 992px) {
-          .admissions-timer-card {
-            width: 58px;
-            height: 58px;
-            border-radius: 12px;
-          }
-        }
-        .admissions-timer-digit {
-          color: #990000;
-          font-size: 18px;
-          font-weight: 800;
-          font-family: 'Inter', sans-serif;
-          line-height: 1;
-        }
-        @media (min-width: 992px) {
-          .admissions-timer-digit {
-            font-size: 26px;
-          }
         }
         .admissions-timer-colon {
           color: #ffffff;
@@ -994,85 +945,96 @@ export default function Page() {
           }
           .asb-bba2-scholarship-badge {
             margin: 0;
-            padding: 14px 18px;
-            gap: 14px;
-            border-radius: 16px;
-            border-width: 2px;
+            padding: clamp(10px, 0.8vw, 18px) clamp(14px, 1vw, 24px);
+            gap: clamp(10px, 0.8vw, 18px);
+            border-radius: clamp(12px, 0.8vw, 18px);
+            border-width: 1.5px;
             align-self: stretch;
-            width: clamp(320px, 23vw, 420px);
-            min-width: clamp(320px, 23vw, 420px);
-            min-height: clamp(124px, 8vw, 146px);
+            min-height: clamp(108px, 7.5vw, 148px);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
           }
           .asb-bba2-sch-left {
             flex: 0 0 auto;
           }
           .asb-bba2-sch-left svg {
-            width: 40px !important;
-            height: 40px !important;
+            width: clamp(34px, 2.4vw, 50px) !important;
+            height: clamp(34px, 2.4vw, 50px) !important;
           }
           .asb-bba2-sch-divider {
             width: 1px;
-            height: 60px;
+            height: clamp(48px, 3.2vw, 70px);
           }
           .asb-bba2-sch-right {
             justify-content: center;
           }
           .asb-bba2-sch-upto {
-            font-size: 12px;
+            font-size: clamp(10px, 0.7vw, 14px);
+            font-weight: 800;
           }
           .asb-bba2-sch-percent {
-            font-size: clamp(40px, 3vw, 54px);
+            font-size: clamp(26px, 1.9vw, 42px);
+            font-weight: 900;
             margin: 1px 0;
           }
           .asb-bba2-sch-title {
-            font-size: clamp(18px, 1.42vw, 26px);
+            font-size: clamp(13px, 0.9vw, 19px);
+            font-weight: 800;
           }
           .asb-bba2-sch-sub {
-            font-size: clamp(10px, 0.82vw, 12px);
+            font-size: clamp(8px, 0.55vw, 12px);
+            font-weight: 700;
           }
           .asb-bba2-sch-pill {
-            font-size: clamp(9px, 0.72vw, 11px);
-            padding: 3px 10px;
-            margin-top: 4px;
+            font-size: clamp(8px, 0.55vw, 12px);
+            font-weight: 900;
+            padding: clamp(2px, 0.2vw, 4px) clamp(7px, 0.5vw, 11px);
+            margin-top: 3px;
           }
           .admissions-timer-container {
             margin: 0;
             align-self: stretch;
+            min-height: clamp(108px, 7.5vw, 148px);
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            width: clamp(320px, 22vw, 410px);
-            min-width: clamp(320px, 22vw, 410px);
-            min-height: clamp(124px, 8vw, 146px);
-            padding: 14px 18px;
-            border-radius: 16px;
+            padding: clamp(10px, 0.8vw, 18px) clamp(14px, 1vw, 24px);
+            border-radius: clamp(12px, 0.8vw, 18px);
           }
           .admissions-timer-title {
-            font-size: clamp(18px, 1.32vw, 24px);
-            margin-bottom: 10px;
+            font-size: clamp(14px, 0.95vw, 20px);
+            line-height: 1.1;
+            margin-bottom: clamp(6px, 0.4vw, 10px);
             text-align: left;
+            white-space: normal;
+            max-width: 100%;
+            text-transform: uppercase;
+            font-weight: 800;
           }
           .admissions-timer-digits-row {
-            gap: 8px;
+            gap: clamp(6px, 0.5vw, 10px);
             justify-content: flex-start;
           }
           .admissions-timer-item-group {
-            gap: 8px;
+            gap: clamp(6px, 0.5vw, 10px);
           }
           .admissions-timer-card {
-            width: clamp(60px, 4vw, 72px);
-            height: clamp(60px, 4vw, 72px);
-            border-radius: 14px;
+            width: clamp(56px, 3.8vw, 78px);
+            height: clamp(56px, 3.8vw, 78px);
+            border-radius: clamp(12px, 0.8vw, 16px);
           }
           .admissions-timer-digit {
-            font-size: clamp(30px, 2.15vw, 40px);
+            font-size: clamp(26px, 1.8vw, 38px);
+            font-weight: 800;
           }
           .admissions-timer-colon {
-            font-size: clamp(28px, 1.9vw, 36px);
-            margin-top: -18px;
+            font-size: clamp(26px, 1.8vw, 38px);
+            margin-top: clamp(-16px, -1vw, -22px);
           }
           .admissions-timer-label {
-            font-size: clamp(10px, 0.8vw, 13px);
+            font-size: clamp(11px, 0.7vw, 14px);
           }
         }
         @media (min-width: 992px) and (max-height: 820px) {

@@ -621,14 +621,12 @@ export default function Page() {
           }
           .asb-bba2-scholarship-badge {
             margin: 0;
-            padding: 8px 12px;
-            gap: 10px;
-            border-radius: 12px;
+            padding: clamp(10px, 0.8vw, 18px) clamp(14px, 1vw, 24px);
+            gap: clamp(10px, 0.8vw, 18px);
+            border-radius: clamp(12px, 0.8vw, 18px);
             border-width: 1.5px;
             align-self: stretch;
-            height: 84px;
-            min-height: 84px;
-            max-height: 84px;
+            min-height: clamp(108px, 7.5vw, 148px);
             box-sizing: border-box;
             display: flex;
             align-items: center;
@@ -637,56 +635,54 @@ export default function Page() {
             flex: 0 0 auto;
           }
           .asb-bba2-sch-left svg {
-            width: 28px !important;
-            height: 28px !important;
+            width: clamp(34px, 2.4vw, 50px) !important;
+            height: clamp(34px, 2.4vw, 50px) !important;
           }
           .asb-bba2-sch-divider {
             width: 1px;
-            height: 38px;
+            height: clamp(48px, 3.2vw, 70px);
           }
           .asb-bba2-sch-right {
             justify-content: center;
           }
           .asb-bba2-sch-upto {
-            font-size: 9px;
+            font-size: clamp(10px, 0.7vw, 14px);
             font-weight: 800;
           }
           .asb-bba2-sch-percent {
-            font-size: 22px;
+            font-size: clamp(26px, 1.9vw, 42px);
             font-weight: 900;
             margin: 1px 0;
           }
           .asb-bba2-sch-title {
-            font-size: 11px;
+            font-size: clamp(13px, 0.9vw, 19px);
             font-weight: 800;
           }
           .asb-bba2-sch-sub {
-            font-size: 7.5px;
+            font-size: clamp(8px, 0.55vw, 12px);
             font-weight: 700;
           }
           .asb-bba2-sch-pill {
-            font-size: 7.5px;
+            font-size: clamp(8px, 0.55vw, 12px);
             font-weight: 900;
-            padding: 2px 6px;
-            margin-top: 2px;
+            padding: clamp(2px, 0.2vw, 4px) clamp(7px, 0.5vw, 11px);
+            margin-top: 3px;
           }
           .admissions-timer-container {
             margin: 0;
             align-self: stretch;
-            height: 84px;
-            min-height: 84px;
-            max-height: 84px;
+            min-height: clamp(108px, 7.5vw, 148px);
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 8px 12px;
-            border-radius: 12px;
+            padding: clamp(10px, 0.8vw, 18px) clamp(14px, 1vw, 24px);
+            border-radius: clamp(12px, 0.8vw, 18px);
           }
           .admissions-timer-title {
-            font-size: 11px;
+            font-size: clamp(14px, 0.95vw, 20px);
             line-height: 1.1;
-            margin-bottom: 4px;
+            margin-bottom: clamp(6px, 0.4vw, 10px);
             text-align: left;
             white-space: normal;
             max-width: 100%;
@@ -694,27 +690,27 @@ export default function Page() {
             font-weight: 800;
           }
           .admissions-timer-digits-row {
-            gap: 5px;
+            gap: clamp(6px, 0.5vw, 10px);
             justify-content: flex-start;
           }
           .admissions-timer-item-group {
-            gap: 5px;
+            gap: clamp(6px, 0.5vw, 10px);
           }
           .admissions-timer-card {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            width: clamp(56px, 3.8vw, 78px);
+            height: clamp(56px, 3.8vw, 78px);
+            border-radius: clamp(12px, 0.8vw, 16px);
           }
           .admissions-timer-digit {
-            font-size: 18px;
+            font-size: clamp(26px, 1.8vw, 38px);
             font-weight: 800;
           }
           .admissions-timer-colon {
-            font-size: 18px;
-            margin-top: -6px;
+            font-size: clamp(26px, 1.8vw, 38px);
+            margin-top: clamp(-16px, -1vw, -22px);
           }
           .admissions-timer-label {
-            font-size: 8px;
+            font-size: clamp(11px, 0.7vw, 14px);
           }
         }
         @media (min-width: 992px) and (max-height: 820px) {

@@ -667,14 +667,12 @@ export default function Page() {
           }
           .asb-bba2-scholarship-badge {
             margin: 0;
-            padding: 8px 12px;
-            gap: 10px;
-            border-radius: 12px;
+            padding: clamp(10px, 0.8vw, 18px) clamp(14px, 1vw, 24px);
+            gap: clamp(10px, 0.8vw, 18px);
+            border-radius: clamp(12px, 0.8vw, 18px);
             border-width: 1.5px;
             align-self: stretch;
-            height: 84px;
-            min-height: 84px;
-            max-height: 84px;
+            min-height: clamp(108px, 7.5vw, 148px);
             box-sizing: border-box;
             display: flex;
             align-items: center;
@@ -683,56 +681,54 @@ export default function Page() {
             flex: 0 0 auto;
           }
           .asb-bba2-sch-left svg {
-            width: 28px !important;
-            height: 28px !important;
+            width: clamp(34px, 2.4vw, 50px) !important;
+            height: clamp(34px, 2.4vw, 50px) !important;
           }
           .asb-bba2-sch-divider {
             width: 1px;
-            height: 38px;
+            height: clamp(48px, 3.2vw, 70px);
           }
           .asb-bba2-sch-right {
             justify-content: center;
           }
           .asb-bba2-sch-upto {
-            font-size: 9px;
+            font-size: clamp(10px, 0.7vw, 14px);
             font-weight: 800;
           }
           .asb-bba2-sch-percent {
-            font-size: 22px;
+            font-size: clamp(26px, 1.9vw, 42px);
             font-weight: 900;
             margin: 1px 0;
           }
           .asb-bba2-sch-title {
-            font-size: 11px;
+            font-size: clamp(13px, 0.9vw, 19px);
             font-weight: 800;
           }
           .asb-bba2-sch-sub {
-            font-size: 7.5px;
+            font-size: clamp(8px, 0.55vw, 12px);
             font-weight: 700;
           }
           .asb-bba2-sch-pill {
-            font-size: 7.5px;
+            font-size: clamp(8px, 0.55vw, 12px);
             font-weight: 900;
-            padding: 2px 6px;
-            margin-top: 2px;
+            padding: clamp(2px, 0.2vw, 4px) clamp(7px, 0.5vw, 11px);
+            margin-top: 3px;
           }
           .admissions-timer-container {
             margin: 0;
             align-self: stretch;
-            height: 84px;
-            min-height: 84px;
-            max-height: 84px;
+            min-height: clamp(108px, 7.5vw, 148px);
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 8px 12px;
-            border-radius: 12px;
+            padding: clamp(10px, 0.8vw, 18px) clamp(14px, 1vw, 24px);
+            border-radius: clamp(12px, 0.8vw, 18px);
           }
           .admissions-timer-title {
-            font-size: 11px;
+            font-size: clamp(14px, 0.95vw, 20px);
             line-height: 1.1;
-            margin-bottom: 4px;
+            margin-bottom: clamp(6px, 0.4vw, 10px);
             text-align: left;
             white-space: normal;
             max-width: 100%;
@@ -740,27 +736,27 @@ export default function Page() {
             font-weight: 800;
           }
           .admissions-timer-digits-row {
-            gap: 5px;
+            gap: clamp(6px, 0.5vw, 10px);
             justify-content: flex-start;
           }
           .admissions-timer-item-group {
-            gap: 5px;
+            gap: clamp(6px, 0.5vw, 10px);
           }
           .admissions-timer-card {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            width: clamp(56px, 3.8vw, 78px);
+            height: clamp(56px, 3.8vw, 78px);
+            border-radius: clamp(12px, 0.8vw, 16px);
           }
           .admissions-timer-digit {
-            font-size: 18px;
+            font-size: clamp(26px, 1.8vw, 38px);
             font-weight: 800;
           }
           .admissions-timer-colon {
-            font-size: 18px;
-            margin-top: -6px;
+            font-size: clamp(26px, 1.8vw, 38px);
+            margin-top: clamp(-16px, -1vw, -22px);
           }
           .admissions-timer-label {
-            font-size: 8px;
+            font-size: clamp(11px, 0.7vw, 14px);
           }
         }
         @media (min-width: 992px) and (max-height: 820px) {
@@ -1874,313 +1870,313 @@ export default function Page() {
 
       <footer className="footer"><div className="container footer-inner"><div className="footer-grid"><div><h4 style={{ color: "#fff" }}>Asian School of Business</h4><p>Admissions open for 2026 intake. Build your future in business, commerce and technology with a globally aware academic ecosystem.</p></div><div><div className="f-title">Quick Links</div><ul className="f-links"><li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToId("home", true); }}>Home</a></li><li><a href="#courses" onClick={(e) => { e.preventDefault(); scrollToId("courses"); }}>Programs Offered</a></li><li><a href="#international" onClick={(e) => { e.preventDefault(); scrollToId("international"); }}>International Exposure</a></li><li><a href="#enquire" onClick={(e) => { e.preventDefault(); scrollToId("enquire", true); }}>Enquire Now</a></li></ul></div><div><div className="f-title">Admissions Office</div><p>Asian School of Business, Noida, Uttar Pradesh</p></div></div><div className="f-bottom"><span>(c) 2026 Asian School of Business. All rights reserved.</span><span>International association with Oxford Business College</span></div></div></footer>
 
-        <div className="desktop-cta" style={{ opacity: showSticky ? "1" : "0", pointerEvents: showSticky ? "auto" : "none", transform: showSticky ? "translateY(0)" : "translateY(20px)" }} aria-label="Desktop actions">
-          <div className="desktop-cta-strip">
-            <button type="button" className="btn btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
+      <div className="desktop-cta" style={{ opacity: showSticky ? "1" : "0", pointerEvents: showSticky ? "auto" : "none", transform: showSticky ? "translateY(0)" : "translateY(20px)" }} aria-label="Desktop actions">
+        <div className="desktop-cta-strip">
+          <button type="button" className="btn btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
+        </div>
+      </div>
+      <div className={`mobile-cta${showSticky ? " is-visible" : ""}`} aria-label="Mobile actions">
+        <div className="mobile-cta-strip">
+          <button type="button" className="mobile-btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
+        </div>
+      </div>
+      {popupOpen && (
+        <div className="asb-popup-overlay">
+          <div className="asb-popup-card">
+            {popupStep >= 1 && popupStep <= 5 && (
+              <div>
+                <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#0f1f45", textAlign: "center", marginBottom: "4px" }}>
+                  Complete Your Application Profile
+                </h3>
+                <p style={{ fontSize: "14px", color: "#475569", textAlign: "center", marginBottom: "20px" }}>
+                  Answer a few quick questions to help us guide you towards the right program and scholarship opportunities.
+                </p>
+
+                <div className="progress-wrapper">
+                  <div className="progress-text">
+                    <span>Step {popupStep} of 5</span>
+                    <span>Hi {applicantName || "Applicant"}!</span>
+                  </div>
+                  <div className="progress-bar-bg">
+                    <div
+                      className="progress-bar-fill"
+                      style={{ width: `${(popupStep / 5) * 100}%` }}
+                    ></div>
+                  </div>
+                </div>
+
+                {popupStep === 1 && (
+                  <div className="q-card">
+                    <h4 className="q-question">Have you completed Class 12?</h4>
+                    <p className="q-qsub">This helps us confirm eligibility for our undergraduate programs.</p>
+
+                    <button
+                      type="button"
+                      className={`option-button ${completedClass12 === "Yes" ? "active" : ""}`}
+                      onClick={() => setCompletedClass12("Yes")}
+                    >
+                      <span>Yes</span>
+                      <span className="option-circle"></span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`option-button ${completedClass12 === "No" ? "active" : ""}`}
+                      onClick={() => setCompletedClass12("No")}
+                    >
+                      <span>No</span>
+                      <span className="option-circle"></span>
+                    </button>
+                  </div>
+                )}
+
+                {popupStep === 2 && (
+                  <div className="q-card">
+                    <h4 className="q-question">What was your Class 12 score?</h4>
+                    <p className="q-qsub">This helps us calculate any scholarship you may be eligible for.</p>
+
+                    <button
+                      type="button"
+                      className={`option-button ${class12Score === "Below 80%" ? "active" : ""}`}
+                      onClick={() => setClass12Score("Below 80%")}
+                    >
+                      <span>Below 80%</span>
+                      <span className="option-circle"></span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`option-button ${class12Score === "80 - 84.9%" ? "active" : ""}`}
+                      onClick={() => setClass12Score("80 - 84.9%")}
+                    >
+                      <span>80 - 84.9%</span>
+                      <span className="option-circle"></span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`option-button ${class12Score === "85 - 89.9%" ? "active" : ""}`}
+                      onClick={() => setClass12Score("85 - 89.9%")}
+                    >
+                      <span>85 - 89.9%</span>
+                      <span className="option-circle"></span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`option-button ${class12Score === "90 - 94.9%" ? "active" : ""}`}
+                      onClick={() => setClass12Score("90 - 94.9%")}
+                    >
+                      <span>90 - 94.9%</span>
+                      <span className="option-circle"></span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`option-button ${class12Score === "95% - 100%" ? "active" : ""}`}
+                      onClick={() => setClass12Score("95% - 100%")}
+                    >
+                      <span>95% - 100%</span>
+                      <span className="option-circle"></span>
+                    </button>
+
+                    {/* Real-time Scholarship Status Box */}
+                    {class12Score && (
+                      <div
+                        style={{
+                          marginTop: "16px",
+                          padding: "12px 16px",
+                          borderRadius: "10px",
+                          backgroundColor: class12Score !== "Below 80%" ? "#f0fdf4" : "#f8fafc",
+                          border: class12Score !== "Below 80%" ? "1px dashed #22c55e" : "1px solid #e2e8f0",
+                          textAlign: "center",
+                        }}
+                      >
+                        {class12Score === "95% - 100%" && (
+                          <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#15803d" }}>
+                            🎉 Congratulations! You are eligible for a 100% Scholarship on Tuition Fee.
+                          </p>
+                        )}
+                        {class12Score === "90 - 94.9%" && (
+                          <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#15803d" }}>
+                            🎉 Congratulations! You are eligible for a 75% Scholarship on Tuition Fee.
+                          </p>
+                        )}
+                        {class12Score === "85 - 89.9%" && (
+                          <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#15803d" }}>
+                            🎉 Congratulations! You are eligible for a 50% Scholarship on Tuition Fee.
+                          </p>
+                        )}
+                        {class12Score === "80 - 84.9%" && (
+                          <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#15803d" }}>
+                            🎉 Congratulations! You are eligible for a 25% Scholarship on Tuition Fee.
+                          </p>
+                        )}
+                        {class12Score === "Below 80%" && (
+                          <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#475569" }}>
+                            Standard Admission Criteria Apply. Fill out the application to check other aid options.
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {popupStep === 3 && (
+                  <div className="q-card">
+                    <h4 className="q-question">Are you actively planning to pursue higher education within the next 2 months?</h4>
+                    <p className="q-qsub">Select your timeline option</p>
+
+                    <button
+                      type="button"
+                      className={`option-button ${higherEducationPlanning === "Yes" ? "active" : ""}`}
+                      onClick={() => setHigherEducationPlanning("Yes")}
+                    >
+                      <span>Yes</span>
+                      <span className="option-circle"></span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`option-button ${higherEducationPlanning === "Exploring Options" ? "active" : ""}`}
+                      onClick={() => setHigherEducationPlanning("Exploring Options")}
+                    >
+                      <span>Exploring Options</span>
+                      <span className="option-circle"></span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`option-button ${higherEducationPlanning === "No" ? "active" : ""}`}
+                      onClick={() => setHigherEducationPlanning("No")}
+                    >
+                      <span>No</span>
+                      <span className="option-circle"></span>
+                    </button>
+                  </div>
+                )}
+
+                {popupStep === 4 && (
+                  <div className="q-card">
+                    <h4 className="q-question">ASB is located in Noida (Delhi/NCR).</h4>
+                    <p className="q-qsub">Are you open to studying in Noida (Delhi/NCR)?</p>
+
+                    <button
+                      type="button"
+                      className={`option-button ${openToNoida === "Yes" ? "active" : ""}`}
+                      onClick={() => setOpenToNoida("Yes")}
+                    >
+                      <span>Yes</span>
+                      <span className="option-circle"></span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`option-button ${openToNoida === "Maybe" ? "active" : ""}`}
+                      onClick={() => setOpenToNoida("Maybe")}
+                    >
+                      <span>Maybe</span>
+                      <span className="option-circle"></span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`option-button ${openToNoida === "No" ? "active" : ""}`}
+                      onClick={() => setOpenToNoida("No")}
+                    >
+                      <span>No</span>
+                      <span className="option-circle"></span>
+                    </button>
+                  </div>
+                )}
+
+                {popupStep === 5 && (
+                  <div className="q-card">
+                    <h4 className="q-question">ASB programs are delivered in English.</h4>
+                    <p className="q-qsub">Are you comfortable studying in English?</p>
+
+                    <button
+                      type="button"
+                      className={`option-button ${englishComfort === "Yes" ? "active" : ""}`}
+                      onClick={() => setEnglishComfort("Yes")}
+                    >
+                      <span>Yes</span>
+                      <span className="option-circle"></span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`option-button ${englishComfort === "Need Additional Support" ? "active" : ""}`}
+                      onClick={() => setEnglishComfort("Need Additional Support")}
+                    >
+                      <span>Need Additional Support</span>
+                      <span className="option-circle"></span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`option-button ${englishComfort === "No" ? "active" : ""}`}
+                      onClick={() => setEnglishComfort("No")}
+                    >
+                      <span>No</span>
+                      <span className="option-circle"></span>
+                    </button>
+                  </div>
+                )}
+
+                {statusMsg && (
+                  <p style={{ color: "#ef4444", fontSize: "14px", fontWeight: "bold", textAlign: "center", marginTop: "12px", marginBottom: "0" }}>
+                    {statusMsg}
+                  </p>
+                )}
+
+                <div className="q-actions">
+                  {popupStep > 1 && (
+                    <button
+                      type="button"
+                      className="btn-back"
+                      onClick={() => setPopupStep(popupStep - 1)}
+                      disabled={status === "sending"}
+                    >
+                      Back
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    className="btn-continue"
+                    onClick={() => {
+                      if (popupStep < 5) {
+                        setPopupStep(popupStep + 1);
+                      } else {
+                        handleQuestionnaireSubmit();
+                      }
+                    }}
+                    disabled={
+                      status === "sending" ||
+                      (popupStep === 1 && !completedClass12) ||
+                      (popupStep === 2 && !class12Score) ||
+                      (popupStep === 3 && !higherEducationPlanning) ||
+                      (popupStep === 4 && !openToNoida) ||
+                      (popupStep === 5 && !englishComfort)
+                    }
+                  >
+                    {status === "sending"
+                      ? "Submitting..."
+                      : popupStep === 5
+                        ? "Submit Profile"
+                        : "Continue"}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {popupStep === 6 && (
+              <div className="thank-you-card">
+                <div className="thank-you-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <h3 className="thank-you-title">Profile Completed!</h3>
+                <p className="thank-you-desc">
+                  Thank you, {applicantName || "Applicant"}. Your application profile has been submitted successfully.
+                  <br />
+                  Redirecting you to the confirmation page...
+                </p>
+              </div>
+            )}
           </div>
         </div>
-        <div className={`mobile-cta${showSticky ? " is-visible" : ""}`} aria-label="Mobile actions">
-          <div className="mobile-cta-strip">
-            <button type="button" className="mobile-btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
-          </div>
-        </div>
-         {popupOpen && (
-           <div className="asb-popup-overlay">
-             <div className="asb-popup-card">
-               {popupStep >= 1 && popupStep <= 5 && (
-                 <div>
-                   <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#0f1f45", textAlign: "center", marginBottom: "4px" }}>
-                     Complete Your Application Profile
-                   </h3>
-                   <p style={{ fontSize: "14px", color: "#475569", textAlign: "center", marginBottom: "20px" }}>
-                     Answer a few quick questions to help us guide you towards the right program and scholarship opportunities.
-                   </p>
-
-                   <div className="progress-wrapper">
-                     <div className="progress-text">
-                       <span>Step {popupStep} of 5</span>
-                       <span>Hi {applicantName || "Applicant"}!</span>
-                     </div>
-                     <div className="progress-bar-bg">
-                       <div
-                         className="progress-bar-fill"
-                         style={{ width: `${(popupStep / 5) * 100}%` }}
-                       ></div>
-                     </div>
-                   </div>
-
-                   {popupStep === 1 && (
-                     <div className="q-card">
-                       <h4 className="q-question">Have you completed Class 12?</h4>
-                       <p className="q-qsub">This helps us confirm eligibility for our undergraduate programs.</p>
-                       
-                       <button
-                         type="button"
-                         className={`option-button ${completedClass12 === "Yes" ? "active" : ""}`}
-                         onClick={() => setCompletedClass12("Yes")}
-                       >
-                         <span>Yes</span>
-                         <span className="option-circle"></span>
-                       </button>
-                       <button
-                         type="button"
-                         className={`option-button ${completedClass12 === "No" ? "active" : ""}`}
-                         onClick={() => setCompletedClass12("No")}
-                       >
-                         <span>No</span>
-                         <span className="option-circle"></span>
-                       </button>
-                     </div>
-                   )}
-
-                   {popupStep === 2 && (
-                     <div className="q-card">
-                       <h4 className="q-question">What was your Class 12 score?</h4>
-                       <p className="q-qsub">This helps us calculate any scholarship you may be eligible for.</p>
-
-                       <button
-                         type="button"
-                         className={`option-button ${class12Score === "Below 80%" ? "active" : ""}`}
-                         onClick={() => setClass12Score("Below 80%")}
-                       >
-                         <span>Below 80%</span>
-                         <span className="option-circle"></span>
-                       </button>
-                       <button
-                         type="button"
-                         className={`option-button ${class12Score === "80 - 84.9%" ? "active" : ""}`}
-                         onClick={() => setClass12Score("80 - 84.9%")}
-                       >
-                         <span>80 - 84.9%</span>
-                         <span className="option-circle"></span>
-                       </button>
-                       <button
-                         type="button"
-                         className={`option-button ${class12Score === "85 - 89.9%" ? "active" : ""}`}
-                         onClick={() => setClass12Score("85 - 89.9%")}
-                       >
-                         <span>85 - 89.9%</span>
-                         <span className="option-circle"></span>
-                       </button>
-                       <button
-                         type="button"
-                         className={`option-button ${class12Score === "90 - 94.9%" ? "active" : ""}`}
-                         onClick={() => setClass12Score("90 - 94.9%")}
-                       >
-                         <span>90 - 94.9%</span>
-                         <span className="option-circle"></span>
-                       </button>
-                       <button
-                         type="button"
-                         className={`option-button ${class12Score === "95% - 100%" ? "active" : ""}`}
-                         onClick={() => setClass12Score("95% - 100%")}
-                       >
-                         <span>95% - 100%</span>
-                         <span className="option-circle"></span>
-                       </button>
-
-                       {/* Real-time Scholarship Status Box */}
-                       {class12Score && (
-                         <div
-                           style={{
-                             marginTop: "16px",
-                             padding: "12px 16px",
-                             borderRadius: "10px",
-                             backgroundColor: class12Score !== "Below 80%" ? "#f0fdf4" : "#f8fafc",
-                             border: class12Score !== "Below 80%" ? "1px dashed #22c55e" : "1px solid #e2e8f0",
-                             textAlign: "center",
-                           }}
-                         >
-                           {class12Score === "95% - 100%" && (
-                             <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#15803d" }}>
-                               🎉 Congratulations! You are eligible for a 100% Scholarship on Tuition Fee.
-                             </p>
-                           )}
-                           {class12Score === "90 - 94.9%" && (
-                             <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#15803d" }}>
-                               🎉 Congratulations! You are eligible for a 75% Scholarship on Tuition Fee.
-                             </p>
-                           )}
-                           {class12Score === "85 - 89.9%" && (
-                             <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#15803d" }}>
-                               🎉 Congratulations! You are eligible for a 50% Scholarship on Tuition Fee.
-                             </p>
-                           )}
-                           {class12Score === "80 - 84.9%" && (
-                             <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#15803d" }}>
-                               🎉 Congratulations! You are eligible for a 25% Scholarship on Tuition Fee.
-                             </p>
-                           )}
-                           {class12Score === "Below 80%" && (
-                             <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#475569" }}>
-                               Standard Admission Criteria Apply. Fill out the application to check other aid options.
-                             </p>
-                           )}
-                         </div>
-                       )}
-                     </div>
-                   )}
-
-                   {popupStep === 3 && (
-                     <div className="q-card">
-                       <h4 className="q-question">Are you actively planning to pursue higher education within the next 2 months?</h4>
-                       <p className="q-qsub">Select your timeline option</p>
-
-                       <button
-                         type="button"
-                         className={`option-button ${higherEducationPlanning === "Yes" ? "active" : ""}`}
-                         onClick={() => setHigherEducationPlanning("Yes")}
-                       >
-                         <span>Yes</span>
-                         <span className="option-circle"></span>
-                       </button>
-                       <button
-                         type="button"
-                         className={`option-button ${higherEducationPlanning === "Exploring Options" ? "active" : ""}`}
-                         onClick={() => setHigherEducationPlanning("Exploring Options")}
-                       >
-                         <span>Exploring Options</span>
-                         <span className="option-circle"></span>
-                       </button>
-                       <button
-                         type="button"
-                         className={`option-button ${higherEducationPlanning === "No" ? "active" : ""}`}
-                         onClick={() => setHigherEducationPlanning("No")}
-                       >
-                         <span>No</span>
-                         <span className="option-circle"></span>
-                       </button>
-                     </div>
-                   )}
-
-                   {popupStep === 4 && (
-                     <div className="q-card">
-                       <h4 className="q-question">ASB is located in Noida (Delhi/NCR).</h4>
-                       <p className="q-qsub">Are you open to studying in Noida (Delhi/NCR)?</p>
-
-                       <button
-                         type="button"
-                         className={`option-button ${openToNoida === "Yes" ? "active" : ""}`}
-                         onClick={() => setOpenToNoida("Yes")}
-                       >
-                         <span>Yes</span>
-                         <span className="option-circle"></span>
-                       </button>
-                       <button
-                         type="button"
-                         className={`option-button ${openToNoida === "Maybe" ? "active" : ""}`}
-                         onClick={() => setOpenToNoida("Maybe")}
-                       >
-                         <span>Maybe</span>
-                         <span className="option-circle"></span>
-                       </button>
-                       <button
-                         type="button"
-                         className={`option-button ${openToNoida === "No" ? "active" : ""}`}
-                         onClick={() => setOpenToNoida("No")}
-                       >
-                         <span>No</span>
-                         <span className="option-circle"></span>
-                       </button>
-                     </div>
-                   )}
-
-                   {popupStep === 5 && (
-                     <div className="q-card">
-                       <h4 className="q-question">ASB programs are delivered in English.</h4>
-                       <p className="q-qsub">Are you comfortable studying in English?</p>
-
-                       <button
-                         type="button"
-                         className={`option-button ${englishComfort === "Yes" ? "active" : ""}`}
-                         onClick={() => setEnglishComfort("Yes")}
-                       >
-                         <span>Yes</span>
-                         <span className="option-circle"></span>
-                       </button>
-                       <button
-                         type="button"
-                         className={`option-button ${englishComfort === "Need Additional Support" ? "active" : ""}`}
-                         onClick={() => setEnglishComfort("Need Additional Support")}
-                       >
-                         <span>Need Additional Support</span>
-                         <span className="option-circle"></span>
-                       </button>
-                       <button
-                         type="button"
-                         className={`option-button ${englishComfort === "No" ? "active" : ""}`}
-                         onClick={() => setEnglishComfort("No")}
-                       >
-                         <span>No</span>
-                         <span className="option-circle"></span>
-                       </button>
-                     </div>
-                   )}
-
-                   {statusMsg && (
-                     <p style={{ color: "#ef4444", fontSize: "14px", fontWeight: "bold", textAlign: "center", marginTop: "12px", marginBottom: "0" }}>
-                       {statusMsg}
-                     </p>
-                   )}
-
-                   <div className="q-actions">
-                     {popupStep > 1 && (
-                       <button
-                         type="button"
-                         className="btn-back"
-                         onClick={() => setPopupStep(popupStep - 1)}
-                         disabled={status === "sending"}
-                       >
-                         Back
-                       </button>
-                     )}
-                     <button
-                       type="button"
-                       className="btn-continue"
-                       onClick={() => {
-                         if (popupStep < 5) {
-                           setPopupStep(popupStep + 1);
-                         } else {
-                           handleQuestionnaireSubmit();
-                         }
-                       }}
-                       disabled={
-                         status === "sending" ||
-                         (popupStep === 1 && !completedClass12) ||
-                         (popupStep === 2 && !class12Score) ||
-                         (popupStep === 3 && !higherEducationPlanning) ||
-                         (popupStep === 4 && !openToNoida) ||
-                         (popupStep === 5 && !englishComfort)
-                       }
-                     >
-                       {status === "sending"
-                         ? "Submitting..."
-                         : popupStep === 5
-                         ? "Submit Profile"
-                         : "Continue"}
-                     </button>
-                   </div>
-                 </div>
-               )}
-
-               {popupStep === 6 && (
-                 <div className="thank-you-card">
-                   <div className="thank-you-icon">
-                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                       <polyline points="20 6 9 17 4 12"></polyline>
-                     </svg>
-                   </div>
-                   <h3 className="thank-you-title">Profile Completed!</h3>
-                   <p className="thank-you-desc">
-                     Thank you, {applicantName || "Applicant"}. Your application profile has been submitted successfully.
-                     <br />
-                     Redirecting you to the confirmation page...
-                   </p>
-                 </div>
-               )}
-             </div>
-           </div>
-         )}
-     </>
+      )}
+    </>
   );
 }
