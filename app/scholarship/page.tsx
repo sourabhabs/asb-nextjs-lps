@@ -175,38 +175,35 @@ export default function Page() {
         @media (min-width:992px){
           .header-hero {
             height: calc(45.42vw + 146px) !important;
-            max-height: calc(100vh - 78px) !important;
-            min-height: 400px !important;
           }
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
           .bnrbg{background-image:url('/banner-main.jpg')!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
-          .admissions-timer-desktop-lhs{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;width:fit-content;max-width:min(760px,58vw);padding-top:0}
-          .asb-desktop-hero-meta-row{display:flex;align-items:stretch;gap:14px;flex-wrap:nowrap;margin:0}
-          .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.2)}
+          .admissions-timer-desktop-lhs{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:fit-content;max-width:min(760px,58vw);padding-top:14px}
+          .asb-desktop-hero-meta-row{display:flex;align-items:stretch;gap:16px;flex-wrap:nowrap;margin:0 0 12px 0}
+          .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff}
           .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff;letter-spacing:-.02em}
-          .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.22)}
-          .asb-desktop-hero-highlight{font-weight:800;color:#22f0ff!important;font-size:1.38em!important;line-height:1;text-shadow:none;display:inline-block}
+          .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600}
+          .asb-desktop-hero-highlight{font-weight:800;color:#22f0ff!important;font-size:1.38em!important;display:inline-block}
           .asb-desktop-hero-points{list-style:none;padding:0;margin:8px 0 0}
-          .asb-desktop-hero-points li{position:relative;padding-left:30px;margin:0 0 3px;font-size:16px;line-height:1.45;color:#fff;font-weight:400!important}
-          .asb-desktop-hero-points li::before{content:"\\00BB";position:absolute;left:6px;top:-1px;font-size:24px;line-height:1;color:#fff;opacity:.95}
+          .asb-desktop-hero-points li{position:relative;padding-left:30px;margin:0 0 3px;font-size:16px;line-height:1.45;color:#fff}
+          .asb-desktop-hero-points li::before{content:"\\00BB";position:absolute;left:6px;top:-1px;font-size:24px;color:#fff}
           .asb-hero-stats{justify-content:flex-start;width:min(100%,205px);margin-top:24px}
           .asb-hero-stat-box{min-width:0;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:12px 16px;border:1px solid rgba(255,255,255,.6);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.24) 0%,rgba(255,255,255,.12) 100%);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 18px rgba(15,31,69,.16);text-align:center}
           .asb-hero-stat-box::before,.asb-hero-stat-box::after{content:none}
           .asb-hero-stat-value{margin:0 0 4px!important;color:#ffffff!important;font-size:29px;line-height:1;font-weight:800;text-shadow:0 1px 6px rgba(15,31,69,.22);white-space:nowrap}
           .asb-hero-stat-label{margin:0!important;color:rgba(255,255,255,.95)!important;font-size:15px;line-height:1.2;font-weight:700;text-shadow:0 1px 4px rgba(15,31,69,.18);white-space:normal}
-          #heroLeadForm{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 4px;width:100%;max-width:1320px;margin:0 auto;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
+          #heroLeadForm{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 6px;width:100%;max-width:1320px;margin:0 auto;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
           #heroLeadForm::before{display:none!important;content:none!important}
-          #heroLeadForm .single_form{margin-top:0;flex:1 1 80px;max-width:132px;min-width:78px}
-          #heroLeadForm .course-select-wrap{flex:1 1 102px;max-width:144px;min-width:98px}
-          #heroLeadForm .hero-form-title{width:auto;flex:0 1 auto;min-width:196px;margin-right:2px}
-          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(16px, 1.55vw, 24px);line-height:1;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
+          #heroLeadForm .single_form{margin-top:0;flex:1 1 104px;max-width:160px;min-width:100px}
+          #heroLeadForm .course-select-wrap{flex:1.1 1 122px;max-width:165px;min-width:120px}
+          #heroLeadForm .hero-form-title{width:auto;flex:0 0 auto;min-width:290px;margin-right:6px}
+          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(20px, 2vw, 30px);line-height:1;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
           .frmD{padding:14px 8px;background-color:rgba(0,105,113,.66)}
           #heroLeadForm .single_form input,#heroLeadForm .single_form select{display:block;width:100%;box-sizing:border-box;height:40px;border-radius:4px;border:1px solid rgba(71,85,105,.55);background:#fff;color:#334155;padding:0 10px;font-size:15px;margin:0;vertical-align:middle}
           #heroLeadForm .single_form input::placeholder{font-size:14px;color:#6b7280}
           #heroLeadForm #Phone{width:100%!important;padding:0 10px!important;font-size:15px!important}
           #heroLeadForm #Phone::placeholder{font-size:14px!important}
-          #heroLeadForm>.single_form:last-child{flex:0 0 132px;max-width:132px;min-width:132px}
-          #heroSubmitBtn{display:block;width:100%;height:40px;line-height:40px;background:#006972!important;font-weight:700;padding:0 10px;min-width:0;flex:0 0 auto;border-radius:4px;white-space:nowrap;font-size:14px}
+          #heroSubmitBtn{height:40px;line-height:40px;background:#006972!important;font-weight:700;padding:0 10px;min-width:92px;flex:0 0 auto;border-radius:4px}
           #heroLeadForm .course-select-wrap select{margin-bottom:0!important;position:relative;top:0}
           .desktop-cta{display:flex!important;justify-content:flex-end;position:fixed;bottom:25px;left:25px;right:25px;z-index:9999;pointer-events:none;transition:opacity .3s ease,transform .3s ease}
           .desktop-cta-strip{display:flex;align-items:center;background:#fff;border-radius:80px;padding:8px 10px;box-shadow:0 15px 35px rgba(15,31,69,.2);pointer-events:auto;gap:12px}
