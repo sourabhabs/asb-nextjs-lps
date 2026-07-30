@@ -37,12 +37,12 @@ const ScholarshipBadgeBba2 = () => (
   </div>
 );
 
-
 const HERO_COURSES = [
   { value: "BBA", label: "BBA" },
   { value: "BCA", label: "BCA" },
   { value: "BCOM", label: "B.Com" },
   { value: "BSc CS", label: "B.Sc. Computer Science" },
+  // { value: "BA Psychology", label: "B.A. Psychology" },
   { value: "IPM (BBA+PGDM)", label: "IPM (BBA+PGDM)" },
 ];
 
@@ -108,59 +108,6 @@ export default function Page() {
   const [page, setPage] = useState(0);
   const [perPage, setPerPage] = useState(2);
 
-  // Popup states
-  const [popupOpen, setPopupOpen] = useState(false);
-  const [popupStep, setPopupStep] = useState(1);
-  const [leadDocId, setLeadDocId] = useState("");
-  const [applicantName, setApplicantName] = useState("");
-  const [completedClass12, setCompletedClass12] = useState("");
-  const [class12Score, setClass12Score] = useState("");
-  const [englishComfort, setEnglishComfort] = useState("");
-  const [higherEducationPlanning, setHigherEducationPlanning] = useState("");
-  const [openToNoida, setOpenToNoida] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
-  const [statusMsg, setStatusMsg] = useState("");
-
-  async function handleQuestionnaireSubmit() {
-    if (!completedClass12 || !class12Score || !englishComfort || !higherEducationPlanning || !openToNoida) {
-      setStatusMsg("Please answer all questions before submitting.");
-      return;
-    }
-
-    setStatus("sending");
-    setStatusMsg("");
-
-    try {
-      const res = await fetch("/api/homepage2/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          leadDocId,
-          completedClass12,
-          class12Score,
-          englishComfort,
-          higherEducationPlanning,
-          openToNoida,
-        }),
-      });
-      const data = await res.json();
-
-      if (data.success) {
-        setStatus("idle");
-        setPopupStep(6); // Step 6 is the final completion step
-        setTimeout(() => {
-          window.location.href = "/thank-you.php";
-        }, 2000);
-      } else {
-        setStatusMsg(data.message || "Failed to submit questionnaire. Please try again.");
-        setStatus("idle");
-      }
-    } catch {
-      setStatusMsg("Network error. Please try again.");
-      setStatus("idle");
-    }
-  }
-
   useEffect(() => {
     const interval = setInterval(() => {
       setIntlIdx((current) => (current + 1) % INTL_SLIDES.length);
@@ -204,9 +151,6 @@ export default function Page() {
   return (
     <>
       <LandingPageTracking googleTagId="AW-18057910395" />
-      <LandingPageTracking googleTagId="AW-862684608" />
-      <LandingPageTracking googleTagId="AW-18057855257" />
-      <LandingPageTracking googleTagId="AW-18057960286" />
       <style>{`
         .alc-desktop-logo-strip{display:flex;align-items:center;gap:20px;margin-left:22px}
         .alc-desktop-logo-strip .logo-alc{height:68px;width:auto;display:block;object-fit:contain}
@@ -236,6 +180,8 @@ export default function Page() {
           }
           .navbar-area,.navbar-area .navbar{background:#ffffff!important;box-shadow:0 1px 0 rgba(15,23,42,.08)}
           .bnrbg{background-image:url('/banner-main.jpg')!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important}
+          .admissions-timer-desktop-lhs{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;width:fit-content;max-width:min(760px,58vw);padding-top:0}
+          .asb-desktop-hero-meta-row{display:flex;align-items:stretch;gap:14px;flex-wrap:nowrap;margin:0}
           .asb-desktop-hero-copy{max-width:660px;margin-top:18px;margin-bottom:28px;text-align:left;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.2)}
           .asb-desktop-hero-title{margin:0 0 12px;font-size:54px;line-height:1.12;font-weight:800;color:#fff;letter-spacing:-.02em}
           .asb-desktop-hero-subtitle{margin:0 0 10px;font-size:22px;line-height:1.35;color:#ffffff!important;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.22)}
@@ -248,25 +194,30 @@ export default function Page() {
           .asb-hero-stat-box::before,.asb-hero-stat-box::after{content:none}
           .asb-hero-stat-value{margin:0 0 4px!important;color:#ffffff!important;font-size:29px;line-height:1;font-weight:800;text-shadow:0 1px 6px rgba(15,31,69,.22);white-space:nowrap}
           .asb-hero-stat-label{margin:0!important;color:rgba(255,255,255,.95)!important;font-size:15px;line-height:1.2;font-weight:700;text-shadow:0 1px 4px rgba(15,31,69,.18);white-space:normal}
-          #heroLeadForm{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 6px;width:100%;max-width:1320px;margin:0 auto;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
+          #heroLeadForm{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 4px;width:100%;max-width:1320px;margin:0 auto;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;position:static!important}
           #heroLeadForm::before{display:none!important;content:none!important}
-          #heroLeadForm .single_form{margin-top:0;flex:1 1 104px;max-width:160px;min-width:100px}
-          #heroLeadForm .course-select-wrap{flex:1.1 1 122px;max-width:165px;min-width:120px}
-          #heroLeadForm .hero-form-title{width:auto;flex:0 0 auto;min-width:290px;margin-right:6px}
-          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(20px, 2vw, 30px);line-height:1;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
+          #heroLeadForm .single_form{margin-top:0;flex:1 1 80px;max-width:132px;min-width:78px}
+          #heroLeadForm .course-select-wrap{flex:1 1 102px;max-width:144px;min-width:98px}
+          #heroLeadForm .hero-form-title{width:auto;flex:0 1 auto;min-width:196px;margin-right:2px}
+          #heroLeadForm .hero-form-title h3{margin:0;color:#fff;font-size:clamp(16px, 1.55vw, 24px);line-height:1;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
           .frmD{padding:14px 8px;background-color:rgba(0,105,113,.66)}
           #heroLeadForm .single_form input,#heroLeadForm .single_form select{display:block;width:100%;box-sizing:border-box;height:40px;border-radius:4px;border:1px solid rgba(71,85,105,.55);background:#fff;color:#334155;padding:0 10px;font-size:15px;margin:0;vertical-align:middle}
           #heroLeadForm .single_form input::placeholder{font-size:14px;color:#6b7280}
           #heroLeadForm #Phone{width:100%!important;padding:0 10px!important;font-size:15px!important}
           #heroLeadForm #Phone::placeholder{font-size:14px!important}
-          #heroSubmitBtn{height:40px;line-height:40px;background:#006972!important;font-weight:700;padding:0 10px;min-width:92px;flex:0 0 auto;border-radius:4px}
+          #heroLeadForm>.single_form:last-child{flex:0 0 132px;max-width:132px;min-width:132px}
+          #heroSubmitBtn{display:block;width:100%;height:40px;line-height:40px;background:#006972!important;font-weight:700;padding:0 10px;min-width:0;flex:0 0 auto;border-radius:4px;white-space:nowrap;font-size:14px}
           #heroLeadForm .course-select-wrap select{margin-bottom:0!important;position:relative;top:0}
           .desktop-cta{display:flex!important;justify-content:flex-end;position:fixed;bottom:25px;left:25px;right:25px;z-index:9999;pointer-events:none;transition:opacity .3s ease,transform .3s ease}
           .desktop-cta-strip{display:flex;align-items:center;background:#fff;border-radius:80px;padding:8px 10px;box-shadow:0 15px 35px rgba(15,31,69,.2);pointer-events:auto;gap:12px}
           .btn-enq{background:#0f1f45!important;color:#fff!important;border-radius:50px!important;padding:14px 35px!important;font-weight:700;font-size:16px;text-transform:uppercase;border:none;cursor:pointer;white-space:nowrap}
           .btn-call{width:52px;height:52px;background:#0f1f45!important;color:#fff!important;border-radius:50%!important;display:flex;align-items:center;justify-content:center;text-decoration:none}
           .btn-wa{display:flex;align-items:center;justify-content:center;transition:transform 0.2s ease}
+          .btn-wa:hover{transform:scale(1.05)}
           .mobV{display:none!important}
+        }
+        @media (min-width:992px) and (max-height:820px){
+          .admissions-timer-desktop-lhs{padding-top:22px}
         }
         @media (max-width:991px){
           .navbar-area{position:relative!important;top:auto!important;left:auto!important;background:#fff!important;box-shadow:none!important}
@@ -304,429 +255,9 @@ export default function Page() {
           .mobile-btn-wa{width:48px;height:48px;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform 0.2s ease}
           .mobile-btn-wa:hover{transform:scale(1.05)}
           .mobile-btn-wa img{width:100%;height:100%;object-fit:contain}
-          @media (max-width:767px){.recruiters-grid{grid-template-columns:repeat(2,1fr);gap:12px}.top-recruiters{padding:40px 0}}
-        }
-        .asb-scholarship-card {
-          margin-top: 24px;
-          padding: 16px 20px;
-          border-radius: 14px;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
-          border: 1px solid rgba(255, 255, 255, 0.25);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-          display: inline-flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 10px;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          max-width: 480px;
-          text-align: left;
-        }
-        .asb-scholarship-card:hover {
-          transform: translateY(-2px);
-          border-color: rgba(255, 255, 255, 0.4);
-          box-shadow: 0 12px 40px 0 rgba(0, 105, 113, 0.3);
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%);
-        }
-        .asb-scholarship-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          background: rgba(255, 183, 3, 0.15);
-          color: #ffb703;
-          border: 1px solid rgba(255, 183, 3, 0.3);
-          padding: 4px 10px;
-          border-radius: 20px;
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-        }
-        .badge-glowing-dot {
-          width: 6px;
-          height: 6px;
-          background-color: #ffb703;
-          border-radius: 50%;
-          display: inline-block;
-          box-shadow: 0 0 8px #ffb703;
-          animation: scholarship-glow 1.5s infinite ease-in-out;
-        }
-        @keyframes scholarship-glow {
-          0%, 100% { opacity: 0.5; transform: scale(0.9); }
-          50% { opacity: 1; transform: scale(1.2); }
-        }
-        .asb-scholarship-content {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-        }
-        .asb-scholarship-icon-box {
-          width: 48px;
-          height: 48px;
-          border-radius: 10px;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-          transition: transform 0.3s ease;
-        }
-        .asb-scholarship-card:hover .asb-scholarship-icon-box {
-          transform: rotate(5deg) scale(1.05);
-        }
-        .asb-scholarship-details {
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-        }
-        .asb-scholarship-title {
-          font-size: 22px;
-          font-weight: 800;
-          color: #ffffff;
-          margin: 0;
-          line-height: 1.2;
-          letter-spacing: -0.01em;
-          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-        }
-        .asb-scholarship-desc {
-          font-size: 14px;
-          font-weight: 500;
-          color: rgba(255, 255, 255, 0.85) !important;
-          margin: 0 !important;
-          line-height: 1.3;
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-        }
-        .asb-scholarship-card.mobile-style {
-          display: flex;
-          width: calc(100% - 20px);
-          max-width: 390px;
-          margin: 12px auto 0;
-          background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-          border: 1px solid #e2e8f0;
-          box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
-          backdrop-filter: none;
-          -webkit-backdrop-filter: none;
-        }
-        .asb-scholarship-card.mobile-style:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
-          border-color: #cbd5e1;
-        }
-        .asb-scholarship-card.mobile-style .asb-scholarship-title {
-          color: #0f1f45;
-          font-size: 19px;
-        }
-        .asb-scholarship-card.mobile-style .asb-scholarship-desc {
-          color: #475569 !important;
-          font-size: 13px;
-        }
-        .asb-scholarship-card.mobile-style .asb-scholarship-icon-box {
-          background: rgba(15, 31, 69, 0.05);
-          border: 1px solid rgba(15, 31, 69, 0.08);
+        @media (max-width:767px){.recruiters-grid{grid-template-columns:repeat(2,1fr);gap:12px}.top-recruiters{padding:40px 0}}
         }
 
-        /* Popup overlay and styling */
-        .asb-popup-overlay {
-          position: fixed;
-          inset: 0;
-          background: rgba(15, 23, 42, 0.45);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 100000;
-          padding: 16px;
-          overflow-y: auto;
-        }
-        .asb-popup-card {
-          width: min(500px, 100%);
-          background: #fff;
-          border-radius: 20px;
-          padding: 28px 24px;
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-          position: relative;
-          color: #0f172a;
-        }
-        .q-card {
-          margin-bottom: 20px;
-        }
-        .q-question {
-          font-size: 20px;
-          font-weight: 800;
-          color: #0f172a;
-          margin: 0 0 6px;
-          line-height: 1.3;
-        }
-        .q-qsub {
-          font-size: 14px;
-          color: #64748b;
-          margin: 0 0 16px;
-          line-height: 1.4;
-        }
-        .option-button {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          width: 100%;
-          padding: 14px 18px;
-          margin-bottom: 10px;
-          background: #fff;
-          border: 1px solid #cbd5e1;
-          border-radius: 12px;
-          font-size: 16px;
-          font-weight: 600;
-          color: #334155;
-          text-align: left;
-          cursor: pointer;
-          transition: all 0.2s ease;
-        }
-        .option-button:hover {
-          background: #f8fafc;
-          border-color: #94a3b8;
-        }
-        .option-button.active {
-          background: #f0fdfa;
-          border-color: #0d9488;
-          color: #0f766e;
-          box-shadow: 0 0 0 1px #0d9488;
-        }
-        .option-circle {
-          width: 18px;
-          height: 18px;
-          border: 2px solid #cbd5e1;
-          border-radius: 50%;
-          display: inline-block;
-          flex-shrink: 0;
-          position: relative;
-        }
-        .option-button.active .option-circle {
-          border-color: #0d9488;
-        }
-        .option-button.active .option-circle::after {
-          content: "";
-          position: absolute;
-          inset: 3px;
-          background: #0d9488;
-          border-radius: 50%;
-        }
-        .q-actions {
-          display: flex;
-          gap: 12px;
-          margin-top: 24px;
-        }
-        .btn-back {
-          flex: 1;
-          height: 48px;
-          border: 1px solid #cbd5e1;
-          border-radius: 12px;
-          background: #fff;
-          color: #475569;
-          font-weight: 700;
-          font-size: 15px;
-          cursor: pointer;
-          transition: background-color 0.2s;
-        }
-        .btn-back:hover {
-          background: #f8fafc;
-        }
-        .btn-continue {
-          flex: 2;
-          height: 48px;
-          border: none;
-          border-radius: 12px;
-          background: #0f1f45;
-          color: #fff;
-          font-weight: 700;
-          font-size: 15px;
-          cursor: pointer;
-          transition: opacity 0.2s;
-        }
-        .btn-continue:hover {
-          opacity: 0.95;
-        }
-        .btn-continue:disabled {
-          background: #94a3b8;
-          cursor: not-allowed;
-        }
-        .progress-wrapper {
-          margin-bottom: 24px;
-        }
-        .progress-text {
-          display: flex;
-          justify-content: space-between;
-          font-size: 13px;
-          font-weight: 700;
-          color: #475569;
-          margin-bottom: 6px;
-        }
-        .progress-bar-bg {
-          width: 100%;
-          height: 6px;
-          background: #e2e8f0;
-          border-radius: 99px;
-          overflow: hidden;
-        }
-        .progress-bar-fill {
-          height: 100%;
-          background: #0d9488;
-          border-radius: 99px;
-          transition: width 0.3s ease;
-        }
-        .thank-you-card {
-          text-align: center;
-          padding: 30px 10px;
-        }
-        .thank-you-icon {
-          width: 64px;
-          height: 64px;
-          background: #dcfce7;
-          color: #15803d;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto 20px;
-        }
-        .thank-you-title {
-          font-size: 28px;
-          font-weight: 800;
-          color: #0f1f45;
-          margin-bottom: 12px;
-        }
-        .thank-you-desc {
-          font-size: 16px;
-          color: #475569;
-          line-height: 1.6;
-        }
-        @media (min-width:992px){
-          .admissions-timer-desktop-lhs{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:fit-content;max-width:min(760px,58vw);padding-top:14px}
-          .asb-desktop-hero-meta-row{display:flex;align-items:stretch;gap:16px;flex-wrap:nowrap;margin:0 0 12px 0}
-        }
-        @media (min-width:992px) and (max-height:820px){
-          .admissions-timer-desktop-lhs{padding-top:22px}
-        }
-
-        /* Admissions Countdown Timer Styling */
-        .admissions-timer-container {
-          background: linear-gradient(135deg, rgba(15, 31, 69, 0.92) 0%, rgba(10, 60, 80, 0.96) 100%);
-          border: 1.5px solid rgba(34, 240, 255, 0.45);
-          border-radius: 12px;
-          padding: 8px 12px;
-          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          width: fit-content;
-          max-width: 100%;
-          margin: 12px auto;
-          text-align: center;
-        }
-        @media (min-width: 992px) {
-          .admissions-timer-container {
-            margin: 0;
-            text-align: left;
-            padding: 10px 16px;
-            border-radius: 12px;
-            border-width: 1.5px;
-            min-width: 360px;
-            min-height: 112px;
-            align-self: stretch;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          }
-
-        .asb-bba2-scholarship-badge {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 8px 12px;
-          background: rgba(15, 31, 69, 0.95);
-          border: 1.5px solid #ffb703;
-          border-radius: 12px;
-          box-shadow: 0 0 12px rgba(255, 183, 3, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
-          width: fit-content;
-          margin: 10px auto;
-          text-align: left;
-        }
-        .asb-bba2-sch-left {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .asb-bba2-sch-divider {
-          width: 1px;
-          height: 48px;
-          background: rgba(255, 183, 3, 0.4);
-        }
-        .asb-bba2-sch-right {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          line-height: 1;
-        }
-        .asb-bba2-sch-upto {
-          color: #ffb703;
-          font-size: 8px;
-          font-weight: 800;
-          letter-spacing: 0.05em;
-        }
-        .asb-bba2-sch-percent {
-          color: #ffb703;
-          font-size: 22px;
-          font-weight: 900;
-          line-height: 0.95;
-          margin: 2px 0;
-        }
-        .asb-bba2-sch-title {
-          color: #ffffff;
-          font-size: 11px;
-          font-weight: 800;
-          letter-spacing: 0.05em;
-        }
-        .asb-bba2-sch-sub {
-          color: #ffffff;
-          font-size: 7px;
-          font-weight: 700;
-          letter-spacing: 0.02em;
-          margin-top: 1px;
-        }
-        .asb-bba2-sch-pill {
-          background: #ffb703;
-          color: #000000;
-          font-size: 7px;
-          font-weight: 900;
-
-        /* Admissions Countdown Timer Styling */
-        .admissions-timer-container {
-          background: linear-gradient(135deg, rgba(15, 31, 69, 0.92) 0%, rgba(10, 60, 80, 0.96) 100%);
-          border: 1.5px solid rgba(34, 240, 255, 0.45);
-          border-radius: 12px;
-          padding: 8px 12px;
-          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          width: fit-content;
-          max-width: 100%;
-          margin: 12px auto;
-          text-align: center;
-        }
-        @media (min-width: 992px) {
-          .admissions-timer-container {
-            margin: 0;
-            text-align: left;
-            padding: 10px 16px;
-            border-radius: 12px;
-            border-width: 1.5px;
-            min-width: 360px;
-            min-height: 112px;
-            align-self: stretch;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          }
 
         .asb-bba2-scholarship-badge {
           display: flex;
@@ -800,6 +331,145 @@ export default function Page() {
             gap: 12px;
             border-radius: 12px;
             border-width: 1.5px;
+            min-width: 360px;
+            min-height: 112px;
+            align-self: stretch;
+          }
+          .asb-bba2-sch-left svg {
+            width: 34px !important;
+            height: 34px !important;
+          }
+          .asb-bba2-sch-divider {
+            height: 48px;
+            width: 1px;
+          }
+          .asb-bba2-sch-upto {
+            font-size: 10px;
+          }
+          .asb-bba2-sch-percent {
+            font-size: 26px;
+          }
+          .asb-bba2-sch-title {
+            font-size: 13px;
+          }
+          .asb-bba2-sch-sub {
+            font-size: 8px;
+          }
+          .asb-bba2-sch-pill {
+            font-size: 8px;
+            padding: 2px 7px;
+            margin-top: 3px;
+          }
+        }
+        .asb-placement-badge {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 8px 14px;
+          background: rgba(15, 31, 69, 0.92);
+          border: 1.5px solid rgba(255, 255, 255, 0.8);
+          border-radius: 12px;
+          color: #ffffff;
+          font-weight: 800;
+          font-size: 13px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          width: fit-content;
+          margin: 10px auto;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        .asb-placement-icon svg {
+          stroke: #24f6f2;
+          width: 16px;
+          height: 16px;
+          display: block;
+        }
+        @media (min-width: 992px) {
+          .asb-placement-badge {
+            margin: 0 0 6px 0;
+            padding: 8px 14px;
+            font-size: 13px;
+            justify-content: flex-start;
+            border-radius: 10px;
+            border-width: 1.5px;
+            gap: 8px;
+          }
+          .asb-placement-icon svg {
+            width: 16px !important;
+            height: 16px !important;
+          }
+        }
+        .admissions-timer-title {
+          color: #ffffff;
+          font-size: 13px;
+          font-weight: 800;
+          margin: 0 0 8px 0;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-title {
+            font-size: 14px;
+            margin-bottom: 6px;
+          }
+        }
+        .admissions-timer-digits-row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-digits-row {
+            gap: 8px;
+          }
+        }
+        .admissions-timer-item-group {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-item-group {
+            gap: 8px;
+          }
+        }
+        .admissions-timer-card-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 3px;
+        }
+        .admissions-timer-card {
+          background: #ffffff;
+          border-radius: 8px;
+          width: 42px;
+          height: 42px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-card {
+            width: 58px;
+            height: 58px;
+            border-radius: 12px;
+          }
+        }
+        .admissions-timer-digit {
+          color: #990000;
+          font-size: 18px;
+          font-weight: 800;
+          font-family: 'Inter', sans-serif;
+          line-height: 1;
+        }
+        @media (min-width: 992px) {
+          .admissions-timer-digit {
+            font-size: 26px;
+          }
         }
         .admissions-timer-colon {
           color: #ffffff;
@@ -854,25 +524,29 @@ export default function Page() {
           .header-hero-content {
             padding-left: 30px !important;
             padding-right: 24px !important;
+            min-height: clamp(318px, 30vw, 430px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
           }
           .admissions-timer-desktop-lhs {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            justify-content: flex-start;
+            justify-content: center;
             width: fit-content;
-            max-width: min(780px, 60vw);
-            padding-top: 18px;
+            max-width: min(720px, 56vw);
+            padding-top: 0;
           }
           .asb-desktop-hero-header-text {
-            max-width: min(780px, 60vw);
+            max-width: min(720px, 56vw);
             margin: 0 0 14px;
             text-shadow: 0 10px 28px rgba(6, 16, 38, 0.32);
           }
           .asb-desktop-hero-top-small {
             margin: 0 0 4px;
             color: #fff;
-            font-size: clamp(24px, 1.75vw, 34px);
+            font-size: clamp(17px, 1.18vw, 21px);
             line-height: 1.05;
             font-weight: 800;
             letter-spacing: -0.02em;
@@ -880,15 +554,15 @@ export default function Page() {
           .asb-desktop-hero-main-title {
             margin: 0;
             color: #fff;
-            font-size: clamp(52px, 4.6vw, 78px);
-            line-height: 0.96;
+            font-size: clamp(34px, 2.9vw, 44px);
+            line-height: 0.98;
             font-weight: 900;
-            letter-spacing: -0.05em;
+            letter-spacing: -0.04em;
           }
           .asb-desktop-hero-bottom-small {
             margin: 6px 0 0;
             color: #fff;
-            font-size: clamp(22px, 1.7vw, 30px);
+            font-size: clamp(14px, 0.96vw, 18px);
             line-height: 1.05;
             font-weight: 800;
             letter-spacing: -0.02em;
@@ -896,41 +570,43 @@ export default function Page() {
           .asb-desktop-hero-header-text::after {
             content: "";
             display: block;
-            width: 108px;
-            height: 8px;
+            width: 92px;
+            height: 7px;
             border-radius: 999px;
-            margin: 14px 0 18px;
+            margin: 12px 0 14px;
             background: linear-gradient(90deg, #63fff6 0%, #2f8cff 100%);
           }
           .asb-desktop-hero-pill-badge {
             display: inline-flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 6px;
-            max-width: min(780px, 60vw);
-            padding: 9px 16px;
-            border: 3px solid #43d6ff;
-            border-radius: 16px;
+            gap: 4px;
+            max-width: min(720px, 56vw);
+            padding: 7px 12px;
+            border: 2px solid #43d6ff;
+            border-radius: 14px;
             background: linear-gradient(180deg, rgba(34, 112, 209, 0.48) 0%, rgba(18, 76, 152, 0.34) 100%);
             box-shadow: 0 12px 28px rgba(6, 16, 38, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.22);
             color: #fff;
-            font-size: clamp(17px, 1.18vw, 24px);
-            line-height: 1.22;
+            font-size: clamp(12px, 0.82vw, 14px);
+            line-height: 1.16;
             font-weight: 700;
           }
           .asb-desktop-hero-pill-badge span {
             color: #67f7ff;
             font-weight: 900;
+            font-size: 1.16em;
+            letter-spacing: -0.01em;
           }
           .asb-placement-badge {
             margin: 0 0 10px 0;
-            padding: 10px 16px;
-            font-size: clamp(16px, 1vw, 20px);
+            padding: 7px 12px;
+            font-size: clamp(10px, .68vw, 12px);
             justify-content: flex-start;
             border-radius: 12px;
             border-width: 1.5px;
-            gap: 10px;
-            min-height: 50px;
+            gap: 8px;
+            min-height: 40px;
           }
           .asb-placement-icon svg {
             width: 18px !important;
@@ -939,7 +615,7 @@ export default function Page() {
           .asb-desktop-hero-meta-row {
             display: flex;
             align-items: stretch;
-            gap: 18px;
+            gap: 14px;
             flex-wrap: nowrap;
             margin: 0;
           }
@@ -1038,17 +714,93 @@ export default function Page() {
           }
         }
         @media (min-width: 992px) and (max-height: 820px) {
+          .header-hero-content {
+            min-height: clamp(300px, 29vw, 390px);
+            justify-content: center;
+            padding-top: 0;
+          }
           .admissions-timer-desktop-lhs {
-            padding-top: 14px;
+            padding-top: 0;
           }
           .asb-desktop-hero-top-small {
             font-size: 20px;
           }
           .asb-desktop-hero-main-title {
-            font-size: clamp(40px, 4.05vw, 60px);
+            font-size: clamp(38px, 3.4vw, 52px);
           }
           .asb-desktop-hero-bottom-small {
+            font-size: 17px;
+          }
+          .asb-desktop-hero-header-text::after {
+            width: 92px;
+            height: 6px;
+            margin: 10px 0 12px;
+          }
+          .asb-desktop-hero-pill-badge {
+            padding: 7px 12px;
+            border-radius: 14px;
+            font-size: clamp(14px, .98vw, 17px);
+          }
+          .asb-desktop-hero-pill-badge span {
+            font-size: 1.12em;
+          }
+          .asb-placement-badge {
+            min-height: 40px;
+            font-size: 12px;
+            padding: 7px 12px;
+          }
+          .asb-bba2-scholarship-badge,
+          .admissions-timer-container {
+            min-height: 102px;
+          }
+          .asb-bba2-scholarship-badge {
+            width: clamp(270px, 21vw, 330px);
+            min-width: clamp(270px, 21vw, 330px);
+            padding: 10px 12px;
+          }
+          .admissions-timer-container {
+            width: clamp(270px, 21vw, 330px);
+            min-width: clamp(270px, 21vw, 330px);
+            padding: 10px 12px;
+          }
+          .asb-bba2-sch-percent {
+            font-size: clamp(28px, 2vw, 36px);
+          }
+          .asb-bba2-sch-title {
+            font-size: clamp(13px, .92vw, 16px);
+          }
+          .admissions-timer-card {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+          }
+          .admissions-timer-digit {
             font-size: 20px;
+          }
+          .admissions-timer-colon {
+            font-size: 20px;
+            margin-top: -10px;
+          }
+          .admissions-timer-title {
+            font-size: 13px;
+            margin-bottom: 6px;
+          }
+        }
+        @media (min-width: 992px) and (max-width: 1600px) {
+          .header-hero-content {
+            min-height: clamp(286px, 26vw, 380px);
+          }
+          .admissions-timer-desktop-lhs {
+            justify-content: center;
+          }
+          .asb-desktop-hero-top-small {
+            font-size: clamp(16px, 0.96vw, 19px);
+          }
+          .asb-desktop-hero-main-title {
+            font-size: clamp(31px, 2.4vw, 38px);
+          }
+          .asb-desktop-hero-bottom-small {
+            font-size: clamp(13px, 0.8vw, 16px);
           }
           .asb-desktop-hero-header-text::after {
             width: 84px;
@@ -1056,50 +808,117 @@ export default function Page() {
             margin: 10px 0 12px;
           }
           .asb-desktop-hero-pill-badge {
-            padding: 7px 12px;
-            border-radius: 14px;
-            font-size: clamp(14px, 1.08vw, 19px);
+            padding: 6px 10px;
+            border-width: 2px;
+            border-radius: 12px;
+            font-size: clamp(10px, 0.64vw, 12px);
           }
           .asb-placement-badge {
-            min-height: 44px;
-            font-size: 14px;
-            padding: 8px 14px;
+            padding: 7px 12px;
+            font-size: clamp(9px, 0.58vw, 11px);
+            min-height: 38px;
+          }
+          .asb-desktop-hero-meta-row {
+            gap: 10px;
           }
           .asb-bba2-scholarship-badge,
           .admissions-timer-container {
-            min-height: 110px;
+            min-height: 88px;
           }
           .asb-bba2-scholarship-badge {
-            width: clamp(286px, 22vw, 360px);
-            min-width: clamp(286px, 22vw, 360px);
-            padding: 12px 14px;
+            width: clamp(214px, 16vw, 266px);
+            min-width: clamp(214px, 16vw, 266px);
+            padding: 8px 10px;
+            gap: 8px;
           }
-          .admissions-timer-container {
-            width: clamp(286px, 21vw, 360px);
-            min-width: clamp(286px, 21vw, 360px);
-            padding: 12px 14px;
+          .asb-bba2-sch-left svg {
+            width: 28px !important;
+            height: 28px !important;
+          }
+          .asb-bba2-sch-divider {
+            height: 38px;
+          }
+          .asb-bba2-sch-upto {
+            font-size: 8px;
           }
           .asb-bba2-sch-percent {
-            font-size: clamp(34px, 2.6vw, 46px);
+            font-size: clamp(19px, 1.28vw, 24px);
           }
           .asb-bba2-sch-title {
-            font-size: clamp(16px, 1.2vw, 22px);
+            font-size: clamp(9px, 0.6vw, 11px);
           }
-          .admissions-timer-card {
-            width: 52px;
-            height: 52px;
-            border-radius: 12px;
+          .asb-bba2-sch-sub {
+            font-size: clamp(6px, 0.42vw, 8px);
           }
-          .admissions-timer-digit {
-            font-size: 24px;
+          .asb-bba2-sch-pill {
+            font-size: 7px;
+            padding: 2px 6px;
           }
-          .admissions-timer-colon {
-            font-size: 24px;
-            margin-top: -14px;
+          .admissions-timer-container {
+            width: clamp(214px, 16vw, 266px);
+            min-width: clamp(214px, 16vw, 266px);
+            padding: 8px 10px;
           }
           .admissions-timer-title {
-            font-size: 16px;
-            margin-bottom: 8px;
+            font-size: clamp(8px, 0.54vw, 10px);
+            margin-bottom: 5px;
+          }
+          .admissions-timer-digits-row,
+          .admissions-timer-item-group {
+            gap: 4px;
+          }
+          .admissions-timer-card {
+            width: clamp(34px, 2.25vw, 40px);
+            height: clamp(34px, 2.25vw, 40px);
+            border-radius: 9px;
+          }
+          .admissions-timer-digit {
+            font-size: clamp(14px, 0.92vw, 16px);
+          }
+          .admissions-timer-colon {
+            font-size: clamp(12px, 0.74vw, 14px);
+            margin-top: -6px;
+          }
+          .admissions-timer-label {
+            font-size: clamp(6px, 0.4vw, 8px);
+          }
+          #heroLeadForm {
+            gap: 4px;
+          }
+          #heroLeadForm .hero-form-title {
+            min-width: 152px;
+          }
+          #heroLeadForm .hero-form-title h3 {
+            font-size: clamp(12px, 0.82vw, 15px);
+          }
+          #heroLeadForm .single_form {
+            flex: 1 1 66px;
+            max-width: 112px;
+            min-width: 64px;
+          }
+          #heroLeadForm .course-select-wrap {
+            flex: 1 1 82px;
+            max-width: 122px;
+            min-width: 78px;
+          }
+          #heroLeadForm .single_form input,
+          #heroLeadForm .single_form select,
+          #heroLeadForm #Phone {
+            font-size: 12px !important;
+          }
+          #heroLeadForm .single_form input::placeholder,
+          #heroLeadForm #Phone::placeholder {
+            font-size: 11px !important;
+          }
+          #heroLeadForm > .single_form:last-child {
+            flex: 0 0 114px;
+            max-width: 114px;
+            min-width: 114px;
+          }
+          #heroSubmitBtn {
+            min-width: 0;
+            padding: 0 8px;
+            font-size: 12px;
           }
         }
 
@@ -1475,6 +1294,126 @@ export default function Page() {
           background: #005259 !important;
           box-shadow: 0 8px 20px rgba(0, 105, 114, 0.35) !important;
         }
+        .asb-scholarship-card {
+          margin-top: 24px;
+          padding: 16px 20px;
+          border-radius: 14px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+          display: inline-flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          max-width: 480px;
+          text-align: left;
+        }
+        .asb-scholarship-card:hover {
+          transform: translateY(-2px);
+          border-color: rgba(255, 255, 255, 0.4);
+          box-shadow: 0 12px 40px 0 rgba(0, 105, 113, 0.3);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%);
+        }
+        .asb-scholarship-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: rgba(255, 183, 3, 0.15);
+          color: #ffb703;
+          border: 1px solid rgba(255, 183, 3, 0.3);
+          padding: 4px 10px;
+          border-radius: 20px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+        }
+        .badge-glowing-dot {
+          width: 6px;
+          height: 6px;
+          background-color: #ffb703;
+          border-radius: 50%;
+          display: inline-block;
+          box-shadow: 0 0 8px #ffb703;
+          animation: scholarship-glow 1.5s infinite ease-in-out;
+        }
+        @keyframes scholarship-glow {
+          0%, 100% { opacity: 0.5; transform: scale(0.9); }
+          50% { opacity: 1; transform: scale(1.2); }
+        }
+        .asb-scholarship-content {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+        .asb-scholarship-icon-box {
+          width: 48px;
+          height: 48px;
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          transition: transform 0.3s ease;
+        }
+        .asb-scholarship-card:hover .asb-scholarship-icon-box {
+          transform: rotate(5deg) scale(1.05);
+        }
+        .asb-scholarship-details {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+        .asb-scholarship-title {
+          font-size: 22px;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0;
+          line-height: 1.2;
+          letter-spacing: -0.01em;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+        .asb-scholarship-desc {
+          font-size: 14px;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.85) !important;
+          margin: 0 !important;
+          line-height: 1.3;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+        .asb-scholarship-card.mobile-style {
+          display: flex;
+          width: calc(100% - 20px);
+          max-width: 390px;
+          margin: 12px auto 0;
+          background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+        .asb-scholarship-card.mobile-style:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+          border-color: #cbd5e1;
+        }
+        .asb-scholarship-card.mobile-style .asb-scholarship-title {
+          color: #0f1f45;
+          font-size: 19px;
+        }
+        .asb-scholarship-card.mobile-style .asb-scholarship-desc {
+          color: #475569 !important;
+          font-size: 13px;
+        }
+        .asb-scholarship-card.mobile-style .asb-scholarship-icon-box {
+          background: rgba(15, 31, 69, 0.05);
+          border: 1px solid rgba(15, 31, 69, 0.08);
+        }
       `}</style>
 
       <header className="header-area">
@@ -1530,7 +1469,6 @@ export default function Page() {
                   className="header-hero-content"
                   style={{ paddingLeft: "35px", paddingRight: "30px", position: "relative", zIndex: 1 }}
                 >
-                  <div className="mobH" style={{ height: "clamp(260px, 32vw, 420px)" }} />
                   <div className="mobH admissions-timer-desktop-lhs">
                     <div className="asb-desktop-hero-header-text">
                       <div className="asb-desktop-hero-top-small">Join the Best</div>
@@ -1566,17 +1504,11 @@ export default function Page() {
               id="enquire"
               title="Admissions Open"
               courses={HERO_COURSES}
-              queryLabel="ASB Pmax campaign 2026 Landing"
+              queryLabel="ASB UG Admissions 2026 Landing"
               thankYouPath="/thank-you.php"
               submitLabel="ENQUIRE NOW"
               trackMetaLead
               trackMetaCompleteRegistration
-              onSuccess={(id, name) => {
-                setLeadDocId(id);
-                setApplicantName(name);
-                setPopupStep(1);
-                setPopupOpen(true);
-              }}
             />
           </div>
         </section>
@@ -1830,7 +1762,7 @@ export default function Page() {
                   id="scholarship-check-enquire"
                   title="Admissions Open"
                   courses={HERO_COURSES}
-                  queryLabel="ASB Pmax campaign 2026 Landing - Scholarship Check"
+                  queryLabel="ASB UG Admissions 2026 Landing - Scholarship Check"
                   thankYouPath="/thank-you.php"
                   submitLabel="Enquire Now"
                   consentNote="I have read and agree to the Privacy Policy and the collection of my personal information."
@@ -1838,12 +1770,6 @@ export default function Page() {
                   show12thMarks={false}
                   trackMetaLead
                   trackMetaCompleteRegistration
-                  onSuccess={(id, name) => {
-                    setLeadDocId(id);
-                    setApplicantName(name);
-                    setPopupStep(1);
-                    setPopupOpen(true);
-                  }}
                 />
               </div>
             </div>
@@ -1853,313 +1779,37 @@ export default function Page() {
 
       <footer className="footer"><div className="container footer-inner"><div className="footer-grid"><div><h4 style={{ color: "#fff" }}>Asian School of Business</h4><p>Admissions open for 2026 intake. Build your future in business, commerce and technology with a globally aware academic ecosystem.</p></div><div><div className="f-title">Quick Links</div><ul className="f-links"><li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToId("home", true); }}>Home</a></li><li><a href="#courses" onClick={(e) => { e.preventDefault(); scrollToId("courses"); }}>Programs Offered</a></li><li><a href="#international" onClick={(e) => { e.preventDefault(); scrollToId("international"); }}>International Exposure</a></li><li><a href="#enquire" onClick={(e) => { e.preventDefault(); scrollToId("enquire", true); }}>Enquire Now</a></li></ul></div><div><div className="f-title">Admissions Office</div><p>Asian School of Business, Noida, Uttar Pradesh</p></div></div><div className="f-bottom"><span>(c) 2026 Asian School of Business. All rights reserved.</span><span>International association with Oxford Business College</span></div></div></footer>
 
-      <div className="desktop-cta" style={{ opacity: showSticky ? "1" : "0", pointerEvents: showSticky ? "auto" : "none", transform: showSticky ? "translateY(0)" : "translateY(20px)" }} aria-label="Desktop actions">
-        <div className="desktop-cta-strip">
-          <button type="button" className="btn btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
-        </div>
-      </div>
-      <div className={`mobile-cta${showSticky ? " is-visible" : ""}`} aria-label="Mobile actions">
-        <div className="mobile-cta-strip">
-          <button type="button" className="mobile-btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
-        </div>
-      </div>
-      {popupOpen && (
-        <div className="asb-popup-overlay">
-          <div className="asb-popup-card">
-            {popupStep >= 1 && popupStep <= 5 && (
-              <div>
-                <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#0f1f45", textAlign: "center", marginBottom: "4px" }}>
-                  Complete Your Application Profile
-                </h3>
-                <p style={{ fontSize: "14px", color: "#475569", textAlign: "center", marginBottom: "20px" }}>
-                  Answer a few quick questions to help us guide you towards the right program and scholarship opportunities.
-                </p>
-
-                <div className="progress-wrapper">
-                  <div className="progress-text">
-                    <span>Step {popupStep} of 5</span>
-                    <span>Hi {applicantName || "Applicant"}!</span>
-                  </div>
-                  <div className="progress-bar-bg">
-                    <div
-                      className="progress-bar-fill"
-                      style={{ width: `${(popupStep / 5) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
-
-                {popupStep === 1 && (
-                  <div className="q-card">
-                    <h4 className="q-question">Have you completed Class 12?</h4>
-                    <p className="q-qsub">This helps us confirm eligibility for our undergraduate programs.</p>
-
-                    <button
-                      type="button"
-                      className={`option-button ${completedClass12 === "Yes" ? "active" : ""}`}
-                      onClick={() => setCompletedClass12("Yes")}
-                    >
-                      <span>Yes</span>
-                      <span className="option-circle"></span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`option-button ${completedClass12 === "No" ? "active" : ""}`}
-                      onClick={() => setCompletedClass12("No")}
-                    >
-                      <span>No</span>
-                      <span className="option-circle"></span>
-                    </button>
-                  </div>
-                )}
-
-                {popupStep === 2 && (
-                  <div className="q-card">
-                    <h4 className="q-question">What was your Class 12 score?</h4>
-                    <p className="q-qsub">This helps us calculate any scholarship you may be eligible for.</p>
-
-                    <button
-                      type="button"
-                      className={`option-button ${class12Score === "Below 80%" ? "active" : ""}`}
-                      onClick={() => setClass12Score("Below 80%")}
-                    >
-                      <span>Below 80%</span>
-                      <span className="option-circle"></span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`option-button ${class12Score === "80 - 84.9%" ? "active" : ""}`}
-                      onClick={() => setClass12Score("80 - 84.9%")}
-                    >
-                      <span>80 - 84.9%</span>
-                      <span className="option-circle"></span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`option-button ${class12Score === "85 - 89.9%" ? "active" : ""}`}
-                      onClick={() => setClass12Score("85 - 89.9%")}
-                    >
-                      <span>85 - 89.9%</span>
-                      <span className="option-circle"></span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`option-button ${class12Score === "90 - 94.9%" ? "active" : ""}`}
-                      onClick={() => setClass12Score("90 - 94.9%")}
-                    >
-                      <span>90 - 94.9%</span>
-                      <span className="option-circle"></span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`option-button ${class12Score === "95% - 100%" ? "active" : ""}`}
-                      onClick={() => setClass12Score("95% - 100%")}
-                    >
-                      <span>95% - 100%</span>
-                      <span className="option-circle"></span>
-                    </button>
-
-                    {/* Real-time Scholarship Status Box */}
-                    {class12Score && (
-                      <div
-                        style={{
-                          marginTop: "16px",
-                          padding: "12px 16px",
-                          borderRadius: "10px",
-                          backgroundColor: class12Score !== "Below 80%" ? "#f0fdf4" : "#f8fafc",
-                          border: class12Score !== "Below 80%" ? "1px dashed #22c55e" : "1px solid #e2e8f0",
-                          textAlign: "center",
-                        }}
-                      >
-                        {class12Score === "95% - 100%" && (
-                          <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#15803d" }}>
-                            🎉 Congratulations! You are eligible for a 100% Scholarship on Tuition Fee.
-                          </p>
-                        )}
-                        {class12Score === "90 - 94.9%" && (
-                          <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#15803d" }}>
-                            🎉 Congratulations! You are eligible for a 75% Scholarship on Tuition Fee.
-                          </p>
-                        )}
-                        {class12Score === "85 - 89.9%" && (
-                          <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#15803d" }}>
-                            🎉 Congratulations! You are eligible for a 50% Scholarship on Tuition Fee.
-                          </p>
-                        )}
-                        {class12Score === "80 - 84.9%" && (
-                          <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#15803d" }}>
-                            🎉 Congratulations! You are eligible for a 25% Scholarship on Tuition Fee.
-                          </p>
-                        )}
-                        {class12Score === "Below 80%" && (
-                          <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#475569" }}>
-                            Standard Admission Criteria Apply. Fill out the application to check other aid options.
-                          </p>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {popupStep === 3 && (
-                  <div className="q-card">
-                    <h4 className="q-question">Are you actively planning to pursue higher education within the next 2 months?</h4>
-                    <p className="q-qsub">Select your timeline option</p>
-
-                    <button
-                      type="button"
-                      className={`option-button ${higherEducationPlanning === "Yes" ? "active" : ""}`}
-                      onClick={() => setHigherEducationPlanning("Yes")}
-                    >
-                      <span>Yes</span>
-                      <span className="option-circle"></span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`option-button ${higherEducationPlanning === "Exploring Options" ? "active" : ""}`}
-                      onClick={() => setHigherEducationPlanning("Exploring Options")}
-                    >
-                      <span>Exploring Options</span>
-                      <span className="option-circle"></span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`option-button ${higherEducationPlanning === "No" ? "active" : ""}`}
-                      onClick={() => setHigherEducationPlanning("No")}
-                    >
-                      <span>No</span>
-                      <span className="option-circle"></span>
-                    </button>
-                  </div>
-                )}
-
-                {popupStep === 4 && (
-                  <div className="q-card">
-                    <h4 className="q-question">ASB is located in Noida (Delhi/NCR).</h4>
-                    <p className="q-qsub">Are you open to studying in Noida (Delhi/NCR)?</p>
-
-                    <button
-                      type="button"
-                      className={`option-button ${openToNoida === "Yes" ? "active" : ""}`}
-                      onClick={() => setOpenToNoida("Yes")}
-                    >
-                      <span>Yes</span>
-                      <span className="option-circle"></span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`option-button ${openToNoida === "Maybe" ? "active" : ""}`}
-                      onClick={() => setOpenToNoida("Maybe")}
-                    >
-                      <span>Maybe</span>
-                      <span className="option-circle"></span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`option-button ${openToNoida === "No" ? "active" : ""}`}
-                      onClick={() => setOpenToNoida("No")}
-                    >
-                      <span>No</span>
-                      <span className="option-circle"></span>
-                    </button>
-                  </div>
-                )}
-
-                {popupStep === 5 && (
-                  <div className="q-card">
-                    <h4 className="q-question">ASB programs are delivered in English.</h4>
-                    <p className="q-qsub">Are you comfortable studying in English?</p>
-
-                    <button
-                      type="button"
-                      className={`option-button ${englishComfort === "Yes" ? "active" : ""}`}
-                      onClick={() => setEnglishComfort("Yes")}
-                    >
-                      <span>Yes</span>
-                      <span className="option-circle"></span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`option-button ${englishComfort === "Need Additional Support" ? "active" : ""}`}
-                      onClick={() => setEnglishComfort("Need Additional Support")}
-                    >
-                      <span>Need Additional Support</span>
-                      <span className="option-circle"></span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`option-button ${englishComfort === "No" ? "active" : ""}`}
-                      onClick={() => setEnglishComfort("No")}
-                    >
-                      <span>No</span>
-                      <span className="option-circle"></span>
-                    </button>
-                  </div>
-                )}
-
-                {statusMsg && (
-                  <p style={{ color: "#ef4444", fontSize: "14px", fontWeight: "bold", textAlign: "center", marginTop: "12px", marginBottom: "0" }}>
-                    {statusMsg}
-                  </p>
-                )}
-
-                <div className="q-actions">
-                  {popupStep > 1 && (
-                    <button
-                      type="button"
-                      className="btn-back"
-                      onClick={() => setPopupStep(popupStep - 1)}
-                      disabled={status === "sending"}
-                    >
-                      Back
-                    </button>
-                  )}
-                  <button
-                    type="button"
-                    className="btn-continue"
-                    onClick={() => {
-                      if (popupStep < 5) {
-                        setPopupStep(popupStep + 1);
-                      } else {
-                        handleQuestionnaireSubmit();
-                      }
-                    }}
-                    disabled={
-                      status === "sending" ||
-                      (popupStep === 1 && !completedClass12) ||
-                      (popupStep === 2 && !class12Score) ||
-                      (popupStep === 3 && !higherEducationPlanning) ||
-                      (popupStep === 4 && !openToNoida) ||
-                      (popupStep === 5 && !englishComfort)
-                    }
-                  >
-                    {status === "sending"
-                      ? "Submitting..."
-                      : popupStep === 5
-                        ? "Submit Profile"
-                        : "Continue"}
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {popupStep === 6 && (
-              <div className="thank-you-card">
-                <div className="thank-you-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </div>
-                <h3 className="thank-you-title">Profile Completed!</h3>
-                <p className="thank-you-desc">
-                  Thank you, {applicantName || "Applicant"}. Your application profile has been submitted successfully.
-                  <br />
-                  Redirecting you to the confirmation page...
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+       <div className="desktop-cta" style={{ opacity: showSticky ? "1" : "0", pointerEvents: showSticky ? "auto" : "none", transform: showSticky ? "translateY(0)" : "translateY(20px)" }} aria-label="Desktop actions">
+         <div className="desktop-cta-strip">
+           <button type="button" className="btn btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
+           <a
+             href="https://api.whatsapp.com/send?phone=918376025740&text=Hi,%20I%20would%20like%20to%20know%20more%20about%20ASB%203%20year%20degree%20programs"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="btn-wa"
+             title="WhatsApp Us"
+           >
+             <Image src="/whatsapp.png" alt="WhatsApp Us" width={52} height={52} />
+           </a>
+           <a href="tel:+918037898031" className="btn btn-call" title="Call Us"><svg width="24" height="24" viewBox="0 0 16 16" fill="currentColor"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z" /></svg></a>
+         </div>
+       </div>
+       <div className={`mobile-cta${showSticky ? " is-visible" : ""}`} aria-label="Mobile actions">
+         <div className="mobile-cta-strip">
+           <button type="button" className="mobile-btn-enq" onClick={() => scrollToId("enquire", true)}>Enquire Now</button>
+           <a
+             href="https://api.whatsapp.com/send?phone=918376025740&text=Hi,%20I%20would%20like%20to%20know%20more%20about%20ASB%203%20year%20degree%20programs"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="mobile-btn-wa"
+             title="WhatsApp Us"
+             aria-label="WhatsApp Us"
+           >
+             <Image src="/whatsapp.png" alt="WhatsApp Us" width={48} height={48} />
+           </a>
+           <a href="tel:+918037898031" className="mobile-btn-call" title="Call Us" aria-label="Call Us"><svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z" /></svg></a>
+         </div>
+       </div>
     </>
   );
 }
