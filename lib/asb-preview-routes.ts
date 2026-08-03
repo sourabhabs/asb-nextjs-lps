@@ -19,13 +19,13 @@ export type PreviewCourseConfig = {
 export const PREVIEW_COURSES: Record<PreviewCourseKey, PreviewCourseConfig> = {
   bba3: {
     key: "bba3",
-    heroImage: "/desktop-images/bba.jpg",
+    heroImage: "/desktop-images/common.jpg",
     queryLabel: "ASB BBA3 Preview Landing",
     thankYouPath: "/thank-you-bba.php",
   },
   bba: {
     key: "bba",
-    heroImage: "/desktop-images/bba.jpg",
+    heroImage: "/desktop-images/common.jpg",
     mobileHeroImage: "/mobile/BBA.jpg",
     queryLabel: "ASB BBA2 Preview Landing",
     thankYouPath: "/thank-you-bba.php",

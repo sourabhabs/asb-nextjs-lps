@@ -35,7 +35,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best BBA College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
     description:
       "Top BBA college in Greater Noida - Asian School of Business offers future-ready undergraduate programs with global exposure, Oxford learning opportunities, expert faculty and placement assistance.",
-    heroImage: "/desktop-images/bba.jpg",
+    heroImage: "/desktop-images/common.jpg",
     mobileHeroImage: "/mobile2/bba.jpg",
     courseValue: "BBA",
     queryLabel: "ASB BBA Admissions 2026 Landing",
