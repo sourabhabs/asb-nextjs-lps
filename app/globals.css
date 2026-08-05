@@ -94,23 +94,23 @@ body {
   }
 
   .asb-desktop-hero-top-small {
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 800;
     line-height: 1.1;
     color: #ffffff;
   }
 
   .asb-desktop-hero-main-title {
-    font-size: 44px;
+    font-size: 52px;
     font-weight: 900;
-    line-height: 1.05;
+    line-height: 1.02;
     margin: 2px 0 4px;
     color: #ffffff;
     letter-spacing: -0.02em;
   }
 
   .asb-desktop-hero-bottom-small {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 8px;
@@ -123,9 +123,9 @@ body {
     background: rgba(15, 31, 69, 0.88);
     border: 1.5px solid #24f6f2;
     border-radius: 30px;
-    padding: 5px 14px;
+    padding: 8px 16px;
     color: #ffffff;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 700;
     margin-bottom: 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
