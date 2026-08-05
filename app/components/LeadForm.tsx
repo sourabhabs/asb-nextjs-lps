@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { fireTrackierAcquisitionPixel, getTrackierClickId } from "./TrackierTracking";
 
 interface LeadFormProps {
   title?: string;
@@ -37,7 +38,12 @@ const DEFAULT_COURSES_ASB = [
 
 function getUTMParam(name: string): string {
   if (typeof window === "undefined") return "";
-  return new URLSearchParams(window.location.search).get(name) ?? "";
+  const paramVal = new URLSearchParams(window.location.search).get(name);
+  if (paramVal && paramVal.trim()) return paramVal.trim();
+  if (name === "click_id" || name === "clickid" || name === "clickId") {
+    return getTrackierClickId();
+  }
+  return "";
 }
 
 export default function LeadForm({
@@ -135,6 +141,7 @@ export default function LeadForm({
       matchtype: getUTMParam("utm_matchtype"),
       network: getUTMParam("utm_network"),
       gclid: getUTMParam("utm_gclid"),
+      click_id: getUTMParam("click_id"),
     });
 
     if (show12thMarks) {
@@ -189,6 +196,9 @@ export default function LeadForm({
       const isSuccess = trimmedText === "1" || trimmedText.startsWith("1|");
 
       if (isSuccess) {
+        // Fire Trackier acquisition conversion pixel
+        fireTrackierAcquisitionPixel();
+
         if (trackMetaCompleteRegistration && typeof window !== "undefined") {
           const fbq = (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq;
           fbq?.("track", "CompleteRegistration");

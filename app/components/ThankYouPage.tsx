@@ -1,3 +1,8 @@
+"use client";
+
+import { useEffect } from "react";
+import { fireTrackierAcquisitionPixel } from "./TrackierTracking";
+
 interface ThankYouPageProps {
   applicantName?: string;
   courseLabel: string;
@@ -9,6 +14,9 @@ export default function ThankYouPage({
   courseLabel,
   applyUrl = "https://admissions.asb.edu.in/portal/",
 }: ThankYouPageProps) {
+  useEffect(() => {
+    fireTrackierAcquisitionPixel();
+  }, []);
   return (
     <main
       style={{

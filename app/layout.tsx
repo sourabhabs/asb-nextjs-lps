@@ -25,6 +25,8 @@ export const metadata: Metadata = {
   },
 };
 
+import TrackierTracking from "./components/TrackierTracking";
+
 export default function RootLayout({
   children,
 }: {
@@ -50,7 +52,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
         {/* GTM head snippet */}
-        <Script id="gtm-head" strategy="beforeInteractive">{`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PS7TRZ6');`}</Script>
+        <Script id="gtm-head" strategy="beforeInteractive">{`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtag/js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PS7TRZ6');`}</Script>
         <Script id="deferred-css" strategy="afterInteractive">{`(function(){var hrefs=${JSON.stringify(DEFERRED_STYLESHEETS)};hrefs.forEach(function(href){if(document.querySelector('link[href="'+href+'"]'))return;var link=document.createElement('link');link.rel='stylesheet';link.href=href;document.head.appendChild(link);});})();`}</Script>
         {/* GA4 */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-FHFHVX2FMD" strategy="afterInteractive" />
@@ -76,6 +78,7 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
+        <TrackierTracking />
         {children}
       </body>
     </html>

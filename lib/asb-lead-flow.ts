@@ -111,6 +111,7 @@ export function normalizeLeadPayload(formData: FormData): LeadFormPayload {
       matchtype: f("utm_matchtype"),
       network: f("utm_network"),
       gclid: f("utm_gclid"),
+      click_id: f("click_id") || f("clickid"),
     },
   };
 }
