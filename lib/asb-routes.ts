@@ -87,7 +87,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best BA (Hons) Psychology College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
     description:
       "Asian School of Business offers a future-ready BA (Hons) Psychology program with industry-aligned certifications and a strong foundation in human behavior and mental processes.",
-    heroImage: "/desktop-images/common.jpg",
+    heroImage: "/desktop-images/New Website banner ASB 1904x686 (9).jpg",
     mobileHeroImage: "/Mobile Banners ASB 2026 (1).jpg",
     courseValue: "BA Psychology",
     queryLabel: "ASB BA Psychology Admissions 2026 Landing",
@@ -103,7 +103,7 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     description:
       "Asian School of Business offers a future-ready B.A. Psychology International program with international exposure, industry-aligned certifications, Oxford and London learning opportunities, and a strong foundation in human behavior and mental processes.",
     heroImage: "/desktop-images/common.jpg",
-    mobileHeroImage: "/Mobile ba-psyjpg.jpg",
+    mobileHeroImage: "/main-mobile.jpg",
     courseValue: "BA Psychology International",
     queryLabel: "ASB BA Psychology International Admissions 2026 Landing",
     thankYouPath: "/thank-you-ba-psychology.php",
@@ -115,8 +115,8 @@ export const ASB_COURSE_ROUTES: Record<AsbCourseKey, AsbCourseRouteConfig> = {
     title: "Best BA (Hons) Psychology College in Delhi NCR | Admissions Open 2026 - Asian School of Business",
     description:
       "Asian School of Business offers a future-ready BA (Hons) Psychology program with industry-aligned certifications and a strong foundation in human behavior and mental processes.",
-    heroImage: "/desktop-images/common.jpg",
-    mobileHeroImage: "/Mobile Banners ASB 2026 (1).jpg",
+    heroImage: "/desktop-images/New Website banner ASB 1904x686 (9).jpg",
+    mobileHeroImage: "/main-mobile.jpg",
     courseValue: "BA Psychology",
     queryLabel: "ASB BA Psychology Admissions 2026 Landing",
     thankYouPath: "/thank-you-ba-psychology.php",

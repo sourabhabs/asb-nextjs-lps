@@ -582,6 +582,10 @@ export default function LeadForm({
             padding: 0 14px;
             font-size: 16px;
           }
+          .check-form-card #heroLeadForm:not(.lead-form-consent-row) #heroSubmitBtn {
+            background: #791F70 !important;
+            box-shadow: 0 10px 18px rgba(121, 31, 112, 0.28) !important;
+          }
         }
         .lead-form-consent-row {
           display: flex;

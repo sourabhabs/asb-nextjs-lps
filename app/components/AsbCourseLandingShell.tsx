@@ -5,6 +5,25 @@ import { useEffect, useRef, useState } from "react";
 import LeadForm from "./LeadForm";
 import type { AsbCourseRouteConfig } from "@/lib/asb-routes";
 
+const ScholarshipBadgeBba2 = () => (
+  <div className="asb-bba2-scholarship-badge">
+    <div className="asb-bba2-sch-left">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+        <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+      </svg>
+    </div>
+    <div className="asb-bba2-sch-divider"></div>
+    <div className="asb-bba2-sch-right">
+      <div className="asb-bba2-sch-upto">GET UPTO</div>
+      <div className="asb-bba2-sch-percent">100%</div>
+      <div className="asb-bba2-sch-title">SCHOLARSHIPS*</div>
+      <div className="asb-bba2-sch-sub">BASED ON YOUR 12TH SCORE</div>
+      <div className="asb-bba2-sch-pill">AVAILABLE FOR ALL</div>
+    </div>
+  </div>
+);
+
 interface AsbCourseLandingShellProps {
   course: AsbCourseRouteConfig;
   forceTealTheme?: boolean;
@@ -441,6 +460,17 @@ export default function AsbCourseLandingShell({
         .events-label{margin-top:14px;font-size:16px;font-weight:500;color:#334e68;text-align:center}
         .events-sub-labels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:12px}
         .events-sub-label{font-size:16px;font-weight:500;color:#334e68;text-align:center}
+        @media (max-width:767px){
+          .events-head{margin-bottom:1.6rem}
+          .events-head h2{font-size:1.8rem;line-height:1.15}
+          .events-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem .8rem}
+          .events-card:nth-child(3n+1){grid-column:span 2}
+          .events-img{aspect-ratio:4/3;border-radius:18px;border:0}
+          .events-card:nth-child(3n+1) .events-img{aspect-ratio:16/10}
+          .events-label{margin-top:10px;font-size:14px}
+          .events-sub-labels{gap:10px;margin-top:10px}
+          .events-sub-label{font-size:14px}
+        }
           color: #ffb703;
           border: 1px solid rgba(255, 183, 3, 0.3);
           padding: 4px 10px;
@@ -636,12 +666,14 @@ export default function AsbCourseLandingShell({
         .asb-psychology-theme .tag {
           color: #791F70 !important;
         }
-        .asb-psychology-theme .header-hero {
-          height: calc(45.42vw + 146px) !important;
-        }
-        .asb-psychology-theme .header-hero-content {
-          padding-left: 30px !important;
-          padding-right: 24px !important;
+        @media (min-width: 992px) {
+          .asb-psychology-theme .header-hero {
+            height: calc(45.42vw + 146px) !important;
+          }
+          .asb-psychology-theme .header-hero-content {
+            padding-left: 30px !important;
+            padding-right: 24px !important;
+          }
         }
         .asb-psychology-theme .asb-psychology-hero-stack {
           display: flex;
@@ -739,143 +771,145 @@ export default function AsbCourseLandingShell({
           text-shadow: none !important;
           line-height: 1.15 !important;
         }
-        .asb-psychology-theme .hero-form-title,
-        .asb-course-shell-ba-psychology #heroLeadForm .hero-form-title,
-        .asb-course-shell-ba-psychology3 #heroLeadForm .hero-form-title,
-        .asb-psychology-theme #heroLeadForm .hero-form-title {
-          min-width: 290px !important;
-          width: auto !important;
-          flex: 0 0 auto !important;
-          margin-right: 6px !important;
-        }
-        .asb-course-shell-ba-psychology #heroLeadForm .course-select-wrap,
-        .asb-course-shell-ba-psychology3 #heroLeadForm .course-select-wrap,
-        .asb-psychology-theme #heroLeadForm .course-select-wrap {
-          flex: 1.1 1 122px !important;
-          width: auto !important;
-          min-width: 120px !important;
-          max-width: 165px !important;
-        }
-        .asb-course-shell-ba-psychology #heroLeadForm,
-        .asb-course-shell-ba-psychology3 #heroLeadForm,
-        .asb-psychology-theme #heroLeadForm {
-          display: flex !important;
-          flex-wrap: wrap !important;
-          align-items: center !important;
-          justify-content: space-between !important;
-          gap: 8px 6px !important;
-          width: 100% !important;
-          max-width: 1320px !important;
-          margin: 0 auto !important;
-          background: transparent !important;
-          border: 0 !important;
-          box-shadow: none !important;
-          border-radius: 0 !important;
-          padding: 0 !important;
-          position: static !important;
-        }
-        .asb-course-shell-ba-psychology #heroLeadForm:not(.lead-form-consent-row),
-        .asb-course-shell-ba-psychology3 #heroLeadForm:not(.lead-form-consent-row),
-        .asb-psychology-theme #heroLeadForm:not(.lead-form-consent-row) {
-          display: grid !important;
-          grid-template-columns:
-            minmax(330px, 1.5fr)
-            repeat(4, minmax(100px, 1fr))
-            minmax(190px, 1.2fr)
-            minmax(112px, auto) !important;
-          align-items: center !important;
-          gap: 6px !important;
-          width: 100% !important;
-          max-width: 1360px !important;
-          margin: 0 auto !important;
-          padding: 0 !important;
-        }
-        .asb-course-shell-ba-psychology #heroLeadForm .single_form,
-        .asb-course-shell-ba-psychology3 #heroLeadForm .single_form,
-        .asb-psychology-theme #heroLeadForm .single_form {
-          margin-top: 0 !important;
-          flex: 1 1 104px !important;
-          max-width: 160px !important;
-          min-width: 100px !important;
-        }
-        .asb-course-shell-ba-psychology #heroLeadForm:not(.lead-form-consent-row) .single_form,
-        .asb-course-shell-ba-psychology3 #heroLeadForm:not(.lead-form-consent-row) .single_form,
-        .asb-psychology-theme #heroLeadForm:not(.lead-form-consent-row) .single_form,
-        .asb-course-shell-ba-psychology #heroLeadForm:not(.lead-form-consent-row) .hero-form-title,
-        .asb-course-shell-ba-psychology3 #heroLeadForm:not(.lead-form-consent-row) .hero-form-title,
-        .asb-psychology-theme #heroLeadForm:not(.lead-form-consent-row) .hero-form-title,
-        .asb-course-shell-ba-psychology #heroLeadForm:not(.lead-form-consent-row) .course-select-wrap,
-        .asb-course-shell-ba-psychology3 #heroLeadForm:not(.lead-form-consent-row) .course-select-wrap,
-        .asb-psychology-theme #heroLeadForm:not(.lead-form-consent-row) .course-select-wrap {
-          width: 100% !important;
-          min-width: 0 !important;
-          max-width: none !important;
-          flex: unset !important;
-          margin: 0 !important;
-        }
-        .asb-course-shell-ba-psychology #heroLeadForm .hero-form-title h3,
-        .asb-course-shell-ba-psychology3 #heroLeadForm .hero-form-title h3,
-        .asb-psychology-theme #heroLeadForm .hero-form-title h3 {
-          margin: 0 !important;
-          color: #fff !important;
-          opacity: 1 !important;
-          font-size: clamp(20px, 2vw, 30px) !important;
-          line-height: 1 !important;
-          font-weight: 800 !important;
-          letter-spacing: -0.01em !important;
-          white-space: nowrap !important;
-          text-shadow: none !important;
-        }
-        .asb-course-shell-ba-psychology #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3,
-        .asb-course-shell-ba-psychology3 #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3,
-        .asb-psychology-theme #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
-          width: 100% !important;
-          font-size: clamp(20px, 1.7vw, 28px) !important;
-        }
-        .asb-course-shell-ba-psychology #heroLeadForm .single_form input,
-        .asb-course-shell-ba-psychology #heroLeadForm .single_form select,
-        .asb-course-shell-ba-psychology3 #heroLeadForm .single_form input,
-        .asb-course-shell-ba-psychology3 #heroLeadForm .single_form select,
-        .asb-psychology-theme #heroLeadForm .single_form input,
-        .asb-psychology-theme #heroLeadForm .single_form select {
-          display: block !important;
-          width: 100% !important;
-          box-sizing: border-box !important;
-          height: 40px !important;
-          border-radius: 4px !important;
-          border: 1px solid rgba(71, 85, 105, 0.55) !important;
-          background: #fff !important;
-          color: #334155 !important;
-          padding: 0 10px !important;
-          font-size: 15px !important;
-          margin: 0 !important;
-        }
-        .asb-course-shell-ba-psychology #heroSubmitBtn,
-        .asb-course-shell-ba-psychology3 #heroSubmitBtn,
-        .asb-psychology-theme #heroSubmitBtn {
-          height: 40px !important;
-          line-height: 40px !important;
-          min-width: 92px !important;
-          padding: 0 10px !important;
-          border-radius: 4px !important;
-        }
-        .asb-course-shell-ba-psychology .frmD,
-        .asb-course-shell-ba-psychology3 .frmD,
-        .asb-psychology-theme .frmD {
-          padding: 14px 8px !important;
-          background-color: rgba(121, 31, 112, 0.88) !important;
+        @media (min-width: 992px) {
+          .asb-psychology-theme .hero-form-title,
+          .asb-course-shell-ba-psychology #heroLeadForm .hero-form-title,
+          .asb-course-shell-ba-psychology3 #heroLeadForm .hero-form-title,
+          .asb-psychology-theme #heroLeadForm .hero-form-title {
+            min-width: 290px !important;
+            width: auto !important;
+            flex: 0 0 auto !important;
+            margin-right: 6px !important;
+          }
+          .asb-course-shell-ba-psychology #heroLeadForm .course-select-wrap,
+          .asb-course-shell-ba-psychology3 #heroLeadForm .course-select-wrap,
+          .asb-psychology-theme #heroLeadForm .course-select-wrap {
+            flex: 1.1 1 122px !important;
+            width: auto !important;
+            min-width: 120px !important;
+            max-width: 165px !important;
+          }
+          .asb-course-shell-ba-psychology #heroLeadForm,
+          .asb-course-shell-ba-psychology3 #heroLeadForm,
+          .asb-psychology-theme #heroLeadForm {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 8px 6px !important;
+            width: 100% !important;
+            max-width: 1320px !important;
+            margin: 0 auto !important;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            padding: 0 !important;
+            position: static !important;
+          }
+          .asb-course-shell-ba-psychology #heroLeadForm:not(.lead-form-consent-row),
+          .asb-course-shell-ba-psychology3 #heroLeadForm:not(.lead-form-consent-row),
+          .asb-psychology-theme #heroLeadForm:not(.lead-form-consent-row) {
+            display: grid !important;
+            grid-template-columns:
+              minmax(330px, 1.5fr)
+              repeat(4, minmax(100px, 1fr))
+              minmax(190px, 1.2fr)
+              minmax(112px, auto) !important;
+            align-items: center !important;
+            gap: 6px !important;
+            width: 100% !important;
+            max-width: 1360px !important;
+            margin: 0 auto !important;
+            padding: 0 !important;
+          }
+          .asb-course-shell-ba-psychology #heroLeadForm .single_form,
+          .asb-course-shell-ba-psychology3 #heroLeadForm .single_form,
+          .asb-psychology-theme #heroLeadForm .single_form {
+            margin-top: 0 !important;
+            flex: 1 1 104px !important;
+            max-width: 160px !important;
+            min-width: 100px !important;
+          }
+          .asb-course-shell-ba-psychology #heroLeadForm:not(.lead-form-consent-row) .single_form,
+          .asb-course-shell-ba-psychology3 #heroLeadForm:not(.lead-form-consent-row) .single_form,
+          .asb-psychology-theme #heroLeadForm:not(.lead-form-consent-row) .single_form,
+          .asb-course-shell-ba-psychology #heroLeadForm:not(.lead-form-consent-row) .hero-form-title,
+          .asb-course-shell-ba-psychology3 #heroLeadForm:not(.lead-form-consent-row) .hero-form-title,
+          .asb-psychology-theme #heroLeadForm:not(.lead-form-consent-row) .hero-form-title,
+          .asb-course-shell-ba-psychology #heroLeadForm:not(.lead-form-consent-row) .course-select-wrap,
+          .asb-course-shell-ba-psychology3 #heroLeadForm:not(.lead-form-consent-row) .course-select-wrap,
+          .asb-psychology-theme #heroLeadForm:not(.lead-form-consent-row) .course-select-wrap {
+            width: 100% !important;
+            min-width: 0 !important;
+            max-width: none !important;
+            flex: unset !important;
+            margin: 0 !important;
+          }
+          .asb-course-shell-ba-psychology #heroLeadForm .hero-form-title h3,
+          .asb-course-shell-ba-psychology3 #heroLeadForm .hero-form-title h3,
+          .asb-psychology-theme #heroLeadForm .hero-form-title h3 {
+            margin: 0 !important;
+            color: #fff !important;
+            opacity: 1 !important;
+            font-size: clamp(20px, 2vw, 30px) !important;
+            line-height: 1 !important;
+            font-weight: 800 !important;
+            letter-spacing: -0.01em !important;
+            white-space: nowrap !important;
+            text-shadow: none !important;
+          }
+          .asb-course-shell-ba-psychology #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3,
+          .asb-course-shell-ba-psychology3 #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3,
+          .asb-psychology-theme #heroLeadForm:not(.lead-form-consent-row) .hero-form-title h3 {
+            width: 100% !important;
+            font-size: clamp(20px, 1.7vw, 28px) !important;
+          }
+          .asb-course-shell-ba-psychology #heroLeadForm .single_form input,
+          .asb-course-shell-ba-psychology #heroLeadForm .single_form select,
+          .asb-course-shell-ba-psychology3 #heroLeadForm .single_form input,
+          .asb-course-shell-ba-psychology3 #heroLeadForm .single_form select,
+          .asb-psychology-theme #heroLeadForm .single_form input,
+          .asb-psychology-theme #heroLeadForm .single_form select {
+            display: block !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            height: 40px !important;
+            border-radius: 4px !important;
+            border: 1px solid rgba(71, 85, 105, 0.55) !important;
+            background: #fff !important;
+            color: #334155 !important;
+            padding: 0 10px !important;
+            font-size: 15px !important;
+            margin: 0 !important;
+          }
+          .asb-course-shell-ba-psychology #heroSubmitBtn,
+          .asb-course-shell-ba-psychology3 #heroSubmitBtn,
+          .asb-psychology-theme #heroSubmitBtn {
+            height: 40px !important;
+            line-height: 40px !important;
+            min-width: 92px !important;
+            padding: 0 10px !important;
+            border-radius: 4px !important;
+          }
+          .asb-course-shell-ba-psychology .frmD,
+          .asb-course-shell-ba-psychology3 .frmD,
+          .asb-psychology-theme .frmD {
+            padding: 14px 8px !important;
+            background-color: rgba(121, 31, 112, 0.88) !important;
+          }
+          .asb-course-shell-ba-psychology .course-readonly,
+          .asb-course-shell-ba-psychology3 .course-readonly,
+          .asb-psychology-theme .course-readonly {
+            white-space: nowrap !important;
+            font-size: 14px !important;
+            padding: 0 8px !important;
+          }
         }
         @media (min-width: 992px) and (max-height: 820px) {
           .asb-psychology-theme .asb-psychology-hero-stack {
             padding-top: 22px !important;
           }
-        }
-        .asb-course-shell-ba-psychology .course-readonly,
-        .asb-course-shell-ba-psychology3 .course-readonly,
-        .asb-psychology-theme .course-readonly {
-          white-space: nowrap !important;
-          font-size: 14px !important;
-          padding: 0 8px !important;
         }
         .asb-psychology3-theme .asb-desktop-hero-highlight {
           font-size: 1.8em !important;
@@ -916,7 +950,7 @@ export default function AsbCourseLandingShell({
             background-color: #fff !important;
           }
           .asb-psychology-theme #heroSubmitBtn {
-            background: #791F70 !important;
+            background: #ff1b23 !important;
           }
           .asb-psychology-theme .contact-grid {
             grid-template-columns: 1fr;
@@ -1194,35 +1228,51 @@ export default function AsbCourseLandingShell({
                   >
                     {!hideHeroPromoBlock ? (
                       isPsychologyRoute ? (
-                      <>
-                        <div className="mobH" style={{ height: "clamp(260px, 32vw, 420px)" }} />
-                        <div
-                          className="mobH admissions-timer-desktop-lhs"
-                          style={{ width: "min(100%, 660px)", maxWidth: "660px", paddingTop: "14px" }}
-                        >
-                        <div className="asb-desktop-hero-header-text" style={{ width: "100%", maxWidth: "660px" }}>
-                          <div className="asb-desktop-hero-top-small">Join the best</div>
-                          <h1 className="asb-desktop-hero-main-title">Undergrad College</h1>
-                          <div className="asb-desktop-hero-bottom-small">in Delhi-NCR</div>
-                          <div className="asb-desktop-hero-pill-badge" style={{ width: "fit-content", maxWidth: "660px" }}>
-                            Pursue Full-Time <span>{content.highlight}</span> Degree Program.
-                          </div>
-                        </div>
-                        <div className="asb-desktop-scholarship-row" style={{ marginTop: "0", marginBottom: "18px" }}>
-                          <div className="asb-scholarship-card">
-                            <div className="asb-scholarship-content">
-                              <div className="asb-scholarship-icon-box">
-                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
-                                  <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
-                                </svg>
+                        isBaPsychology ? (
+                          <div className="mobH admissions-timer-desktop-lhs">
+                            <div className="asb-desktop-hero-header-text">
+                              <div className="asb-desktop-hero-top-small">Join the Best</div>
+                              <h1 className="asb-desktop-hero-main-title">Undergrad College</h1>
+                              <div className="asb-desktop-hero-bottom-small">in Delhi-NCR</div>
+                              <div className="asb-desktop-hero-pill-badge">
+                                Pursue Full-Time <span>{content.highlight}</span> Degree Program
                               </div>
-                              <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship*"}</h4>
+                            </div>
+                            <div className="asb-desktop-hero-meta-row">
+                              <ScholarshipBadgeBba2 />
                             </div>
                           </div>
-                        </div>
-                      </div>
-                      </>
+                        ) : (
+                          <>
+                            <div className="mobH" style={{ height: "clamp(260px, 32vw, 420px)" }} />
+                            <div
+                              className="mobH admissions-timer-desktop-lhs"
+                              style={{ width: "min(100%, 660px)", maxWidth: "660px", paddingTop: "14px" }}
+                            >
+                              <div className="asb-desktop-hero-header-text" style={{ width: "100%", maxWidth: "660px" }}>
+                                <div className="asb-desktop-hero-top-small">Join the best</div>
+                                <h1 className="asb-desktop-hero-main-title">Undergrad College</h1>
+                                <div className="asb-desktop-hero-bottom-small">in Delhi-NCR</div>
+                                <div className="asb-desktop-hero-pill-badge" style={{ width: "fit-content", maxWidth: "660px" }}>
+                                  Pursue Full-Time <span>{content.highlight}</span> Degree Program.
+                                </div>
+                              </div>
+                              <div className="asb-desktop-scholarship-row" style={{ marginTop: "0", marginBottom: "18px" }}>
+                                <div className="asb-scholarship-card">
+                                  <div className="asb-scholarship-content">
+                                    <div className="asb-scholarship-icon-box">
+                                      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="#ffb703" />
+                                        <path d="M5 12.18V17.18L12 21L19 17.18V12.18L12 16L5 12.18Z" fill="#ffb703" />
+                                      </svg>
+                                    </div>
+                                    <h4 className="asb-scholarship-title">{course.hasScholarshipAsterisk ? "Upto 100% Scholarship*" : "Upto 100% Scholarship*"}</h4>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </>
+                        )
                       ) : (
                       <div className="mobH asb-desktop-hero-copy" style={{ maxWidth: "760px" }}>
                         <h1 className="asb-desktop-hero-title">Join the best<br />Undergrad College in Delhi-NCR</h1>
@@ -1284,10 +1334,12 @@ export default function AsbCourseLandingShell({
                       />
                       {!hideHeroPromoBlock && showHeroStats ? (
                         <div className="asb-hero-stats" aria-label="Course highlights">
-                          <div className="asb-hero-stat-box">
-                            <p className="asb-hero-stat-value">100%</p>
-                            <p className="asb-hero-stat-label">Placement Assistance</p>
-                          </div>
+                          {!isBaPsychology ? (
+                            <div className="asb-hero-stat-box">
+                              <p className="asb-hero-stat-value">100%</p>
+                              <p className="asb-hero-stat-label">Placement Assistance</p>
+                            </div>
+                          ) : null}
                           <div className="asb-hero-stat-box">
                             <p className="asb-hero-stat-value">{content.heroFee}</p>
                             <p className="asb-hero-stat-label">Total Fees</p>
@@ -1327,12 +1379,13 @@ export default function AsbCourseLandingShell({
 
               <LeadForm
                 id="enquire"
-                title="Admissions Open 2026"
+                title={course.key.startsWith("ba-psychology") ? "Admissions Open" : "Admissions Open 2026"}
                 courses={content.options}
                 queryLabel={course.queryLabel}
                 thankYouPath={course.thankYouPath}
-                submitLabel="Enquire Now"
+                submitLabel={course.key.startsWith("ba-psychology") ? "ENQUIRE NOW" : "Enquire Now"}
                 consentNote={formConsentNote}
+                className={course.key.startsWith("ba-psychology") ? "check-form-card" : undefined}
               />
             </div>
           </section>
