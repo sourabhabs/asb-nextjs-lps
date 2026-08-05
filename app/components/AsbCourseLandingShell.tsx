@@ -680,36 +680,36 @@ export default function AsbCourseLandingShell({
           flex-direction: column;
           align-items: flex-start;
           justify-content: flex-start;
-          width: min(100%, 660px);
-          max-width: 660px;
+          width: min(100%, 780px);
+          max-width: 780px;
           padding-top: 14px;
         }
         .asb-psychology-theme .asb-desktop-hero-header-text {
-          max-width: 660px !important;
-          margin: 0 0 14px !important;
+          max-width: 780px !important;
+          margin: 0 0 16px !important;
           color: #fff !important;
           text-shadow: 0 10px 28px rgba(6, 16, 38, 0.32);
         }
         .asb-psychology-theme .asb-desktop-hero-top-small {
           margin: 0 0 4px !important;
           color: #fff !important;
-          font-size: clamp(22px, 1.6vw, 28px) !important;
+          font-size: clamp(26px, 2vw, 36px) !important;
           line-height: 1.1 !important;
           font-weight: 800 !important;
           letter-spacing: -0.02em !important;
         }
         .asb-psychology-theme .asb-desktop-hero-main-title {
-          margin: 0 !important;
+          margin: 2px 0 4px !important;
           color: #fff !important;
-          font-size: clamp(44px, 3.5vw, 58px) !important;
-          line-height: 1.02 !important;
+          font-size: clamp(52px, 4.5vw, 72px) !important;
+          line-height: 1.0 !important;
           font-weight: 900 !important;
           letter-spacing: -0.03em !important;
         }
         .asb-psychology-theme .asb-desktop-hero-bottom-small {
-          margin: 6px 0 0 !important;
+          margin: 4px 0 0 !important;
           color: #fff !important;
-          font-size: clamp(20px, 1.4vw, 26px) !important;
+          font-size: clamp(24px, 1.8vw, 34px) !important;
           line-height: 1.1 !important;
           font-weight: 800 !important;
           letter-spacing: -0.02em !important;
@@ -717,26 +717,26 @@ export default function AsbCourseLandingShell({
         .asb-psychology-theme .asb-desktop-hero-header-text::after {
           content: "";
           display: block;
-          width: 110px;
-          height: 6px;
+          width: 140px;
+          height: 7px;
           border-radius: 999px;
-          margin: 12px 0 14px;
+          margin: 14px 0 18px;
           background: linear-gradient(90deg, #f9b4ef 0%, #ffffff 100%);
         }
         .asb-psychology-theme .asb-desktop-hero-pill-badge {
           display: inline-flex !important;
           align-items: center !important;
           flex-wrap: wrap !important;
-          gap: 6px !important;
-          max-width: 660px !important;
-          padding: 8px 16px !important;
+          gap: 8px !important;
+          max-width: 780px !important;
+          padding: 10px 20px !important;
           border: 2px solid #f0b7ea !important;
           border-radius: 30px !important;
-          background: rgba(121, 31, 112, 0.35) !important;
-          box-shadow: 0 12px 28px rgba(6, 16, 38, 0.18) !important;
+          background: rgba(121, 31, 112, 0.4) !important;
+          box-shadow: 0 12px 28px rgba(6, 16, 38, 0.22) !important;
           color: #fff !important;
-          font-size: clamp(15px, 1.1vw, 19px) !important;
-          line-height: 1.2 !important;
+          font-size: clamp(18px, 1.35vw, 24px) !important;
+          line-height: 1.25 !important;
           font-weight: 700 !important;
           margin-bottom: 0 !important;
         }

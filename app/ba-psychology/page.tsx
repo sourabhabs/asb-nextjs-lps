@@ -31,17 +31,17 @@ export default function BaPsychologyPage() {
             align-items: flex-start !important;
             justify-content: flex-start !important;
             width: fit-content !important;
-            max-width: min(720px, 56vw) !important;
+            max-width: min(840px, 64vw) !important;
             padding-top: 14px !important;
           }
           .asb-course-shell-ba-psychology .asb-desktop-hero-header-text {
             display: block !important;
-            max-width: min(720px, 56vw) !important;
-            margin: 0 0 14px !important;
+            max-width: min(840px, 64vw) !important;
+            margin: 0 0 16px !important;
             text-shadow: 0 10px 28px rgba(6, 16, 38, 0.32) !important;
           }
           .asb-course-shell-ba-psychology .asb-desktop-hero-top-small {
-            font-size: clamp(22px, 1.6vw, 28px) !important;
+            font-size: clamp(26px, 2vw, 36px) !important;
             line-height: 1.1 !important;
             margin: 0 0 4px !important;
             white-space: nowrap !important;
@@ -50,18 +50,18 @@ export default function BaPsychologyPage() {
             letter-spacing: -0.02em !important;
           }
           .asb-course-shell-ba-psychology .asb-desktop-hero-main-title {
-            font-size: clamp(44px, 3.5vw, 58px) !important;
-            line-height: 1.02 !important;
+            font-size: clamp(52px, 4.5vw, 72px) !important;
+            line-height: 1.0 !important;
             letter-spacing: -0.03em !important;
-            margin: 0 !important;
+            margin: 2px 0 4px !important;
             white-space: nowrap !important;
             color: #fff !important;
             font-weight: 900 !important;
           }
           .asb-course-shell-ba-psychology .asb-desktop-hero-bottom-small {
-            font-size: clamp(20px, 1.4vw, 26px) !important;
+            font-size: clamp(24px, 1.8vw, 34px) !important;
             line-height: 1.1 !important;
-            margin: 6px 0 0 !important;
+            margin: 4px 0 0 !important;
             white-space: nowrap !important;
             color: #fff !important;
             font-weight: 800 !important;
@@ -70,26 +70,26 @@ export default function BaPsychologyPage() {
           .asb-course-shell-ba-psychology .asb-desktop-hero-header-text::after {
             content: "" !important;
             display: block !important;
-            width: 110px !important;
-            height: 6px !important;
+            width: 140px !important;
+            height: 7px !important;
             border-radius: 999px !important;
-            margin: 12px 0 14px !important;
+            margin: 14px 0 18px !important;
             background: linear-gradient(90deg, #f0b7ea 0%, #791F70 100%) !important;
           }
           .asb-course-shell-ba-psychology .asb-desktop-hero-pill-badge {
             display: inline-flex !important;
             align-items: center !important;
             flex-wrap: wrap !important;
-            gap: 6px !important;
-            max-width: min(720px, 56vw) !important;
-            padding: 8px 16px !important;
+            gap: 8px !important;
+            max-width: min(840px, 64vw) !important;
+            padding: 10px 20px !important;
             border: 2px solid #f0b7ea !important;
             border-radius: 30px !important;
-            background: rgba(121, 31, 112, 0.35) !important;
-            box-shadow: 0 12px 28px rgba(6, 16, 38, 0.18) !important;
+            background: rgba(121, 31, 112, 0.4) !important;
+            box-shadow: 0 12px 28px rgba(6, 16, 38, 0.22) !important;
             color: #fff !important;
-            font-size: clamp(15px, 1.1vw, 19px) !important;
-            line-height: 1.2 !important;
+            font-size: clamp(18px, 1.35vw, 24px) !important;
+            line-height: 1.25 !important;
             font-weight: 700 !important;
             white-space: normal !important;
           }
