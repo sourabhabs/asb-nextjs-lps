@@ -1,3 +1,4 @@
+import { randomInt } from "node:crypto";
 import { ObjectId } from "mongodb";
 import { cookies } from "next/headers";
 import { getMongoDb } from "@/lib/mongodb";
@@ -21,10 +22,6 @@ export type LeadFormPayload = {
 type LeadFlowEnv = {
   lsqAccessKey: string;
   lsqSecretKey: string;
-  smsUsername: string;
-  smsPassword: string;
-  smsSenderId: string;
-  smsTemplateId: string;
 };
 
 type LeadCaptureResult = {
@@ -70,10 +67,6 @@ function getLeadFlowEnv(): LeadFlowEnv {
   return {
     lsqAccessKey: requireEnv("LSQ_ACCESS_KEY"),
     lsqSecretKey: requireEnv("LSQ_SECRET_KEY"),
-    smsUsername: requireEnv("SMS_USERNAME"),
-    smsPassword: requireEnv("SMS_PASSWORD"),
-    smsSenderId: requireEnv("SMS_SENDER_ID"),
-    smsTemplateId: requireEnv("SMS_TEMPLATE_ID"),
   };
 }
 
@@ -181,20 +174,23 @@ async function updateLeadRecord(leadDocId: string, fields: Record<string, unknow
 }
 
 export async function sendOtpSms(phone: string, otp: string) {
-  const env = getLeadFlowEnv();
-  const params = new URLSearchParams({
-    username: env.smsUsername,
-    password: env.smsPassword,
-    senderid: env.smsSenderId,
-    dndrefund: "1",
-    tid: env.smsTemplateId,
-    message: `${otp} is your OTP. It will be valid for 5 minutes - Asian School of Business, Noida`,
-    numbers: phone,
-  });
-
-  const res = await fetch(`https://web.insignsms.com/api/sendsms?${params.toString()}`);
-  if (!res.ok) {
-    throw new Error(`SMS provider responded with ${res.status}`);
+  const apiKey = requireEnv("BUDDY_SMS_API_KEY");
+  try {
+    const res = await fetch("https://multichannel.buddyinfotech.in/api/v1/sms/sendMessage", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        senderid: process.env.BUDDY_SMS_SENDER_ID?.trim() || "ASBNCR",
+        message: `${otp} is your OTP. It will be valid for 5 minutes - Asian School of Business, Noida`,
+        unicode: 0, personalized: 0, numbers: [phone],
+      }),
+      cache: "no-store",
+      signal: AbortSignal.timeout(15000),
+    });
+    const result = await res.json().catch(() => ({}));
+    if (!res.ok || result.success !== true) throw new Error("SMS request rejected");
+  } catch {
+    throw new Error("Unable to send OTP right now. Please try again.");
   }
 }
 
@@ -629,7 +625,7 @@ export async function startLeadCapture(
   payload: LeadFormPayload,
   forwardedFor: string | null
 ): Promise<LeadCaptureResult> {
-  const otp = String(Math.floor(1000 + Math.random() * 9000));
+  const otp = String(randomInt(1000, 10000));
   const leadDocId = await insertLeadRecord(payload, forwardedFor, otp);
 
   try {
@@ -688,9 +684,7 @@ export async function resendLeadOtp() {
     throw new Error("Session expired. Please fill the form again.");
   }
 
-  void sendOtpSms(phone, otp).catch((error) => {
-    console.error("Failed to resend OTP SMS", error);
-  });
+  await sendOtpSms(phone, otp);
 }
 
 export async function verifyLeadOtp(otp: string) {
