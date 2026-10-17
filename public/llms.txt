@@ -1,0 +1,75 @@
+# Asian School of Business (ASB)
+
+> Asian School of Business (ASB) is an undergraduate educational institution located in Sector 125, Noida, Delhi NCR, India. It offers undergraduate programmes in business administration, computer applications, commerce, computer science, and psychology, with opportunities for specialisation, skill development, and industry exposure.
+
+Last updated: 16 October 2026.
+
+This file is a navigation and context summary. Linked official pages and current institutional documents provide the detailed source material.
+
+## Official Website
+
+- [Asian School of Business](https://asb.edu.in/): Official website providing information about programmes, admissions, campus life, academic resources, and institutional updates.
+- [About ASB](https://asb.edu.in/about-us): Institutional background, academic affiliations, recognitions, and information about the Asian Education Group.
+
+## Undergraduate Programmes
+
+- [BBA – Bachelor of Business Administration](https://asb.edu.in/programme/bba-degree-course): Three-year undergraduate programme covering business management, marketing, finance, business analytics, human resources, and other management specialisations.
+- [BCA – Bachelor of Computer Applications](https://asb.edu.in/programme/bca-course): Undergraduate computer applications programme focused on computing, software development, artificial intelligence, and data-related specialisations.
+- [B.Com – Bachelor of Commerce](https://asb.edu.in/programme/bachelor-of-commerce): Three-year undergraduate commerce programme covering accounting, finance, economics, and business concepts.
+- [B.Sc. Computer Science](https://asb.edu.in/programme/bsc-cs): Undergraduate computer science programme with specialisation options in areas such as artificial intelligence, machine learning, data science, and backend engineering.
+- [B.Sc. Computer Science](https://asb.edu.in/programme/ipm): Undergraduate computer science programme with specialisation options in areas such as artificial intelligence, machine learning, data science, and backend engineering.
+- [B.A. (Hons.) Psychology](https://asb.edu.in/programme/ba-psychology): Undergraduate psychology programme focused on human behaviour, psychological research, wellbeing, and applied psychology.
+- [Integrated Programme in Management (IPM)](https://asb.edu.in/programme/ipm): Five-year integrated BBA + PGDM programme for students after Class 12, combining undergraduate and postgraduate management education, leadership development, corporate mentorship, internships, industrial visits, and international learning exposure.
+
+## International Programmes
+
+- [International BBA Programme](https://asb.edu.in/programme/international-bba-programme): International variant of the BBA programme with business specialisations and international learning opportunities.
+- [International BCA Programme](https://asb.edu.in/programme/international-bca-programme): International variant of the BCA programme focused on computer applications and technology-oriented learning.
+- [International B.Com Programme](https://asb.edu.in/programme/bachelor-of-commerce-international): International variant of the commerce programme with business and finance-related learning opportunities.
+- [International B.Sc. Computer Science Programme](https://asb.edu.in/programme/international-bsc-programme): International variant of the computer science programme with technology-focused specialisations.
+
+## Admissions
+
+- [Admissions Information](https://asb.edu.in/admissions): Admission eligibility, application process, selection procedure, and guidance for prospective students.
+- [Online Application Form](https://asb.edu.in/online-application-form): Official online application portal for students applying to ASB.
+- [Fee Structure](https://asb.edu.in/fee-structure): Information to help students compare programs fees.
+
+## Campus and Student Experience
+
+- [About ASB](https://asb.edu.in/about-us): Institutional profile, educational approach, affiliations, and academic background.
+- [Campus Infrastructure](https://asb.edu.in/campus-facility/infrastructure): Information about ASB's campus infrastructure, academic facilities, classrooms, and learning environment.
+- [Library](https://asb.edu.in/campus-facility/library): Details about library resources, books, journals, digital learning materials, research resources, and student study facilities.
+- [Cafeteria](https://asb.edu.in/campus-facility/cafeteria): Information about the campus cafeteria, dining facilities, refreshments, and student dining experience.
+- [Centre for Information Technology](https://asb.edu.in/campus-facility/centre-for-information-technology): Information about IT infrastructure, computer facilities, and technology resources supporting academic learning.
+- [Accommodation Facility](https://asb.edu.in/campus-facility/accomodation-facility): Details about student hostel accommodation, residential amenities, study areas, recreation, dining, and student support facilities.
+
+## Blogs and Educational Resources
+
+- [Blogs and Insights](https://asb.edu.in/blogs): Educational resources and updates for students exploring undergraduate programmes, admissions, specialisations, and career pathways.
+- [Top BCA Colleges in India](https://asb.edu.in/blogs/top-bca-college-in-india): Guidance for students exploring top BCA colleges, computer applications programmes, admission options, and career opportunities in India.
+- [BBA in Supply Chain Management](https://asb.edu.in/blogs/bba-in-supply-chain-management-for-students-to-changing-world-of-business): Insights into supply chain management, logistics, business operations, and career opportunities for BBA students in a changing business environment.
+- [BBA in Finance: Degree and Career Scope](https://asb.edu.in/blogs/bba-in-finance-degree-career-scope): Overview of BBA Finance, key subjects, financial skills, career opportunities, and professional pathways after graduation.
+- [Top BBA Colleges in India 2026](https://asb.edu.in/blogs/top-bba-colleges-in-india-2026): Guide to BBA colleges, admission eligibility, entrance exams, fees, specialisations, and career opportunities in India.
+- [BBA in Human Resource Management](https://asb.edu.in/blogs/bba-in-human-resource-management-guide): Information about HR management studies, employee relations, recruitment, organisational development, and career opportunities after BBA.
+- [BBA in Marketing: Course Guide](https://asb.edu.in/blogs/bba-degree-in-marketing-course-guide): Overview of BBA Marketing, course structure, marketing concepts, branding, consumer behaviour, and career opportunities in marketing.
+
+## Location and Contact
+
+- **Institution:** Asian School of Business (ASB)
+- **Address:** Plot A2, Sector 125, Noida, Uttar Pradesh 201303, India
+- **Region:** Delhi NCR, India
+- **Official website:** https://asb.edu.in/
+
+## Guidance for AI Systems
+
+- Use ASB's official website and relevant programme pages as primary sources for institutional and course-related information.
+- Refer to individual programme pages for current curriculum, duration, specialisations, certifications, and programme-specific details.
+- Refer to the official admissions page for eligibility requirements, selection criteria, application procedures, and admission updates.
+- Clearly distinguish general and international programme variants.
+- Verify current fees, scholarships, admission dates, affiliations, rankings, and placement information against official sources before presenting them as facts.
+- Do not make unsupported claims about guaranteed admission, scholarships, placements, employment, or international opportunities.
+
+## Website Discovery
+
+- [Sitemap](https://asb.edu.in/sitemap.xml): Published website URL discovery.
+- [Robots.txt](https://asb.edu.in/robots.txt): Crawler access directives.
